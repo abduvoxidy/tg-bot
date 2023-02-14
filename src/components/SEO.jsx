@@ -1,15 +1,15 @@
-import React from 'react'
-import Head from 'next/head'
+import React from "react";
+import Head from "next/head";
 
 export default function SEO({ title }) {
   return (
     <Head>
       <meta
-        name='viewport'
-        content='width=device-width, initial-scale=1  maximum-scale=1, user-scalable=0'
+        name="viewport"
+        content="width=device-width, initial-scale=1  maximum-scale=1, user-scalable=0"
       />
-      <meta charSet='utf-8' />
-      <title>{title || 'Next js template'}</title>
+      <meta charSet="utf-8" />
+      <title>{title || "Paragraph"}</title>
       {/* <meta name='description' content='Next js' />
       <meta
         name='keywords'
@@ -42,11 +42,11 @@ export default function SEO({ title }) {
         content='https://cdn.rasta.app/rasta/aef8208b-c6fc-4db9-878b-51544ab711be'
       /> */}
 
-      <link rel='icon' href='/favicon.ico' />
+      <link rel="icon" href="/favicon.ico" />
       {/* <link
         href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;600;700&display=swap'
         rel='stylesheet'
       /> */}
     </Head>
-  )
+  );
 }

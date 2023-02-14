@@ -1,12 +1,22 @@
-import { Footer } from 'components/UI/Footer/Footer'
-import { Header } from 'components/UI/Header/Header'
+import { Footer } from "components/UI/Footer/Footer";
+import { Header } from "components/UI/Header/Header";
+import cls from "./style.module.scss";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Layout({ children }) {
+  const router = useRouter();
+  const routePaths = ["/login"];
+
+  useEffect(() => {
+    router.push("/login");
+  }, []);
+
   return (
-    <>
-      <Header />
+    <div className={cls.wrapper}>
+      {!routePaths.includes(router.pathname) && <Header />}
       {children}
-      <Footer />
-    </>
-  )
+      {!routePaths.includes(router.pathname) && <Footer />}
+    </div>
+  );
 }

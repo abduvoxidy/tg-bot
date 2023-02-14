@@ -1,0 +1,81 @@
+@import "styles/unit.scss";
+.button {
+  border-radius: rem(11);
+  font-weight: 500;
+  font-size: rem(17);
+  height: rem(48);
+  line-height: rem(22);
+  padding: rem(12) rem(18);
+  display: flex;
+  align-items: center;
+  column-gap: rem(10);
+  background: #f4f4f4;
+  transition: all 0.25s ease-in-out;
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &.fullWidth {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  &.large {
+    height: rem(48);
+  }
+  &.medium {
+    height: rem(46);
+  }
+  &.small {
+    font-size: rem(14);
+    line-height: rem(16);
+  }
+  &:disabled,
+  &:disabled:hover {
+    transform: translateY(0) !important;
+    cursor: not-allowed;
+  }
+}
+
+.mainBtn {
+  width: auto;
+  border-radius: rem(11);
+  font-weight: 500;
+  font-size: rem(15);
+  height: rem(48);
+  line-height: rem(18);
+  padding: rem(12) rem(18);
+  background: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  column-gap: rem(10);
+  transition: all 0.25s ease-in-out;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &.fullWidth {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  &.large {
+    height: rem(48);
+  }
+  &.medium {
+    height: rem(46);
+  }
+  &.small {
+    font-size: rem(14);
+    line-height: rem(16);
+  }
+  &:disabled,
+  &:disabled:hover {
+    transform: translateY(0) !important;
+    background-color: #dee2e4;
+    color: #5c5c5c;
+    cursor: not-allowed;
+    border: none !important;
+  }
+}

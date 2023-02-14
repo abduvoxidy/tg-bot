@@ -1,19 +1,23 @@
-@import 'unit';
-@import '../../public/fonts/font.css';
+@import "unit";
+@import "../../public/fonts/font.css";
 
 :root {
-  --primary-color: #51267d;
-  --secondary-color: #fdc100;
-  --text-color: #696969;
+  --primary-color: #ff9910;
+  --secondary-color: #37475a;
+  --bg-color: #f6f6f6;
+  --text-color: #000000;
+  --gray-color: #3c464e;
+  --danger-color: #ff0000;
+  --white-color: #ffffff;
+  --border-radius: 11px;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-    sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -21,8 +25,26 @@ a {
   text-decoration: none;
 }
 
+p,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
 * {
   box-sizing: border-box;
+}
+
+button,
+a {
+  border: none;
+  cursor: pointer;
 }
 
 .crosshairs {

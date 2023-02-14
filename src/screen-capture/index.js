@@ -1,5 +1,5 @@
-import { CircularProgress, Dialog, Popover } from '@mui/material'
-import { useEffect, useRef, useState } from 'react'
+import { CircularProgress, Dialog, Popover } from "@mui/material";
+import { useEffect, useRef, useState } from "react";
 import {
   BlurIcon,
   CancelIcon,
@@ -7,110 +7,108 @@ import {
   DrawRectangleIcon,
   MarkerIcon,
   MessageIcon,
-  TextIcon
-} from './icons'
-import styles from './style.module.scss'
-import html2canvas from 'html2canvas'
-import CanvasDraw from '@win11react/react-canvas-draw'
-import classNames from 'classnames'
-import dynamic from 'next/dynamic'
+  TextIcon,
+} from "./icons";
+import styles from "./style.module.scss";
+import html2canvas from "html2canvas";
+import CanvasDraw from "@win11react/react-canvas-draw";
+import classNames from "classnames";
+import dynamic from "next/dynamic";
 // const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 // import 'react-quill/dist/quill.snow.css'
 import {
   createSubtask,
   createSubtaskFile,
   createSubtaskItem,
-  uploadFile
-} from './services/task'
-import { DataURIToBlob } from './utils/convertBase64'
-import toast, { Toaster } from 'react-hot-toast'
+  uploadFile,
+} from "./services/task";
+import { DataURIToBlob } from "./utils/convertBase64";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ScreenCaptureContainer({ children }) {
-  const [open, setOpen] = useState(false)
-  const canvasRef = useRef()
-  const [loading, setLoading] = useState(false)
-  const [disabled, setDisabled] = useState(true)
-  const [tool, setTool] = useState('')
-  const [image, setImage] = useState('')
-  const [anchorEl, setAnchorEl] = useState(null)
-  const [text, setText] = useState('')
-  const [title, setTitle] = useState('')
+  const [open, setOpen] = useState(false);
+  const canvasRef = useRef();
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(true);
+  const [tool, setTool] = useState("");
+  const [image, setImage] = useState("");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
   const handleClickEditor = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  console.log('text', text)
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleCloseEditor = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
-  const openEditor = Boolean(anchorEl)
-  const id = open ? 'simple-popover' : undefined
+  const openEditor = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   const createNewTask = async () => {
-    const canvas = await html2canvas(canvasRef.current.canvasContainer)
-    var base64 = canvas.toDataURL('image/png')
-    const file = DataURIToBlob(base64)
-    const formData = new FormData()
-    formData.append('file', file, 'image.png')
-    setLoading(true)
+    const canvas = await html2canvas(canvasRef.current.canvasContainer);
+    var base64 = canvas.toDataURL("image/png");
+    const file = DataURIToBlob(base64);
+    const formData = new FormData();
+    formData.append("file", file, "image.png");
+    setLoading(true);
     try {
-      const uploadRes = await uploadFile(formData)
+      const uploadRes = await uploadFile(formData);
       const result = await createSubtask({
         description: text,
-        title
-      })
+        title,
+      });
       await createSubtaskItem({
-        ...result.data.data
-      })
+        ...result.data.data,
+      });
       const subtaskFile = await createSubtaskFile(
         { ...uploadRes.data.data },
         result.data.data.id
-      )
+      );
       if (subtaskFile.status === 201) {
-        toast.success('Successfully!')
-        canvasRef.current.clear()
+        toast.success("Successfully!");
+        canvasRef.current.clear();
       }
     } catch (e) {
-      toast.error('Error!')
+      toast.error("Error!");
     } finally {
-      setLoading(false)
-      setOpen(false)
+      setLoading(false);
+      setOpen(false);
     }
-  }
+  };
 
   useEffect(() => {
     const callback = (event) => {
       if (
         (event.metaKey || event.ctrlKey) &&
         event.shiftKey &&
-        event.code === 'KeyF'
+        event.code === "KeyF"
       ) {
         html2canvas(document.body, {
           x: window.scrollX,
           y: window.scrollY,
           width: window.innerWidth,
-          height: window.innerHeight
+          height: window.innerHeight,
         }).then((canvas) => {
-          setOpen(true)
-          setImage(canvas.toDataURL('image/png'))
+          setOpen(true);
+          setImage(canvas.toDataURL("image/png"));
           // let a = document.createElement('a')
           // a.download = 'ss.png'
           // a.href = canvas.toDataURL('image/png')
           // a.click() // MAY NOT ALWAYS WORK!
-        })
+        });
       }
-    }
-    document.addEventListener('keydown', callback)
+    };
+    document.addEventListener("keydown", callback);
     return () => {
-      document.removeEventListener('keydown', callback)
-    }
-  }, [])
+      document.removeEventListener("keydown", callback);
+    };
+  }, []);
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <>
@@ -122,21 +120,18 @@ export default function ScreenCaptureContainer({ children }) {
           </div>
           <div
             className={classNames(styles.canvas, {
-              [styles.isPencil]: tool === 'pencil'
+              [styles.isPencil]: tool === "pencil",
             })}
           >
             <CanvasDraw
               brushRadius={2}
               imgSrc={image}
-              canvasWidth='80%'
-              canvasHeight='100%'
+              canvasWidth="80%"
+              canvasHeight="100%"
               hideGrid={true}
               disabled={disabled}
-              brushColor='#e20613'
-              hideInterface={{
-                grid: false,
-                interface: true
-              }}
+              brushColor="#e20613"
+              hideInterface={true}
               ref={canvasRef}
             />
           </div>
@@ -147,11 +142,11 @@ export default function ScreenCaptureContainer({ children }) {
             </div>
             <div
               className={classNames(styles.item, {
-                [styles.active]: tool === 'pencil'
+                [styles.active]: tool === "pencil",
               })}
               onClick={() => {
-                setDisabled(false)
-                setTool('pencil')
+                setDisabled(false);
+                setTool("pencil");
               }}
             >
               <MarkerIcon />
@@ -167,12 +162,12 @@ export default function ScreenCaptureContainer({ children }) {
             </div>
             <div
               className={classNames(styles.item, {
-                [styles.active]: tool === 'description'
+                [styles.active]: tool === "description",
               })}
               onClick={(e) => {
-                setDisabled(true)
-                setTool('description')
-                handleClickEditor(e)
+                setDisabled(true);
+                setTool("description");
+                handleClickEditor(e);
               }}
             >
               <MessageIcon />
@@ -180,9 +175,9 @@ export default function ScreenCaptureContainer({ children }) {
             </div>
             <button onClick={createNewTask}>
               {loading ? (
-                <CircularProgress color='inherit' size={15} />
+                <CircularProgress color="inherit" size={15} />
               ) : (
-                'Send'
+                "Send"
               )}
             </button>
           </div>
@@ -194,8 +189,8 @@ export default function ScreenCaptureContainer({ children }) {
         anchorEl={anchorEl}
         onClose={handleCloseEditor}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left'
+          vertical: "bottom",
+          horizontal: "left",
         }}
         transformOrigin={{ horizontal: 320, vertical: 220 }}
       >
@@ -205,7 +200,7 @@ export default function ScreenCaptureContainer({ children }) {
             <input
               value={title}
               onChange={(e) => {
-                setTitle(e.target.value)
+                setTitle(e.target.value);
               }}
             />
           </div>
@@ -216,13 +211,13 @@ export default function ScreenCaptureContainer({ children }) {
               value={text}
               rows={10}
               onChange={(e) => {
-                setText(e.target.value)
+                setText(e.target.value);
               }}
             />
           </div>
         </div>
       </Popover>
-      <Toaster position='top-center' reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
     </>
-  )
+  );
 }
