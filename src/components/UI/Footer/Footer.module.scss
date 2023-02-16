@@ -1,0 +1,72 @@
+@import "styles/unit.scss";
+
+.footer {
+  margin-top: auto;
+  padding: rem(60) 0 rem(16);
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  .root {
+    nav {
+      padding-bottom: rem(48);
+      .navMenu {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-column-gap: rem(16);
+        .navItem {
+          display: flex;
+          flex-direction: column;
+          h3 {
+            font-weight: 500;
+            font-size: rem(20);
+            line-height: rem(24);
+          }
+          .address {
+            margin-top: rem(24);
+          }
+          a {
+            font-style: normal;
+            font-weight: 400;
+            font-size: rem(16);
+            line-height: rem(24);
+            margin-top: rem(8);
+          }
+          h5 {
+            font-weight: 400;
+            font-size: rem(16);
+            line-height: rem(24);
+          }
+          .logoTitle {
+            margin-top: rem(30);
+          }
+
+          .icons {
+            margin-top: rem(12);
+            display: flex;
+            column-gap: rem(12);
+            .circle {
+              cursor: pointer;
+              width: rem(40);
+              height: rem(40);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background: #f3f5f6;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+    .bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      padding-top: rem(12);
+      .privacy {
+        display: flex;
+        column-gap: rem(32);
+      }
+    }
+  }
+}

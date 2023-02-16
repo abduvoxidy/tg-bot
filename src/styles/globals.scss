@@ -37,6 +37,10 @@ h6 {
   padding: 0;
 }
 
+ul {
+  list-style-type: none;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -52,4 +56,10 @@ a {
   &::after {
     background: #fff !important;
   }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  width: 100%; /* if you like to resize the image to the width of the container */
 }
