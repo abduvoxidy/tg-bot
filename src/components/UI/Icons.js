@@ -564,8 +564,58 @@ export function InstagramIcon() {
     </svg>
   );
 }
-// export function Icon() {
-//   return (
 
-//   )
-// }
+export function RightArrowIcon() {
+  return (
+    <svg
+      width="8"
+      height="14"
+      viewBox="0 0 8 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1 1L7 7L1 13"
+        stroke="#1A2024"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function YellowStarIcon() {
+  return (
+    <svg
+      width="16"
+      height="15"
+      viewBox="0 0 16 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 12.0703L11.4583 14.162C12.0917 14.5453 12.8667 13.9786 12.7 13.262L11.7833 9.32862L14.8417 6.67862C15.4 6.19528 15.1 5.27862 14.3667 5.22028L10.3417 4.87862L8.76667 1.16195C8.48333 0.486951 7.51667 0.486951 7.23333 1.16195L5.65833 4.87028L1.63333 5.21195C0.9 5.27028 0.599999 6.18695 1.15833 6.67028L4.21667 9.32028L3.3 13.2536C3.13333 13.9703 3.90833 14.537 4.54167 14.1536L8 12.0703Z"
+        fill="#F8C51B"
+      />
+    </svg>
+  );
+}
+
+export function GrayStarIcon() {
+  return (
+    <svg
+      width="16"
+      height="15"
+      viewBox="0 0 16 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 12.0703L11.4583 14.162C12.0917 14.5453 12.8667 13.9786 12.7 13.262L11.7833 9.32862L14.8417 6.67862C15.4 6.19528 15.1 5.27862 14.3667 5.22028L10.3417 4.87862L8.76667 1.16195C8.48333 0.486951 7.51667 0.486951 7.23333 1.16195L5.65833 4.87028L1.63333 5.21195C0.9 5.27028 0.599999 6.18695 1.15833 6.67028L4.21667 9.32028L3.3 13.2536C3.13333 13.9703 3.90833 14.537 4.54167 14.1536L8 12.0703Z"
+        fill="black"
+        fill-opacity="0.12"
+      />
+    </svg>
+  );
+}

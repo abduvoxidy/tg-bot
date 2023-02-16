@@ -1,0 +1,16 @@
+@import "styles/unit.scss";
+
+.root {
+  padding-top: rem(56);
+  h1 {
+    font-weight: 600;
+    font-size: rem(40);
+    line-height: rem(50);
+  }
+  .row {
+    margin-top: rem(32);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: rem(24);
+  }
+}

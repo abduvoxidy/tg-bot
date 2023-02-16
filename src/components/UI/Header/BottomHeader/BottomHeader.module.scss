@@ -1,0 +1,10 @@
+@import "styles/unit.scss";
+
+.bottomHeader {
+  background: var(--white-color);
+  .box {
+    padding: rem(14) 0;
+    display: flex;
+    column-gap: rem(16);
+  }
+}

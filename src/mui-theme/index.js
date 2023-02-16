@@ -25,8 +25,8 @@ export default createTheme({
           paddingLeft: "16px",
           paddingRight: "16px",
           "@media (min-width: 768px)": {
-            paddingLeft: "12px",
-            paddingRight: "12px",
+            paddingLeft: "16px",
+            paddingRight: "16px",
           },
         },
         maxWidthLg: {

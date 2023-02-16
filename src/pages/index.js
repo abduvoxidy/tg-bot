@@ -1,11 +1,11 @@
-import { Main } from "components/UI/Main/Main";
 import SEO from "components/SEO";
+import Home from "components/Pages/Home";
 
-export default function Home({ data }) {
+export default function home({ data }) {
   return (
     <>
       <SEO />
-      <Main />
+      <Home />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import cls from "../Header.module.scss";
+import cls from "./TopHeader.module.scss";
 import Link from "next/link";
 import { LocationIcon } from "components/UI/Icons";
 import { Container } from "@mui/material";

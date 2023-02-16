@@ -1,0 +1,14 @@
+@import "styles/unit.scss";
+
+.root {
+  padding-top: rem(57);
+
+  .banner {
+    position: relative;
+    width: 100%;
+    height: rem(250);
+    img {
+      border-radius: rem(8) !important;
+    }
+  }
+}

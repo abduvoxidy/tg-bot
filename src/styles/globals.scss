@@ -63,3 +63,8 @@ img {
   height: auto;
   width: 100%; /* if you like to resize the image to the width of the container */
 }
+
+header {
+  z-index: 999;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}

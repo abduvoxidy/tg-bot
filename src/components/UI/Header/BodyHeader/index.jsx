@@ -1,5 +1,5 @@
 import React from "react";
-import cls from "../Header.module.scss";
+import cls from "./BodyHeader.module.scss";
 import { Container } from "@mui/material";
 import { LogoIcon } from "components/UI/Icons";
 import MainButton from "components/UI/Buttons/MainButton";
@@ -10,25 +10,13 @@ import Link from "next/link";
 import SecondaryButton from "components/UI/Buttons/SecondaryButton";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 function BodyHeader() {
-  const [sticky, setSticky] = useState(false);
+  const router = useRouter();
 
-  useEffect(() => {
-    window.addEventListener("scroll", isSticky);
-    return () => {
-      window.removeEventListener("scroll", isSticky);
-    };
-  }, []);
-
-  const isSticky = () => {
-    /* Method that will fix header after a specific scrollable */
-    const scrollTop = window.scrollY;
-    const isScroll = scrollTop >= 40 ? true : false;
-    setSticky(isScroll);
-  };
   return (
-    <div className={`${cls.bodyHeader} ${sticky ? cls.sticky : ""}`}>
+    <div className={cls.bodyHeader}>
       <Container>
         <div className={cls.box}>
           <Link href="/">
@@ -42,7 +30,12 @@ function BodyHeader() {
           <Input />
           <div className={cls.right}>
             <HeaderLinks />
-            <SecondaryButton className={cls.loginBtn}>Войти</SecondaryButton>
+            <SecondaryButton
+              onClick={() => router.push("/login")}
+              className={cls.loginBtn}
+            >
+              Войти
+            </SecondaryButton>
           </div>
         </div>
       </Container>

@@ -3,6 +3,8 @@ import { Header } from "components/UI/Header";
 import cls from "./style.module.scss";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Layout({ children }) {
   const router = useRouter();
