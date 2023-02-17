@@ -1,6 +1,7 @@
 @import "styles/unit.scss";
 
 .bottomHeader {
+  position: relative;
   background: var(--white-color);
   .box {
     padding: rem(14) 0;

@@ -15,6 +15,9 @@
       margin-left: rem(44);
       font-size: rem(16);
       line-height: rem(20);
+      svg {
+        width: rem(18);
+      }
     }
     .right {
       margin-left: auto;
@@ -29,23 +32,8 @@
       }
     }
   }
+  .categories {
+    position: relative;
+    width: 100%;
+  }
 }
-
-// .sticky {
-//   position: fixed;
-//   display: block;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   z-index: 999;
-//   // animation: 500ms ease-in-out 0s normal none 1 running fadeIn;
-// }
-
-// @keyframes fadeIn {
-//   0% {
-//     opacity: 0.8;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// }

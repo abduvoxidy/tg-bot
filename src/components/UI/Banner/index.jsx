@@ -29,7 +29,9 @@ export default function Banner() {
           <div className={cls.slideItem}>
             <div className={cls.box}>
               <div className={cls.left}>
-                <h1 className={cls.title}>Смартфоны в рассрочку</h1>
+                <h1 className={cls.title}>
+                  Смартфоны в <br /> рассрочку
+                </h1>
                 <p className={cls.text}>Купить любимые смартфоны в рассрочку</p>
                 <MainButton className={cls.btn}>Смотреть все</MainButton>
               </div>

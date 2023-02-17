@@ -1,0 +1,63 @@
+@import "styles/unit.scss";
+
+.categoriesMenu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 12;
+  background: var(--white-color);
+  box-shadow: 0 1rem 1.2rem rgb(0 0 0 / 10%);
+  transition: all 0.3s;
+  overflow: auto;
+  max-height: 0;
+  height: auto;
+  width: 100%;
+  .row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: rem(348) 1fr;
+    .left {
+      background: var(--bg-color);
+      padding: rem(28) 0 0 rem(28);
+      display: flex;
+      flex-direction: column;
+      .catalog {
+        transition: 0.2s all;
+        &:hover {
+          background-color: var(--white-color);
+        }
+        .link {
+          display: block;
+          padding: rem(15) rem(32);
+          width: 100%;
+          font-weight: 500;
+          font-size: rem(16);
+          line-height: rem(26);
+          color: #232f3e;
+        }
+      }
+    }
+    .right {
+      padding: rem(40);
+      // display: grid;
+      // grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+.active {
+  transition: all 0.5s;
+  max-height: 100vh;
+}
+
+.categoriesWrapper {
+  transition: all 0.5s;
+  top: rem(150);
+  left: 0;
+  right: 0;
+  position: fixed;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.23);
+  z-index: 11;
+  overflow: hidden;
+}

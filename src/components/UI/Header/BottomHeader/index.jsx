@@ -2,6 +2,7 @@ import React from "react";
 import cls from "./BottomHeader.module.scss";
 import { Container } from "@mui/material";
 import Link from "next/link";
+import CatgoriesMenu from "../CategoriesMenu";
 
 function BottomHeader() {
   const links = ["Смартфоны", "Кроссовки", "Акции", "Новости"];

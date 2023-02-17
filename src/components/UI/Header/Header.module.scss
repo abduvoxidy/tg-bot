@@ -4,27 +4,3 @@
   position: sticky;
   top: 0;
 }
-
-.categoriesMenu {
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 12;
-  background: linear-gradient(90deg, #f3f4f5, #f3f4f5 48%, #fff 0, #fff);
-  box-shadow: 0 1rem 1.2rem rgb(0 0 0 / 10%);
-  max-height: 0;
-  transition: all 0.3s ease-in-out;
-  overflow: auto;
-  max-height: 100vh;
-  height: auto;
-}
-
-.categoriesWrapper {
-  top: 139px;
-  left: 0;
-  right: 0;
-  position: fixed;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.23);
-  z-index: 11;
-}
