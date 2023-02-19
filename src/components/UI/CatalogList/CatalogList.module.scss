@@ -1,0 +1,11 @@
+@import "styles/unit.scss";
+
+.root {
+  padding-top: rem(12);
+  .row {
+    margin-top: rem(22);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: rem(24);
+  }
+}

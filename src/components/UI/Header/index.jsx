@@ -1,5 +1,4 @@
 import useTranslation from "next-translate/useTranslation";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import cls from "./Header.module.scss";
 import TopHeader from "./TopHeader";

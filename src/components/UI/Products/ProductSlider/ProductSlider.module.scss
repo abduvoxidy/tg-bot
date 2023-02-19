@@ -1,0 +1,23 @@
+@import "styles/unit.scss";
+.root {
+  width: calc(100% + rem(24));
+  margin-top: rem(56);
+  margin-left: rem(-24);
+  // align-items: center;
+  // border: 1px solid black;
+  .title {
+    font-weight: 600;
+    font-size: rem(40);
+    line-height: rem(50);
+    margin-bottom: rem(24);
+  }
+  .next {
+    right: rem(-16) !important;
+  }
+  .prev {
+    left: rem(-16) !important;
+  }
+  .slideItem {
+    padding: 0 rem(12);
+  }
+}

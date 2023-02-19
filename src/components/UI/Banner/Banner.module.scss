@@ -15,11 +15,14 @@
     }
     .box {
       height: 100%;
-      padding: rem(53) rem(46);
+      // padding: rem(53) rem(46);
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: rem(10);
       .left {
+        display: flex;
+        flex-direction: column;
+        padding: rem(53) rem(46);
         .title {
           font-weight: 700;
           font-size: rem(48);
@@ -32,9 +35,10 @@
           line-height: rem(26);
         }
         .btn {
+          width: rem(174);
+          margin-top: auto;
           justify-content: center;
           min-width: rem(174);
-          margin-top: rem(32);
         }
       }
       .right {
@@ -42,14 +46,14 @@
         .first_img {
           position: absolute;
           left: rem(20);
-          bottom: rem(-45);
+          bottom: 0;
           width: 150px;
           height: 273px;
         }
         .second_img {
           position: absolute;
           left: 50%;
-          bottom: rem(-45);
+          bottom: 0;
           transform: translateX(-50%);
           width: 342px;
           height: 308px;
@@ -57,7 +61,7 @@
         .third_img {
           position: absolute;
           right: rem(30);
-          bottom: rem(-45);
+          bottom: 0;
           width: 150px;
           height: 273px;
         }

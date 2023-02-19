@@ -1,0 +1,25 @@
+@import "styles/unit.scss";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  .title {
+    margin-top: rem(32);
+    margin-bottom: rem(12);
+    font-weight: 500;
+    font-size: rem(16);
+    line-height: rem(24);
+    color: #0d0d0d;
+    // &:first-child {
+    //   margin-top: 0;
+    // }
+  }
+  .link {
+    margin: rem(8) 0;
+    color: #7e7e83;
+    display: block;
+    font-weight: 400;
+    font-size: rem(14);
+    line-height: rem(20);
+  }
+}

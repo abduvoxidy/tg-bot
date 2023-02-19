@@ -5,11 +5,6 @@ import { ArrowBottomIcon, SearchIcon, LocationIcon } from "components/UI/Icons";
 function Input() {
   return (
     <div className={cls.Input}>
-      <div className={cls.selectBtn}>
-        <LocationIcon />
-        <p>Весь Узбекистан</p>
-        <ArrowBottomIcon />
-      </div>
       <input
         className={cls.input}
         placeholder="Поиск по объявлениям"

@@ -17,10 +17,12 @@ function Home() {
         productKey="installment"
         title="Смартфоны в рассрочку"
       />
+
       <BannerImg />
+
       <ProductImages products={cars} productKey="cars" title="Электромобилы" />
       <ProductList />
-      <BannerImg />
+      <BannerImg className={cls.banner} />
       <ProductImages
         products={appliances}
         productKey="appliances"

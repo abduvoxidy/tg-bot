@@ -5,9 +5,11 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
 import Masonry from "react-smart-masonry";
+import { useRouter } from "next/router";
 
 function CatgoriesMenu({ isActive, handleCategory = () => {} }) {
   const [state, setState] = useState([]);
+  const router = useRouter();
   useEffect(() => {
     if (isActive) {
       document.body.style.overflow = "hidden";
@@ -15,6 +17,13 @@ function CatgoriesMenu({ isActive, handleCategory = () => {} }) {
       document.body.style.overflow = "auto";
     }
   }, [isActive]);
+
+  // useEffect(() => {
+  //   router.events.on("routeChangeStart", handleCategory);
+  //   return () => {
+  //     router.events.off("routeChangeStart", handleCategory);
+  //   };
+  // }, []);
 
   const hoverCatalog = (id) => {
     const res = categories.find((el) => el.catalog_id === id)?.data;
@@ -33,7 +42,6 @@ function CatgoriesMenu({ isActive, handleCategory = () => {} }) {
             {catalog.map((el, i) => (
               <div
                 onMouseEnter={() => hoverCatalog(el.id)}
-                onMouseLeave={() => console.log("mouse leave")}
                 key={i + "catalog"}
                 className={cls.catalog}
               >
@@ -44,14 +52,16 @@ function CatgoriesMenu({ isActive, handleCategory = () => {} }) {
             ))}
           </div>
           <div className={cls.right}>
-            <Masonry columns={3} gap={10}>
+            <Masonry columns={2} gap={10}>
               {state &&
                 state.length > 0 &&
-                state.map((el) => (
-                  <div>
-                    <b>{el.title}</b>
-                    {el.children.map((item) => (
-                      <p>{item}</p>
+                state.map((el, index) => (
+                  <div key={index} className={cls.category}>
+                    <b className={cls.title}>{el.title}</b>
+                    {el.children.map((item, i) => (
+                      <Link key={i} href="/">
+                        <a className={cls.link}>{item}</a>
+                      </Link>
                     ))}
                   </div>
                 ))}

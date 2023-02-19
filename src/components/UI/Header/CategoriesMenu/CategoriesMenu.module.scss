@@ -39,15 +39,29 @@
     }
     .right {
       padding: rem(40);
-      // display: grid;
-      // grid-template-columns: 1fr 1fr;
+      width: 80%;
+      .category {
+        margin-bottom: rem(44);
+        .title {
+          font-size: rem(16);
+          line-height: rem(26);
+        }
+        .link {
+          width: auto;
+          display: block;
+          margin: rem(6) 0;
+          font-weight: 400;
+          font-size: rem(16);
+          line-height: rem(26);
+        }
+      }
     }
   }
 }
 
 .active {
   transition: all 0.5s;
-  max-height: 100vh;
+  max-height: 90vh;
 }
 
 .categoriesWrapper {

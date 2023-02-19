@@ -1,7 +1,7 @@
 import React from "react";
 import cls from "./ProductImages.module.scss";
 import { Container } from "@mui/material";
-import ProductImgCard from "../../Cards/ProductImgCard";
+import ProductImgCard from "./ProductImgCard";
 
 function ProductImages({
   products = [],

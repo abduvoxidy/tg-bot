@@ -7,7 +7,7 @@ import MainButton from "../Buttons/MainButton";
 
 export default function Banner() {
   return (
-    <div className={cls.root} id="bannerSlick">
+    <div className={cls.root}>
       <Container>
         <Slider
           {...{

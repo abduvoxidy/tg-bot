@@ -1,0 +1,56 @@
+@import "styles/unit.scss";
+
+.root {
+  overflow: hidden;
+  background: var(--white-color);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: rem(336);
+  border-radius: rem(12);
+  .left {
+    padding: rem(58) rem(0) rem(50) rem(32);
+    display: flex;
+    flex-direction: column;
+    h1 {
+      font-weight: 700;
+      font-size: rem(40);
+      line-height: rem(48);
+    }
+    p {
+      margin-top: rem(16);
+      font-weight: 400;
+      font-size: rem(16);
+      line-height: rem(26);
+    }
+    .btn {
+      margin-top: auto;
+      width: rem(174);
+      justify-content: center;
+    }
+  }
+  .right {
+    position: relative;
+    .first_img {
+      position: absolute;
+      left: rem(-20);
+      bottom: 0;
+      width: 150px;
+      height: 273px;
+    }
+    .second_img {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 342px;
+      height: 308px;
+    }
+    .third_img {
+      position: absolute;
+      right: rem(-30);
+      bottom: 0;
+      width: 150px;
+      height: 273px;
+    }
+  }
+}

@@ -1,0 +1,136 @@
+@import "styles/unit.scss";
+
+.card {
+  z-index: 1;
+  background: var(--white-color);
+  padding: rem(16);
+  border-radius: rem(12);
+  transition: 0.3s all;
+  height: rem(486);
+  &:hover {
+    // transition: 0.3s all;
+    height: auto;
+    filter: drop-shadow(13px 19px 49px rgba(194, 194, 194, 0.43));
+  }
+  .cardHeader {
+    position: relative;
+    height: rem(284);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .badge {
+      padding: rem(5) rem(8);
+      background: #ff0000;
+      color: var(--white-color);
+      font-size: rem(14);
+      line-height: rem(17);
+      font-weight: 500;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: rem(4);
+    }
+    .icons {
+      display: flex;
+      column-gap: rem(12);
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .img {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      img:hover {
+        transition: 0.3s;
+        transform: scale(1.05);
+      }
+    }
+  }
+  .cardBody {
+    width: 100%;
+    position: relative;
+    .title {
+      font-weight: 400;
+      font-size: rem(16);
+      line-height: rem(24);
+      color: #7e7e83;
+    }
+    .desc {
+      margin-top: rem(2);
+      font-weight: 500;
+      font-size: rem(16);
+      line-height: rem(19);
+      color: #1a2024;
+    }
+    .stars {
+      display: block;
+      margin-top: rem(6);
+    }
+    .priceMonth {
+      margin-top: rem(12);
+      display: flex;
+      align-items: center;
+      column-gap: rem(6);
+      .badgePrice {
+        border-radius: rem(12);
+        background-color: var(--primary-color);
+        padding: rem(2) rem(8);
+        color: white;
+        font-weight: 500;
+        font-size: rem(12);
+        line-height: rem(15);
+        text-align: center;
+      }
+      .count {
+        font-size: rem(12);
+        line-height: rem(15);
+        color: #7e7e83;
+      }
+    }
+    .linePrice {
+      margin-top: rem(10);
+      text-decoration-line: line-through;
+      font-size: rem(16);
+      line-height: rem(19);
+      color: #c3c3ca;
+    }
+    .price {
+      margin-top: rem(2);
+      font-weight: 600;
+      font-size: rem(20);
+      line-height: rem(24);
+    }
+    .bottom {
+      border-bottom-left-radius: rem(12);
+      border-bottom-right-radius: rem(12);
+      padding: 0 rem(16) rem(16);
+      width: calc(100% + 32px);
+      background: var(--white-color);
+      bottom: rem(-100);
+      left: rem(-16);
+      right: rem(-100);
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.2s;
+      .basketBtn {
+        margin-top: rem(16);
+        height: rem(36);
+        font-size: rem(16);
+        line-height: rem(19);
+        border-radius: rem(6);
+      }
+      .types {
+        gap: rem(12);
+        display: flex;
+        margin-top: rem(16);
+      }
+    }
+    .bottomActive {
+      visibility: visible;
+      display: block;
+      opacity: 1;
+    }
+  }
+}

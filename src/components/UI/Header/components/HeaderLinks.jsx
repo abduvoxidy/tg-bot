@@ -22,8 +22,8 @@ function HeaderLinks() {
   ];
   return (
     <div className={cls.HeaderLinks}>
-      {icons.map((el) => (
-        <div className={cls.link}>
+      {icons.map((el, index) => (
+        <div key={index} className={cls.link}>
           <span>{el.icon}</span>
           <p>{el.title}</p>
         </div>

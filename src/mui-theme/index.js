@@ -30,7 +30,7 @@ export default createTheme({
           },
         },
         maxWidthLg: {
-          "@media (min-width: 1280px)": {
+          "@media (min-width: 1356px)": {
             maxWidth: "1356px",
           },
           "@media (max-width: 768px)": {

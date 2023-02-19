@@ -5,7 +5,7 @@ export function SampleNextArrow(props) {
   const { className, styles = "", onClick } = props;
   return (
     <div
-      className={` ${cls.nextArrow} ${className} ${styles}`}
+      className={`${className} ${cls.nextArrow}  ${styles}`}
       onClick={onClick}
     >
       <RightArrowIcon />
@@ -17,7 +17,7 @@ export function SamplePrevArrow(props) {
   const { className, styles = "", onClick } = props;
   return (
     <div
-      className={` ${cls.prevArrow} ${className} ${styles}`}
+      className={`${className} ${cls.prevArrow}  ${styles}`}
       onClick={onClick}
     >
       <RightArrowIcon />
