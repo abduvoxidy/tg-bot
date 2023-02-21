@@ -1,0 +1,56 @@
+@import "styles/unit.scss";
+
+.card {
+  border-radius: rem(8);
+  padding: rem(16);
+  background: var(--white-color);
+  display: grid;
+  grid-template-columns: rem(94) 1fr;
+  column-gap: rem(12);
+  .left {
+    .img {
+      position: relative;
+      height: rem(94);
+      width: 100%;
+    }
+  }
+  .right {
+    .title {
+      font-size: rem(14);
+      line-height: rem(20);
+      color: #0d0d0d;
+    }
+    .priceMonth {
+      margin-top: rem(10);
+      display: flex;
+      column-gap: rem(4);
+      .badge,
+      span {
+        background: var(--white-color);
+        border-radius: rem(12);
+        font-size: rem(12);
+        line-height: rem(15);
+        color: #0d0d0d;
+      }
+      span {
+        color: #7e7e83;
+      }
+    }
+    .discount {
+      margin-top: rem(10);
+      font-size: rem(14);
+      line-height: rem(20);
+      color: #7e7e83;
+      span {
+        color: #ff9910;
+      }
+    }
+    .price {
+      margin-top: rem(4);
+      font-weight: 500;
+      font-size: rem(16);
+      line-height: rem(24);
+      color: #0d0d0d;
+    }
+  }
+}

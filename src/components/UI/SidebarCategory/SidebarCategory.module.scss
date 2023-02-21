@@ -1,0 +1,94 @@
+@import "styles/unit.scss";
+
+.root {
+  padding: rem(16);
+  border-radius: rem(12);
+  background-color: var(--white-color);
+  label {
+    font-weight: 600;
+    font-size: rem(16);
+    line-height: rem(24);
+  }
+  .price {
+    .inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: rem(12);
+      margin-top: rem(8);
+      .inputBox {
+        input {
+          height: rem(40);
+          padding: rem(8) rem(12);
+          border-radius: rem(6);
+          border: 1.2px solid #dde2e4;
+        }
+        &::placeholder {
+          font-weight: 400;
+          font-size: rem(14);
+          line-height: rem(24);
+          color: #9aa6ac;
+        }
+      }
+    }
+    .slider {
+      margin-top: rem(24);
+      padding: 0 rem(12);
+    }
+  }
+
+  .brands {
+    .brand {
+      cursor: pointer;
+      margin-top: rem(12);
+      display: flex;
+      align-items: center;
+      column-gap: rem(12);
+      p {
+        font-weight: 400;
+        font-size: rem(14);
+        line-height: rem(24);
+        letter-spacing: -0.006em;
+        color: #252c32;
+      }
+    }
+    .showMore {
+      cursor: pointer;
+      margin-top: rem(12);
+      font-weight: 500;
+      font-size: rem(14);
+      line-height: rem(24);
+      color: #5b6871;
+    }
+  }
+  .colors {
+    margin-top: rem(24);
+    .radioGroup {
+      margin-top: rem(10);
+      display: flex;
+      column-gap: rem(12);
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .stocks {
+    margin-top: rem(26);
+    .stock {
+      cursor: pointer;
+      margin-top: rem(12);
+      display: flex;
+      align-items: center;
+      column-gap: rem(12);
+      p {
+        font-weight: 400;
+        font-size: rem(14);
+        line-height: rem(24);
+        letter-spacing: -0.006em;
+        color: #252c32;
+      }
+    }
+  }
+  .filterBtn {
+    margin-top: rem(28);
+  }
+}

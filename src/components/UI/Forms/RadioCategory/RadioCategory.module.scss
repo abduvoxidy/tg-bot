@@ -1,0 +1,72 @@
+.radio {
+  input {
+    width: 13px;
+    height: 13px;
+    margin: -1px;
+    position: absolute;
+    border: 0px;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .box {
+    position: relative;
+    &.active {
+      transition-timing-function: ease-out;
+      height: 24px;
+      width: 24px;
+    }
+    &.active::after {
+      content: "";
+      position: absolute;
+      left: -3px;
+      top: -3px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--primary-color);
+    }
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition-timing-function: ease-in;
+    transition-property: border-color, border-width, box-shadow;
+    transition-duration: 0.12s;
+    border: none;
+    &.green {
+      background: #13d54a;
+      &::after {
+        border: 1px solid #13d54a;
+      }
+    }
+    &.black {
+      background: #232f3e;
+      &::after {
+        border: 1px solid #232f3e;
+      }
+    }
+    &.red {
+      background: #ff0000;
+      &::after {
+        border: 1px solid #ff0000;
+      }
+    }
+    &.primary {
+      background: var(--primary-color);
+      &::after {
+        border: 1px solid var(--primary-color);
+      }
+    }
+    &.secondary {
+      background: #48535b;
+      &::after {
+        border: 1px solid #48535b;
+      }
+    }
+  }
+}

@@ -7,7 +7,11 @@ import { useState } from "react";
 import Masonry from "react-smart-masonry";
 import { useRouter } from "next/router";
 
-function CatgoriesMenu({ isActive, handleCategory = () => {} }) {
+function CatgoriesMenu({
+  isActive,
+  setIsActive = () => {},
+  handleCategory = () => {},
+}) {
   const [state, setState] = useState([]);
   const router = useRouter();
   useEffect(() => {
@@ -18,12 +22,15 @@ function CatgoriesMenu({ isActive, handleCategory = () => {} }) {
     }
   }, [isActive]);
 
-  // useEffect(() => {
-  //   router.events.on("routeChangeStart", handleCategory);
-  //   return () => {
-  //     router.events.off("routeChangeStart", handleCategory);
-  //   };
-  // }, []);
+  useEffect(() => {
+    const closeCategories = () => {
+      setIsActive(false);
+    };
+    router.events.on("routeChangeStart", closeCategories);
+    return () => {
+      router.events.off("routeChangeStart", closeCategories);
+    };
+  }, []);
 
   const hoverCatalog = (id) => {
     const res = categories.find((el) => el.catalog_id === id)?.data;
@@ -45,7 +52,7 @@ function CatgoriesMenu({ isActive, handleCategory = () => {} }) {
                 key={i + "catalog"}
                 className={cls.catalog}
               >
-                <Link href="/">
+                <Link href="/catalog/1">
                   <a className={cls.link}>{el.name}</a>
                 </Link>
               </div>
@@ -59,7 +66,7 @@ function CatgoriesMenu({ isActive, handleCategory = () => {} }) {
                   <div key={index} className={cls.category}>
                     <b className={cls.title}>{el.title}</b>
                     {el.children.map((item, i) => (
-                      <Link key={i} href="/">
+                      <Link key={i} href="/category/smartphone">
                         <a className={cls.link}>{item}</a>
                       </Link>
                     ))}

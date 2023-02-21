@@ -52,7 +52,11 @@ function BodyHeader() {
         </Container>
       </div>
       <div className={cls.categories}>
-        <CatgoriesMenu handleCategory={handleCategory} isActive={isActive} />
+        <CatgoriesMenu
+          handleCategory={handleCategory}
+          setIsActive={setIsActive}
+          isActive={isActive}
+        />
       </div>
     </div>
   );

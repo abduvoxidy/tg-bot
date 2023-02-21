@@ -1,6 +1,6 @@
 import React from "react";
 import cls from "./ProductList.module.scss";
-import ProductCard from "./ProductCard";
+import ProductCard from "components/UI/Cards/ProductCard";
 import { Container } from "@mui/material";
 
 function ProductList() {

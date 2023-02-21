@@ -1,0 +1,19 @@
+@import "styles/unit.scss";
+
+.main {
+  padding: rem(32) 0 rem(170);
+  .title {
+    margin-top: rem(24);
+    font-size: rem(34);
+    line-height: rem(40);
+    font-weight: 600;
+    color: #0d0d0d;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: rem(312) calc(100% - rem(336));
+    align-items: flex-start;
+    column-gap: rem(24);
+    padding-top: rem(40);
+  }
+}

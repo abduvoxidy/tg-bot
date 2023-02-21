@@ -1,7 +1,7 @@
 import React from "react";
 import cls from "./ProductCard.module.scss";
 import Image from "next/image";
-import { CompareIcon, HeartIcon } from "components/UI/Icons";
+import { ScaleIcon, ProductHeartIcon } from "components/UI/Icons";
 import Rating from "@mui/material/Rating";
 import { useState } from "react";
 import { styled } from "@mui/material/styles";
@@ -18,13 +18,16 @@ const StyledRating = styled(Rating)({
   },
 });
 
-function ProductCard({ img }) {
+function ProductCard({ img, zIndex = 0 }) {
   const [value, setValue] = useState(2);
   const [isActive, setIsActive] = useState(false);
   const types = ["128GB", "256GB", "512GB", "512GB", "..."];
 
   return (
     <div
+      style={{
+        zIndex: zIndex,
+      }}
       className={cls.card}
       onMouseLeave={() => setIsActive(false)}
       onMouseEnter={() => setIsActive(true)}
@@ -33,10 +36,10 @@ function ProductCard({ img }) {
         <div className={cls.badge}>20%</div>
         <div className={cls.icons}>
           <span>
-            <CompareIcon />
+            <ScaleIcon />
           </span>
           <span>
-            <HeartIcon />
+            <ProductHeartIcon />
           </span>
         </div>
 
@@ -69,15 +72,15 @@ function ProductCard({ img }) {
         </div>
         <p className={cls.linePrice}> 1 200 000 000 сум</p>
         <p className={cls.price}>120 650 000 сум</p>
-        <div className={`${cls.bottom} ${isActive ? cls.bottomActive : ""}`}>
-          <MainButton small className={cls.basketBtn}>
-            В корзину
-          </MainButton>
-          <div className={cls.types}>
-            {types.map((el, index) => (
-              <p key={el + index}>{el}</p>
-            ))}
-          </div>
+      </div>
+      <div className={`${cls.bottom} ${isActive ? cls.bottomActive : ""}`}>
+        <MainButton small className={cls.basketBtn}>
+          В корзину
+        </MainButton>
+        <div className={cls.types}>
+          {types.map((el, index) => (
+            <p key={el + index}>{el}</p>
+          ))}
         </div>
       </div>
     </div>
