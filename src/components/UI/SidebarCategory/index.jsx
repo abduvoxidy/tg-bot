@@ -94,8 +94,8 @@ function SidebarCategory() {
 
         <div className={cls.brands}>
           <label>Бренд</label>
-          {brands.map((el) => (
-            <div onClick={() => handleCheck(el)} className={cls.brand}>
+          {brands.map((el, i) => (
+            <div key={i} onClick={() => handleCheck(el)} className={cls.brand}>
               <Checkbox value={el} checked={checkedItems.includes(el)} />
               <p>{el}</p>
             </div>
@@ -127,8 +127,12 @@ function SidebarCategory() {
 
         <div className={cls.stocks}>
           <label>Наличие на складе</label>
-          {stocks.map((el) => (
-            <div onClick={() => handleStock(el)} className={cls.stock}>
+          {stocks.map((el, index) => (
+            <div
+              key={index}
+              onClick={() => handleStock(el)}
+              className={cls.stock}
+            >
               <Checkbox value={el} checked={checkedStocks.includes(el)} />
               <p>{el}</p>
             </div>

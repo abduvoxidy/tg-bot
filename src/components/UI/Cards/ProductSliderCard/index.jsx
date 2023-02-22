@@ -1,10 +1,24 @@
 import React from "react";
-import cls from "./ProductCard.module.scss";
+import cls from "./ProductSliderCard.module.scss";
 import Image from "next/image";
 import { CompareIcon, HeartIcon } from "components/UI/Icons";
 import Link from "next/link";
+import Rating from "@mui/material/Rating";
+import { useState } from "react";
+import { styled } from "@mui/material/styles";
+import { YellowStarIcon, GrayStarIcon } from "components/UI/Icons";
 
-function ProductCard({ img }) {
+const StyledRating = styled(Rating)({
+  "& .MuiRating-iconFilled": {
+    color: "#ff6d75",
+  },
+  "& .MuiRating-iconHover": {
+    color: "#ff3d47",
+  },
+});
+
+function ProductSliderCard({ img }) {
+  const [value, setValue] = useState(2);
   return (
     <div className={cls.card}>
       <div className={cls.cardHeader}>
@@ -30,6 +44,16 @@ function ProductCard({ img }) {
       <div className={cls.cardBody}>
         <p className={cls.title}>Смартфоны</p>
         <p className={cls.desc}>Смартфон Apple iPhone 14 Pro 512Gb Black</p>
+        <StyledRating
+          className={cls.stars}
+          name="customized-color"
+          defaultValue={2}
+          icon={<YellowStarIcon />}
+          emptyIcon={<GrayStarIcon />}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        />
         <div className={cls.priceMonth}>
           <span className={cls.badgePrice}>1 000 000 сум</span>
           <p className={cls.count}>x 12 мес</p>
@@ -41,4 +65,4 @@ function ProductCard({ img }) {
   );
 }
 
-export default ProductCard;
+export default ProductSliderCard;
