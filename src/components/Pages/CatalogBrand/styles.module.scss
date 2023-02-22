@@ -11,10 +11,11 @@
   }
   .row {
     display: grid;
-    grid-template-columns: rem(348) calc(100% - rem(372));
+    grid-template-columns: rem(312) calc(100% - rem(336));
     column-gap: rem(24);
     .body {
       padding-top: rem(40);
     }
   }
 }
+// calc 1320 - 984

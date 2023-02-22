@@ -3,7 +3,6 @@ import cls from "./Card.module.scss";
 import Image from "next/image";
 
 function Card({ img }) {
-  console.log("img", img);
   return (
     <div className={cls.card}>
       <div className={cls.left}>

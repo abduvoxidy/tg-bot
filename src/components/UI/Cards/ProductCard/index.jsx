@@ -32,26 +32,30 @@ function ProductCard({ img, zIndex = 0 }) {
       onMouseLeave={() => setIsActive(false)}
       onMouseEnter={() => setIsActive(true)}
     >
-      <div className={cls.cardHeader}>
-        <div className={cls.badge}>20%</div>
-        <div className={cls.icons}>
-          <span>
-            <ScaleIcon />
-          </span>
-          <span>
-            <ProductHeartIcon />
-          </span>
-        </div>
+      <Link href="/product/1">
+        <a>
+          <div className={cls.cardHeader}>
+            <div className={cls.badge}>20%</div>
+            <div className={cls.icons}>
+              <span>
+                <ScaleIcon />
+              </span>
+              <span>
+                <ProductHeartIcon />
+              </span>
+            </div>
 
-        <div className={cls.img}>
-          <Image
-            src={`/images/main/${img}`}
-            objectFit="contain"
-            layout="fill"
-            alt="car"
-          />
-        </div>
-      </div>
+            <div className={cls.img}>
+              <Image
+                src={`/images/main/${img}`}
+                objectFit="contain"
+                layout="fill"
+                alt="car"
+              />
+            </div>
+          </div>
+        </a>
+      </Link>
       <div className={cls.cardBody}>
         <p className={cls.title}>Смартфоны</p>
         <p className={cls.desc}>Смартфон Apple iPhone 14 Pro 512Gb Black</p>

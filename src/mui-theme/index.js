@@ -30,8 +30,8 @@ export default createTheme({
           },
         },
         maxWidthLg: {
-          "@media (min-width: 1356px)": {
-            maxWidth: "1356px",
+          "@media (min-width: 1352px)": {
+            maxWidth: "1352px",
           },
           "@media (max-width: 768px)": {
             paddingLeft: "16px",

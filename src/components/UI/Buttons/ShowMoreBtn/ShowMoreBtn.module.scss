@@ -1,0 +1,41 @@
+@import "styles/unit.scss";
+
+.showMoreBtn {
+  display: flex;
+  border: none;
+  background: transparent;
+  padding: rem(10) 0 0 0;
+  align-items: center;
+  column-gap: rem(10);
+  transition: 0.2s all;
+
+  & > span {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: rem(16);
+    line-height: rem(19);
+  }
+}
+
+.openBtn {
+  transform: rotate(-180deg);
+  animation: openAnim 0.15s forwards;
+}
+
+@keyframes openAnim {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes closeAnim {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}

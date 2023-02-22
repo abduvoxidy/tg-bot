@@ -51,10 +51,12 @@ function PopularOffers({ title }) {
         ))}
       </Slider>
       <div className={cls.categories}>
-        {categories.map((el) => (
-          <div key={el} className={cls.categoryItem}>
-            {el}
-          </div>
+        {categories.map((el, index) => (
+          <Link href="/" key={index}>
+            <a>
+              <div className={cls.categoryItem}>{el}</div>
+            </a>
+          </Link>
         ))}
       </div>
       <div className={cls.row}>

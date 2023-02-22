@@ -1,0 +1,161 @@
+@import "styles/unit.scss";
+
+.FirstCard {
+  background: var(--white-color);
+  padding: rem(24);
+  box-shadow: 0px 0px 7px 1px rgba(172, 171, 171, 0.25);
+  border-radius: rem(8);
+  p {
+    font-weight: 400;
+    font-size: rem(14);
+    line-height: rem(20);
+    color: #0d0d0d;
+  }
+  .discount {
+    display: flex;
+    align-items: center;
+    column-gap: rem(10);
+    font-weight: 500;
+    font-size: rem(16);
+    line-height: rem(24);
+    color: #b1b1b1;
+    .badge {
+      background: #f2271c;
+      border-radius: rem(4);
+      padding: rem(0) rem(7);
+      font-weight: 400;
+      font-size: rem(10);
+      color: #ffffff;
+    }
+  }
+  .price {
+    margin-top: rem(4);
+    font-weight: 700;
+    font-size: rem(25);
+    line-height: rem(32);
+    color: #0d0d0d;
+  }
+  .peerMonth {
+    margin-top: rem(12);
+    display: flex;
+    align-items: center;
+    column-gap: rem(10);
+    .priceBadge {
+      background: #13c29a;
+      border-radius: rem(2);
+      padding: rem(2) rem(10);
+      font-size: rem(14);
+      line-height: rem(20);
+      color: #ffffff;
+    }
+  }
+  .delivery {
+    margin-top: rem(12);
+  }
+  .divider {
+    margin-top: rem(24);
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .items {
+    margin-top: rem(32);
+    display: flex;
+    column-gap: rem(26);
+    align-items: center;
+    .item {
+      display: flex;
+      column-gap: rem(10);
+      align-items: center;
+    }
+  }
+  .btns {
+    margin-top: rem(27);
+    display: flex;
+    flex-direction: column;
+    gap: rem(14);
+
+    .basketBtn {
+      border-radius: 4px;
+      font-size: rem(16);
+      line-height: rem(24);
+    }
+    .buyBtn {
+      border-radius: rem(4);
+      background: var(--white-color);
+      border: 1px solid #ff9910;
+      color: #ff9910;
+      font-size: rem(16);
+      line-height: rem(24);
+    }
+  }
+}
+
+.SecondCard {
+  box-shadow: 0px 0px 7px 1px rgba(172, 171, 171, 0.25);
+  border-radius: rem(8);
+  margin-top: rem(8);
+  background: var(--white-color);
+  padding: rem(24);
+  .info {
+    margin-top: rem(8);
+    font-size: rem(12);
+    line-height: rem(15);
+    color: #7e7e83;
+  }
+  .installmentsMonth {
+    padding: rem(24) 0 rem(24);
+    border-bottom: 1px solid #f0f0f0;
+    .term {
+      font-size: rem(14);
+      line-height: rem(20);
+      color: #828282;
+    }
+    .items {
+      margin-top: rem(8);
+      display: flex;
+      gap: rem(4);
+      .item {
+        cursor: pointer;
+        background: #e5e5e5;
+        border-radius: rem(4);
+        padding: rem(4) rem(8);
+        font-weight: 500;
+        font-size: rem(14);
+        line-height: rem(16);
+        text-align: center;
+        color: #989898;
+      }
+      .activeItem {
+        background: #ff9910;
+        color: var(--white-color);
+      }
+    }
+  }
+  .label {
+    font-weight: 400;
+    font-size: rem(14);
+    line-height: rem(20);
+    color: #828282;
+  }
+  .monthly {
+    margin-top: rem(24);
+    h3 {
+      font-weight: 800;
+      font-size: rem(20);
+      line-height: rem(24);
+    }
+  }
+  .all {
+    margin-top: rem(20);
+    h2 {
+      font-weight: 700;
+      font-size: rem(28);
+      line-height: rem(32);
+    }
+  }
+  .btn {
+    margin-top: rem(32);
+    border-radius: rem(4);
+    background: #13c29a;
+    color: var(--white-color);
+  }
+}
