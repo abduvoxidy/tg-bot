@@ -1,17 +1,17 @@
-FROM node:14.18-alpine as builder
-RUN apk update && apk add yarn 
+FROM node:alpine
+
 RUN mkdir app
-WORKDIR /app
+WORKDIR app
+
+
+COPY package*.json ./
+RUN npm install
 
 COPY . ./
+RUN npm run-script build
 
-RUN mv .env.production .env
-RUN yarn install --network-timeout 1000000000
 
-RUN yarn build --mode staging
-
-FROM nginx:alpine
-COPY --from=builder /app/build /build
-COPY nginx.conf /etc/nginx/nginx.conf
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["npm", "start"]
