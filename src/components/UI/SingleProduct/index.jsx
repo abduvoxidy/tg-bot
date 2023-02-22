@@ -108,8 +108,8 @@ function SingleProduct() {
             </div>
             <h3 className={cls.characterTitle}>Характеристики</h3>
             <div className={cls.characteristics}>
-              {charastericticsData.map((el) => (
-                <div className={cls.row}>
+              {charastericticsData.map((el, i) => (
+                <div key={i} className={cls.row}>
                   <p className={cls.title}>{el.name}</p>
                   <div className={cls.dashed} />
                   <p className={cls.info}>{el.info}</p>
