@@ -11,7 +11,7 @@ replicaCount: 1
                                                                                                                                            
 image:                                                                                                                                     
   registry: gitlab.udevs.io:5050/                                                                                                          
-  repository: paragraf/paragraf_frontend
+  repository: paragraf/paragraf-frontend
   pullPolicy: IfNotPresent                                                                                                                 
   # Overrides the image tag whose default is the chart appVersion.                                                                         
   tag: "test"                                                                                                                            
