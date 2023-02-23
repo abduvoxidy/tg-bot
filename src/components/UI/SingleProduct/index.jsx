@@ -9,6 +9,7 @@ import Image from "next/image";
 import { HeartIcon } from "components/UI/Icons";
 import { colors, memories, charastericticsData } from "./data";
 import { EyeIcon } from "components/UI/Icons";
+import ImageGallery from "react-image-gallery";
 
 const StyledRating = styled(Rating)({
   "& .MuiRating-iconFilled": {
@@ -21,6 +22,29 @@ const StyledRating = styled(Rating)({
 
 function SingleProduct() {
   const [value, setValue] = useState(2);
+
+  const images = [
+    {
+      original: "https://m.media-amazon.com/images/I/71lx0qz7rFL.jpg",
+      thumbnail: "https://m.media-amazon.com/images/I/71lx0qz7rFL.jpg",
+    },
+    {
+      original:
+        "https://playgame34.ru/wp-content/uploads/2022/11/1-1000x1000.jpeg",
+      thumbnail:
+        "https://playgame34.ru/wp-content/uploads/2022/11/1-1000x1000.jpeg",
+    },
+    {
+      original: "https://cdn1.ozone.ru/s3/multimedia-d/6431834701.jpg",
+      thumbnail: "https://cdn1.ozone.ru/s3/multimedia-d/6431834701.jpg",
+    },
+    {
+      original:
+        "https://img.tuttoandroid.net/wp-content/uploads/2021/10/Redmi-Note-11-Pro-Plus-tag.jpg",
+      thumbnail:
+        "https://img.tuttoandroid.net/wp-content/uploads/2021/10/Redmi-Note-11-Pro-Plus-tag.jpg",
+    },
+  ];
 
   const [isActiveColor, setIsActiveColor] = useState("black.png");
   const [isActiveMemory, setIsActiveMemory] = useState("128 Гб");
@@ -55,10 +79,17 @@ function SingleProduct() {
       <div className={cls.body}>
         <div className={cls.leftSide}>
           <div className={cls.slider}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore
-            exercitationem quo fugiat dolores, eaque doloremque nostrum quam
-            iusto. Consectetur non laborum quam reiciendis optio dolor dolore
-            facilis aliquam voluptatem quod.
+            <ImageGallery
+              showBullets={false}
+              showIndex={false}
+              showThumbnails={true}
+              lazyLoad={false}
+              showPlayButton={false}
+              showNav={false}
+              showFullscreenButton={false}
+              thumbnailPosition={"left"}
+              items={images}
+            />
           </div>
           <div className={cls.sort}>
             <span className={cls.heartIcon}>

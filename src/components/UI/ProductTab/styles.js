@@ -3,9 +3,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
 const CustomTabs = styled(Tabs)({
-  //   color: "#ff9910",
   "& .MuiTabs-indicator": {
     backgroundColor: "#ff9910",
+    height: "3px",
   },
 });
 
@@ -14,10 +14,12 @@ export function StyledTabs({ ...restProps }) {
 }
 
 const CustomTab = styled(Tab)({
+  height: "56px",
   fontWeight: 700,
   fontSize: "14px",
   lineHeight: "24px",
   color: "#B0BABF",
+  textTransform: "inherit",
   "&.Mui-selected": {
     color: "#ff9910",
   },
