@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import cls from "./Timer.module.scss";
 import differenceInSeconds from "date-fns/differenceInSeconds";
 
-const Timer = ({ deadline }) => {
+const Timer = ({ className, deadline }) => {
   const ONE_DAY = 60 * 60 * 24;
   const ONE_HOUR = 60 * 60;
   const ONE_MINUTE = 60;
@@ -52,14 +52,42 @@ const Timer = ({ deadline }) => {
     }
   };
   return (
-    <div className={cls.timer}>
-      <div className={cls.block}>
-        <div className={cls.item}>{findTimer(countdown?.days)[0] || 0}</div>
-        <div className={cls.item}>{findTimer(countdown?.days)[1] || 0} : </div>
+    <div className={`${cls.timer} ${className}`}>
+      <div className={cls.timeWrapper}>
+        <div className={cls.block}>
+          <div className={cls.item}>{findTimer(countdown?.days)[0] || 0}</div>
+          <div className={cls.item}>{findTimer(countdown?.days)[1] || 0} </div>
+        </div>
+        <span className={cls.label}>ДНИ</span>
       </div>
-      <span>{countdown.hours} : </span>
-      <span>{countdown.minutes} : </span>
-      <span>{countdown.seconds} </span>
+      <span className={cls.dots}>:</span>
+      <div className={cls.timeWrapper}>
+        <div className={cls.block}>
+          <div className={cls.item}>{findTimer(countdown.hours)[0] || 0}</div>
+          <div className={cls.item}>{findTimer(countdown.hours)[1] || 0} </div>
+        </div>
+        <span className={cls.label}>ЧАСЫ</span>
+      </div>
+      <span className={cls.dots}>:</span>
+      <div className={cls.timeWrapper}>
+        <div className={cls.block}>
+          <div className={cls.item}>{findTimer(countdown.minutes)[0] || 0}</div>
+          <div className={cls.item}>
+            {findTimer(countdown.minutes)[1] || 0}{" "}
+          </div>
+        </div>
+        <span className={cls.label}>МИНУТЫ</span>
+      </div>
+      <span className={cls.dots}>:</span>
+      <div className={cls.timeWrapper}>
+        <div className={cls.block}>
+          <div className={cls.item}>{findTimer(countdown.seconds)[0] || 0}</div>
+          <div className={cls.item}>
+            {findTimer(countdown.seconds)[1] || 0}{" "}
+          </div>
+        </div>
+        <span className={cls.label}>СЕКУНДЫ</span>
+      </div>
     </div>
   );
 };

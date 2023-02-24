@@ -13,6 +13,7 @@ import {
   ColorInstagramIcon,
   ColorOKIcon,
 } from "components/UI/Icons";
+import Link from "next/link";
 import Timer from "components/UI/Timer";
 
 function FirstCard() {
@@ -43,7 +44,7 @@ function FirstCard() {
   return (
     <>
       <div className={cls.FirstCard}>
-        {/* <Timer deadline={new Date(2023, 2, 27)} /> */}
+        <Timer className={cls.timer} deadline={new Date(2023, 2, 27)} />
         <p className={cls.discount}>
           1200 650 000 сум <span className={cls.badge}>-5%</span>
         </p>
@@ -72,9 +73,13 @@ function FirstCard() {
         </div>
 
         <div className={cls.btns}>
-          <MainButton fullWidth className={cls.basketBtn}>
-            Добавить в корзину
-          </MainButton>
+          <Link href="/cart">
+            <a>
+              <MainButton fullWidth className={cls.basketBtn}>
+                Добавить в корзину
+              </MainButton>
+            </a>
+          </Link>
           <SecondaryButton fullWidth className={cls.buyBtn}>
             Купить сейчас
           </SecondaryButton>

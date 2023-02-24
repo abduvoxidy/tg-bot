@@ -1145,3 +1145,61 @@ export function ColorFaceBookIcon() {
     </svg>
   );
 }
+
+export function AddIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M15 10.625H5C4.65833 10.625 4.375 10.3417 4.375 10C4.375 9.65833 4.65833 9.375 5 9.375H15C15.3417 9.375 15.625 9.65833 15.625 10C15.625 10.3417 15.3417 10.625 15 10.625Z"
+        fill="#292D32"
+      />
+      <path
+        d="M10 15.625C9.65833 15.625 9.375 15.3417 9.375 15V5C9.375 4.65833 9.65833 4.375 10 4.375C10.3417 4.375 10.625 4.65833 10.625 5V15C10.625 15.3417 10.3417 15.625 10 15.625Z"
+        fill="#292D32"
+      />
+    </svg>
+  );
+}
+
+export function SubstractIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M15 10.625H5C4.65833 10.625 4.375 10.3417 4.375 10C4.375 9.65833 4.65833 9.375 5 9.375H15C15.3417 9.375 15.625 9.65833 15.625 10C15.625 10.3417 15.3417 10.625 15 10.625Z"
+        fill="#292D32"
+      />
+    </svg>
+  );
+}
+
+export function InfoIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10 13.3327V9.99935M10 6.66602H10.0083M18.3333 9.99935C18.3333 14.6017 14.6024 18.3327 10 18.3327C5.39763 18.3327 1.66667 14.6017 1.66667 9.99935C1.66667 5.39698 5.39763 1.66602 10 1.66602C14.6024 1.66602 18.3333 5.39698 18.3333 9.99935Z"
+        stroke="#7E7E83"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+}
