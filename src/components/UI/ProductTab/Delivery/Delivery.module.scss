@@ -1,1 +1,9 @@
 @import "styles/unit.scss";
+
+.root {
+  .map {
+    position: relative;
+    width: 100%;
+    height: rem(603);
+  }
+}

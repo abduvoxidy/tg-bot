@@ -62,6 +62,7 @@
     column-gap: rem(26);
     align-items: center;
     .item {
+      cursor: pointer;
       display: flex;
       column-gap: rem(10);
       align-items: center;
@@ -100,6 +101,9 @@
     font-size: rem(12);
     line-height: rem(15);
     color: #7e7e83;
+    display: flex;
+    align-items: center;
+    column-gap: rem(10);
   }
   .installmentsMonth {
     padding: rem(24) 0 rem(24);
@@ -157,5 +161,46 @@
     border-radius: rem(4);
     background: #13c29a;
     color: var(--white-color);
+  }
+}
+
+.dialog {
+  position: relative;
+  width: rem(512);
+  height: rem(270);
+  padding: rem(48) rem(62) rem(24);
+  text-align: center;
+  .close {
+    position: absolute;
+    right: rem(25);
+    top: rem(17);
+    cursor: pointer;
+    svg {
+      width: rem(25);
+      height: rem(25);
+    }
+  }
+  .body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .title {
+      font-weight: 500;
+      font-size: rem(26);
+      line-height: rem(20);
+    }
+    .icons {
+      display: flex;
+      justify-content: space-between;
+    }
+    .modalBtn {
+      padding: rem(16);
+      height: rem(52);
+      border-radius: rem(6);
+      font-weight: 500;
+      font-size: rem(26);
+      line-height: rem(20);
+    }
   }
 }

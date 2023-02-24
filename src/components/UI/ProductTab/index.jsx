@@ -6,6 +6,7 @@ import { useCallback } from "react";
 import { useState } from "react";
 import Description from "./Description";
 import Characteristic from "./Characteristic";
+import Delivery from "./Delivery";
 
 function ProductTab() {
   const [tabValue, setTabValue] = useState("description");
@@ -28,7 +29,7 @@ function ProductTab() {
         >
           <StyledTab value="description" label="Описание" />
           <StyledTab value="characters" label="Характеристика" />
-          <StyledTab value="map" label="Доставка" />
+          <StyledTab value="delivery" label="Доставка" />
         </StyledTabs>
       </div>
       <div className={cls.main}>
@@ -38,8 +39,8 @@ function ProductTab() {
         <TabBody tab="characters">
           <Characteristic />
         </TabBody>
-        <TabBody tab="map">
-          <h3>Description 3</h3>
+        <TabBody tab="delivery">
+          <Delivery />
         </TabBody>
       </div>
     </div>

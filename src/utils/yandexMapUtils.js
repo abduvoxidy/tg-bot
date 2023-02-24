@@ -5,7 +5,7 @@ export function loadYandexMap(lang) {
     jsElm.type = "application/javascript";
     jsElm.src = `https://api-maps.yandex.ru/2.1/?lang=${
       lang == "en" ? "en-US" : "ru_RU"
-    }&apikey=3e7f4674-af63-4fbf-b13e-25d2bd5a8634`;
+    }&apikey=55119bed-98a3-46f6-8b74-b9e9fd7f87a9`;
     jsElm.id = "yandex-map-script";
     document.body.appendChild(jsElm);
   }
