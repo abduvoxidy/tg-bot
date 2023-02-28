@@ -44,6 +44,7 @@ function FirstCard() {
   return (
     <>
       <div className={cls.FirstCard}>
+        <p className={cls.timerText}>Поспешите! Скидка закончится через</p>
         <Timer className={cls.timer} deadline={new Date(2023, 2, 27)} />
         <p className={cls.discount}>
           1200 650 000 сум <span className={cls.badge}>-5%</span>

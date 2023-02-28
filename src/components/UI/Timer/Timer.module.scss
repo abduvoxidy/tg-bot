@@ -13,6 +13,7 @@
       display: flex;
       column-gap: rem(4);
       .item {
+        min-width: rem(22);
         padding: rem(4) rem(2);
         background: #f6f6f6;
         border: 1px solid #e5e9eb;
@@ -20,6 +21,9 @@
         font-size: rem(25);
         line-height: rem(24);
         color: #252c32;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
     .label {

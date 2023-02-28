@@ -1,0 +1,27 @@
+@import "styles/unit.scss";
+
+.card {
+  padding: rem(24);
+  background-color: #fff;
+  border-radius: rem(12);
+  .title {
+    font-weight: 600;
+    font-size: rem(24);
+    line-height: rem(29);
+    margin-bottom: rem(24);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    position: relative;
+    padding: rem(16);
+    border-radius: rem(12);
+    .title {
+      font-weight: 500;
+      font-size: rem(17);
+      line-height: rem(22);
+      margin-bottom: rem(16);
+    }
+  }
+}

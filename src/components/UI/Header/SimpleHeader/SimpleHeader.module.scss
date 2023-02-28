@@ -1,0 +1,12 @@
+@import "styles/unit.scss";
+
+.header {
+  background: var(--white-color);
+  height: rem(90);
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

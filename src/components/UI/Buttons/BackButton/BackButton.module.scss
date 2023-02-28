@@ -1,0 +1,15 @@
+@import "styles/unit.scss";
+
+.button {
+  outline: none;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  .text {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #5b6871;
+  }
+}

@@ -4,7 +4,7 @@ import cls from "./styles.module.scss";
 import ProductSimilar from "components/UI/Products/ProductSimilar";
 import CartBox from "components/UI/Cart/CartBox";
 
-function Cart() {
+export function Cart() {
   return (
     <main className={cls.main}>
       <Container>
@@ -19,5 +19,3 @@ function Cart() {
     </main>
   );
 }
-
-export default Cart;

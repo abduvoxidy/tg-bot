@@ -1,0 +1,10 @@
+@import "styles/unit.scss";
+
+.main {
+  padding: rem(44) 0 rem(80);
+  .title {
+    font-weight: 600;
+    font-size: rem(34);
+    line-height: rem(41);
+  }
+}

@@ -1,0 +1,82 @@
+@import "styles/unit.scss";
+
+.root {
+  .body {
+    max-height: rem(378);
+    overflow-y: scroll;
+    .products {
+      display: flex;
+      flex-direction: column;
+      .product {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: rem(24) 0;
+        display: flex;
+        justify-content: space-between;
+        .left {
+          display: flex;
+          column-gap: rem(16);
+          .img {
+            position: relative;
+            width: rem(104);
+            height: rem(104);
+          }
+          .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .name {
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              column-gap: rem(10);
+              font-weight: 500;
+              font-size: rem(18);
+              line-height: rem(24);
+              color: #1a2024;
+              span {
+                margin-top: rem(4);
+              }
+            }
+            .contentBottom {
+              display: flex;
+              column-gap: rem(12);
+              p {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                column-gap: rem(9);
+                color: #84919a;
+                svg path {
+                  stroke: #84919a;
+                }
+                &:nth-child(2) {
+                  border-left: 1px solid rgba(0, 0, 0, 0.1);
+                  padding-left: rem(12);
+                  svg {
+                    margin-top: rem(3);
+                  }
+                  svg path {
+                    fill: #84919a;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          .price {
+            font-weight: 600;
+            font-size: rem(18);
+            line-height: rem(28);
+          }
+          .cartBtn {
+            margin-top: auto;
+          }
+        }
+      }
+    }
+  }
+}

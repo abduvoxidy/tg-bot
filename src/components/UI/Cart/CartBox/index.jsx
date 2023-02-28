@@ -12,6 +12,7 @@ import MainButton from "components/UI/Buttons/MainButton";
 import Tooltip from "@mui/material/Tooltip";
 import { useRef } from "react";
 import { useStyles } from "./styles";
+import Link from "next/link";
 
 function CartBox() {
   const classes = useStyles();
@@ -154,9 +155,13 @@ function CartBox() {
           <p>Скидка</p>
           <p>– 507 500 сум</p>
         </div>
-        <MainButton fullWidth className={cls.btn}>
-          Перейти к оформлению
-        </MainButton>
+        <Link href="/checkout">
+          <a>
+            <MainButton fullWidth className={cls.btn}>
+              Перейти к оформлению
+            </MainButton>
+          </a>
+        </Link>
       </div>
     </div>
   );

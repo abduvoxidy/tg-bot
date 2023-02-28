@@ -6,7 +6,7 @@ import { Container } from "@mui/material";
 import ProductSimilar from "components/UI/Products/ProductSimilar";
 import ProductTab from "components/UI/ProductTab";
 
-function Product() {
+export function Product() {
   return (
     <main className={cls.main}>
       <Container>
@@ -18,5 +18,3 @@ function Product() {
     </main>
   );
 }
-
-export default Product;

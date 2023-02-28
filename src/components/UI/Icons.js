@@ -1203,3 +1203,47 @@ export function InfoIcon() {
     </svg>
   );
 }
+
+export function BackArrowIcon() {
+  return (
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 36 36"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9 17.9941H27"
+        stroke="#5B6871"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M18 27L9 18L18 9"
+        stroke="#5B6871"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function UserIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.25 5.41602C6.25 7.48352 7.9325 9.16602 10 9.16602C12.0675 9.16602 13.75 7.48352 13.75 5.41602C13.75 3.34852 12.0675 1.66602 10 1.66602C9.00578 1.66712 8.05259 2.06256 7.34957 2.76558C6.64654 3.46861 6.2511 4.42179 6.25 5.41602ZM16.6667 17.4993H17.5V16.666C17.5 13.4502 14.8825 10.8327 11.6667 10.8327H8.33333C5.11667 10.8327 2.5 13.4502 2.5 16.666V17.4993H16.6667Z"
+        fill="#00040A"
+      />
+    </svg>
+  );
+}

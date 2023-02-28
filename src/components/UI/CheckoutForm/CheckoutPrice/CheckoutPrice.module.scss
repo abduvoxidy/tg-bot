@@ -1,0 +1,45 @@
+@import "styles/unit.scss";
+
+.root {
+  background-color: var(--white-color);
+  border-radius: rem(12);
+  padding: rem(16);
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+    padding: rem(16) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    .name {
+      font-size: rem(14);
+      line-height: rem(24);
+      color: #1a2024;
+    }
+    .value {
+      font-weight: 500;
+      color: #000;
+    }
+  }
+  .total {
+    padding: rem(16) 0;
+    .totalName {
+      font-weight: 500;
+      font-size: rem(14);
+      line-height: rem(24);
+      color: #1a2024;
+    }
+    .totalValue {
+      font-weight: 700;
+      font-size: rem(16);
+      line-height: re(24);
+    }
+  }
+  .btn {
+    font-size: rem(16);
+    line-height: rem(19);
+  }
+}
