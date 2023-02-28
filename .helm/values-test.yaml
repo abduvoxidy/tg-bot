@@ -1,6 +1,6 @@
 # Default values for microservice.                                                                                                         
 # This is a YAML-formatted file.                                                                                                           
-# Declare variables to be passed into your templates.                                                                                      
+# Declare variables to be passed into your templates.                                                                                     
 global:                                                                                                                                    
   replicaCount: 1                                                                                                                          
   environment: {}
@@ -11,7 +11,7 @@ replicaCount: 1
                                                                                                                                            
 image:                                                                                                                                     
   registry: gitlab.udevs.io:5050/                                                                                                          
-  repository: paragraf/paragraf_frontend
+  repository: paragraf/paragraf-frontend
   pullPolicy: IfNotPresent                                                                                                                 
   # Overrides the image tag whose default is the chart appVersion.                                                                         
   tag: "test"                                                                                                                            
