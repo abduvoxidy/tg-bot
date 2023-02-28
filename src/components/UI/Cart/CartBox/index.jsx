@@ -3,7 +3,7 @@ import cls from "./CartBox.module.scss";
 import Image from "next/image";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import { InfoIcon, HeartIcon, CloseIcon } from "components/UI/Icons";
-import CartButton from "../CartButton";
+import CartButton from "components/UI/Buttons/CartButton";
 import { useDispatch } from "react-redux";
 import { decrement, increment } from "store/counter/counterSlice";
 import { useSelector } from "react-redux";

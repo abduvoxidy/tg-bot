@@ -1,6 +1,5 @@
 import * as React from "react";
 import SelectMenu from "react-select";
-import chroma from "chroma-js";
 
 const colourStyles = {
   control: (styles, { isFocused }) => ({
@@ -18,7 +17,6 @@ const colourStyles = {
     },
   }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    // const color = chroma(data.color);
     return {
       ...styles,
       backgroundColor: isSelected ? "var(--primary-color)" : data.color,

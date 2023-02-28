@@ -6,7 +6,7 @@ import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import CustomSlider from "./styles";
 import Checkbox from "../Forms/Checkbox";
-import RadioCategory from "../Forms/RadioCategory";
+import RadioColor from "../Forms/RadioColor";
 import {
   FormControl,
   FormControlLabel,
@@ -16,7 +16,7 @@ import {
 import SecondaryButton from "../Buttons/SecondaryButton";
 
 function SidebarCategory() {
-  const [value, setValue] = useState([20, 40]);
+  const [value, setValue] = useState([200000, 1000000]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [checkedStocks, setCheckedStocks] = useState([]);
   const [color, setColor] = useState(null);
@@ -52,7 +52,7 @@ function SidebarCategory() {
     setCheckedItems([]);
     setCheckedStocks([]);
     setColor(null);
-    setValue([20, 40]);
+    setValue([200000, 1000000]);
   };
 
   const brands = ["Redmi", "Apple", "Samsung", "Huawei", "Windows"];
@@ -67,6 +67,13 @@ function SidebarCategory() {
           <div className={cls.inputs}>
             <Input
               id="price"
+              // defaultValue={value[0]}
+              onChange={(e) => {
+                const arr = [];
+                arr.push(+e.target.value);
+                arr.push(value[1]);
+                setValue(arr);
+              }}
               value={value[0]}
               className={cls.inputBox}
               placeholder="От 20 000"
@@ -74,6 +81,12 @@ function SidebarCategory() {
             <Input
               id="price"
               value={value[1]}
+              onChange={(e) => {
+                const arr = [];
+                arr.push(value[0]);
+                arr.push(+e.target.value);
+                setValue(arr);
+              }}
               className={cls.inputBox}
               placeholder="До 20 000"
             />
@@ -83,9 +96,9 @@ function SidebarCategory() {
               getAriaLabel={() => "Temperature range"}
               value={value}
               onChange={handleChange}
-              // min={200000}
+              min={200000}
               // step={1}
-              // max={1000000}
+              max={1000000}
               // defaultValue={[25000, 75000]}
               defaultValue={[20, 40]}
             />
@@ -117,7 +130,7 @@ function SidebarCategory() {
                   <FormControlLabel
                     value={el}
                     checked={color ? el === color : false}
-                    control={<RadioCategory color={el} />}
+                    control={<RadioColor color={el} />}
                   />
                 </div>
               ))}
