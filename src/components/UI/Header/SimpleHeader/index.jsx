@@ -19,7 +19,13 @@ export function SimpleHeader() {
               <LogoIcon />
             </a>
           </Link>
-          <SecondaryButton icon={<UserIcon />}>Личный кабинет</SecondaryButton>
+          <Link href="/user">
+            <a>
+              <SecondaryButton icon={<UserIcon />}>
+                Личный кабинет
+              </SecondaryButton>
+            </a>
+          </Link>
         </Container>
       </header>
     </Headroom>

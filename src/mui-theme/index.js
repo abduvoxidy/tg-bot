@@ -91,9 +91,9 @@ export default createTheme({
         },
         input: {
           padding: rem(12),
-          background: "#f6f6f6",
+          background: "#fff",
           borderRadius: rem(10),
-          border: "1px solid transparent",
+          border: "1px solid #e7eaec",
           "&:focus": {
             outline: "none",
             borderColor: "var(--primary-color)!important",

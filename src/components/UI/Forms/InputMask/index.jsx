@@ -12,15 +12,22 @@ export default function InputMask({
   name = "name",
   errors = {},
   control = {},
-  register = () => {},
   required,
   disabled,
+  size = "large",
+  labelText,
+  id,
   ...restProps
 }) {
   const { t } = useTranslation("common");
 
   return (
     <div className={`${cls.inputBox} ${className}`}>
+      {labelText && (
+        <label htmlFor={id}>
+          {labelText} {required ? "*" : ""}
+        </label>
+      )}
       {startAdornment && (
         <div className={cls.startAdornment}>{startAdornment}</div>
       )}
@@ -36,11 +43,13 @@ export default function InputMask({
             onChange={field.onChange}
             placeholder={placeholder}
             disabled={disabled}
+            id={id}
             className={`${cls.input} ${
               startAdornment ? cls.withStartAdornment : ""
             } ${endAdorment ? cls.withEndAdornment : ""} 
               ${errors[name] ? cls.error : ""}
               ${disabled ? cls.disabled : ""}
+              ${cls[size]}
               `}
             {...restProps}
           />

@@ -2,6 +2,13 @@
 .inputBox {
   position: relative;
   width: 100%;
+  label {
+    font-weight: 400;
+    font-size: rem(15);
+    line-height: rem(24);
+    color: #5c5c5c;
+    margin-bottom: rem(4);
+  }
   .input {
     width: 100%;
     padding: rem(12) rem(15);
@@ -9,7 +16,7 @@
     border-radius: rem(11);
     font-size: rem(15);
     line-height: rem(24);
-    height: rem(42);
+    height: rem(48);
     color: var(--text-color);
     border: 1px solid #e7eaec;
     transition: all 0.25s ease-in-out;
@@ -30,6 +37,18 @@
     }
     &:hover {
       border-color: var(--primary-color) !important;
+    }
+    &.large {
+      height: rem(48);
+    }
+    &.medium {
+      height: rem(42);
+      font-size: rem(15);
+      line-height: rem(19);
+    }
+    &.small {
+      font-size: rem(14);
+      line-height: rem(16);
     }
     &::placeholder {
       font-size: rem(15);

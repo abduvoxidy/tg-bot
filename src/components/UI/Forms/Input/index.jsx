@@ -19,6 +19,9 @@ export default function Input({
   isError,
   required,
   errors,
+  size = "large",
+  id,
+  labelText,
   ...restProps
 }) {
   const { t } = useTranslation("common");
@@ -29,11 +32,17 @@ export default function Input({
 
   return (
     <div className={`${cls.inputBox} ${className}`}>
+      {labelText && (
+        <label htmlFor={id}>
+          {labelText} {required ? "*" : ""}
+        </label>
+      )}
       {startAdornment && (
         <div className={cls.startAdornment}>{startAdornment}</div>
       )}
       <input
         placeholder={placeholder}
+        id={id}
         {...restProps}
         {...registerProps}
         disabled={disabled}
@@ -42,7 +51,7 @@ export default function Input({
         } ${endAdorment ? cls.withEndAdornment : ""}
           ${isError || (errors && errors[name]) ? cls.error : ""} ${
           disabled ? cls.disabled : ""
-        }`}
+        } ${cls[size]}`}
       />
       {endAdorment && <div className={cls.endAdorment}>{endAdorment}</div>}
       {isLoading && (

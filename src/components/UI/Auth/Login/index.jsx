@@ -128,6 +128,7 @@ export default function Login() {
                   control={control}
                   name="code"
                   errors={errors}
+                  size="medium"
                   required
                 />
               </div>
@@ -151,6 +152,7 @@ export default function Login() {
                 disabled={isConfirm}
                 name="phone"
                 errors={errors}
+                size="medium"
                 required
               />
             </div>
@@ -164,6 +166,7 @@ export default function Login() {
                 name="name"
                 register={register}
                 errors={errors}
+                size="medium"
                 required
               />
             </div>

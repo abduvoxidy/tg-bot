@@ -1,7 +1,7 @@
 import React from "react";
 import cls from "./ProductTab.module.scss";
 
-import { StyledTabs, StyledTab } from "./styles";
+import { StyledTabs, StyledTab } from "../CTabs";
 import { useCallback } from "react";
 import { useState } from "react";
 import Description from "./Description";

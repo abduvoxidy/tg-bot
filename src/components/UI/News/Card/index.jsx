@@ -1,7 +1,7 @@
 import React from "react";
 import cls from "../News.module.scss";
-import CImage from "components/UI/CImage";
 import Link from "next/link";
+import Image from "next/image";
 
 function Card({ data }) {
   return (
@@ -9,7 +9,12 @@ function Card({ data }) {
       <a>
         <div className={cls.card}>
           <div className={cls.img}>
-            <CImage src={`/images/main/${data.url}`} alt={data.url} />
+            <Image
+              objectFit="cover"
+              layout="fill"
+              src={`/images/main/${data.url}`}
+              alt={data.url}
+            />
           </div>
           <p className={cls.desc}>{data.name}</p>
         </div>
