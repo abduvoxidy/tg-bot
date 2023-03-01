@@ -52,6 +52,11 @@ push-image:
 	docker push ${REGISTRY}/${PROJECT_NAME}/${APP}:${TAG}
 	docker push ${REGISTRY}/${PROJECT_NAME}/${APP}:${ENV_TAG}
 
+clear-image:
+	docker rmi ${REGISTRY}/${PROJECT_NAME}/${APP}:${TAG}
+	docker rmi ${REGISTRY}/${PROJECT_NAME}/${APP}:${ENV_TAG}
+
+
 swag_init:
 	swag init -g api/main.go -o api/docs
 
