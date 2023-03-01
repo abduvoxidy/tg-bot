@@ -5,17 +5,23 @@ import BackButton from "components/UI/Buttons/BackButton";
 import { LogoIcon } from "components/UI/Icons";
 import SecondaryButton from "components/UI/Buttons/SecondaryButton";
 import { UserIcon } from "components/UI/Icons";
+import Headroom from "react-headroom";
+import Link from "next/link";
 
 export function SimpleHeader() {
   return (
-    <header className={cls.header}>
-      <Container className={cls.container}>
-        <BackButton>Назад</BackButton>
-        <span>
-          <LogoIcon />
-        </span>
-        <SecondaryButton icon={<UserIcon />}>Личный кабинет</SecondaryButton>
-      </Container>
-    </header>
+    <Headroom>
+      <header className={cls.header}>
+        <Container className={cls.container}>
+          <BackButton>Назад</BackButton>
+          <Link href="/">
+            <a>
+              <LogoIcon />
+            </a>
+          </Link>
+          <SecondaryButton icon={<UserIcon />}>Личный кабинет</SecondaryButton>
+        </Container>
+      </header>
+    </Headroom>
   );
 }

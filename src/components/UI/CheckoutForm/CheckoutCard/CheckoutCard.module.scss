@@ -4,11 +4,22 @@
   padding: rem(24);
   background-color: #fff;
   border-radius: rem(12);
+  position: relative;
   .title {
     font-weight: 600;
     font-size: rem(24);
     line-height: rem(29);
     margin-bottom: rem(24);
+  }
+  .edit {
+    cursor: pointer;
+    position: absolute;
+    color: var(--primary-color);
+    top: rem(30);
+    right: rem(24);
+    font-weight: 600;
+    font-size: rem(15);
+    line-height: rem(18);
   }
 }
 

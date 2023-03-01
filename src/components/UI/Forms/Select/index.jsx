@@ -1,5 +1,6 @@
 import * as React from "react";
 import SelectMenu from "react-select";
+import { Controller } from "react-hook-form";
 
 const colourStyles = {
   control: (styles, { isFocused }) => ({
@@ -19,8 +20,8 @@ const colourStyles = {
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
     return {
       ...styles,
-      backgroundColor: isSelected ? "var(--primary-color)" : data.color,
-      color: isSelected ? "#fff" : "#000",
+      backgroundColor: isSelected ? "#E5E9EB;" : data.color,
+      color: isSelected ? "#000" : "#000",
       cursor: !isSelected && "pointer",
       ":active": {
         // backgroundColor: !isDisabled && (isSelected ? "data.color" : undefined),
@@ -40,38 +41,64 @@ const colourStyles = {
   }),
 };
 
-export default function Select({
-  placeholder = "",
+export default function CSelect({
+  placeholder,
   selectRef,
   options,
-  onChange,
-  required,
-  value,
-  isSearchable,
-  isClearable,
+  label,
+  selectId,
+  defaultValue,
+  name = "",
+  inputId,
+  control,
+  errors,
+  validation,
+  menuPlacement = "bottom",
+  isSearchable = false,
+  isDisabled = false,
+  isOptionDisabled = () => {},
+  customOnChange = (e) => {},
   ...rest
 }) {
   return (
     <div>
-      <SelectMenu
-        className="basic-single"
-        classNamePrefix="select"
-        options={options}
-        placeholder={placeholder}
-        styles={colourStyles}
-        ref={selectRef}
-        openMenuOnFocus={true}
-        isSearchable={isSearchable}
-        isClearable={isClearable}
-        onChange={onChange}
-        value={value}
-        input
-        components={{
-          IndicatorSeparator: () => null,
+      <Controller
+        control={control}
+        rules={validation}
+        name={name}
+        render={({ field: { value, onChange, name } }) => {
+          return (
+            <SelectMenu
+              className="basic-single"
+              menuPlacement={menuPlacement}
+              classNamePrefix="select"
+              options={options}
+              placeholder={placeholder || ""}
+              defaultValue={defaultValue}
+              styles={colourStyles}
+              ref={selectRef}
+              openMenuOnFocus={true}
+              isSearchable={isSearchable}
+              isDisabled={isDisabled}
+              isOptionDisabled={isOptionDisabled}
+              value={value}
+              auto
+              onChange={(e) => {
+                onChange(e);
+                customOnChange(e, name);
+              }}
+              id={selectId}
+              components={{
+                IndicatorSeparator: () => null,
+              }}
+              {...rest}
+            />
+          );
         }}
-        {...rest}
       />
-      {required && (
+      {errors?.[name]?.message && <span>{errors?.[name]?.message}</span>}
+
+      {/* {required && (
         <input
           tabIndex={-1}
           autoComplete="off"
@@ -83,7 +110,7 @@ export default function Select({
           value={value}
           required={required}
         />
-      )}
+      )} */}
     </div>
   );
 }

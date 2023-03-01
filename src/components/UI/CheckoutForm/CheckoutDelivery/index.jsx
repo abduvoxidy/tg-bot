@@ -1,8 +1,9 @@
 import React from "react";
 import cls from "./CheckoutDelivery.module.scss";
-import Select from "components/UI/Forms/Select";
+import CSelect from "components/UI/Forms/Select";
 import Input from "components/UI/Forms/Input";
 import Textarea from "components/UI/Forms/Textarea";
+import { useForm } from "react-hook-form";
 
 function CheckoutDelivery() {
   const options = [
@@ -10,13 +11,29 @@ function CheckoutDelivery() {
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
+  const {
+    handleSubmit,
+    watch,
+    control,
+    register,
+    formState: { errors },
+    setError,
+  } = useForm({
+    defaultValues: {
+      region: "",
+    },
+  });
   return (
     <div className={cls.root}>
-      <Select
+      <CSelect
+        placeholder="Region"
         defaultValue={[options[0]]}
         isClearable
         isSearchable
         options={options}
+        errors={errors}
+        control={control}
+        name="region"
       />
       <div className={cls.inputs}>
         <Input type="number" placeholder="дом *" />
