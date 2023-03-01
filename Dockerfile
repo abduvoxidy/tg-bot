@@ -1,7 +1,7 @@
-FROM node:alpine
+FROM node:14.16
 
 RUN mkdir app
-WORKDIR app
+WORKDIR /app
 
 
 COPY package*.json ./
@@ -10,8 +10,8 @@ RUN npm install
 COPY . ./
 RUN npm run-script build
 
-
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
-EXPOSE 80
+EXPOSE 3000
 ENTRYPOINT ["npm", "start"]
+
