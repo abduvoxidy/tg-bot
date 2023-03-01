@@ -78,7 +78,7 @@ function ProductCard({ img, zIndex = 0 }) {
         <p className={cls.price}>120 650 000 сум</p>
       </div>
       <div className={`${cls.bottom} ${isActive ? cls.bottomActive : ""}`}>
-        <MainButton small className={cls.basketBtn}>
+        <MainButton size="small" className={cls.basketBtn}>
           В корзину
         </MainButton>
         <div className={cls.types}>

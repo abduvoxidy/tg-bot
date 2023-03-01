@@ -5,7 +5,7 @@ import { SampleNextArrow, SamplePrevArrow } from "components/UI/Arrows";
 import ProductSliderCard from "components/UI/Cards/ProductSliderCard";
 // import ProductCard from "./ProductCard";
 
-function ProductSimilar({ title }) {
+function ProductSimilar({ title, className = "" }) {
   const images = [
     "car.png",
     "chip.png",
@@ -15,7 +15,7 @@ function ProductSimilar({ title }) {
     "cleaner.png",
   ];
   return (
-    <div className={cls.root} id="productSlider">
+    <div className={`${cls.root} ${className}`} id="productSlider">
       <h1 className={cls.title}>{title || "Похожие товары"}</h1>
       <Slider
         {...{

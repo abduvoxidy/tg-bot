@@ -14,6 +14,7 @@ export default function InputMask({
   control = {},
   register = () => {},
   required,
+  disabled,
   ...restProps
 }) {
   const { t } = useTranslation("common");
@@ -34,10 +35,12 @@ export default function InputMask({
             value={field.value}
             onChange={field.onChange}
             placeholder={placeholder}
+            disabled={disabled}
             className={`${cls.input} ${
               startAdornment ? cls.withStartAdornment : ""
             } ${endAdorment ? cls.withEndAdornment : ""} 
               ${errors[name] ? cls.error : ""}
+              ${disabled ? cls.disabled : ""}
               `}
             {...restProps}
           />

@@ -1,7 +1,7 @@
 import React from "react";
 import cls from "./ProductSliderCard.module.scss";
 import Image from "next/image";
-import { CompareIcon, HeartIcon } from "components/UI/Icons";
+import { ScaleIcon, ProductHeartIcon } from "components/UI/Icons";
 import Link from "next/link";
 import Rating from "@mui/material/Rating";
 import { useState } from "react";
@@ -25,10 +25,10 @@ function ProductSliderCard({ img }) {
         <div className={cls.badge}>20%</div>
         <div className={cls.icons}>
           <span>
-            <CompareIcon />
+            <ScaleIcon />
           </span>
           <span>
-            <HeartIcon />
+            <ProductHeartIcon />
           </span>
         </div>
 

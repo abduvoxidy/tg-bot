@@ -1,5 +1,5 @@
 import SEO from "components/SEO";
-import Category from "components/Pages/Category";
+import { Category } from "components/Pages/Category";
 
 export default function catalogBrand() {
   return (

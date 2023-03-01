@@ -8,6 +8,8 @@
   align-items: center;
   column-gap: rem(10);
   transition: 0.2s all;
+  position: relative;
+  z-index: 1;
 
   & > span {
     color: var(--primary-color);

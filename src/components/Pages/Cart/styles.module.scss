@@ -1,0 +1,17 @@
+@import "styles/unit.scss";
+
+.main {
+  padding: rem(32) 0 rem(88);
+  .title {
+    font-weight: 600;
+    font-size: rem(40);
+    line-height: rem(48);
+  }
+  .products {
+    h1 {
+      font-weight: 600;
+      font-size: rem(30);
+      line-height: rem(36);
+    }
+  }
+}

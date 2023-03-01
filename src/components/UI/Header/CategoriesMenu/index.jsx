@@ -4,7 +4,11 @@ import { catalog, categories } from "./data";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
-import Masonry from "react-smart-masonry";
+// import Masonry from "react-smart-masonry";
+import dynamic from "next/dynamic";
+const Masonry = dynamic(() => import("react-smart-masonry"), {
+  ssr: false,
+});
 import { useRouter } from "next/router";
 
 function CatgoriesMenu({

@@ -8,7 +8,7 @@ import CatalogList from "components/UI/CatalogList";
 import { catalogs } from "./data";
 import ProductSlider from "components/UI/Products/ProductSlider";
 
-function CatalogBrand() {
+export function CatalogBrand() {
   return (
     <main className={cls.main}>
       <Container>
@@ -30,5 +30,3 @@ function CatalogBrand() {
     </main>
   );
 }
-
-export default CatalogBrand;

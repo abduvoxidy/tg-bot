@@ -1,0 +1,40 @@
+@import "styles/unit.scss";
+
+.root {
+  position: relative;
+  .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    h2 {
+      font-weight: 600;
+      font-size: rem(32);
+      line-height: rem(39);
+      margin-bottom: rem(32);
+    }
+    p {
+      font-weight: 400;
+      font-size: rem(14);
+      line-height: rem(22);
+      color: #3c464e;
+      opacity: 0.9;
+    }
+  }
+  .shadow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: rem(96);
+    width: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      #ffffff 75.52%
+    );
+  }
+  .openContent {
+    display: block !important;
+    overflow: auto;
+  }
+}

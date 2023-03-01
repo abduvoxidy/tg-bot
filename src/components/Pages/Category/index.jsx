@@ -6,7 +6,7 @@ import SidebarCategory from "components/UI/SidebarCategory";
 import PopularOffers from "components/UI/PopularOffers";
 import TextContent from "components/UI/TextContent";
 
-function Category() {
+export function Category() {
   return (
     <main className={cls.main}>
       <Container>
@@ -23,5 +23,3 @@ function Category() {
     </main>
   );
 }
-
-export default Category;

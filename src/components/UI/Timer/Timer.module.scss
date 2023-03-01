@@ -1,0 +1,46 @@
+@import "styles/unit.scss";
+
+.timer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .timeWrapper {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .block {
+      display: flex;
+      column-gap: rem(4);
+      .item {
+        min-width: rem(22);
+        padding: rem(4) rem(2);
+        background: #f6f6f6;
+        border: 1px solid #e5e9eb;
+        font-weight: 500;
+        font-size: rem(25);
+        line-height: rem(24);
+        color: #252c32;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .label {
+      margin-top: rem(7);
+      font-weight: 500;
+      font-size: 7px;
+      line-height: 8px;
+      text-align: justify;
+      color: #6e7c87;
+    }
+  }
+  .dots {
+    margin: 0 rem(8);
+    margin-bottom: rem(15);
+    font-weight: 500;
+    font-size: rem(18);
+    line-height: rem(22);
+    color: #000000;
+  }
+}

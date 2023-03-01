@@ -1,29 +1,47 @@
 import React from "react";
 import cls from "./ProductTab.module.scss";
-// import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+
 import { StyledTabs, StyledTab } from "./styles";
+import { useCallback } from "react";
+import { useState } from "react";
+import Description from "./Description";
+import Characteristic from "./Characteristic";
+import Delivery from "./Delivery";
 
 function ProductTab() {
-  const [value, setValue] = React.useState(0);
+  const [tabValue, setTabValue] = useState("description");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const TabBody = useCallback(
+    ({ tab, children }) => {
+      if (tab === tabValue) return children;
+      return <></>;
+    },
+    [tabValue]
+  );
   return (
     <div className={cls.root}>
       <div className={cls.header}>
-        <StyledTabs value={value} onChange={handleChange}>
-          <StyledTab label="Item One" />
-          <StyledTab label="Item Two" />
-          <StyledTab label="Item Three" />
+        <StyledTabs
+          onChange={(e, val) => {
+            setTabValue(val);
+          }}
+          value={tabValue}
+        >
+          <StyledTab value="description" label="Описание" />
+          <StyledTab value="characters" label="Характеристика" />
+          <StyledTab value="delivery" label="Доставка" />
         </StyledTabs>
       </div>
       <div className={cls.main}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-        temporibus deleniti saepe perferendis nulla natus ab esse eius illum
-        doloribus culpa expedita atque reiciendis ullam pariatur distinctio
-        necessitatibus perspiciatis ducimus!
+        <TabBody tab="description">
+          <Description />
+        </TabBody>
+        <TabBody tab="characters">
+          <Characteristic />
+        </TabBody>
+        <TabBody tab="delivery">
+          <Delivery />
+        </TabBody>
       </div>
     </div>
   );

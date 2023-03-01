@@ -1,5 +1,5 @@
 import SEO from "components/SEO";
-import CatalogBrand from "components/Pages/CatalogBrand";
+import { CatalogBrand } from "components/Pages/CatalogBrand";
 
 export default function catalogBrand() {
   return (
