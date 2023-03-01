@@ -72,6 +72,7 @@ service:
   specs:
     - port: 80                                                                                                                             
       targetPort: 3000                                                                                                                     
+      name: https
 
 ingress:
   enabled: true
