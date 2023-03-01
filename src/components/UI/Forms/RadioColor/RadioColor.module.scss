@@ -1,35 +1,29 @@
+@import "styles/unit.scss";
+
 .radio {
   input {
-    width: 13px;
-    height: 13px;
-    margin: -1px;
-    position: absolute;
-    border: 0px;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    overflow: hidden;
+    display: none;
   }
 
   .box {
     position: relative;
     &.active {
       transition-timing-function: ease-out;
-      height: 24px;
-      width: 24px;
+      height: rem(24);
+      width: rem(24);
     }
     &.active::after {
       content: "";
       position: absolute;
       left: -3px;
       top: -3px;
-      width: 28px;
-      height: 28px;
+      width: rem(28);
+      height: rem(28);
       border-radius: 50%;
       border: 1px solid var(--primary-color);
     }
-    height: 28px;
-    width: 28px;
+    height: rem(28);
+    width: rem(28);
     border-radius: 50%;
     background: var(--primary-color);
     flex-shrink: 0;

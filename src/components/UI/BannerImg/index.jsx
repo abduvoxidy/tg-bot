@@ -1,5 +1,4 @@
 import React from "react";
-import CImage from "../CImage";
 import cls from "./BannerImg.module.scss";
 import { Container } from "@mui/material";
 import Image from "next/image";

@@ -1,6 +1,6 @@
 import React from "react";
 import cls from "./CheckoutOrders.module.scss";
-import CartButton from "components/UI/Cart/CartButton";
+import CartButton from "components/UI/Buttons/CartButton";
 import { Tooltip } from "@mui/material";
 import Image from "next/image";
 import { InfoIcon, HeartIcon, CloseIcon } from "components/UI/Icons";

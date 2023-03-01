@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { loadYandexMap } from "utils/yandexMapUtils";
 
 export default function Layout({ children }) {

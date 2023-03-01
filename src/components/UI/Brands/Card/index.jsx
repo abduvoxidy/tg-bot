@@ -1,6 +1,6 @@
 import React from "react";
 import cls from "../Brands.module.scss";
-import CImage from "components/UI/CImage";
+import Image from "next/image";
 import Link from "next/link";
 
 function Card({ data }) {
@@ -9,7 +9,8 @@ function Card({ data }) {
       <a>
         <div className={cls.card}>
           <div className={cls.img}>
-            <CImage
+            <Image
+              layout="fill"
               objectFit="contain"
               src={`/images/main/${data.url}`}
               alt={data.url}

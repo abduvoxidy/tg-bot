@@ -1,14 +1,7 @@
+@import "styles/unit.scss";
 .checkbox {
   input {
-    width: 13px;
-    height: 13px;
-    margin: -1px;
-    position: absolute;
-    border: 0px;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    overflow: hidden;
+    display: none;
   }
   .box {
     &.active {
@@ -23,8 +16,8 @@
         transform: scale(1);
       }
     }
-    width: 20px;
-    height: 20px;
+    width: rem(20);
+    height: rem(20);
     flex-shrink: 0;
     display: flex;
     -webkit-box-align: center;
@@ -42,8 +35,8 @@
     background: #f6f8f9;
     svg {
       flex-shrink: 0;
-      width: 20px;
-      height: 20px;
+      width: rem(20);
+      height: rem(20);
       transform: scale(0);
       transition: transform 0.15s cubic-bezier(0.6, 0, 1, 0.3) 0s;
     }
