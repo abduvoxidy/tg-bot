@@ -1,0 +1,51 @@
+@import "styles/unit.scss";
+
+.cardBox {
+  width: rem(466);
+  padding: rem(36) rem(24) rem(32);
+  position: relative;
+  .close {
+    position: absolute;
+    right: rem(10);
+    top: rem(10);
+    cursor: pointer;
+  }
+  p {
+    font-weight: 600;
+    font-size: rem(28);
+    line-height: rem(35);
+    margin-bottom: rem(24);
+  }
+
+  .input {
+    margin-bottom: rem(16);
+    label {
+      font-size: rem(15);
+      line-height: rem(24);
+      color: var(--secondary-color);
+      display: block;
+      margin-bottom: rem(4);
+    }
+
+    input {
+      height: rem(44);
+      background: #ffffff;
+      border: 1px solid #e5e9eb;
+      &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+      &:hover {
+        border-color: var(--primary-color);
+      }
+    }
+  }
+  .reSendCode {
+    color: var(--secondary-color);
+    text-align: center;
+    font-size: rem(17);
+    line-height: rem(22);
+    margin: rem(16) 0 rem(24);
+    cursor: pointer;
+  }
+}

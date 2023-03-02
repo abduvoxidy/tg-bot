@@ -1,0 +1,143 @@
+@import "styles/unit.scss";
+
+.main {
+  padding: rem(32) 0 rem(158);
+  h1 {
+    font-weight: 700;
+    font-size: rem(40);
+    line-height: rem(48);
+    color: #303940;
+    margin-bottom: rem(32);
+  }
+  .box {
+    display: grid;
+    grid-template-columns: rem(300) minmax(rem(500), rem(627)) auto;
+    align-items: start;
+    column-gap: rem(25);
+    .rightSide {
+      background-color: #fff;
+      border-radius: rem(12);
+      padding: rem(24);
+      .title {
+        font-weight: 600;
+        font-size: rem(17);
+        line-height: rem(22);
+      }
+      .text {
+        margin-top: rem(2);
+        font-weight: 500;
+        font-size: rem(14);
+        line-height: rem(22);
+      }
+      .list {
+        display: flex;
+        row-gap: rem(12);
+        flex-direction: column;
+        background-color: #fff;
+        .item {
+          padding: rem(14) rem(16);
+          background: #f4f4f4;
+          border-radius: rem(12);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: rem(72);
+          &:last-child {
+            cursor: pointer;
+          }
+          .leftItem {
+            display: flex;
+            align-items: center;
+            column-gap: rem(12);
+
+            .cardInfo {
+              span {
+                display: flex;
+                align-items: center;
+                column-gap: rem(8);
+                font-weight: 600;
+                font-size: rem(17);
+                line-height: rem(22);
+                &:last-child {
+                  font-weight: 400;
+                  font-size: rem(13);
+                  line-height: rem(18);
+                  color: #5b6871;
+                }
+              }
+            }
+          }
+
+          .rightItem {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            svg {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .addBtn {
+        margin-top: rem(16);
+        float: right;
+      }
+    }
+  }
+}
+
+.dialog {
+  padding: rem(24);
+  width: rem(361);
+
+  p {
+    &:first-child {
+      font-weight: 600;
+      font-size: rem(22);
+      line-height: rem(28);
+    }
+    &:nth-child(2) {
+      font-size: rem(15);
+      margin-top: rem(12);
+      line-height: rem(18);
+      color: #5b6871;
+    }
+  }
+  .groupButton {
+    display: grid;
+    margin-top: rem(32);
+    column-gap: rem(12);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.success {
+  text-align: center;
+  width: 100%;
+  max-width: rem(466);
+  padding: rem(24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    max-width: rem(315);
+    font-weight: 600;
+    font-size: rem(28);
+    line-height: rem(35);
+  }
+  span {
+    margin-top: rem(24);
+  }
+  .text {
+    margin-top: rem(24);
+    font-weight: 400;
+    font-size: rem(17);
+    line-height: rem(22);
+    color: #5b6871;
+  }
+  .btn {
+    margin-top: rem(24);
+    height: rem(44);
+    border-radius: rem(12);
+  }
+}

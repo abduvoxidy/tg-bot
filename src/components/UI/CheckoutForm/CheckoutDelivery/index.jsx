@@ -34,6 +34,7 @@ function CheckoutDelivery() {
         errors={errors}
         control={control}
         name="region"
+        required
       />
       <div className={cls.inputs}>
         <Input type="number" placeholder="дом *" />

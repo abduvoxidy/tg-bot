@@ -52,7 +52,7 @@ export default function CSelect({
   inputId,
   control,
   errors,
-  validation,
+  required,
   menuPlacement = "bottom",
   isSearchable = false,
   isDisabled = false,
@@ -61,10 +61,10 @@ export default function CSelect({
   ...rest
 }) {
   return (
-    <div>
+    <>
       <Controller
         control={control}
-        rules={validation}
+        rules={{ required }}
         name={name}
         render={({ field: { value, onChange, name } }) => {
           return (
@@ -111,6 +111,6 @@ export default function CSelect({
           required={required}
         />
       )} */}
-    </div>
+    </>
   );
 }

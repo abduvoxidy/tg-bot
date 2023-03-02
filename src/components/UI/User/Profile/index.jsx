@@ -13,6 +13,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { StyledTabs, StyledTab } from "components/UI/CTabs";
 import { useState, useCallback } from "react";
 import PersonalData from "./PersonalData";
+import InstallmentData from "./InstallmentData";
 
 const percentage = 76;
 
@@ -89,7 +90,9 @@ function Profile() {
               <TabBody tab="personal">
                 <PersonalData />
               </TabBody>
-              <TabBody tab="installment">Installment</TabBody>
+              <TabBody tab="installment">
+                <InstallmentData />
+              </TabBody>
             </div>
           </div>
         </div>

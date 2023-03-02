@@ -33,6 +33,7 @@ function Delivery() {
         errors={errors}
         control={control}
         name="region"
+        required
       />
       <Input className={cls.input} placeholder="Напишите адрес получения " />
     </div>

@@ -19,7 +19,7 @@ export default function Input({
   isError,
   required,
   errors,
-  size = "large",
+  size,
   id,
   labelText,
   ...restProps
@@ -64,9 +64,11 @@ export default function Input({
           <ClearIcon />
         </div>
       )}
-      {errors && errors[name] && <span>{errors && errors[name]?.message}</span>}
-      {errors && errors[name] && errors[name]?.type === "required" && (
+      {/* {errors && errors[name] && } */}
+      {errors && errors[name] && errors[name]?.type === "required" ? (
         <span>{t("required_field")}</span>
+      ) : (
+        errors && errors[name] && <span>{errors && errors[name]?.message}</span>
       )}
     </div>
   );

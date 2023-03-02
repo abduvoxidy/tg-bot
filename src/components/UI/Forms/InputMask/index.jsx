@@ -14,7 +14,7 @@ export default function InputMask({
   control = {},
   required,
   disabled,
-  size = "large",
+  size,
   labelText,
   id,
   ...restProps
@@ -56,9 +56,14 @@ export default function InputMask({
         )}
       />
       {endAdorment && <div className={cls.endAdorment}>{endAdorment}</div>}
-      {errors && errors[name] && <span>{errors && errors[name]?.message}</span>}
+      {/* {errors && errors[name] && <span>{errors && errors[name]?.message}</span>}
       {errors && errors[name] && errors[name]?.type === "required" && (
         <span>{t("required_field")}</span>
+      )} */}
+      {errors && errors[name] && errors[name]?.type === "required" ? (
+        <span>{t("required_field")}</span>
+      ) : (
+        errors && errors[name] && <span>{errors && errors[name]?.message}</span>
       )}
     </div>
   );
