@@ -73,9 +73,9 @@ service:
   type: ClusterIP
   annotations: {}
   specs:
-    - port: 3003
+    - port: 3000
       targetPort: 3000
-      name: http
+      name: paragraf-frontend
 
 ingress:
   enabled: true
@@ -87,7 +87,7 @@ ingress:
       hosts:
         - host: "paragraf.u-code.io"
           path: /
-          servicePort: 3003
+          servicePort: 3000
       tls:
         - secretName: paragraf-app-tls
           hosts:
