@@ -1,7 +1,6 @@
 import React from "react";
 import cls from "./CartBox.module.scss";
 import Image from "next/image";
-import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import { InfoIcon, HeartIcon, CloseIcon } from "components/UI/Icons";
 import CartButton from "components/UI/Buttons/CartButton";
 import { useDispatch } from "react-redux";
@@ -13,6 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import { useRef } from "react";
 import { useStyles } from "./styles";
 import Link from "next/link";
+import { DeleteIcon } from "components/UI/Icons";
 
 function CartBox() {
   const classes = useStyles();
@@ -38,9 +38,7 @@ function CartBox() {
         <div className={cls.header}>
           <p className={cls.countTitle}>Всего: 5 товара</p>
           <div className={cls.clear}>
-            <span>
-              <DeleteForeverOutlinedIcon />
-            </span>
+            <DeleteIcon />
             <p className={cls.clearTitle}>Очистить корзину</p>
           </div>
         </div>

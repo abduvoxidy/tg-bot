@@ -22,7 +22,7 @@ const data = [
   },
 ];
 
-function Cards() {
+export function Cards() {
   const [cards, setCards] = useState(data);
   const [cardId, setCardId] = useState(null);
   const [open, setOpen] = useState(false);
@@ -99,5 +99,3 @@ function Cards() {
     </>
   );
 }
-
-export default Cards;
