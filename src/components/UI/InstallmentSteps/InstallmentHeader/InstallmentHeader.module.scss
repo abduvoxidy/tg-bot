@@ -1,0 +1,48 @@
+@import "styles/unit.scss";
+
+.header {
+  border-top: 1px solid #ededed;
+  z-index: 1000;
+  position: sticky;
+  top: rem(72);
+  width: 100%;
+  background: #fff;
+  .row {
+    display: flex;
+    column-gap: rem(40);
+    .step {
+      padding: rem(24) 0;
+      padding-right: rem(12);
+      border-bottom: 2px solid transparent;
+      display: flex;
+      column-gap: rem(12);
+      align-items: center;
+      p {
+        font-weight: 500;
+        font-size: rem(14);
+        line-height: rem(17);
+        color: #141a21;
+      }
+
+      .round {
+        border: 1px solid #ededed;
+        width: rem(32);
+        height: rem(32);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .activeRound {
+        border: 1px solid var(--primary-color);
+        background: var(--primary-color);
+        p {
+          color: #fff;
+        }
+      }
+    }
+    .activeStep {
+      border-bottom: 2px solid var(--primary-color);
+    }
+  }
+}

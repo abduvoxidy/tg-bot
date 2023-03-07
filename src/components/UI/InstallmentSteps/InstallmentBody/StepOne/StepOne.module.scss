@@ -1,0 +1,28 @@
+@import "styles/unit.scss";
+
+.stepOne {
+  max-width: rem(888);
+  .root {
+    display: flex;
+    flex-direction: column;
+    .tabs {
+      align-self: flex-end;
+      display: flex;
+      .tab {
+        transition: 0.3s all;
+        cursor: pointer;
+        padding-bottom: rem(8);
+        border-bottom: 2px solid transparent;
+      }
+      .activeTab {
+        border-bottom: 2px solid var(--primary-color);
+      }
+    }
+    .body {
+      margin-top: rem(18);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, rem(264)));
+      justify-content: space-between;
+    }
+  }
+}

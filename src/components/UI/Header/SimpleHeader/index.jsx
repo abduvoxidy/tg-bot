@@ -10,24 +10,22 @@ import Link from "next/link";
 
 export function SimpleHeader() {
   return (
-    <Headroom>
-      <header className={cls.header}>
-        <Container className={cls.container}>
-          <BackButton>Назад</BackButton>
-          <Link href="/">
-            <a>
-              <LogoIcon />
-            </a>
-          </Link>
-          <Link href="/user">
-            <a>
-              <SecondaryButton icon={<UserIcon />}>
-                Личный кабинет
-              </SecondaryButton>
-            </a>
-          </Link>
-        </Container>
-      </header>
-    </Headroom>
+    <header className={cls.header}>
+      <Container className={cls.container}>
+        <BackButton>Назад</BackButton>
+        <Link href="/">
+          <a>
+            <LogoIcon />
+          </a>
+        </Link>
+        <Link href="/user">
+          <a>
+            <SecondaryButton icon={<UserIcon />}>
+              Личный кабинет
+            </SecondaryButton>
+          </a>
+        </Link>
+      </Container>
+    </header>
   );
 }

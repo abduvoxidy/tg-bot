@@ -15,7 +15,7 @@ export default function Layout({ children }) {
   }, []);
   const router = useRouter();
   const onlyMain = ["/login"];
-  const simpleHeader = ["/checkout"];
+  const simpleHeader = ["/checkout", "/installment"];
 
   return (
     <div className={cls.wrapper}>
