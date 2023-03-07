@@ -1,0 +1,116 @@
+@import "styles/unit.scss";
+
+.modal {
+  width: 100%;
+  width: rem(789);
+  height: rem(673);
+  padding: rem(32);
+  display: flex;
+  flex-direction: column;
+  .initialFee {
+    margin-top: rem(38);
+    display: flex;
+    align-items: center;
+    column-gap: rem(10);
+    p {
+      font-weight: 600;
+      font-size: rem(16);
+      line-height: rem(19);
+      color: #1d1d1d;
+    }
+  }
+  .input {
+    margin: rem(22) 0 rem(40);
+    input {
+      border: 1px solid #9aa6ac;
+    }
+  }
+  .row {
+    margin-top: rem(16);
+    display: flex;
+    align-items: flex-end;
+    .title,
+    .subTitle {
+      font-weight: 500;
+      font-size: rem(24);
+      line-height: rem(29);
+      color: #3c464e;
+      white-space: nowrap;
+    }
+    .subTitle {
+      font-weight: 500;
+      font-size: rem(18);
+      line-height: rem(21);
+    }
+    .dashed {
+      margin: 0 rem(12);
+      width: 100%;
+      border-bottom: 1px dashed #bdbdbd;
+    }
+  }
+  .monthTitle {
+    font-weight: 600;
+    font-size: rem(16);
+    line-height: rem(19);
+    color: #1d1d1d;
+    margin-top: rem(40);
+  }
+  .months {
+    margin-top: rem(16);
+    display: flex;
+
+    padding: rem(2);
+    background: #f6f8f9;
+    overflow-x: scroll;
+    .month {
+      transition: 0.2s all;
+      cursor: pointer;
+      padding: rem(19);
+      border-radius: rem(8);
+      font-weight: 500;
+      font-size: rem(16);
+      line-height: rem(19);
+      color: #5b6871;
+      min-width: rem(60);
+      height: rem(60);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .active {
+      color: #fff;
+      background: #ff9910;
+      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.05);
+    }
+  }
+  .contact {
+    margin-top: rem(40);
+    width: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .phone {
+      display: flex;
+      align-items: center;
+      column-gap: rem(10);
+      svg {
+        margin-top: rem(4);
+      }
+    }
+    p,
+    a {
+      font-weight: 400;
+      font-size: rem(14);
+      line-height: rem(22);
+      color: #888888;
+    }
+    a {
+      margin-top: rem(8);
+      display: inline-block;
+      color: #ff9910;
+    }
+  }
+  .btn {
+    margin-top: auto;
+  }
+}

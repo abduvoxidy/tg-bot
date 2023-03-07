@@ -3,11 +3,11 @@ import cls from "./RightSide.module.scss";
 import FirstCard from "./FirstCard";
 import SecondCard from "./SecondCard";
 
-function RightSide() {
+function RightSide({ setOpen = () => {} }) {
   return (
     <div className={cls.root}>
       <FirstCard />
-      <SecondCard />
+      <SecondCard setOpen={setOpen} />
     </div>
   );
 }

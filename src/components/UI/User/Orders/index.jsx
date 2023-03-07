@@ -40,8 +40,9 @@ export function Orders() {
           <LeftSidebar />
           <div className={cls.rightSide}>
             <div className={cls.tabs}>
-              {tabs.map((el) => (
+              {tabs.map((el, i) => (
                 <div
+                  key={i}
                   onClick={() => {
                     setTabValue(el.value);
                   }}

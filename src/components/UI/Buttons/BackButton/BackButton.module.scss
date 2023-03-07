@@ -6,10 +6,17 @@
   background: transparent;
   display: flex;
   align-items: center;
+  svg {
+    width: rem(32);
+  }
   .text {
     font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: rem(18);
+    line-height: rem(18);
     color: #5b6871;
+    // font-weight: 600;
+    // font-size: rem(14);
+    // line-height: 17px;
+    // color: #66686c;
   }
 }

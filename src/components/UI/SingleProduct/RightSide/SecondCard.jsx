@@ -3,7 +3,7 @@ import cls from "./RightSide.module.scss";
 import { QuestionIcon } from "components/UI/Icons";
 import SecondaryButton from "components/UI/Buttons/SecondaryButton";
 
-function SecondCard() {
+function SecondCard({ setOpen }) {
   const [isActive, setIsActive] = useState(false);
   const months = [3, 6, 9, 12];
   return (
@@ -35,7 +35,13 @@ function SecondCard() {
         <p className={cls.label}>Общая сумма:</p>
         <h2>100 911 000 сум</h2>
       </div>
-      <SecondaryButton fullWidth className={cls.btn}>
+      <SecondaryButton
+        onClick={() => {
+          setOpen(true);
+        }}
+        fullWidth
+        className={cls.btn}
+      >
         Купить в рассрочку
       </SecondaryButton>
     </div>

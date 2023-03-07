@@ -64,7 +64,6 @@ export default function Input({
           <ClearIcon />
         </div>
       )}
-      {/* {errors && errors[name] && } */}
       {errors && errors[name] && errors[name]?.type === "required" ? (
         <span>{t("required_field")}</span>
       ) : (

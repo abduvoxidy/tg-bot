@@ -1,0 +1,123 @@
+@import "styles/unit.scss";
+.main {
+  padding: rem(32) 0 rem(100);
+  .header {
+    padding: rem(24);
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: rem(12);
+    .left {
+      h2 {
+        font-weight: 600;
+        font-size: rem(28);
+        line-height: rem(35);
+      }
+      p {
+        margin-top: rem(4);
+        font-size: rem(17);
+        line-height: rem(22);
+        color: #5b6871;
+      }
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      div {
+        width: rem(17);
+        height: rem(4);
+        background: #d9d9d9;
+        border-radius: rem(2);
+        margin: 0 rem(4);
+      }
+    }
+  }
+  .card {
+    margin-top: rem(24);
+    width: rem(546);
+    background-color: #fff;
+    padding: rem(24);
+    border-radius: rem(12);
+    .title {
+      font-weight: 600;
+      font-size: rem(20);
+      line-height: rem(25);
+    }
+    address {
+      box-shadow: inset 0px -1px 0px #e5e9eb;
+      display: block;
+      font-style: normal;
+      padding-bottom: rem(16);
+      margin-top: rem(24);
+      p {
+        font-weight: 400;
+        font-size: rem(17);
+        line-height: rem(22);
+        color: #5b6871;
+        &:last-child {
+          margin-top: rem(8);
+          color: #000000;
+        }
+      }
+    }
+    .productOptions {
+      box-shadow: inset 0px -1px 0px #e5e9eb;
+      display: grid;
+      column-gap: rem(16);
+      grid-template-columns: rem(96) 1fr 1fr;
+      .option {
+        padding: rem(16) 0;
+        display: flex;
+        flex-direction: column;
+        gap: rem(12);
+        p {
+          font-weight: 500;
+          font-size: rem(18);
+          line-height: rem(24);
+        }
+        .value {
+          font-weight: 400;
+          font-size: rem(16);
+        }
+        h3 {
+          font-weight: 600;
+          font-size: rem(16);
+          line-height: rem(24);
+        }
+      }
+    }
+    .aboutPrice {
+      box-shadow: inset 0px -1px 0px #e5e9eb;
+      padding: rem(16) 0;
+      .priceTitle {
+        font-weight: 600;
+        font-size: rem(17);
+        line-height: rem(22);
+      }
+      .row {
+        margin-top: rem(12);
+        display: flex;
+        justify-content: space-between;
+        p {
+          font-weight: 400;
+          font-size: rem(17);
+          line-height: rem(22);
+        }
+      }
+    }
+    .allPrice {
+      margin-top: rem(14);
+      display: flex;
+      justify-content: space-between;
+      p {
+        font-weight: 600;
+        font-size: rem(20);
+        line-height: rem(25);
+      }
+    }
+    .btn {
+      height: rem(56);
+      margin-top: rem(24);
+    }
+  }
+}

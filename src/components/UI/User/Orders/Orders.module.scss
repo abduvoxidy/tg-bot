@@ -44,6 +44,7 @@
         flex-direction: column;
         gap: rem(24);
         .product {
+          cursor: pointer;
           padding: rem(24);
           background: #fff;
           border: 1px solid #f0f0f0;
@@ -71,8 +72,11 @@
             }
           }
           .info {
-            display: none;
-            transition: all 2s;
+            transition: all 1s ease-out;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            display: flex;
             padding: rem(16) 0 0;
             // display: flex;
             justify-content: space-between;
@@ -99,7 +103,9 @@
             }
           }
           .activeInfo {
-            display: flex;
+            // display: flex;
+            opacity: 1;
+            height: auto;
           }
           .bottom {
             margin-top: rem(12);
@@ -124,13 +130,38 @@
               }
             }
             .showMore {
+              cursor: pointer;
               font-weight: 400;
               font-size: rem(16);
               line-height: rem(24);
               display: flex;
               align-items: center;
               column-gap: rem(12);
+              svg {
+                transition: 0.3s all;
+                margin-bottom: rem(2);
+              }
+              svg path {
+                stroke: #0d0d0d;
+              }
+              .activeMore {
+                svg {
+                  transform: rotate(-180deg);
+                }
+              }
             }
+          }
+        }
+        .emptyBox {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: rem(100) 0;
+          h3 {
+            font-weight: 600;
+            font-size: rem(20);
+            line-height: rem(24);
           }
         }
       }

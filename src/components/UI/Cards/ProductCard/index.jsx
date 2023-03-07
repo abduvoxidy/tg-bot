@@ -22,6 +22,7 @@ function ProductCard({ img, zIndex = 0 }) {
   const [value, setValue] = useState(2);
   const [isActive, setIsActive] = useState(false);
   const types = ["128GB", "256GB", "512GB", "512GB", "..."];
+  // zIndex is working after hover product
 
   return (
     <div
@@ -78,9 +79,14 @@ function ProductCard({ img, zIndex = 0 }) {
         <p className={cls.price}>120 650 000 сум</p>
       </div>
       <div className={`${cls.bottom} ${isActive ? cls.bottomActive : ""}`}>
-        <MainButton size="small" className={cls.basketBtn}>
-          В корзину
-        </MainButton>
+        <Link href="/cart">
+          <a>
+            <MainButton size="small" className={cls.basketBtn}>
+              В корзину
+            </MainButton>
+          </a>
+        </Link>
+
         <div className={cls.types}>
           {types.map((el, index) => (
             <p key={el + index}>{el}</p>

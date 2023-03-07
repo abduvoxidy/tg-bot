@@ -1,1 +1,28 @@
 @import "styles/unit.scss";
+
+.dialog {
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: rem(24);
+  .close {
+    position: absolute;
+    right: rem(25);
+    top: rem(17);
+    cursor: pointer;
+    svg {
+      width: rem(25);
+      height: rem(25);
+    }
+  }
+  .body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-weight: 500;
+      font-size: rem(26);
+      line-height: rem(20);
+    }
+  }
+}

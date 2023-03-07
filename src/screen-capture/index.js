@@ -13,9 +13,7 @@ import styles from "./style.module.scss";
 import html2canvas from "html2canvas";
 import CanvasDraw from "@win11react/react-canvas-draw";
 import classNames from "classnames";
-import dynamic from "next/dynamic";
-// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
-// import 'react-quill/dist/quill.snow.css'
+
 import {
   createSubtask,
   createSubtaskFile,

@@ -1,9 +1,9 @@
 import { Controller } from "react-hook-form";
 import useTranslation from "next-translate/useTranslation";
-import cls from "./InputMask.module.scss";
-import InputMaskCopy from "react-input-mask";
+import cls from "./InputPrice.module.scss";
+import { NumericFormat } from "react-number-format";
 
-export default function InputMask({
+export default function InputPrice({
   placeholder,
   startAdornment,
   endAdornment,
@@ -16,7 +16,9 @@ export default function InputMask({
   disabled,
   size,
   labelText,
+  defaultValue,
   id,
+  customOnChange = () => {},
   ...restProps
 }) {
   const { t } = useTranslation("common");
@@ -34,27 +36,38 @@ export default function InputMask({
       <Controller
         control={control}
         name={name}
+        defaultValue={defaultValue}
         rules={{ required }}
-        render={({ field }) => (
-          <InputMaskCopy
-            mask="99/99"
-            maskChar=""
-            value={field.value}
-            onChange={field.onChange}
-            placeholder={placeholder}
-            disabled={disabled}
-            id={id}
-            className={`${cls.input} ${
-              startAdornment ? cls.withStartAdornment : ""
-            } ${endAdorment ? cls.withEndAdornment : ""} 
+        render={({ field: { value, onChange, name } }) => {
+          return (
+            <>
+              <NumericFormat
+                thousandsGroupStyle="thousand"
+                thousandSeparator=" "
+                decimalSeparator="."
+                displayType="input"
+                autoComplete="off"
+                allowNegative={false}
+                name={name}
+                id={id}
+                onChange={(e) => {
+                  onChange(e.target.value);
+                  customOnChange(e);
+                }}
+                className={`${cls.input} ${
+                  startAdornment ? cls.withStartAdornment : ""
+                } ${endAdorment ? cls.withEndAdornment : ""} 
               ${errors[name] ? cls.error : ""}
               ${disabled ? cls.disabled : ""}
               ${cls[size]}
               `}
-            {...restProps}
-          />
-        )}
+                {...restProps}
+              />
+            </>
+          );
+        }}
       />
+
       {endAdorment && <div className={cls.endAdorment}>{endAdorment}</div>}
       {errors && errors[name] && errors[name]?.type === "required" ? (
         <span>{t("required_field")}</span>

@@ -97,20 +97,6 @@ export default function CSelect({
         }}
       />
       {errors?.[name]?.message && <span>{errors?.[name]?.message}</span>}
-
-      {/* {required && (
-        <input
-          tabIndex={-1}
-          autoComplete="off"
-          style={{
-            opacity: 0,
-            height: 0,
-            position: "absolute",
-          }}
-          value={value}
-          required={required}
-        />
-      )} */}
     </>
   );
 }

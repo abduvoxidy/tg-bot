@@ -4,7 +4,9 @@
   top: 0;
   position: sticky;
   background: var(--white-color);
-  height: rem(90);
+  height: rem(72);
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
   .container {
     height: 100%;
     display: flex;
