@@ -7,6 +7,8 @@
   top: rem(72);
   width: 100%;
   background: #fff;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
   .row {
     display: flex;
     column-gap: rem(40);

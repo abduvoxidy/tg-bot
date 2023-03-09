@@ -1,1 +1,49 @@
 @import "styles/unit.scss";
+
+.stepThree {
+  max-width: rem(840);
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+    .contact {
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      padding: rem(30) rem(16) rem(20);
+      border-color: #f0f0f0;
+      border-radius: rem(8);
+      .firstRow {
+        display: flex;
+        justify-content: space-between;
+        select {
+          height: rem(28);
+          min-width: rem(91);
+          padding-left: rem(10);
+          background: #f1f1f1;
+          border-radius: 4px;
+          &:focus {
+            border: 1px solid var(--primary-color);
+            outline: none;
+          }
+        }
+        h3 {
+          font-weight: 600;
+          font-size: rem(23);
+          line-height: rem(24);
+          letter-spacing: -0.014em;
+        }
+      }
+      .secondRow {
+        margin-top: rem(32);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: rem(32);
+      }
+    }
+  }
+}

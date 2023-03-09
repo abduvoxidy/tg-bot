@@ -37,6 +37,7 @@ export default function DatePicker({
     lineHeight: "24px",
     marginBottom: "4px",
     color: " #5C5C5C",
+    display: "block",
   };
   return (
     <div className="mui-datepicker-mobile">

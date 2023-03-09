@@ -6,7 +6,7 @@ import MainButton from "components/UI/Buttons/MainButton";
 import InputMask from "components/UI/Forms/InputMask";
 import { CloseIcon } from "components/UI/Icons";
 import cls from "./AddCard.module.scss";
-import { useStyles } from "../styles";
+import { useStyles } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import * as yup from "yup";
@@ -14,7 +14,7 @@ import * as yup from "yup";
 import useCodeExpire from "hooks/useCodeExpire";
 import formatCodeExpireDuration from "utils/formatCodeExpireDuration";
 import { cardValidation } from "utils/validation";
-import SuccessFullyAdded from "../SuccessFullyAdded";
+import SuccessFullyAdded from "./SuccessFullyAdded";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} timeout={560} {...props} />;
@@ -88,7 +88,6 @@ export default function AddCard({ open, setOpen, refetch }) {
   });
 
   const onSubmit = (data) => {
-    // Mixpanel.track("Continue_Add_Card");
     // createMutation.mutate({
     //   card_expire_date: data.card_expire_date,
     //   card_num: data.card_num,

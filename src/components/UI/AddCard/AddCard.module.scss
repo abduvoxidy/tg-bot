@@ -49,3 +49,34 @@
     cursor: pointer;
   }
 }
+
+.success {
+  text-align: center;
+  width: 100%;
+  max-width: rem(466);
+  padding: rem(24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    max-width: rem(315);
+    font-weight: 600;
+    font-size: rem(28);
+    line-height: rem(35);
+  }
+  span {
+    margin-top: rem(24);
+  }
+  .text {
+    margin-top: rem(24);
+    font-weight: 400;
+    font-size: rem(17);
+    line-height: rem(22);
+    color: #5b6871;
+  }
+  .btn {
+    margin-top: rem(24);
+    height: rem(44);
+    border-radius: rem(12);
+  }
+}

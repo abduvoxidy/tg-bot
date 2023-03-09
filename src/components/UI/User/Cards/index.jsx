@@ -5,7 +5,7 @@ import { Container } from "@mui/material";
 import MainButton from "components/UI/Buttons/MainButton";
 import { PaymentCardIcon, DeleteIcon, PlusIcon } from "components/UI/Icons";
 import DeleteCardConfirmModal from "./DeleteCardConfirmModal";
-import AddCard from "./AddCard";
+import AddCard from "components/UI/AddCard";
 
 const data = [
   {

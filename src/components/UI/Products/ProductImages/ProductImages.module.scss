@@ -10,7 +10,7 @@
   .row {
     margin-top: rem(32);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(rem(190), 1fr));
     gap: rem(24);
   }
 }

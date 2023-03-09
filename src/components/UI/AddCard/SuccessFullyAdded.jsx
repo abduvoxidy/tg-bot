@@ -1,6 +1,6 @@
 import React from "react";
 import { SuccessFullyAddedIcon } from "components/UI/Icons";
-import cls from "./Cards.module.scss";
+import cls from "./AddCard.module.scss";
 import MainButton from "components/UI/Buttons/MainButton";
 
 function SuccessFullyAdded({ handleClose }) {

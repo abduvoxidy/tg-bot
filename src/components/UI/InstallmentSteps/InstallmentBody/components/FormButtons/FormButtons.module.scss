@@ -1,0 +1,20 @@
+@import "styles/unit.scss";
+
+.formBtns {
+  align-self: flex-end;
+  display: flex;
+  column-gap: rem(16);
+  .btn,
+  .firstBtn {
+    margin-top: rem(40);
+    min-width: rem(167);
+    justify-content: center;
+    font-size: rem(16);
+    line-height: rem(24);
+  }
+  .firstBtn {
+    color: #0d0d0d;
+    background-color: #fff;
+    border: 1px solid #cdcdcd;
+  }
+}

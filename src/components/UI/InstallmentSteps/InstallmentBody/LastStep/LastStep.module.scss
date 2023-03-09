@@ -1,0 +1,104 @@
+@import "styles/unit.scss";
+
+.lastStep {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  .header {
+    padding: rem(24);
+    display: flex;
+    justify-content: space-between;
+    box-shadow: inset 0px -1px 0px #e5e9eb;
+    .left {
+      h2 {
+        font-weight: 700;
+        font-size: rem(24);
+        line-height: rem(24);
+      }
+      p {
+        font-weight: 600;
+        font-size: rem(14);
+        line-height: rem(24);
+        color: #5b6871;
+      }
+    }
+    .right {
+      .price {
+        font-weight: 700;
+        font-size: rem(24);
+        line-height: rem(40);
+        color: #00b427;
+      }
+      .date {
+        margin-top: rem(12);
+        font-weight: 500;
+        font-size: rem(18);
+        line-height: rem(24);
+        color: #141a21;
+      }
+    }
+  }
+  .installmentData {
+    box-shadow: inset 0px -1px 0px #e5e9eb;
+
+    h2 {
+      padding: rem(20) rem(24);
+      font-weight: 700;
+      font-size: rem(24);
+      line-height: rem(32);
+    }
+  }
+  .accordian {
+    .row {
+      padding-right: rem(16);
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .title {
+        font-weight: 500;
+        font-size: rem(20);
+        line-height: rem(28);
+      }
+      .more {
+        margin-top: rem(7);
+        font-weight: 400;
+        font-size: rem(14);
+        line-height: rem(16);
+        color: #0e73f6;
+      }
+    }
+    .content {
+      margin-top: rem(14);
+      width: rem(500);
+      display: flex;
+      justify-content: space-between;
+      .name {
+        font-weight: 600;
+        font-size: rem(14);
+        line-height: rem(21);
+        color: #222222;
+      }
+      .value {
+        font-size: rem(14);
+        line-height: rem(21);
+        font-weight: 400;
+        color: #303940;
+      }
+    }
+
+    // .content {
+    //   font-size: rem(18);
+    //   line-height: rem(24);
+    //   font-weight: 500;
+    //   a {
+    //     color: var(--primary-color);
+    //   }
+    // }
+  }
+  .sendBtn {
+    align-self: flex-end;
+    width: rem(264);
+    justify-content: center;
+    margin: rem(32) rem(24);
+  }
+}

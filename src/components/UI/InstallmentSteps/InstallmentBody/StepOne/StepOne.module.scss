@@ -2,12 +2,13 @@
 
 .stepOne {
   max-width: rem(888);
-  .root {
+  .form {
     display: flex;
     flex-direction: column;
     .tabs {
       align-self: flex-end;
       display: flex;
+      column-gap: rem(10);
       .tab {
         transition: 0.3s all;
         cursor: pointer;
@@ -23,6 +24,10 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, rem(264)));
       justify-content: space-between;
+    }
+    .idCard {
+      justify-content: center;
+      grid-template-columns: repeat(1, minmax(0, rem(264)));
     }
   }
 }

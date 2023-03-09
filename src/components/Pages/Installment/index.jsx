@@ -8,7 +8,7 @@ function Installment() {
   const [activeStep, setActiveStep] = useState(1);
   return (
     <>
-      <InstallmentHeader activeStep={activeStep} />
+      {activeStep < 5 && <InstallmentHeader activeStep={activeStep} />}
       <main className={cls.main}>
         <InstallmentBody
           activeStep={activeStep}

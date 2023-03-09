@@ -6,12 +6,14 @@ import { useForm } from "react-hook-form";
 import InputPrice from "../Forms/InputPrice";
 import { PhoneIcon } from "../Icons";
 import MainButton from "../Buttons/MainButton";
+import { useRouter } from "next/router";
 
 const months = [3, 4, 5, 6, 8, 9, 10, 11, 12, 18, 24, 36];
 
 function InstallmentCalculator({ open, setOpen }) {
   const [activeItem, setActiveItem] = useState(months[0]);
   const [checked, setChecked] = useState(true);
+  const router = useRouter();
 
   const {
     handleSubmit,
@@ -84,7 +86,13 @@ function InstallmentCalculator({ open, setOpen }) {
           <a href="tel:+998 78 777 20 20">+998 78 777 20 20</a>
         </div>
       </div>
-      <MainButton onClick={() => setOpen(false)} fullWidth className={cls.btn}>
+      <MainButton
+        onClick={() => {
+          router.push("/installment");
+        }}
+        fullWidth
+        className={cls.btn}
+      >
         Оформить в рассрочку
       </MainButton>
     </MainDialog>
