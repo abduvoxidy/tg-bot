@@ -18,7 +18,7 @@ const StyledRating = styled(Rating)({
   },
 });
 
-function ProductCard({ img, zIndex = 0 }) {
+function ProductCard({ img = "adidas.png", zIndex = 0 }) {
   const [value, setValue] = useState(2);
   const [isActive, setIsActive] = useState(false);
   const types = ["128GB", "256GB", "512GB", "512GB", "..."];

@@ -1,0 +1,47 @@
+@import "styles/unit.scss";
+
+.main {
+  padding: rem(32) 0 rem(158);
+  h1 {
+    font-weight: 700;
+    font-size: rem(40);
+    line-height: rem(48);
+    color: #303940;
+    margin-bottom: rem(32);
+  }
+  .box {
+    display: grid;
+    grid-template-columns: rem(300) auto;
+    align-items: start;
+    column-gap: rem(25);
+    .rightSide {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: rem(24);
+      .emptyWrapper {
+        width: 100%;
+        margin-top: rem(100);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .empty {
+        max-width: rem(700);
+        text-align: center;
+
+        h3 {
+          font-weight: 600;
+          font-size: rem(20);
+          line-height: rem(24);
+          color: #0d0d0d;
+        }
+        .emptyText {
+          font-weight: 500;
+          font-size: rem(20);
+          line-height: rem(24);
+          color: #0d0d0d;
+        }
+      }
+    }
+  }
+}
