@@ -1,5 +1,5 @@
 import React from "react";
-import cls from "../Brands.module.scss";
+import cls from "../PopularBrands.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 

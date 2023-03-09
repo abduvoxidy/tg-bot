@@ -1,9 +1,9 @@
 import React from "react";
-import cls from "./Brands.module.scss";
+import cls from "./PopularBrands.module.scss";
 import Card from "./Card";
 import { Container } from "@mui/material";
 
-function Brands() {
+function PopularBrands() {
   const brands = [
     {
       url: "samsung.png",
@@ -56,4 +56,4 @@ function Brands() {
   );
 }
 
-export default Brands;
+export default PopularBrands;

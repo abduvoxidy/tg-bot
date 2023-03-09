@@ -1,9 +1,9 @@
 import cls from "./Banner.module.scss";
 import Image from "next/image";
-import { SampleNextArrow, SamplePrevArrow } from "../Arrows";
+import { SampleNextArrow, SamplePrevArrow } from "../../Arrows";
 import Slider from "react-slick";
 import { Container } from "@mui/material";
-import MainButton from "../Buttons/MainButton";
+import MainButton from "../../Buttons/MainButton";
 
 export default function Banner() {
   return (

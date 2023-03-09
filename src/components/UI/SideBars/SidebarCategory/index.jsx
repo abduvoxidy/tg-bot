@@ -1,19 +1,19 @@
 import React from "react";
 import cls from "./SidebarCategory.module.scss";
-import Input from "../Forms/Input";
+import Input from "../../Forms/Input";
 import Slider from "@mui/material/Slider";
 import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import CustomSlider from "./styles";
-import Checkbox from "../Forms/Checkbox";
-import RadioColor from "../Forms/RadioColor";
+import Checkbox from "../../Forms/Checkbox";
+import RadioColor from "../../Forms/RadioColor";
 import {
   FormControl,
   FormControlLabel,
   FormLabel,
   RadioGroup,
 } from "@mui/material";
-import SecondaryButton from "../Buttons/SecondaryButton";
+import SecondaryButton from "../../Buttons/SecondaryButton";
 
 function SidebarCategory() {
   const [value, setValue] = useState([200000, 1000000]);

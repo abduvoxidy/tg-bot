@@ -1,6 +1,6 @@
 import React from "react";
 import cls from "./CatalogBanner.module.scss";
-import MainButton from "../Buttons/MainButton";
+import MainButton from "../../Buttons/MainButton";
 import Image from "next/image";
 
 function CatalogBanner() {

@@ -1,11 +1,11 @@
 import React from "react";
-import Banner from "components/UI/Banner";
+import Banner from "components/UI/Banners/Banner";
 import cls from "./styles.module.scss";
-import BannerImg from "components/UI/BannerImg";
+import BannerImg from "components/UI/Banners/BannerImg";
 import ProductImages from "components/UI/Products/ProductImages";
 import { installments, cars, appliances } from "./data";
 import News from "components/UI/News";
-import Brands from "components/UI/Brands";
+import PopularBrands from "components/UI/PopularBrands";
 import ProductList from "components/UI/Products/ProductList";
 
 function Home() {
@@ -29,7 +29,7 @@ function Home() {
         title="Бытовая техника в рассрочку"
       />
       <News />
-      <Brands />
+      <PopularBrands />
       <ProductList />
     </main>
   );
