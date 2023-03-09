@@ -5,7 +5,7 @@ import Link from "next/link";
 
 function ProductImgCard({ data }) {
   return (
-    <Link href="/">
+    <Link href="/catalog/list">
       <a>
         <div className={cls.card}>
           <div className={cls.img}>

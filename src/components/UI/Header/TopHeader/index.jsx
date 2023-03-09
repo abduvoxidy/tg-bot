@@ -4,27 +4,34 @@ import Link from "next/link";
 import { LocationIcon } from "components/UI/Icons";
 import { Container } from "@mui/material";
 
+const links = [
+  {
+    name: "О нас",
+    url: "/about",
+  },
+  {
+    name: "Контакты",
+    url: "/contact",
+  },
+  {
+    name: "Доставка",
+    url: "/delivery",
+  },
+];
+
 function TopHeader() {
   return (
     <Container>
       <div className={cls.topHeader}>
         <nav>
           <ul className={cls.navMenu}>
-            <li>
-              <Link href="/">
-                <a className={cls.navLink}>О нас</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a className={cls.navLink}>Контакты</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a className={cls.navLink}>Доставка</a>
-              </Link>
-            </li>
+            {links.map((el) => (
+              <li key={el.name}>
+                <Link href={el.url}>
+                  <a className={cls.navLink}> {el.name}</a>
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className={cls.right}>

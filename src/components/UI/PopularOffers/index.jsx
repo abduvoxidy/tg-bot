@@ -5,19 +5,10 @@ import { SampleNextArrow, SamplePrevArrow } from "components/UI/Arrows";
 import Card from "./Card";
 import Link from "next/link";
 import ProductCard from "../Cards/ProductCard";
+import CategoryList from "../CategoryList";
 
 function PopularOffers({ title }) {
   const images = ["car.png", "chip.png", "cleaner.png", "iron.png"];
-  const categories = [
-    "смартфоны samsung",
-    "смартфоны xiaomi",
-    "iphone",
-    "телефон",
-    "смартфоны realme",
-    "смартфоны poco",
-    "смартфоны oppo",
-  ];
-
   const productImages = [
     "car.png",
     "chip.png",
@@ -50,15 +41,7 @@ function PopularOffers({ title }) {
           </div>
         ))}
       </Slider>
-      <div className={cls.categories}>
-        {categories.map((el, index) => (
-          <Link href="/" key={index}>
-            <a>
-              <div className={cls.categoryItem}>{el}</div>
-            </a>
-          </Link>
-        ))}
-      </div>
+      <CategoryList />
       <div className={cls.row}>
         {productImages.map((el, index) => (
           <ProductCard

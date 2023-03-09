@@ -1,0 +1,15 @@
+@import "styles/unit.scss";
+.categories {
+  margin-top: rem(24);
+  display: flex;
+  column-gap: rem(16);
+  flex-wrap: wrap;
+  .categoryItem {
+    background-color: var(--white-color);
+    gap: rem(14);
+    padding: rem(7) rem(11);
+    border-radius: rem(16);
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

@@ -15,19 +15,6 @@
   .slideItem {
     padding: 0 rem(12);
   }
-  .categories {
-    margin-top: rem(24);
-    display: flex;
-    justify-content: space-between;
-    .categoryItem {
-      background-color: var(--white-color);
-      gap: rem(14);
-      padding: rem(7) rem(11);
-      border-radius: rem(16);
-      font-size: 14px;
-      line-height: 17px;
-    }
-  }
   .row {
     margin-top: rem(24);
     display: grid;

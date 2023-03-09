@@ -4,33 +4,40 @@ import cls from "./styles.module.scss";
 import BannerImg from "components/UI/Banners/BannerImg";
 import ProductImages from "components/UI/Products/ProductImages";
 import { installments, cars, appliances } from "./data";
-import News from "components/UI/News";
+import NewsList from "components/UI/NewsList";
 import PopularBrands from "components/UI/PopularBrands";
 import ProductList from "components/UI/Products/ProductList";
+import { Container } from "@mui/material";
 
 function Home() {
   return (
     <main className={cls.main}>
-      <Banner />
-      <ProductImages
-        products={installments}
-        productKey="installment"
-        title="Смартфоны в рассрочку"
-      />
+      <Container>
+        <Banner />
+        <ProductImages
+          products={installments}
+          productKey="installment"
+          title="Смартфоны в рассрочку"
+        />
 
-      <BannerImg />
+        <BannerImg />
 
-      <ProductImages products={cars} productKey="cars" title="Электромобилы" />
-      <ProductList />
-      <BannerImg className={cls.banner} />
-      <ProductImages
-        products={appliances}
-        productKey="appliances"
-        title="Бытовая техника в рассрочку"
-      />
-      <News />
-      <PopularBrands />
-      <ProductList />
+        <ProductImages
+          products={cars}
+          productKey="cars"
+          title="Электромобилы"
+        />
+        <ProductList />
+        <BannerImg className={cls.banner} />
+        <ProductImages
+          products={appliances}
+          productKey="appliances"
+          title="Бытовая техника в рассрочку"
+        />
+        <NewsList />
+        <PopularBrands />
+        <ProductList />
+      </Container>
     </main>
   );
 }

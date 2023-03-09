@@ -7,15 +7,8 @@
     background: var(--white-color);
     border-radius: rem(15);
     overflow: hidden;
-    .img {
-      height: 100%;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
     .box {
       height: 100%;
-      // padding: rem(53) rem(46);
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: rem(10);

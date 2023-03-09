@@ -1,10 +1,10 @@
 import React from "react";
 import cls from "./BreadCrumbs.module.scss";
 
-function BreadCrumbs() {
+function BreadCrumbs({ title = "Главная / Электроника" }) {
   return (
     <div className={cls.root}>
-      <p className={cls.breadcrumb}>Главная / Электроника</p>
+      <p className={cls.breadcrumb}>{title}</p>
     </div>
   );
 }

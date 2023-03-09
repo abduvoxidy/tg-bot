@@ -1,5 +1,5 @@
 import React from "react";
-import cls from "../News.module.scss";
+import cls from "../NewsList.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 

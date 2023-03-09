@@ -12,7 +12,7 @@ function RadioPayment({
       <input type="radio" checked={checked} {...restProps} />
       <div className={cls.left}>
         <div className={cls.imgWrapper}>
-          <img className={cls.img} src={`/icons/${imgSrc}`} alt="" />
+          <img className={cls.img} src={`/icons/${imgSrc}`} alt="imgSrc" />
         </div>
         <p className={cls.label}>{labelText}</p>
       </div>

@@ -3,15 +3,37 @@ import cls from "./BottomHeader.module.scss";
 import { Container } from "@mui/material";
 import Link from "next/link";
 
+const links = [
+  {
+    name: "Смартфоны",
+    url: "/",
+  },
+  {
+    name: "Кроссовки",
+    url: "/",
+  },
+  {
+    name: "Акции",
+    url: "/",
+  },
+  {
+    name: "Новости",
+    url: "/news",
+  },
+  {
+    name: "Бренды",
+    url: "/brand",
+  },
+];
+
 function BottomHeader() {
-  const links = ["Смартфоны", "Кроссовки", "Акции", "Новости"];
   return (
     <div className={cls.bottomHeader}>
       <Container>
         <div className={cls.box}>
           {links.map((el, i) => (
-            <Link key={el + i} href="/">
-              <a>{el}</a>
+            <Link key={el.name} href={el.url}>
+              <a>{el.name}</a>
             </Link>
           ))}
         </div>

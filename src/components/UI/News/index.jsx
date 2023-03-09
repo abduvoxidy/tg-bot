@@ -1,35 +1,32 @@
 import React from "react";
 import cls from "./News.module.scss";
+import BreadCrumbs from "../BreadCrumbs";
 import { Container } from "@mui/material";
-import Card from "./Card";
+import Image from "next/image";
+import LastNews from "./LastNews";
+import MoreNews from "./MoreNews";
+import { lastNews, moreNews } from "./data";
+import TextContent from "../TextContent";
 
-function News() {
-  const news = [
-    {
-      url: "iwatch.png",
-      name: "Apple Watch получат неинвазивный глюкометр",
-    },
-    {
-      url: "chip.png",
-      name: "Windows 10 станет возможным запускать на Apple M1 Mac",
-    },
-    {
-      url: "airpods.png",
-      name: "AirPods – Стоит ли покупать AirPods 1 в 2021 году?",
-    },
-  ];
+export function News() {
   return (
-    <div className={cls.root}>
+    <main className={cls.main}>
       <Container>
-        <h1>Новости</h1>
-        <div className={cls.row}>
-          {news.map((el, index) => (
-            <Card data={el} key={index + "news"} />
-          ))}
+        <BreadCrumbs title="Главная / Новости" />
+        <h1 className={cls.title}>Новости</h1>
+        <div className={cls.bannerImg}>
+          <Image
+            src="/images/news/banner.jpg"
+            objectFit="cover"
+            layout="fill"
+            loading="lazy"
+          />
         </div>
+
+        <LastNews news={lastNews} />
+        <MoreNews news={moreNews} />
+        <TextContent />
       </Container>
-    </div>
+    </main>
   );
 }
-
-export default News;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "@mui/material";
-import cls from "./styles.module.scss";
+import cls from "./Cart.module.scss";
 import ProductSimilar from "components/UI/Products/ProductSimilar";
 import CartBox from "components/UI/Cart/CartBox";
 

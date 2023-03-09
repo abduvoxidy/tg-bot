@@ -44,14 +44,12 @@ function PopularBrands() {
   ];
   return (
     <div className={cls.root}>
-      <Container>
-        <h1>Популярные бренды</h1>
-        <div className={cls.row}>
-          {brands.map((el, index) => (
-            <Card data={el} key={index + "brands"} />
-          ))}
-        </div>
-      </Container>
+      <h1>Популярные бренды</h1>
+      <div className={cls.row}>
+        {brands.map((el, index) => (
+          <Card data={el} key={index + "brands"} />
+        ))}
+      </div>
     </div>
   );
 }

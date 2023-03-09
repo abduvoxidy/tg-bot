@@ -6,16 +6,14 @@ import Image from "next/image";
 function BannerImg({ className }) {
   return (
     <div className={`${cls.root} ${className}`}>
-      <Container>
-        <div className={cls.banner}>
-          <Image
-            src="/images/main/banner.png"
-            objectFit="cover"
-            layout="fill"
-            alt="banner"
-          />
-        </div>
-      </Container>
+      <div className={cls.banner}>
+        <Image
+          src="/images/main/banner.png"
+          objectFit="cover"
+          layout="fill"
+          alt="banner"
+        />
+      </div>
     </div>
   );
 }

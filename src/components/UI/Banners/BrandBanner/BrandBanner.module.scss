@@ -1,0 +1,62 @@
+@import "styles/unit.scss";
+
+.brandBanner {
+  width: 100%;
+  height: rem(336);
+  background: var(--white-color);
+  border-radius: rem(15);
+  overflow: hidden;
+  .img {
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .box {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: rem(10);
+    .left {
+      display: flex;
+      flex-direction: column;
+      padding: rem(53) rem(46);
+      .title {
+        font-weight: 700;
+        font-size: rem(48);
+        line-height: rem(58);
+      }
+      .text {
+        margin-top: rem(16);
+        font-weight: 400;
+        font-size: rem(16);
+        line-height: rem(26);
+      }
+    }
+    .right {
+      position: relative;
+      .first_img {
+        position: absolute;
+        left: rem(50);
+        bottom: 0;
+        width: 150px;
+        height: 273px;
+      }
+      .second_img {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 342px;
+        height: 308px;
+      }
+      .third_img {
+        position: absolute;
+        right: rem(100);
+        bottom: 0;
+        width: 150px;
+        height: 273px;
+      }
+    }
+  }
+}
