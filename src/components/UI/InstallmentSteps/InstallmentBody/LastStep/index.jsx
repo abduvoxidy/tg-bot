@@ -101,8 +101,8 @@ function LastStep() {
               </AccordionSummary>
               <AccordionDetails>
                 {Array.isArray(elm.content)
-                  ? elm.content.map((el) => (
-                      <div key={el.value} className={cls.content}>
+                  ? elm.content.map((el, i) => (
+                      <div key={el.value + i} className={cls.content}>
                         <p className={cls.name}>{el.name}</p>
                         <p className={cls.value}>{el.value}</p>
                       </div>
@@ -113,7 +113,7 @@ function LastStep() {
           ))}
         </div>
       </div>
-      <Link>
+      <Link href="/">
         <a>
           <MainButton className={cls.sendBtn}>Отправить на проверку</MainButton>
         </a>

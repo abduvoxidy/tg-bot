@@ -2,7 +2,6 @@ import React from "react";
 import cls from "./ProductSlider.module.scss";
 import Slider from "react-slick";
 import { SampleNextArrow, SamplePrevArrow } from "components/UI/Arrows";
-import { useRef } from "react";
 import ProductSliderCard from "components/UI/Cards/ProductSliderCard";
 
 function ProductSlider({ title }) {

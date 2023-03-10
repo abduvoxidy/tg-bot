@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import React from "react";
-import cls from "./styles.module.scss";
+import cls from "./Category.module.scss";
 import BreadCrumbs from "components/UI/BreadCrumbs";
 import SidebarCategory from "components/UI/SideBars/SidebarCategory";
 import PopularOffers from "components/UI/PopularOffers";

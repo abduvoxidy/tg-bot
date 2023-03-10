@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "components/UI/Banners/Banner";
-import cls from "./styles.module.scss";
+import cls from "./Home.module.scss";
 import BannerImg from "components/UI/Banners/BannerImg";
 import ProductImages from "components/UI/Products/ProductImages";
 import { installments, cars, appliances } from "./data";

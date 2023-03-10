@@ -12,8 +12,8 @@ import {
 import "react-circular-progressbar/dist/styles.css";
 import { StyledTabs, StyledTab } from "components/UI/CTabs";
 import { useState, useCallback } from "react";
-import PersonalData from "./PersonalData";
-import InstallmentData from "./InstallmentData";
+import PersonalData from "./PersonalData/PersonalData";
+import InstallmentData from "./InstallmentData/InstallmentData";
 
 const percentage = 76;
 

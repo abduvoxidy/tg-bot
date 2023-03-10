@@ -1,6 +1,6 @@
 import React from "react";
 import cls from "./News.module.scss";
-import BreadCrumbs from "../BreadCrumbs";
+import BreadCrumbs from "components/UI/BreadCrumbs";
 import { Container } from "@mui/material";
 import Image from "next/image";
 import LastNews from "./LastNews";

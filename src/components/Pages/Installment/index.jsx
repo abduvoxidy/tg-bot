@@ -1,7 +1,7 @@
 import React from "react";
 import InstallmentHeader from "components/UI/InstallmentSteps/InstallmentHeader";
 import InstallmentBody from "components/UI/InstallmentSteps/InstallmentBody";
-import cls from "./styles.module.scss";
+import cls from "./Installment.module.scss";
 import { useState } from "react";
 
 function Installment() {

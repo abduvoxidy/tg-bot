@@ -1,6 +1,6 @@
 import React from "react";
 import CheckoutForm from "components/UI/CheckoutForm";
-import cls from "./styles.module.scss";
+import cls from "./Checkout.module.scss";
 import { Container } from "@mui/material";
 
 export function Checkout() {

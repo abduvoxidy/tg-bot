@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 import DatePicker from "components/UI/Forms/DatePicker";
 import { useState } from "react";
 import MainButton from "components/UI/Buttons/MainButton";
-import cls from "./Profile.module.scss";
+import cls from "./PersonalData.module.scss";
+import { BlueTelegramIcon, GmailIcon } from "components/UI/Icons";
 
 function PersonalData() {
   const [open, setOpen] = useState(false);
@@ -37,7 +38,21 @@ function PersonalData() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={cls.form} onSubmit={handleSubmit(onSubmit)}>
+      <div className={cls.attachBtns}>
+        <div className={cls.attachBtn}>
+          <span>
+            <BlueTelegramIcon />
+          </span>
+          <p> Telegram</p>
+        </div>
+        <div className={cls.attachBtn}>
+          <span>
+            <GmailIcon />
+          </span>
+          <p> Gmail</p>
+        </div>
+      </div>
       <Input
         id="name"
         placeholder={"Имя"}

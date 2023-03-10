@@ -1,5 +1,5 @@
 import React from "react";
-import cls from "./styles.module.scss";
+import cls from "./CatalogBrand.module.scss";
 import BreadCrumbs from "components/UI/BreadCrumbs";
 import { Container } from "@mui/material";
 import SidebarCatalog from "components/UI/SideBars/SidebarCatalog";

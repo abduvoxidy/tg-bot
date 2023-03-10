@@ -1,0 +1,36 @@
+@import "styles/unit.scss";
+
+.form {
+  padding: rem(24);
+  display: flex;
+  flex-direction: column;
+  gap: rem(16);
+  .innerTabs {
+    align-self: flex-end;
+    display: flex;
+    column-gap: rem(10);
+    .tab {
+      transition: 0.3s all;
+      cursor: pointer;
+      padding-bottom: rem(8);
+      border-bottom: 2px solid transparent;
+    }
+    .activeTab {
+      border-bottom: 2px solid var(--primary-color);
+    }
+  }
+  .innerForm {
+    margin-top: rem(30);
+    padding: rem(24);
+    border: 1px solid #f0f0f0;
+    border-radius: rem(8);
+    display: flex;
+    flex-direction: column;
+    gap: rem(24);
+  }
+  .btn {
+    margin-top: rem(8);
+    padding: rem(14) rem(40);
+    align-self: flex-end;
+  }
+}
