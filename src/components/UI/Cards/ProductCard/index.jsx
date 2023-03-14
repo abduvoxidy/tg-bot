@@ -2,21 +2,10 @@ import React from "react";
 import cls from "./ProductCard.module.scss";
 import Image from "next/image";
 import { ScaleIcon, ProductHeartIcon } from "components/UI/Icons";
-import Rating from "@mui/material/Rating";
 import { useState } from "react";
-import { styled } from "@mui/material/styles";
-import { YellowStarIcon, GrayStarIcon } from "components/UI/Icons";
 import Link from "next/link";
 import MainButton from "components/UI/Buttons/MainButton";
-
-const StyledRating = styled(Rating)({
-  "& .MuiRating-iconFilled": {
-    color: "#ff6d75",
-  },
-  "& .MuiRating-iconHover": {
-    color: "#ff3d47",
-  },
-});
+import CStar from "components/UI/CStars/CStar";
 
 function ProductCard({ img = "adidas.png", zIndex = 0 }) {
   const [value, setValue] = useState(2);
@@ -61,11 +50,7 @@ function ProductCard({ img = "adidas.png", zIndex = 0 }) {
         <p className={cls.title}>Смартфоны</p>
         <p className={cls.desc}>Смартфон Apple iPhone 14 Pro 512Gb Black</p>
         <span className={cls.stars}>
-          <StyledRating
-            name="customized-color"
-            defaultValue={2}
-            icon={<YellowStarIcon />}
-            emptyIcon={<GrayStarIcon />}
+          <CStar
             onChange={(event, newValue) => {
               setValue(newValue);
             }}

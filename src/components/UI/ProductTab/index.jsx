@@ -2,22 +2,14 @@ import React from "react";
 import cls from "./ProductTab.module.scss";
 
 import { StyledTabs, StyledTab } from "../CTabs";
-import { useCallback } from "react";
 import { useState } from "react";
 import Description from "./Description";
 import Characteristic from "./Characteristic";
 import Delivery from "./Delivery";
+import TabBody from "components/UI/CTabs/TabBody";
 
 function ProductTab() {
   const [tabValue, setTabValue] = useState("description");
-
-  const TabBody = useCallback(
-    ({ tab, children }) => {
-      if (tab === tabValue) return children;
-      return <></>;
-    },
-    [tabValue]
-  );
   return (
     <div className={cls.root}>
       <div className={cls.header}>
@@ -33,13 +25,13 @@ function ProductTab() {
         </StyledTabs>
       </div>
       <div className={cls.main}>
-        <TabBody tab="description">
+        <TabBody tab="description" tabValue={tabValue}>
           <Description />
         </TabBody>
-        <TabBody tab="characters">
+        <TabBody tab="characters" tabValue={tabValue}>
           <Characteristic />
         </TabBody>
-        <TabBody tab="delivery">
+        <TabBody tab="delivery" tabValue={tabValue}>
           <Delivery />
         </TabBody>
       </div>

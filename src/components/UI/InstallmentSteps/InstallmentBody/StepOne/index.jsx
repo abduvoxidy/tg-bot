@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import SetpsWrapper from "../components/StepsWrapper";
 import cls from "./StepOne.module.scss";
-import { useCallback } from "react";
+// import { useCallback } from "react";
 import ImgUploader from "../components/ImgUploader";
 import { useForm } from "react-hook-form";
 import FormButtons from "../components/FormButtons";
+import TabBody from "components/UI/CTabs/TabBody";
 
 function StepOne({ setActiveStep }) {
   const [tabValue, setTabValue] = useState("passport");
-  const TabBody = useCallback(
-    ({ tab, children }) => {
-      if (tab === tabValue) return children;
-      return <></>;
-    },
-    [tabValue]
-  );
+  // const TabBody = useCallback(
+  //   ({ tab, children }) => {
+  //     if (tab === tabValue) return children;
+  //     return <></>;
+  //   },
+  //   [tabValue]
+  // );
 
   const {
     handleSubmit,
@@ -57,7 +58,7 @@ function StepOne({ setActiveStep }) {
           </div>
         </div>
         <div className={`${cls.body} ${tabValue === "id" ? cls.idCard : ""}`}>
-          <TabBody tab="passport">
+          <TabBody tab="passport" tabValue={tabValue}>
             <ImgUploader
               saveUrl="img1"
               imgUrl="/images/passport1.png"
@@ -83,7 +84,7 @@ function StepOne({ setActiveStep }) {
               description="Регистрационные данные должны быть видны"
             />
           </TabBody>
-          <TabBody tab="id">
+          <TabBody tab="id" tabValue={tabValue}>
             <ImgUploader
               saveUrl="img3"
               imgUrl="/images/idcard.png"

@@ -1,9 +1,6 @@
 import React from "react";
 import cls from "./SingleProduct.module.scss";
 import RightSide from "./RightSide";
-import { YellowStarIcon, GrayStarIcon } from "components/UI/Icons";
-import Rating from "@mui/material/Rating";
-import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import Image from "next/image";
 import { HeartIcon } from "components/UI/Icons";
@@ -11,15 +8,7 @@ import { colors, memories, charastericticsData } from "./data";
 import { EyeIcon } from "components/UI/Icons";
 import ImageGallery from "react-image-gallery";
 import InstallmentCalculator from "../InstallmentCalculator";
-
-const StyledRating = styled(Rating)({
-  "& .MuiRating-iconFilled": {
-    color: "#ff6d75",
-  },
-  "& .MuiRating-iconHover": {
-    color: "#ff3d47",
-  },
-});
+import CStar from "components/UI/CStars/CStar";
 
 function SingleProduct() {
   const [value, setValue] = useState(2);
@@ -67,11 +56,7 @@ function SingleProduct() {
             Отзывов: <span>21</span>
           </p>
           <span className={cls.stars}>
-            <StyledRating
-              name="customized-color"
-              defaultValue={2}
-              icon={<YellowStarIcon />}
-              emptyIcon={<GrayStarIcon />}
+            <CStar
               onChange={(event, newValue) => {
                 setValue(newValue);
               }}

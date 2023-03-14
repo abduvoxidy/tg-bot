@@ -5,6 +5,7 @@ import BreadCrumbs from "components/UI/BreadCrumbs";
 import { Container } from "@mui/material";
 import ProductSimilar from "components/UI/Products/ProductSimilar";
 import ProductTab from "components/UI/ProductTab";
+import Reviews from "components/UI/Reviews";
 
 export function Product() {
   return (
@@ -13,6 +14,7 @@ export function Product() {
         <BreadCrumbs />
         <SingleProduct />
         <ProductTab />
+        <Reviews />
         <ProductSimilar />
       </Container>
     </main>

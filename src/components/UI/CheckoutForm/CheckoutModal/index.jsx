@@ -4,10 +4,10 @@ import cls from "./CheckoutModal.module.scss";
 import { useStyles } from "./styles";
 import SecondaryButton from "components/UI/Buttons/SecondaryButton";
 import MainButton from "components/UI/Buttons/MainButton";
-import { useCallback } from "react";
 import YandexMap from "./Map";
 import Delivery from "./Delivery";
 import PickUp from "./PickUp";
+import TabBody from "components/UI/CTabs/TabBody";
 
 function CheckoutModal({ isOpen, setIsOpen = () => {} }) {
   const classes = useStyles();
@@ -15,14 +15,6 @@ function CheckoutModal({ isOpen, setIsOpen = () => {} }) {
   const handleTab = (tab) => {
     setTabValue(tab);
   };
-
-  const TabBody = useCallback(
-    ({ tab, children }) => {
-      if (tab === tabValue) return children;
-      return <></>;
-    },
-    [tabValue]
-  );
 
   return (
     <Dialog
@@ -58,10 +50,10 @@ function CheckoutModal({ isOpen, setIsOpen = () => {} }) {
               </SecondaryButton>
             </div>
             <div className={cls.body}>
-              <TabBody tab="delivery">
+              <TabBody tab="delivery" tabValue={tabValue}>
                 <Delivery />
               </TabBody>
-              <TabBody tab="pickup">
+              <TabBody tab="pickup" tabValue={tabValue}>
                 <PickUp />
               </TabBody>
             </div>

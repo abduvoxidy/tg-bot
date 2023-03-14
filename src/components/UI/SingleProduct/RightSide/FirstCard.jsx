@@ -101,8 +101,8 @@ function FirstCard() {
           <div className={cls.body}>
             <h3 className={cls.title}>Поделиться товаром</h3>
             <div className={cls.icons}>
-              {icons.map((el) => (
-                <span>
+              {icons.map((el, i) => (
+                <span key={i}>
                   <a target="_blank" href="#">
                     {el.icon()}
                   </a>

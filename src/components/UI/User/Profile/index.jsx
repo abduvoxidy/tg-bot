@@ -11,22 +11,15 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { StyledTabs, StyledTab } from "components/UI/CTabs";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import PersonalData from "./PersonalData/PersonalData";
 import InstallmentData from "./InstallmentData/InstallmentData";
+import TabBody from "components/UI/CTabs/TabBody";
 
 const percentage = 76;
 
 function Profile() {
   const [tabValue, setTabValue] = useState("personal");
-
-  const TabBody = useCallback(
-    ({ tab, children }) => {
-      if (tab === tabValue) return children;
-      return <></>;
-    },
-    [tabValue]
-  );
   return (
     <main className={cls.main}>
       <Container>
@@ -87,10 +80,10 @@ function Profile() {
                   <StyledTab value="installment" label="Данные для рассрочки" />
                 </StyledTabs>
               </div>
-              <TabBody tab="personal">
+              <TabBody tab="personal" tabValue={tabValue}>
                 <PersonalData />
               </TabBody>
-              <TabBody tab="installment">
+              <TabBody tab="installment" tabValue={tabValue}>
                 <InstallmentData />
               </TabBody>
             </div>

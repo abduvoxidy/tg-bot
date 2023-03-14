@@ -1,19 +1,13 @@
 import React from "react";
 import { PaymentTabs, PaymentTab } from "components/UI/CTabs/PaymentTabs";
 import cls from "./CheckoutPayment.module.scss";
-import { useState, useCallback } from "react";
+import { useState } from "react";
+import TabBody from "components/UI/CTabs/TabBody";
 import Payments from "./Payments";
 import { onlinePayments, installmentPayments } from "./data";
 
 function CheckoutPayment() {
   const [tabValue, setTabValue] = useState("online");
-  const TabBody = useCallback(
-    ({ tab, children }) => {
-      if (tab === tabValue) return children;
-      return <></>;
-    },
-    [tabValue]
-  );
   return (
     <div className={cls.root}>
       <div className={cls.tabs}>
@@ -28,10 +22,10 @@ function CheckoutPayment() {
         </PaymentTabs>
       </div>
       <div className={cls.body}>
-        <TabBody tab="online">
+        <TabBody tab="online" tabValue={tabValue}>
           <Payments data={onlinePayments} />
         </TabBody>
-        <TabBody tab="installment">
+        <TabBody tab="installment" tabValue={tabValue}>
           <Payments data={installmentPayments} />
         </TabBody>
       </div>

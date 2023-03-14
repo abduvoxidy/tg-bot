@@ -1,0 +1,119 @@
+@import "styles/unit.scss";
+
+.reviewBody {
+  .images {
+    margin-top: rem(24);
+    display: flex;
+    gap: rem(9);
+    .imgBox {
+      border-radius: rem(4);
+      width: rem(90);
+      height: rem(90);
+    }
+  }
+  .selectMenu {
+    margin-top: rem(29);
+    display: flex;
+    align-items: center;
+    column-gap: rem(50);
+    .select {
+      outline: none;
+      border: 2px solid #ff9910;
+      border-radius: 4px;
+      padding: rem(6) rem(10);
+      width: rem(237);
+    }
+    .checkbox {
+      display: flex;
+      column-gap: rem(9);
+    }
+  }
+  .comments {
+    margin-top: rem(20);
+    border-top: 1px solid #d9d9d9;
+    padding-top: rem(50);
+    .header {
+      display: flex;
+      justify-content: space-between;
+      .left {
+        display: flex;
+        align-items: center;
+        column-gap: rem(12);
+        .avatar {
+          width: 50px;
+          height: 50px;
+          background: #f3f5f9;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        h3 {
+          font-weight: 600;
+          font-size: rem(16);
+          line-height: rem(26);
+          color: #252c32;
+        }
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        column-gap: rem(12);
+        .date {
+          font-weight: 500;
+          font-size: rem(12);
+          line-height: rem(16);
+          color: #6e7c87;
+        }
+      }
+    }
+    .body {
+      margin-left: rem(60);
+      .review {
+        font-size: rem(14);
+        line-height: rem(24);
+        letter-spacing: -0.006em;
+        color: #252c32;
+      }
+      .inputs {
+        margin-top: rem(12);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: rem(16);
+        .col {
+          display: flex;
+          flex-direction: column;
+          gap: rem(12);
+          label {
+            font-weight: 500;
+            font-size: rem(12);
+            line-height: rem(24);
+            letter-spacing: -0.006em;
+            color: #000000;
+          }
+        }
+      }
+      .answerText {
+        margin-top: rem(12);
+        font-size: rem(13);
+        line-height: rem(24);
+        letter-spacing: -0.021em;
+        color: #6e7c87;
+      }
+      .badges {
+        margin-top: rem(12);
+        display: flex;
+        column-gap: rem(8);
+        .badge {
+          padding: rem(4) rem(12);
+          background: #f3f5f9;
+          border-radius: 14px;
+          font-weight: 500;
+          font-size: rem(13);
+          line-height: rem(24);
+          letter-spacing: -0.021em;
+        }
+      }
+    }
+  }
+}

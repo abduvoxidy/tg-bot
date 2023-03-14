@@ -2,20 +2,14 @@ import React from "react";
 import MainButton from "components/UI/Buttons/MainButton";
 import { useForm } from "react-hook-form";
 import cls from "./InstallmentData.module.scss";
-import { useCallback } from "react";
 import { useState } from "react";
+import TabBody from "components/UI/CTabs/TabBody";
 
 import ImgUploader from "../components/ImgUploader";
 
 function InstallmentData() {
   const [tabValue, setTabValue] = useState("passport");
-  const TabBody = useCallback(
-    ({ tab, children }) => {
-      if (tab === tabValue) return children;
-      return <></>;
-    },
-    [tabValue]
-  );
+
   const {
     handleSubmit,
     watch,
@@ -55,7 +49,7 @@ function InstallmentData() {
         </div>
       </div>
       <div className={cls.innerForm}>
-        <TabBody tab="passport">
+        <TabBody tab="passport" tabValue={tabValue}>
           <ImgUploader
             saveUrl="img1"
             imgUrl="/images/passport1.png"
@@ -78,7 +72,7 @@ function InstallmentData() {
             label="Загрузите фото лица на фоне паспорта"
           />
         </TabBody>
-        <TabBody tab="id">
+        <TabBody tab="id" tabValue={tabValue}>
           <ImgUploader
             saveUrl="img1"
             imgUrl="/images/passport1.png"

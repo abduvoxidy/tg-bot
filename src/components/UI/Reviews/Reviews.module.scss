@@ -1,0 +1,41 @@
+@import "styles/unit.scss";
+
+.reviews {
+  margin-top: rem(56);
+  .row {
+    margin-top: rem(32);
+    display: grid;
+    grid-template-columns: auto rem(409);
+    align-items: flex-start;
+    gap: rem(48);
+    .left {
+      background-color: #fff;
+      padding: rem(18) rem(32);
+      border-radius: rem(12);
+
+      .header {
+        border-bottom: 1px solid #e1e1e1;
+
+        .tabs {
+          display: flex;
+          column-gap: rem(16);
+          .tab {
+            font-weight: 600;
+            font-size: rem(14);
+            line-height: rem(17);
+            padding: rem(18) 0;
+            cursor: pointer;
+            transition: 0.2s all;
+            border-bottom: 2px solid transparent;
+          }
+          .activeTab {
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+          }
+        }
+      }
+    }
+    .right {
+    }
+  }
+}

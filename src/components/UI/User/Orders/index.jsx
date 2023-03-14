@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import cls from "./Orders.module.scss";
 import { Container } from "@mui/material";
 import LeftSidebar from "../LeftSidebar";
-import { useCallback } from "react";
 import classNames from "classnames";
 import Installments from "./Installments";
 import ActiveOrders from "./ActiveOrders";
 import FinishedOrders from "./FinishedOrders";
+import TabBody from "components/UI/CTabs/TabBody";
 
 const tabs = [
   {
@@ -25,13 +25,6 @@ const tabs = [
 
 export function Orders() {
   const [tabValue, setTabValue] = useState("installments");
-  const TabBody = useCallback(
-    ({ tab, children }) => {
-      if (tab === tabValue) return children;
-      return <></>;
-    },
-    [tabValue]
-  );
   return (
     <main className={cls.main}>
       <Container>
@@ -55,13 +48,13 @@ export function Orders() {
               ))}
             </div>
             <div className={cls.body}>
-              <TabBody tab="installments">
+              <TabBody tab="installments" tabValue={tabValue}>
                 <Installments />
               </TabBody>
-              <TabBody tab="active_orders">
+              <TabBody tab="active_orders" tabValue={tabValue}>
                 <ActiveOrders />
               </TabBody>
-              <TabBody tab="finished_orders">
+              <TabBody tab="finished_orders" tabValue={tabValue}>
                 <FinishedOrders />
               </TabBody>
             </div>
