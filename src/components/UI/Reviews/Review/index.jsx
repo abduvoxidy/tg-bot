@@ -4,6 +4,7 @@ import Checkbox from "components/UI/Forms/Checkbox";
 import { useState } from "react";
 import CStar from "components/UI/CStars/CStar";
 import Input from "components/UI/Forms/Input";
+import { ShowMoreIcon } from "components/UI/Icons";
 
 const images = ["black.png", "blue.png", "white.png", "yellow.png"];
 
@@ -80,6 +81,25 @@ function Review() {
             <CStar />
           </div>
         </div>
+        <div className={cls.body}>
+          <p className={cls.review}>Качественный товар! Спасибо большое!</p>
+          <div className={cls.commentImages}>
+            <img className={cls.img} src="/images/news/card1.png" alt="card" />
+            <img className={cls.img} src="/images/news/card2.png" alt="card" />
+          </div>
+          <p className={cls.answerText}>Вам помог этот ответ?</p>
+
+          <div className={cls.badges}>
+            <div className={cls.badge}>Да 4</div>
+            <div className={cls.badge}>Нет 0</div>
+          </div>
+        </div>
+      </div>
+      <div className={cls.showMore}>
+        Показать еще
+        <span>
+          <ShowMoreIcon />
+        </span>
       </div>
     </div>
   );

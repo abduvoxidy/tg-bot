@@ -1,6 +1,8 @@
 @import "styles/unit.scss";
 
 .reviewBody {
+  display: flex;
+  flex-direction: column;
   .images {
     margin-top: rem(24);
     display: flex;
@@ -93,6 +95,16 @@
           }
         }
       }
+      .commentImages {
+        margin: rem(12) 0;
+        display: flex;
+        gap: rem(12);
+        .img {
+          border-radius: rem(4);
+          width: rem(205);
+          height: rem(121);
+        }
+      }
       .answerText {
         margin-top: rem(12);
         font-size: rem(13);
@@ -115,5 +127,16 @@
         }
       }
     }
+  }
+  .showMore {
+    margin-top: rem(14);
+    color: #ff9910;
+    display: flex;
+    column-gap: rem(10);
+    align-self: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: rem(16);
+    line-height: rem(19);
   }
 }

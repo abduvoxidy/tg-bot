@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import ScreenCaptureContainer from "screen-capture";
 import { QueryClientProvider } from "react-query";
-import { queryClient } from "services/http-client";
+import { queryClient } from "services/queryClient";
 import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }) {

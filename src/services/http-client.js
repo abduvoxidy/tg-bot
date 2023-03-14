@@ -1,15 +1,12 @@
-import axios from 'axios'
-import { parseCookies } from 'nookies'
-import { QueryClient } from 'react-query'
-
-const cookies = parseCookies()
+import axios from "axios";
 
 export const request = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL
-  // headers: {
-  //   Authorization: cookies.ACCESS_TOKEN,
-  // },
-})
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  headers: {
+    Authorization: "API-KEY",
+    "X-API-KEY": process.env.NEXT_X_API_KEY,
+  },
+});
 
 const errorHandler = (error) => {
   // if (error && error.response) {
@@ -25,16 +22,10 @@ const errorHandler = (error) => {
   //   }
   // }
 
-  return Promise.reject(error.response)
-}
+  return Promise.reject(error.response);
+};
 
-request.interceptors.response.use((response) => response.data, errorHandler)
-
-export const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: false
-    }
-  }
-})
+request.interceptors.response.use(
+  (response) => response.data.data,
+  errorHandler
+);

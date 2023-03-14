@@ -15,6 +15,12 @@ const nextConfig = nextTranslate({
   // env: {
   //   BASE_URL: baseUrl,
   // },
+  env: {
+    SOURCE: "website",
+    NEXT_X_API_KEY: "P-lc7prRbwHd8kZk57CwFvpx6N95at1xbV",
+    REDUX_PERSIST_MIGRATION_VERSION: 1,
+    COOKIE_TIME: 30 * 24 * 60 * 60,
+  },
 });
 
 module.exports = nextConfig;
