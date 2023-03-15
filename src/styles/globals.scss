@@ -172,3 +172,11 @@ header {
     transition: all 0.5s ease-in-out;
   }
 }
+
+#bannerSlider {
+  .slick-active {
+    span {
+      background: #a9a8a9;
+    }
+  }
+}

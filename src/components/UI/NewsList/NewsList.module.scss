@@ -1,5 +1,3 @@
-@import "styles/unit.scss";
-
 .root {
   padding-top: rem(56);
   h1 {
@@ -10,23 +8,54 @@
   .row {
     margin-top: rem(22);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    // grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(rem(400), 1fr));
     gap: rem(24);
   }
 }
 
 .card {
+  overflow: hidden;
+  border-radius: rem(16);
+  background: #ffffff;
   .img {
     position: relative;
-    height: rem(220);
+    height: rem(258);
     img {
       border-radius: rem(16) !important;
     }
   }
-  .desc {
-    font-weight: 500;
-    font-size: rem(20);
-    line-height: rem(24);
-    margin-top: rem(24);
+  .cardBody {
+    display: flex;
+    flex-direction: column;
+    padding: rem(12);
+    height: rem(150);
+    .title {
+      font-weight: 500;
+      font-size: rem(17);
+      line-height: rem(18);
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .desc {
+      margin-top: rem(8);
+      font-weight: 400;
+      font-size: rem(15);
+      line-height: rem(20);
+      color: #66686c;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .date {
+      margin-top: auto;
+      font-weight: 400;
+      font-size: rem(15);
+      line-height: rem(20);
+      color: #66686c;
+    }
   }
 }

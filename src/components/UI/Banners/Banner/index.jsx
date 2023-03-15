@@ -2,65 +2,86 @@ import cls from "./Banner.module.scss";
 import Image from "next/image";
 import { SampleNextArrow, SamplePrevArrow } from "../../Arrows";
 import Slider from "react-slick";
-import { Container } from "@mui/material";
-import MainButton from "../../Buttons/MainButton";
+import MainButton from "components/UI/Buttons/MainButton";
+import { useBannersQuery } from "services/banner.service";
+import SliderControls from "./Controls";
+import useKeyTranslation from "hooks/useKeyTranslation";
 
 export default function Banner() {
+  const getKey = useKeyTranslation();
+  const { data: banners } = useBannersQuery({
+    data: {
+      data: {
+        offset: 0,
+      },
+    },
+    queryParams: {
+      enabled: true,
+      onSuccess: (res) => {
+        console.log("res", res);
+      },
+    },
+  });
+
+  // console.log("banners", banners);
+
   return (
-    <div className={cls.root}>
+    <div id="bannerSlider" className={`${cls.root} `}>
       <Slider
+        lazyLoad={true}
+        dots={true}
+        infinite={true}
+        adaptiveHeight={true}
+        autoplay={true}
+        autoplaySpeed={2000}
+        customPaging={() => <span className={cls.sliderDots}></span>}
+        appendDots={(dots) => <SliderControls dots={dots} />}
         {...{
-          dots: false,
-          lazyLoad: true,
           nextArrow: <SampleNextArrow styles={cls.styleNext} />,
           prevArrow: <SamplePrevArrow styles={cls.stylePrev} />,
-          responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                arrows: false,
-                dots: true,
-              },
-            },
-          ],
         }}
       >
-        {[1, 2, 3].map((el) => (
-          <div key={el} className={cls.slideItem}>
-            <div className={cls.box}>
-              <div className={cls.left}>
-                <h1 className={cls.title}>
-                  Смартфоны в <br /> рассрочку
-                </h1>
-                <p className={cls.text}>Купить любимые смартфоны в рассрочку</p>
-                <MainButton className={cls.btn}>Смотреть все</MainButton>
+        {banners &&
+          banners?.data?.response
+            .filter((item) => item.status[0] === "active")
+            .map((el, i) => (
+              <div key={i} className={cls.slideItem}>
+                <div className={cls.box}>
+                  <div className={cls.left}>
+                    <h1 className={cls.title}>{el?.[getKey("name")]}</h1>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: el?.[getKey("description")],
+                      }}
+                      className={cls.text}
+                    />
+                    <MainButton
+                      onClick={() => {
+                        if (el.url) {
+                          window.open(el.url, "_blank");
+                        }
+                      }}
+                      className={cls.btn}
+                    >
+                      {el?.[getKey("button_text")]}
+                    </MainButton>
+                  </div>
+                  <div className={cls.right}>
+                    <div className={cls.img}>
+                      {el?.photo && (
+                        <Image
+                          lazyLoad={true}
+                          src={el?.photo}
+                          alt="banner"
+                          layout="fill"
+                          objectFit="contain"
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className={cls.right}>
-                <div className={cls.first_img}>
-                  <Image
-                    src="/images/main/pencil-1.png"
-                    alt="banner"
-                    layout="fill"
-                  />
-                </div>
-                <div className={cls.second_img}>
-                  <Image
-                    src="/images/main/ipad.png"
-                    alt="banner"
-                    layout="fill"
-                  />
-                </div>
-                <div className={cls.third_img}>
-                  <Image
-                    src="/images/main/pencil-2.png"
-                    alt="banner"
-                    layout="fill"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+            ))}
       </Slider>
     </div>
   );

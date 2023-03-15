@@ -16,7 +16,13 @@ function Card({ data }) {
               alt={data.url}
             />
           </div>
-          <p className={cls.desc}>{data.name}</p>
+          <div className={cls.cardBody}>
+            <h3 className={cls.title}>
+              {"Отдел радиологии работает круглосуточно"}
+            </h3>
+            <p className={cls.desc}>{data.name}</p>
+            <p className={cls.date}>01.03.2023</p>
+          </div>
         </div>
       </a>
     </Link>
