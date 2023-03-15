@@ -1,10 +1,8 @@
 import React from "react";
 import cls from "./CategoriesMenu.module.scss";
-// import { catalog } from "./data";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
-// import Masonry from "react-smart-masonry";
 import dynamic from "next/dynamic";
 const Masonry = dynamic(() => import("react-smart-masonry"), {
   ssr: false,

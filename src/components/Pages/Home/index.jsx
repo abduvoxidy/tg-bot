@@ -19,9 +19,7 @@ function Home() {
           productKey="installment"
           title="Смартфоны в рассрочку"
         />
-
         <BannerImg />
-
         <ProductImages
           products={cars}
           productKey="cars"
