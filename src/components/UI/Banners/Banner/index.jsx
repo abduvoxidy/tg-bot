@@ -11,19 +11,13 @@ export default function Banner() {
   const getKey = useKeyTranslation();
   const { data: banners } = useBannersQuery({
     data: {
-      data: {
-        offset: 0,
-      },
+      offset: 0,
+      status: ["active"],
     },
     queryParams: {
       enabled: true,
-      onSuccess: (res) => {
-        console.log("res", res);
-      },
     },
   });
-
-  // console.log("banners", banners);
 
   return (
     <div id="bannerSlider" className={`${cls.root} `}>
@@ -42,46 +36,44 @@ export default function Banner() {
         }}
       >
         {banners &&
-          banners?.data?.response
-            .filter((item) => item.status[0] === "active")
-            .map((el, i) => (
-              <div key={i} className={cls.slideItem}>
-                <div className={cls.box}>
-                  <div className={cls.left}>
-                    <h1 className={cls.title}>{el?.[getKey("name")]}</h1>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: el?.[getKey("description")],
-                      }}
-                      className={cls.text}
-                    />
-                    <MainButton
-                      onClick={() => {
-                        if (el.url) {
-                          window.open(el.url, "_blank");
-                        }
-                      }}
-                      className={cls.btn}
-                    >
-                      {el?.[getKey("button_text")]}
-                    </MainButton>
-                  </div>
-                  <div className={cls.right}>
-                    <div className={cls.img}>
-                      {el?.photo && (
-                        <Image
-                          lazyLoad={true}
-                          src={el?.photo}
-                          alt="banner"
-                          layout="fill"
-                          objectFit="contain"
-                        />
-                      )}
-                    </div>
+          banners?.data?.response.map((el, i) => (
+            <div key={i} className={cls.slideItem}>
+              <div className={cls.box}>
+                <div className={cls.left}>
+                  <h1 className={cls.title}>{el?.[getKey("name")]}</h1>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: el?.[getKey("description")],
+                    }}
+                    className={cls.text}
+                  />
+                  <MainButton
+                    onClick={() => {
+                      if (el.url) {
+                        window.open(el.url, "_blank");
+                      }
+                    }}
+                    className={cls.btn}
+                  >
+                    {el?.[getKey("button_text")]}
+                  </MainButton>
+                </div>
+                <div className={cls.right}>
+                  <div className={cls.img}>
+                    {el?.photo && (
+                      <Image
+                        lazyLoad={true}
+                        src={el?.photo}
+                        alt="banner"
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    )}
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
       </Slider>
     </div>
   );

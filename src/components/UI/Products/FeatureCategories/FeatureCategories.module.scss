@@ -1,0 +1,14 @@
+.root {
+  padding-top: rem(56);
+  h1 {
+    font-weight: 600;
+    font-size: rem(40);
+    line-height: rem(50);
+  }
+  .row {
+    margin-top: rem(32);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(190), rem(200)));
+    gap: rem(24);
+  }
+}

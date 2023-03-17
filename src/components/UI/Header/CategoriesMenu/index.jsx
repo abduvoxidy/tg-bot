@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { useCategoriesQuery } from "services/category.service";
 import useTranslation from "next-translate/useTranslation";
 import useKeyTranslation from "hooks/useKeyTranslation";
+import { getNestedCategories } from "utils/getNestedCategories";
 
 function CatgoriesMenu({
   isActive,
@@ -24,15 +25,16 @@ function CatgoriesMenu({
   const router = useRouter();
 
   const { data: categoryData, isLoading } = useCategoriesQuery({
-    data: {
-      data: {
-        // offset: 0,
-      },
-    },
+    data: {},
     queryParams: {
       enabled: true,
       onSuccess: (res) => {
-        const response = getNestedCategories(objectCategory, res.data.response);
+        const response = getNestedCategories(
+          {
+            guid: null,
+          },
+          res.data.response
+        );
         setCategories(response.children);
       },
     },
@@ -57,25 +59,6 @@ function CatgoriesMenu({
     };
   }, []);
 
-  const objectCategory = {
-    guid: null,
-  };
-
-  function getNestedCategories(obj, categoryData) {
-    // this function filters categories by subcategory, if category_id
-    //will be null it's main category else subcategory
-    obj.children = [];
-    for (const i in categoryData) {
-      if (obj.guid === categoryData[i].category_id) {
-        obj.children.push(categoryData[i]);
-      }
-    }
-    for (const j in obj.children) {
-      obj.children[j] = getNestedCategories(obj.children[j], categoryData);
-    }
-    return obj;
-  }
-
   function hoverCategory(id) {
     const res = categories.find((el) => el.guid === id)?.children;
     setSubCategories(res);
@@ -93,7 +76,7 @@ function CatgoriesMenu({
                   key={el.guid}
                   className={cls.catalog}
                 >
-                  <Link href="/catalog/1">
+                  <Link href={`/catalog/${el.guid}`}>
                     <a className={cls.link}>{el?.[getKey("name")]}</a>
                   </Link>
                 </div>

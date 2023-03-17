@@ -2,8 +2,11 @@ import React from "react";
 import cls from "./SidebarReview.module.scss";
 import CStar from "components/UI/CStars/CStar";
 import MainButton from "components/UI/Buttons/MainButton";
+import { useRouter } from "next/router";
 
 function SidebarReview() {
+  const router = useRouter();
+
   const percents = [
     {
       value: 75,
@@ -50,7 +53,13 @@ function SidebarReview() {
               </div>
             ))}
           </div>
-          <MainButton className={cls.reviewBtn} fullWidth>
+          <MainButton
+            onClick={() => {
+              router.push("/comments");
+            }}
+            className={cls.reviewBtn}
+            fullWidth
+          >
             Написать отзыв
           </MainButton>
         </div>

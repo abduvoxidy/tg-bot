@@ -1,0 +1,11 @@
+.main {
+  padding: rem(52) 0 rem(100);
+  .body {
+    background: #fff;
+    padding: rem(24);
+    border-radius: rem(12);
+    display: grid;
+    grid-template-columns: rem(354) auto;
+    gap: rem(24);
+  }
+}

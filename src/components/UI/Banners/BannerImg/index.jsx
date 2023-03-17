@@ -1,17 +1,17 @@
 import React from "react";
 import cls from "./BannerImg.module.scss";
-import { Container } from "@mui/material";
 import Image from "next/image";
 
-function BannerImg({ className }) {
+function BannerImg({ data, title, className }) {
+  // console.log("data", data);
   return (
     <div className={`${cls.root} ${className}`}>
       <div className={cls.banner}>
         <Image
-          src="/images/main/banner.png"
+          src={data?.photo ? data.photo : "/images/main/banner.png"}
           objectFit="cover"
           layout="fill"
-          alt="banner"
+          alt={title ? title : "banner"}
         />
       </div>
     </div>

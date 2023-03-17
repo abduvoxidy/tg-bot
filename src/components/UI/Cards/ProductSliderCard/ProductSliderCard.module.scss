@@ -23,6 +23,7 @@
       border-radius: rem(4);
     }
     .icons {
+      z-index: 100;
       display: flex;
       column-gap: rem(12);
       position: absolute;
