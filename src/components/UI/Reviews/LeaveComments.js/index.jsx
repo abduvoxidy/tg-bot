@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import cls from "./LeaveComments.module.scss";
 
 export function LeaveComments() {
   return (
