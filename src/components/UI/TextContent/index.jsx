@@ -3,7 +3,7 @@ import ShowMoreBtn from "../Buttons/ShowMoreBtn";
 import cls from "./TextContent.module.scss";
 import { useState } from "react";
 
-function TextContent({}) {
+function TextContent({ isContent, title, description }) {
   const [isOpenContent, setIsOpenContent] = useState(false);
   const text = `
       <h2>Что мы предлагаем: ассортимент интернет-магазина</h2>
@@ -26,10 +26,24 @@ function TextContent({}) {
 
   return (
     <div className={cls.root}>
-      <div
-        className={`${cls.description} ${isOpenContent ? cls.openContent : ""}`}
-        dangerouslySetInnerHTML={{ __html: text }}
-      />
+      {isContent ? (
+        <div
+          className={`${cls.description} ${
+            isOpenContent ? cls.openContent : ""
+          }`}
+        >
+          <h2>{title}</h2>
+          <p dangerouslySetInnerHTML={{ __html: description }}></p>
+        </div>
+      ) : (
+        <div
+          className={`${cls.description} ${
+            isOpenContent ? cls.openContent : ""
+          }`}
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
+      )}
+
       <ShowMoreBtn
         setIsOpenContent={setIsOpenContent}
         isOpenContent={isOpenContent}

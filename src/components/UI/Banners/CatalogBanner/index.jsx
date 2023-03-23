@@ -1,25 +1,47 @@
 import React from "react";
 import cls from "./CatalogBanner.module.scss";
-import MainButton from "../../Buttons/MainButton";
 import Image from "next/image";
+import useKeyTranslation from "hooks/useKeyTranslation";
+import { useCategoryBannersQuery } from "services/category.service";
+import { useRouter } from "next/router";
 
 function CatalogBanner() {
+  const router = useRouter();
+  const getKey = useKeyTranslation();
+  const category_id = router.query?.id;
+
+  const { data } = useCategoryBannersQuery({
+    data: {
+      category_id: [category_id],
+    },
+    queryParams: {
+      enabled: !!category_id,
+    },
+  });
+
+  const banner = data && data?.data?.response[0];
+
   return (
     <div className={cls.root}>
       <div className={cls.left}>
-        <h1>Смартфоны в рассрочку</h1>
-        <p>Купить любимые смартфоны в рассрочку</p>
-        <MainButton className={cls.btn}>Смотреть все</MainButton>
+        <h1>{banner?.[getKey("name")] || "Смартфоны в рассрочку"}</h1>
+        <div
+          className={cls.description}
+          dangerouslySetInnerHTML={{
+            __html:
+              (banner && banner?.[getKey("description")]) ||
+              "Купить любимые смартфоны в рассрочку",
+          }}
+        />
       </div>
       <div className={cls.right}>
-        <div className={cls.first_img}>
-          <Image src="/images/main/pencil-1.png" alt="banner" layout="fill" />
-        </div>
-        <div className={cls.second_img}>
-          <Image src="/images/main/ipad.png" alt="banner" layout="fill" />
-        </div>
-        <div className={cls.third_img}>
-          <Image src="/images/main/pencil-2.png" alt="banner" layout="fill" />
+        <div className={cls.img}>
+          <Image
+            src={(banner && banner.photo) || "/images/main/lenovo.png"}
+            layout="fill"
+            objectFit="contain"
+            alt="banner"
+          />
         </div>
       </div>
     </div>

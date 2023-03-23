@@ -10,6 +10,7 @@ function ProductSlider({ title }) {
     <div className={cls.root} id="productSlider">
       <h1 className={cls.title}>{title || "Популярные товары"}</h1>
       <Slider
+        className={cls.slider}
         {...{
           dots: false,
           infinite: false,

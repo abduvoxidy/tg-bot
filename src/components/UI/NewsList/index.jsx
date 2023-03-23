@@ -5,9 +5,7 @@ import { useNewsQuery } from "services/news.service";
 
 function NewsList() {
   const { data: news } = useNewsQuery({
-    data: {
-      offset: 0,
-    },
+    data: {},
   });
 
   return (

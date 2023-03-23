@@ -90,10 +90,7 @@ function CatgoriesMenu({
                   <div key={index} className={cls.category}>
                     <b className={cls.title}>{el?.[getKey("name")]}</b>
                     {el.children.map((item, i) => (
-                      <Link
-                        key={i}
-                        href={`/category/${item?.[getKey("name")]}`}
-                      >
+                      <Link key={i} href={`/category/${item?.guid}`}>
                         <a className={cls.link}>{item?.[getKey("name")]}</a>
                       </Link>
                     ))}

@@ -3,90 +3,54 @@ import cls from "./SingleNew.module.scss";
 import BreadCrumbs from "components/UI/BreadCrumbs";
 import { Container } from "@mui/material";
 import Image from "next/image";
-import Slider from "react-slick";
-import { SampleNextArrow, SamplePrevArrow } from "components/UI/Arrows";
-import CardNews from "./CardNews";
-
-const images = [1, 2, 3, 4, 5];
+import { useNewsByIdQuery, useNewsQuery } from "services/news.service";
+import { useRouter } from "next/router";
+import useKeyTranslation from "hooks/useKeyTranslation";
+import LastNews from "./LastNews";
 
 export function SingleNew() {
+  const getKey = useKeyTranslation();
+  const router = useRouter();
+  const news_id = router.query?.id;
+
+  const { data: news } = useNewsQuery();
+
+  const newsData = news?.data?.response;
+
+  const { data, isLoading } = useNewsByIdQuery({
+    id: news_id,
+    params: {},
+  });
+
+  const newsItem = data?.data?.response;
+
   return (
     <main className={cls.main}>
-      <Container>
-        <BreadCrumbs title="Главная / Новости / 1 марта 2023 г." />
-        <h1 className={cls.title}>
-          iPhone 16 Pro следующего года все еще находится на пути к тому, чтобы
-          иметь идентификатор лица под дисплеем.
-        </h1>
-        <div className={cls.bannerImg}>
-          <Image
-            src={`/images/news/card1.png`}
-            objectFit="contain"
-            layout="fill"
-            alt="img"
-          />
-        </div>
-        <p className={cls.description}>
-          Цифровой инвертор Наслаждайтесь повышенной энергоэффективностью,
-          пониженным уровнем шумаи продолжительностью работы. В технологии
-          цифрового инвертора используют мощные магниты, увеличивающие мощность.
-          Но такое устройство работает тише и потребляет меньше энергии, чем
-          универсальный электродвигатель.
-          <br />
-          <br />
-          Цифровой инвертор Наслаждайтесь повышенной энергоэффективностью,
-          пониженным уровнем шумаи продолжительностью работы. В технологии
-          цифрового инвертора используют мощные магниты, увеличивающие мощность.
-          Но такое устройство работает тише и потребляет меньше энергии, чем
-          универсальный электродвигатель.
-          <br />
-          <br />
-          Цифровой инвертор Наслаждайтесь повышенной энергоэффективностью,
-          пониженным уровнем шумаи продолжительностью работы. В технологии
-          цифрового инвертора используют мощные магниты, увеличивающие мощность.
-          Но такое устройство работает тише и потребляет меньше энергии, чем
-          универсальный электродвигатель.
-          <br />
-          <br />
-          Цифровой инвертор Наслаждайтесь повышенной энергоэффективностью,
-          пониженным уровнем шумаи продолжительностью работы. В технологии
-          цифрового инвертора используют мощные магниты, увеличивающие мощность.
-          Но такое устройство работает тише и потребляет меньше энергии, чем
-          универсальный электродвигатель.
-          <br />
-          <br />
-          Цифровой инвертор Наслаждайтесь повышенной энергоэффективностью,
-          пониженным уровнем шумаи продолжительностью работы. В технологии
-          цифрового инвертора используют мощные магниты, увеличивающие мощность.
-          Но такое устройство работает тише и потребляет меньше энергии, чем
-          универсальный электродвигатель.
-          <br />
-          <br />
-          Цифровой инвертор Наслаждайтесь повышенной энергоэффективностью,
-          пониженным уровнем шумаи продолжительностью работы. В технологии
-          цифрового инвертора используют мощные магниты, увеличивающие мощность.
-          Но такое устройство работает тише и потребляет меньше энергии, чем
-          универсальный электродвигатель. <br />
-        </p>
-
-        <h1 className={cls.title}>Последние новости</h1>
-        <Slider
-          {...{
-            dots: false,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            nextArrow: <SampleNextArrow styles={cls.next} />,
-            prevArrow: <SamplePrevArrow styles={cls.prev} />,
-          }}
-        >
-          {images.map((el, index) => (
-            <div className={cls.slideItem} key={index}>
-              <CardNews />
+      <Container className={cls.container}>
+        <div className={cls.leftSide}>
+          {" "}
+          <BreadCrumbs title="Главная / Новости / 1 марта 2023 г." />
+          <h1 className={cls.title}>{newsItem?.[getKey("name")]}</h1>
+          <div className={cls.body}>
+            <div className={cls.bannerImg}>
+              <Image
+                src={newsItem?.photo || `/images/no-photo.png`}
+                objectFit="contain"
+                layout="fill"
+                alt="img"
+              />
             </div>
-          ))}
-        </Slider>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: newsItem && newsItem?.[getKey("content")],
+              }}
+              className={cls.description}
+            />
+          </div>
+        </div>
+        <div className={cls.rightSide}>
+          <LastNews news={newsData} />
+        </div>
       </Container>
     </main>
   );

@@ -1,12 +1,14 @@
 .root {
-  width: calc(100% + rem(24));
+  width: calc(100%);
   margin-top: rem(56);
-  margin-left: rem(-24);
   .title {
     font-weight: 600;
     font-size: rem(40);
     line-height: rem(50);
     margin-bottom: rem(24);
+  }
+  .slider {
+    margin-left: rem(-12);
   }
   .next {
     right: rem(-16) !important;

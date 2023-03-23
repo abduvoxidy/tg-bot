@@ -11,7 +11,7 @@ export const useFeatureListProductsQuery = ({
   queryParams,
 } = {}) => {
   return useQuery(
-    ["GET_FEATUR_LIST_PRODUCTS", data],
+    ["GET_FEATURE_LIST_PRODUCTS", data],
     () => {
       return featureListProductsService.getList(data);
     },

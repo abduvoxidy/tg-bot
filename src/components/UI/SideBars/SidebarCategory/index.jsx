@@ -109,7 +109,11 @@ function SidebarCategory() {
           <label>Бренд</label>
           {brands.map((el, i) => (
             <div key={i} onClick={() => handleCheck(el)} className={cls.brand}>
-              <Checkbox value={el} checked={checkedItems.includes(el)} />
+              <Checkbox
+                onChange={() => {}}
+                value={el}
+                checked={checkedItems.includes(el)}
+              />
               <p>{el}</p>
             </div>
           ))}
@@ -130,7 +134,7 @@ function SidebarCategory() {
                   <FormControlLabel
                     value={el}
                     checked={color ? el === color : false}
-                    control={<RadioColor color={el} />}
+                    control={<RadioColor onChange={() => {}} color={el} />}
                   />
                 </div>
               ))}
@@ -146,7 +150,11 @@ function SidebarCategory() {
               onClick={() => handleStock(el)}
               className={cls.stock}
             >
-              <Checkbox value={el} checked={checkedStocks.includes(el)} />
+              <Checkbox
+                onChange={() => {}}
+                value={el}
+                checked={checkedStocks.includes(el)}
+              />
               <p>{el}</p>
             </div>
           ))}

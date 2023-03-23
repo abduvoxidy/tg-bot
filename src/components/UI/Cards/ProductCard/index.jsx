@@ -6,8 +6,11 @@ import { useState } from "react";
 import Link from "next/link";
 import MainButton from "components/UI/Buttons/MainButton";
 import CStar from "components/UI/CStars/CStar";
+import useKeyTranslation from "hooks/useKeyTranslation";
+import numberToPrice from "utils/numberToPrice";
 
-function ProductCard({ img = "adidas.png", zIndex = 0 }) {
+function ProductCard({ data, img, zIndex = 0 }) {
+  const getKey = useKeyTranslation();
   const [value, setValue] = useState(2);
   const [isActive, setIsActive] = useState(false);
   const types = ["128GB", "256GB", "512GB", "512GB", "..."];
@@ -22,7 +25,7 @@ function ProductCard({ img = "adidas.png", zIndex = 0 }) {
       onMouseLeave={() => setIsActive(false)}
       onMouseEnter={() => setIsActive(true)}
     >
-      <Link href="/product/1">
+      <Link href={data ? `/product/${data.guid}` : "/product/1"}>
         <a>
           <div className={cls.cardHeader}>
             <div className={cls.badge}>20%</div>
@@ -37,7 +40,13 @@ function ProductCard({ img = "adidas.png", zIndex = 0 }) {
 
             <div className={cls.img}>
               <Image
-                src={`/images/main/${img}`}
+                src={`${
+                  data && data?.photo
+                    ? data?.photo
+                    : img
+                    ? `/images/main/${img}`
+                    : `/images/no-photo.png`
+                }`}
                 objectFit="contain"
                 layout="fill"
                 alt="car"
@@ -47,8 +56,18 @@ function ProductCard({ img = "adidas.png", zIndex = 0 }) {
         </a>
       </Link>
       <div className={cls.cardBody}>
-        <p className={cls.title}>Смартфоны</p>
-        <p className={cls.desc}>Смартфон Apple iPhone 14 Pro 512Gb Black</p>
+        <p className={cls.title}>
+          {" "}
+          {(data && data.category_id_data?.[getKey("name")]) || "Смартфон"}
+        </p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              (data && data?.[getKey("name")]) ||
+              " Смартфон Apple iPhone 14 Pro 512Gb Black",
+          }}
+          className={cls.desc}
+        />
         <span className={cls.stars}>
           <CStar
             onChange={(event, newValue) => {
@@ -60,8 +79,17 @@ function ProductCard({ img = "adidas.png", zIndex = 0 }) {
           <span className={cls.badgePrice}>1 000 000 сум</span>
           <p className={cls.count}>x 12 мес</p>
         </div>
-        <p className={cls.linePrice}> 1 200 000 000 сум</p>
-        <p className={cls.price}>120 650 000 сум</p>
+        <p className={cls.linePrice}>
+          {" "}
+          {data && data?.old_price
+            ? numberToPrice(data?.old_price)
+            : "1 200 000 000 сум"}
+        </p>
+        <p className={cls.price}>
+          {data && data?.sell_price
+            ? numberToPrice(data?.sell_price)
+            : "1 200 000 000 сум"}
+        </p>
       </div>
       <div className={`${cls.bottom} ${isActive ? cls.bottomActive : ""}`}>
         <Link href="/cart">

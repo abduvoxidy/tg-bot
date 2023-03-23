@@ -15,48 +15,86 @@ import useKeyTranslation from "hooks/useKeyTranslation";
 
 export function CatalogBrand() {
   const router = useRouter();
-  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [subCategories, setSubCategories] = useState([]);
+
   const getKey = useKeyTranslation();
 
   const { data, isLoading } = useCategoriesQuery({
     data: {},
+    routerId: router.query.id,
     queryParams: {
-      enabled: true,
+      enabled: !!router.query.id,
       onSuccess: (res) => {
-        const response = getNestedCategories(
+        const response1 = getNestedCategories(
           {
             guid: null,
           },
           res.data.response
         );
-        setCategories(response.children);
+
+        const Category =
+          response1 &&
+          response1.children.find((el) => el.guid === router.query.id);
+
+        setCategory(Category);
+
+        const response2 = getNestedCategories(
+          {
+            guid: router.query.id,
+          },
+          res.data.response
+        );
+
+        setSubCategories(response2.children || []);
       },
     },
   });
-
-  const subCategories =
-    categories && categories.find((el) => el.guid === router.query.id);
 
   return (
     <main className={cls.main}>
       <Container>
         <BreadCrumbs />
         <h1 className={cls.title}>
-          {subCategories ? subCategories?.[getKey("name")] : ""}
+          {category ? category?.[getKey("name")] : ""}
         </h1>
         <div className={cls.row}>
-          <SidebarCatalog subCategories={subCategories?.children} />
+          <SidebarCatalog subCategories={subCategories} isLoading={isLoading} />
           <div className={cls.body}>
             <CatalogBanner />
-            <CatalogList catalogs={catalogs} />
-            <ProductSlider title="Популярные товары" />
-            <CatalogList catalogs={catalogs} />
-            <ProductSlider title="Новое" />
-            <CatalogList catalogs={catalogs} />
-            <ProductSlider title="Электроника" />
+            {subCategories.map((el, index) => (
+              <WrapperComponent
+                key={el.guid}
+                index={index}
+                title={el?.[getKey("name")]}
+                categories={el.children}
+              />
+            ))}
           </div>
         </div>
       </Container>
     </main>
   );
 }
+
+const WrapperComponent = ({ index, categories, title, ...restProps }) => {
+  if (index === 0) {
+    return (
+      <>
+        <CatalogList title={title} categories={categories} />
+        <ProductSlider title="Популярные товары" />
+      </>
+    );
+  }
+  if (index === 1) {
+    return (
+      <>
+        <CatalogList title={title} categories={categories} />
+        <ProductSlider title="Новое" />
+      </>
+    );
+  }
+  return (
+    <CatalogList title={title} categories={categories} catalogs={catalogs} />
+  );
+};

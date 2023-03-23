@@ -1,9 +1,14 @@
 .root {
-  padding-top: rem(12);
+  margin-top: rem(32);
+  h2 {
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 3.125rem;
+  }
   .row {
     margin-top: rem(22);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 228px));
     gap: rem(24);
   }
 }

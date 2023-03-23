@@ -5,18 +5,18 @@ import Link from "next/link";
 
 function Card({ data }) {
   return (
-    <Link href="/">
+    <Link href={`/category/${data.guid}`}>
       <a>
         <div className={cls.card}>
           <div className={cls.img}>
             <Image
               objectFit="contain"
               layout="fill"
-              src={`/images/catalog/${data.url}`}
-              alt="tel1"
+              src={`/images/no-photo.png`}
+              alt="photo"
             />
           </div>
-          <p className={cls.title}>{data.name}</p>
+          <p className={cls.title}>{data?.name_ru}</p>
         </div>
       </a>
     </Link>

@@ -6,8 +6,23 @@ import Card from "./Card";
 import Link from "next/link";
 import ProductCard from "../Cards/ProductCard";
 import CategoryList from "../CategoryList";
+import { useProductsQuery } from "services/products.service";
+import { useRouter } from "next/router";
 
 function PopularOffers({ title }) {
+  const router = useRouter();
+  const category_id = router.query?.id;
+
+  const { data, isLoading } = useProductsQuery({
+    data: {
+      category_id: [category_id],
+    },
+    queryParams: {
+      enabled: !!category_id,
+    },
+  });
+  const products = data && data?.data?.response;
+
   const images = ["car.png", "chip.png", "cleaner.png", "iron.png"];
   const productImages = [
     "car.png",
@@ -43,13 +58,19 @@ function PopularOffers({ title }) {
       </Slider>
       <CategoryList />
       <div className={cls.row}>
-        {productImages.map((el, index) => (
-          <ProductCard
-            zIndex={productImages.length - index}
-            key={index}
-            img={el}
-          />
-        ))}
+        {isLoading ? (
+          "Loading...."
+        ) : products && products.length > 0 ? (
+          products.map((el, index) => (
+            <ProductCard
+              data={el}
+              zIndex={products.length - index}
+              key={index}
+            />
+          ))
+        ) : (
+          <h1>No data</h1>
+        )}
       </div>
     </div>
   );

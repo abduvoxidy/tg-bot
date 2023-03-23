@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SetpsWrapper from "../components/StepsWrapper";
 import cls from "./StepOne.module.scss";
-// import { useCallback } from "react";
 import ImgUploader from "../components/ImgUploader";
 import { useForm } from "react-hook-form";
 import FormButtons from "../components/FormButtons";
@@ -9,13 +8,6 @@ import TabBody from "components/UI/CTabs/TabBody";
 
 function StepOne({ setActiveStep }) {
   const [tabValue, setTabValue] = useState("passport");
-  // const TabBody = useCallback(
-  //   ({ tab, children }) => {
-  //     if (tab === tabValue) return children;
-  //     return <></>;
-  //   },
-  //   [tabValue]
-  // );
 
   const {
     handleSubmit,
