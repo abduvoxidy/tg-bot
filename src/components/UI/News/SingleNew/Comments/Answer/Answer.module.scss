@@ -1,0 +1,87 @@
+.answer,
+.subAnswer {
+  margin-top: rem(15);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .user {
+      display: flex;
+      align-items: center;
+      gap: rem(12);
+      &__img {
+        border-radius: 50%;
+        width: rem(48);
+        height: rem(48);
+        object-fit: contain;
+      }
+      &__name {
+        font-weight: 500;
+        font-size: rem(18);
+        line-height: rem(22);
+        color: #000000;
+      }
+    }
+  }
+  &__body {
+    margin-left: rem(60);
+    .commentCount {
+      cursor: pointer;
+      color: #4081b7;
+    }
+    .comment {
+      font-size: rem(16);
+      line-height: rem(19);
+    }
+    .btns {
+      margin-top: rem(10);
+      display: flex;
+      align-items: center;
+      column-gap: rem(12);
+      .btn {
+        height: rem(28);
+        background: #f9f9f9;
+        cursor: pointer;
+        border-radius: rem(10);
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        padding: rem(2) rem(4);
+        svg {
+          width: rem(14);
+        }
+        p {
+          font-weight: 400;
+          font-size: rem(14);
+          line-height: rem(24);
+          letter-spacing: -0.006em;
+          color: #84919a;
+          font-weight: 400;
+        }
+      }
+    }
+    .message {
+      position: relative;
+      .textarea textarea {
+        margin-top: rem(10);
+        padding-right: rem(200);
+        margin-top: rem(15);
+        height: rem(88);
+      }
+      .textAreaBtns {
+        right: rem(12);
+        bottom: rem(14);
+        position: absolute;
+        display: flex;
+        .cancelBtn,
+        .sendBtn {
+          height: rem(40);
+        }
+        .cancelBtn {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}

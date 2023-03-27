@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { useCategoriesQuery } from "services/category.service";
 import useTranslation from "next-translate/useTranslation";
 import useKeyTranslation from "hooks/useKeyTranslation";
-import { getNestedCategories } from "utils/getNestedCategories";
+import { getNestedCategories } from "utils/getNestedData";
 
 function CatgoriesMenu({
   isActive,

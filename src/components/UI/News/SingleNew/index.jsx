@@ -7,6 +7,7 @@ import { useNewsByIdQuery, useNewsQuery } from "services/news.service";
 import { useRouter } from "next/router";
 import useKeyTranslation from "hooks/useKeyTranslation";
 import LastNews from "./LastNews";
+import Comments from "./Comments";
 
 export function SingleNew() {
   const getKey = useKeyTranslation();
@@ -47,6 +48,7 @@ export function SingleNew() {
               className={cls.description}
             />
           </div>
+          {/* <Comments /> */}
         </div>
         <div className={cls.rightSide}>
           <LastNews news={newsData} />

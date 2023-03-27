@@ -12,3 +12,16 @@ export function getNestedCategories(obj, categoryData) {
   }
   return obj;
 }
+
+export function getNestedData(obj, data, field) {
+  obj.children = [];
+  for (const i in data) {
+    if (obj.guid === data[i][field]) {
+      obj.children.push(data[i]);
+    }
+  }
+  for (const j in obj.children) {
+    obj.children[j] = getNestedData(obj.children[j], data, field);
+  }
+  return obj;
+}
