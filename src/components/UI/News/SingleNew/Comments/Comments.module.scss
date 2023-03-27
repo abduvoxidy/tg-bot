@@ -1,0 +1,42 @@
+.comments {
+  margin-top: rem(35);
+  background-color: #fff;
+  padding: rem(32) rem(24);
+  &__header {
+    padding: rem(24);
+    background: #f9f9f9;
+    border-radius: 8px;
+    .title {
+      font-weight: 600;
+      font-size: rem(20);
+      line-height: rem(24);
+      letter-spacing: -0.32px;
+    }
+    .description {
+      margin-top: rem(8);
+      font-weight: 500;
+      font-size: rem(15);
+      line-height: rem(18);
+      letter-spacing: -0.32px;
+    }
+    .message {
+      position: relative;
+      .sendBtn {
+        position: absolute;
+        right: rem(12);
+        bottom: rem(14);
+        height: rem(40);
+      }
+      .textarea textarea {
+        padding-right: rem(150);
+        margin-top: rem(15);
+        height: rem(88);
+      }
+    }
+  }
+  &__body {
+    margin-top: rem(15);
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,6 +1,9 @@
 import cls from "./Checkbox.module.scss";
 
 export default function Checkbox({ checked, ...restProps }) {
+  {
+    console.log("restProps", restProps);
+  }
   return (
     <div className={cls.checkbox}>
       <input type="checkbox" checked={checked} {...restProps} />

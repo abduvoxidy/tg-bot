@@ -8,7 +8,7 @@ import CatalogList from "components/UI/CatalogList";
 import { catalogs } from "./data";
 import ProductSlider from "components/UI/Products/ProductSlider";
 import { useCategoriesQuery } from "services/category.service";
-import { getNestedCategories } from "utils/getNestedCategories";
+import { getNestedCategories } from "utils/getNestedData";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import useKeyTranslation from "hooks/useKeyTranslation";
