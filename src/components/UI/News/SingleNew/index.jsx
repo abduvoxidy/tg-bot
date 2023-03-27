@@ -48,7 +48,7 @@ export function SingleNew() {
               className={cls.description}
             />
           </div>
-          {/* <Comments /> */}
+          <Comments />
         </div>
         <div className={cls.rightSide}>
           <LastNews news={newsData} />

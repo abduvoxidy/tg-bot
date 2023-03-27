@@ -16,9 +16,7 @@ import { TextSkeleton } from "components/UI/Loaders/TextSkeleton";
 function Comments() {
   const [value, setValue] = useState("");
   const [answer, setAnswer] = useState("");
-  const [isAnswer, setIsAnswer] = useState("");
-  const [subAnswer, setSubAnswer] = useState("");
-  const [isSubAnswer, setIsSubAnswer] = useState("");
+
   const [answerId, setAnswerId] = useState("");
 
   const router = useRouter();
@@ -45,8 +43,6 @@ function Comments() {
       },
     },
   });
-
-  console.log("commentsData", comments);
 
   const { mutate: createComment, isLoading: createLoading } =
     useNewsCommentsCreateMutation({
@@ -102,14 +98,13 @@ function Comments() {
               key={el.guid}
               data={el}
               setAnswer={setAnswer}
-              isAnswer={isAnswer}
               answer={answer}
-              setIsAnswer={setIsAnswer}
-              subAnswer={subAnswer}
-              setSubAnswer={setSubAnswer}
-              isSubAnswer={isSubAnswer}
-              setIsSubAnswer={setIsSubAnswer}
+              // subAnswer={subAnswer}
+              // setSubAnswer={setSubAnswer}
+              // isSubAnswer={isSubAnswer}
+              // setIsSubAnswer={setIsSubAnswer}
               setAnswerId={setAnswerId}
+              answerId={answerId}
             />
           ))
         )}
