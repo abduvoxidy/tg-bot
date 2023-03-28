@@ -12,15 +12,16 @@ import {
   useNewsCommentsUpdateMutation,
   useNewsCommentsQuery,
 } from "services/news.comments.service";
-import { useQueryClient } from "react-query";
 import { useState } from "react";
 import SimpleLoader from "components/UI/Loaders/SimpleLoader";
 
 function Answer({ data }) {
   const router = useRouter();
   const news_id = router.query.id;
-  const queryClient = useQueryClient();
-  const [moreCommentId, setMoreCommentId] = useState("");
+  const [moreCommentId, setMoreCommentId] = useState({
+    id: undefined,
+    current: false,
+  });
   const [answer, setAnswer] = useState("");
   const [answerId, setAnswerId] = useState("");
 
@@ -32,20 +33,20 @@ function Answer({ data }) {
     data: {
       news_id,
       view_fields: ["comments_id"],
-      search: moreCommentId,
+      search: moreCommentId.id,
     },
-    comments_id: moreCommentId === data.guid,
+    comments_id: moreCommentId.id,
     queryParams: {
-      enabled: true,
-      onSuccess: (res) => {},
+      enabled: !!moreCommentId.id,
       select: (res) => res.response,
+      onSuccess: (res) => {},
     },
   });
 
   const { mutate: updateComment, isLoading: updateLoading } =
     useNewsCommentsUpdateMutation({
       onSuccess: (res) => {
-        queryClient.refetchQueries(["GET_NEWS_COMMENTS"]);
+        refetch();
       },
     });
 
@@ -53,6 +54,10 @@ function Answer({ data }) {
     useNewsCommentsCreateMutation({
       onSuccess: (res) => {
         setAnswer("");
+        setMoreCommentId({
+          id: undefined,
+          current: false,
+        });
         updateComment({
           guid: data?.guid,
           comment_count: data.comment_count + 1,
@@ -144,16 +149,21 @@ function Answer({ data }) {
           )}
           {data?.comment_count ? (
             <p
-              onClick={() => setMoreCommentId(data.guid)}
+              onClick={() =>
+                setMoreCommentId((prev) => ({
+                  id: prev.id === data.guid ? null : data.guid,
+                  current: prev.id === data.guid ? false : true,
+                }))
+              }
               className={cls.commentCount}
             >
-              {data?.comment_count} answers
+              {data?.comment_count} ответы
             </p>
           ) : null}
           {isLoading ? (
             <SimpleLoader />
           ) : (
-            moreCommentId === data?.guid &&
+            moreCommentId.id === data?.guid &&
             commentsData?.map((el) => (
               <SubAnswer key={el.guid} data={el} parentData={data} />
             ))

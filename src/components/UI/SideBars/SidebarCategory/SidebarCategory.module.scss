@@ -17,7 +17,7 @@
         input {
           height: rem(40);
           padding: rem(8) rem(12);
-          border-radius: rem(6);
+          border-radius: rem(8);
           border: 1.2px solid #dde2e4;
         }
         &::placeholder {
@@ -36,12 +36,12 @@
 
   .brands {
     .brand {
-      cursor: pointer;
       margin-top: rem(12);
       display: flex;
       align-items: center;
       column-gap: rem(12);
-      p {
+      .label {
+        cursor: pointer;
         font-weight: 400;
         font-size: rem(14);
         line-height: rem(24);

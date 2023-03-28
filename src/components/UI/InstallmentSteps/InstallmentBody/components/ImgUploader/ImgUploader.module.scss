@@ -1,6 +1,6 @@
 .card {
   border: 1px solid #d5dadd;
-  border-radius: 12px;
+  border-radius: rem(8);
   background-color: #fff;
   width: rem(264);
   height: rem(355);
@@ -56,14 +56,14 @@
     margin-top: auto;
     padding: rem(24);
     border: 1px dashed #0e73f6;
-    border-radius: 8px;
+    border-radius: rem(8);
     display: flex;
     align-items: center;
     column-gap: rem(12);
     p {
       font-weight: 400;
-      font-size: 16px;
-      line-height: 19px;
+      font-size: rem(16);
+      line-height: rem(19);
       color: #0e73f6;
     }
   }

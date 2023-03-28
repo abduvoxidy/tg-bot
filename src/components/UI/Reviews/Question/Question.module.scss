@@ -4,7 +4,7 @@
   .banner {
     margin-top: rem(30);
     background: #f6f8f9;
-    border-radius: 8px;
+    border-radius: rem(8);
     padding: rem(24);
     .title {
       font-weight: 600;
@@ -80,7 +80,7 @@
           .btn {
             cursor: pointer;
             background: #eef0f2;
-            border-radius: 10px;
+            border-radius: rem(8);
             display: flex;
             align-items: center;
             gap: rem(8);
@@ -142,7 +142,7 @@
             .badge {
               padding: rem(4) rem(12);
               background: #f3f5f9;
-              border-radius: 14px;
+              border-radius: rem(14);
               font-weight: 500;
               font-size: rem(13);
               line-height: rem(24);

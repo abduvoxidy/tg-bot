@@ -1,25 +1,34 @@
-import React from "react";
 import cls from "./SidebarCategory.module.scss";
-import Input from "../../Forms/Input";
-import Slider from "@mui/material/Slider";
+import Input from "components/UI/Forms/Input";
 import { useState } from "react";
-import { styled } from "@mui/material/styles";
 import CustomSlider from "./styles";
-import Checkbox from "../../Forms/Checkbox";
-import RadioColor from "../../Forms/RadioColor";
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  RadioGroup,
-} from "@mui/material";
-import SecondaryButton from "../../Buttons/SecondaryButton";
+import Checkbox from "components/UI/Forms/Checkbox";
+import RadioColor from "components/UI/Forms/RadioColor";
+import { FormControl, FormControlLabel, RadioGroup } from "@mui/material";
+import SecondaryButton from "components/UI/Buttons/SecondaryButton";
+import { useBrandsQuery } from "services/brands.service";
+import { useRouter } from "next/router";
 
 function SidebarCategory() {
   const [value, setValue] = useState([200000, 1000000]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [checkedStocks, setCheckedStocks] = useState([]);
   const [color, setColor] = useState(null);
+  const router = useRouter();
+
+  const category_id = router.query.id;
+
+  const { data: brandsData, isLoading } = useBrandsQuery({
+    data: {
+      category_id: [category_id],
+    },
+    queryParams: {
+      enabled: !!category_id,
+      onSuccess: (res) => {},
+    },
+  });
+
+  console.log("brandsData", brandsData);
 
   const handleCheck = (data) => {
     const item = checkedItems.find((val) => val === data);
@@ -32,7 +41,6 @@ function SidebarCategory() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    // console.log("newValue", newValue);
   };
 
   const handleColor = (data) => {
@@ -108,13 +116,18 @@ function SidebarCategory() {
         <div className={cls.brands}>
           <label>Бренд</label>
           {brands.map((el, i) => (
-            <div key={i} onClick={() => handleCheck(el)} className={cls.brand}>
+            <div key={i} className={cls.brand}>
               <Checkbox
-                onChange={() => {}}
+                onChange={(e) => {
+                  handleCheck(el);
+                }}
+                id={el}
                 value={el}
                 checked={checkedItems.includes(el)}
               />
-              <p>{el}</p>
+              <label className={cls.label} htmlFor={el}>
+                {el}
+              </label>
             </div>
           ))}
           <p className={cls.showMore}>Посмотреть все</p>
@@ -151,7 +164,9 @@ function SidebarCategory() {
               className={cls.stock}
             >
               <Checkbox
-                onChange={() => {}}
+                onChange={(e) => {
+                  console.log("e", e.target.checked);
+                }}
                 value={el}
                 checked={checkedStocks.includes(el)}
               />
