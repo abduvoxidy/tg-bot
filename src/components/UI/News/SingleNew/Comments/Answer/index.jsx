@@ -14,22 +14,15 @@ import {
 } from "services/news.comments.service";
 import { useQueryClient } from "react-query";
 import { useState } from "react";
+import SimpleLoader from "components/UI/Loaders/SimpleLoader";
 
-function Answer({
-  data,
-  isSubAnswer,
-  subAnswer,
-  answer,
-  setAnswer,
-  setIsSubAnswer,
-  setSubAnswer,
-  setAnswerId,
-  answerId,
-}) {
+function Answer({ data }) {
   const router = useRouter();
   const news_id = router.query.id;
   const queryClient = useQueryClient();
   const [moreCommentId, setMoreCommentId] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [answerId, setAnswerId] = useState("");
 
   const {
     data: commentsData,
@@ -41,9 +34,9 @@ function Answer({
       view_fields: ["comments_id"],
       search: moreCommentId,
     },
-    comments_id: moreCommentId,
+    comments_id: moreCommentId === data.guid,
     queryParams: {
-      enabled: !!moreCommentId,
+      enabled: true,
       onSuccess: (res) => {},
       select: (res) => res.response,
     },
@@ -142,32 +135,29 @@ function Answer({
                   onClick={sendComment}
                   disabled={!answer}
                   className={cls.sendBtn}
+                  loading={createLoading}
                 >
                   Отправить
                 </MainButton>
               </div>
             </div>
           )}
-          {data?.comment_count && (
+          {data?.comment_count ? (
             <p
-              onClick={() => setMoreCommentId(data?.guid)}
+              onClick={() => setMoreCommentId(data.guid)}
               className={cls.commentCount}
             >
               {data?.comment_count} answers
             </p>
-          )}
-          {moreCommentId === data?.guid &&
+          ) : null}
+          {isLoading ? (
+            <SimpleLoader />
+          ) : (
+            moreCommentId === data?.guid &&
             commentsData?.map((el) => (
-              <SubAnswer
-                key={el.guid}
-                data={el}
-                parentData={data}
-                subAnswer={subAnswer}
-                setSubAnswer={setSubAnswer}
-                isSubAnswer={isSubAnswer}
-                setIsSubAnswer={setIsSubAnswer}
-              />
-            ))}
+              <SubAnswer key={el.guid} data={el} parentData={data} />
+            ))
+          )}
         </div>
       </div>
     </div>

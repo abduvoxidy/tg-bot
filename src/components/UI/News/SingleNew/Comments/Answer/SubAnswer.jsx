@@ -113,6 +113,7 @@ function SubAnswer({ parentData, data }) {
                   onClick={sendComment}
                   disabled={!subAnswer}
                   className={cls.sendBtn}
+                  loading={createLoading}
                 >
                   Отправить
                 </MainButton>
