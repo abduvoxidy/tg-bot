@@ -8,9 +8,13 @@ const newsCommentsService = {
   update: (data) => request.put("/v1/object/comments", { data }),
 };
 
-export const useNewsCommentsQuery = ({ data = {}, queryParams } = {}) => {
+export const useNewsCommentsQuery = ({
+  data = {},
+  comments_id,
+  queryParams,
+} = {}) => {
   return useQuery(
-    ["GET_NEWS_COMMENTS", data],
+    ["GET_NEWS_COMMENTS", data, comments_id],
     async () => {
       return await newsCommentsService
         .getList(data)

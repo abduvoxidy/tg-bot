@@ -6,7 +6,6 @@ import { useState } from "react";
 import {
   useNewsCommentsQuery,
   useNewsCommentsCreateMutation,
-  useNewsCommentsUpdateMutation,
 } from "services/news.comments.service";
 import { useRouter } from "next/router";
 import { getNestedData } from "utils/getNestedData";
@@ -15,11 +14,6 @@ import { TextSkeleton } from "components/UI/Loaders/TextSkeleton";
 
 function Comments() {
   const [value, setValue] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [isAnswer, setIsAnswer] = useState("");
-  const [subAnswer, setSubAnswer] = useState("");
-  const [isSubAnswer, setIsSubAnswer] = useState("");
-  const [answerId, setAnswerId] = useState("");
 
   const router = useRouter();
   const news_id = router?.query?.id;
@@ -45,8 +39,6 @@ function Comments() {
       },
     },
   });
-
-  console.log("commentsData", comments);
 
   const { mutate: createComment, isLoading: createLoading } =
     useNewsCommentsCreateMutation({
@@ -85,6 +77,7 @@ function Comments() {
             }}
           />
           <MainButton
+            loading={createLoading}
             onClick={sendComment}
             disabled={!value}
             className={cls.sendBtn}
@@ -97,21 +90,7 @@ function Comments() {
         {isLoading ? (
           <TextSkeleton />
         ) : (
-          comments.map((el) => (
-            <Answer
-              key={el.guid}
-              data={el}
-              setAnswer={setAnswer}
-              isAnswer={isAnswer}
-              answer={answer}
-              setIsAnswer={setIsAnswer}
-              subAnswer={subAnswer}
-              setSubAnswer={setSubAnswer}
-              isSubAnswer={isSubAnswer}
-              setIsSubAnswer={setIsSubAnswer}
-              setAnswerId={setAnswerId}
-            />
-          ))
+          comments.map((el) => <Answer key={el.guid} data={el} />)
         )}
       </div>
     </div>

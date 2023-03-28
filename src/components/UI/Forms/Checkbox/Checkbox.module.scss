@@ -32,12 +32,16 @@
       color 0.1s cubic-bezier(0.6, 0, 1, 0.3) 0s,
       box-shadow 0.1s cubic-bezier(0.6, 0, 1, 0.3) 0s;
     background: #f6f8f9;
-    svg {
-      flex-shrink: 0;
-      width: rem(20);
-      height: rem(20);
-      transform: scale(0);
-      transition: transform 0.15s cubic-bezier(0.6, 0, 1, 0.3) 0s;
+    label {
+      cursor: pointer;
+      svg {
+        display: block;
+        flex-shrink: 0;
+        width: rem(20);
+        height: rem(20);
+        transform: scale(0);
+        transition: transform 0.15s cubic-bezier(0.6, 0, 1, 0.3) 0s;
+      }
     }
   }
 }

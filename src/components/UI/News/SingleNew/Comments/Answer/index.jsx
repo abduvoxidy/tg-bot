@@ -10,45 +10,67 @@ import { useRouter } from "next/router";
 import {
   useNewsCommentsCreateMutation,
   useNewsCommentsUpdateMutation,
+  useNewsCommentsQuery,
 } from "services/news.comments.service";
-import { useQueryClient } from "react-query";
+import { useState } from "react";
+import SimpleLoader from "components/UI/Loaders/SimpleLoader";
 
-function Answer({
-  data,
-  isAnswer,
-  isSubAnswer,
-  subAnswer,
-  answer,
-  setIsAnswer,
-  setAnswer,
-  setIsSubAnswer,
-  setSubAnswer,
-  setAnswerId,
-}) {
+function Answer({ data }) {
   const router = useRouter();
   const news_id = router.query.id;
-  const queryClient = useQueryClient();
+  const [moreCommentId, setMoreCommentId] = useState({
+    id: undefined,
+    current: false,
+  });
+  const [answer, setAnswer] = useState("");
+  const [answerId, setAnswerId] = useState("");
 
-  const { mutate: createComment, isLoading: createLoading } =
-    useNewsCommentsCreateMutation({
-      onSuccess: (res) => {
-        queryClient.refetchQueries(["GET_NEWS_COMMENTS"]);
-        setAnswer("");
-      },
-    });
+  const {
+    data: commentsData,
+    refetch,
+    isLoading,
+  } = useNewsCommentsQuery({
+    data: {
+      news_id,
+      view_fields: ["comments_id"],
+      search: moreCommentId.id,
+    },
+    comments_id: moreCommentId.id,
+    queryParams: {
+      enabled: !!moreCommentId.id,
+      select: (res) => res.response,
+      onSuccess: (res) => {},
+    },
+  });
 
   const { mutate: updateComment, isLoading: updateLoading } =
     useNewsCommentsUpdateMutation({
       onSuccess: (res) => {
-        queryClient.refetchQueries(["GET_NEWS_COMMENTS"]);
+        refetch();
       },
     });
 
-  const sendComment = (data) => {
+  const { mutate: createComment, isLoading: createLoading } =
+    useNewsCommentsCreateMutation({
+      onSuccess: (res) => {
+        setAnswer("");
+        setMoreCommentId({
+          id: undefined,
+          current: false,
+        });
+        updateComment({
+          guid: data?.guid,
+          comment_count: data.comment_count + 1,
+          news_id,
+        });
+      },
+    });
+
+  const sendComment = () => {
     createComment({
       news_id,
       comment: answer,
-      position_number: 1,
+      position_number: data.comment_count + 1,
       name: "Test",
       user_photo: "",
       comments_id: data?.guid,
@@ -86,14 +108,14 @@ function Answer({
             <div className={cls.btn}>
               <p
                 onClick={() => {
-                  setIsAnswer(data?.guid);
+                  setAnswerId(data?.guid);
                 }}
               >
                 Ответить
               </p>
             </div>
           </div>
-          {isAnswer === data?.guid && (
+          {answerId === data?.guid && (
             <div className={cls.message}>
               <Textarea
                 rows="3"
@@ -108,43 +130,45 @@ function Answer({
                 <SecondaryButton
                   onClick={() => {
                     setAnswer("");
-                    setIsAnswer("");
+                    setAnswerId("");
                   }}
                   className={cls.cancelBtn}
                 >
                   Отмена
                 </SecondaryButton>
                 <MainButton
-                  onClick={() => sendComment(data)}
+                  onClick={sendComment}
                   disabled={!answer}
                   className={cls.sendBtn}
+                  loading={createLoading}
                 >
                   Отправить
                 </MainButton>
               </div>
             </div>
           )}
-        </div>
-        {
-          data?.comment_count ? (
+          {data?.comment_count ? (
             <p
-              onClick={() => setAnswerId(data?.guid)}
+              onClick={() =>
+                setMoreCommentId((prev) => ({
+                  id: prev.id === data.guid ? null : data.guid,
+                  current: prev.id === data.guid ? false : true,
+                }))
+              }
               className={cls.commentCount}
             >
-              {data?.comment_count} answers
+              {data?.comment_count} ответы
             </p>
-          ) : null
-          // data?.children?.map((el) => (
-          //   <SubAnswer
-          //     key={el.guid}
-          //     data={el}
-          //     subAnswer={subAnswer}
-          //     setSubAnswer={setSubAnswer}
-          //     isSubAnswer={isSubAnswer}
-          //     setIsSubAnswer={setIsSubAnswer}
-          //   />
-          // ))
-        }
+          ) : null}
+          {isLoading ? (
+            <SimpleLoader />
+          ) : (
+            moreCommentId.id === data?.guid &&
+            commentsData?.map((el) => (
+              <SubAnswer key={el.guid} data={el} parentData={data} />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

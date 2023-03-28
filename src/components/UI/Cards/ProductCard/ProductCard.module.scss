@@ -75,7 +75,7 @@
       align-items: center;
       column-gap: rem(6);
       .badgePrice {
-        border-radius: rem(12);
+        border-radius: rem(8);
         background-color: var(--primary-color);
         padding: rem(2) rem(8);
         color: white;
@@ -120,7 +120,7 @@
       height: rem(36);
       font-size: rem(16);
       line-height: rem(19);
-      border-radius: rem(6);
+      border-radius: rem(8);
     }
     .types {
       gap: rem(12);
