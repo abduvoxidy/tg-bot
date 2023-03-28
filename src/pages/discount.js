@@ -1,11 +1,11 @@
 import SEO from "components/SEO";
-import Example from "components/UI/Example";
+import Discount from "components/UI/Discount";
 
 export default function brand() {
   return (
     <>
       <SEO />
-      <Example />
+      <Discount />
     </>
   );
 }
