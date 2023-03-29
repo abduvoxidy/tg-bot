@@ -15,15 +15,14 @@ export function Category() {
   const category_id = router.query?.id;
 
   const getKey = useKeyTranslation();
-  const { data, isLoading } = useCategoryByIdQuery({
+  const { data: categoryData, isLoading } = useCategoryByIdQuery({
     id: category_id,
     params: {},
     queryParams: {
       enabled: true,
+      select: (res) => res?.data?.data?.response,
     },
   });
-
-  const categoryData = data?.data?.response;
 
   return (
     <main className={cls.main}>
@@ -36,6 +35,7 @@ export function Category() {
           <SidebarCategory />
           <div>
             <PopularOffers />
+
             <TextContent
               title={categoryData?.[getKey("title")]}
               description={categoryData?.[getKey("description")]}
