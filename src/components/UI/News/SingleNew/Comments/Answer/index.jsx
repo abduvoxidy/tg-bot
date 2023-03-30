@@ -15,7 +15,7 @@ import {
 import { useState } from "react";
 import SimpleLoader from "components/UI/Loaders/SimpleLoader";
 
-function Answer({ data }) {
+function Answer({ data, refetch }) {
   const router = useRouter();
   const news_id = router.query.id;
   const [moreCommentId, setMoreCommentId] = useState({
@@ -25,11 +25,7 @@ function Answer({ data }) {
   const [answer, setAnswer] = useState("");
   const [answerId, setAnswerId] = useState("");
 
-  const {
-    data: commentsData,
-    refetch,
-    isLoading,
-  } = useNewsCommentsQuery({
+  const { data: commentsData, isLoading } = useNewsCommentsQuery({
     data: {
       news_id,
       view_fields: ["comments_id"],
@@ -160,7 +156,7 @@ function Answer({ data }) {
               {data?.comment_count} ответы
             </p>
           ) : null}
-          {isLoading ? (
+          {isLoading && answerId === data?.guid ? (
             <SimpleLoader />
           ) : (
             moreCommentId.id === data?.guid &&
