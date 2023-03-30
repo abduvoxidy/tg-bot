@@ -8,30 +8,23 @@ import ProductCard from "../Cards/ProductCard";
 import CategoryList from "../CategoryList";
 import { useProductsQuery } from "services/products.service";
 import { useRouter } from "next/router";
+import SimpleLoader from "../Loaders/SimpleLoader";
 
 function PopularOffers({ title }) {
   const router = useRouter();
   const category_id = router.query?.id;
 
-  const { data, isLoading } = useProductsQuery({
+  const { data: products, isLoading } = useProductsQuery({
     data: {
       category_id: [category_id],
     },
     queryParams: {
       enabled: !!category_id,
+      select: (res) => res.data?.data?.response,
     },
   });
-  const products = data && data?.data?.response;
 
   const images = ["car.png", "chip.png", "cleaner.png", "iron.png"];
-  const productImages = [
-    "car.png",
-    "chip.png",
-    "cleaner.png",
-    "chip.png",
-    "cleaner.png",
-    "car.png",
-  ];
   return (
     <div className={cls.root} id="productSlider">
       <h3 className={cls.title}>{title || "Популярные предложения"}</h3>
@@ -59,7 +52,7 @@ function PopularOffers({ title }) {
       <CategoryList />
       <div className={cls.row}>
         {isLoading ? (
-          "Loading...."
+          <SimpleLoader />
         ) : products && products.length > 0 ? (
           products.map((el, index) => (
             <ProductCard

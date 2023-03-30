@@ -43,11 +43,12 @@ function TextContent({ isContent, title, description }) {
           dangerouslySetInnerHTML={{ __html: text }}
         />
       )}
-
-      <ShowMoreBtn
-        setIsOpenContent={setIsOpenContent}
-        isOpenContent={isOpenContent}
-      />
+      {isContent && description && (
+        <ShowMoreBtn
+          setIsOpenContent={setIsOpenContent}
+          isOpenContent={isOpenContent}
+        />
+      )}
     </div>
   );
 }

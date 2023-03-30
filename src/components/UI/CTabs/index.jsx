@@ -15,11 +15,12 @@ export function StyledTabs({ ...restProps }) {
 
 const CustomTab = styled(Tab)({
   height: "56px",
-  fontWeight: 700,
-  fontSize: "14px",
+  fontWeight: 600,
+  fontSize: "16px",
   lineHeight: "24px",
-  color: "#B0BABF",
+  color: "#000000",
   textTransform: "inherit",
+
   "&.Mui-selected": {
     color: "#ff9910",
   },

@@ -4,10 +4,19 @@ import Link from "next/link";
 import React from "react";
 import BreadCrumbs from "../BreadCrumbs";
 import cls from "./Brands.module.scss";
-import data from "./data";
-console.log("manaa", data);
+import { useBrandsQuery } from "services/brands.service";
 
 const BrandCompanies = () => {
+  const { data, isLoading } = useBrandsQuery({
+    data: {},
+    queryParams: {
+      // onSuccess: (res) => console.log("resim", res),
+    },
+  });
+
+
+  if (isLoading) return "Loading...";
+
   return (
     <main className={cls.main}>
       <Container>
@@ -21,7 +30,7 @@ const BrandCompanies = () => {
                   <div className={cls.card}>
                     <div className={cls.brand}>
                       <Image
-                        src={el.image}
+                        src={el.photo ? el.photo : "/images/no-photo.png"}
                         layout='fill'
                         objectFit='contain'
                         loading='lazy'

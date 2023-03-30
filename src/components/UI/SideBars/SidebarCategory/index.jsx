@@ -8,27 +8,72 @@ import { FormControl, FormControlLabel, RadioGroup } from "@mui/material";
 import SecondaryButton from "components/UI/Buttons/SecondaryButton";
 import { useBrandsQuery } from "services/brands.service";
 import { useRouter } from "next/router";
+import useKeyTranslation from "hooks/useKeyTranslation";
+import { useEffect } from "react";
+import { useAttributesQuery } from "services/attributes.service";
+import { useQueryClient, useQueries } from "react-query";
+import { useMemo } from "react";
+import { attributesService } from "services/attributes.service";
 
 function SidebarCategory() {
+  const [attributes, setAttributes] = useState();
   const [value, setValue] = useState([200000, 1000000]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [checkedStocks, setCheckedStocks] = useState([]);
   const [color, setColor] = useState(null);
   const router = useRouter();
-
+  const getKey = useKeyTranslation();
   const category_id = router.query.id;
 
   const { data: brandsData, isLoading } = useBrandsQuery({
     data: {
-      category_id: [category_id],
+      // category_id: [category_id],
     },
     queryParams: {
       enabled: !!category_id,
-      onSuccess: (res) => {},
     },
   });
 
-  console.log("brandsData", brandsData);
+  const { data, isLoading: attributesLoading } = useAttributesQuery({
+    data: {
+      // category_id,
+    },
+    queryParams: {
+      enabled: !!category_id,
+      onSuccess: (res) => {
+        setAttributes(res);
+      },
+    },
+  });
+
+  // const attributeQueries = useMemo(() => {
+  //   return attributes?.map((el) => ({
+  //     queryKey: [
+  //       "ATTRIBUTE_VARIANTS",
+  //       {
+  //         attributes_id: el?.guid,
+  //       },
+  //     ],
+  //     queryFn: () =>
+  //       attributesService.getVariantsList({ attributes_id: el.guid }),
+  //   }));
+  // }, [attributes]);
+
+  // const variantsQueryResults = useQueries(attributeQueries);
+
+  // console.log("variantsQueryResults", variantsQueryResults);
+
+  useEffect(() => {
+    if (router.query.hasOwnProperty("brand_ids") || checkedItems.length > 0) {
+      router.push({
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          brand_ids: checkedItems.join(","),
+        },
+      });
+    }
+  }, [router.isReady, checkedItems]);
 
   const handleCheck = (data) => {
     const item = checkedItems.find((val) => val === data);
@@ -115,21 +160,22 @@ function SidebarCategory() {
 
         <div className={cls.brands}>
           <label>Бренд</label>
-          {brands.map((el, i) => (
-            <div key={i} className={cls.brand}>
-              <Checkbox
-                onChange={(e) => {
-                  handleCheck(el);
-                }}
-                id={el}
-                value={el}
-                checked={checkedItems.includes(el)}
-              />
-              <label className={cls.label} htmlFor={el}>
-                {el}
-              </label>
-            </div>
-          ))}
+          {brandsData &&
+            brandsData.map((el) => (
+              <div key={el.guid} className={cls.brand}>
+                <Checkbox
+                  onChange={(e) => {
+                    handleCheck(el.guid);
+                  }}
+                  id={el?.[getKey("title")]}
+                  value={el.guid}
+                  checked={checkedItems.includes(el.guid)}
+                />
+                <label className={cls.label} htmlFor={el?.[getKey("title")]}>
+                  {el?.[getKey("title")]}
+                </label>
+              </div>
+            ))}
           <p className={cls.showMore}>Посмотреть все</p>
         </div>
 
@@ -176,7 +222,9 @@ function SidebarCategory() {
         </div>
 
         <SecondaryButton
-          onClick={handleFilter}
+          onClick={() => {
+            handleFilter();
+          }}
           className={cls.filterBtn}
           fullWidth
         >

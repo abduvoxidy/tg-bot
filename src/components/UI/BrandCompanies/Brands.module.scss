@@ -18,7 +18,7 @@
 
   .brands {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(rem(200), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(rem(200), rem(200)));
     row-gap: rem(20);
     column-gap: rem(16);
 
@@ -27,7 +27,7 @@
       background-color: white;
       border-radius: rem(12);
       cursor: pointer;
-      
+
       .brand {
         position: relative;
         height: rem(100);
