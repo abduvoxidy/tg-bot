@@ -1,44 +1,14 @@
 import React from "react";
 import cls from "./SingleProduct.module.scss";
 import RightSide from "./RightSide";
+import LeftSide from "./LeftSide";
 import { useState } from "react";
-import Image from "next/image";
-import { HeartIcon } from "components/UI/Icons";
-import { colors, memories, charastericticsData } from "./data";
-import { EyeIcon } from "components/UI/Icons";
-import ImageGallery from "react-image-gallery";
 import InstallmentCalculator from "../InstallmentCalculator";
 import CStar from "components/UI/CStars/CStar";
 
 function SingleProduct() {
   const [value, setValue] = useState(2);
   const [open, setOpen] = useState(false);
-
-  const images = [
-    {
-      original: "https://m.media-amazon.com/images/I/71lx0qz7rFL.jpg",
-      thumbnail: "https://m.media-amazon.com/images/I/71lx0qz7rFL.jpg",
-    },
-    {
-      original:
-        "https://playgame34.ru/wp-content/uploads/2022/11/1-1000x1000.jpeg",
-      thumbnail:
-        "https://playgame34.ru/wp-content/uploads/2022/11/1-1000x1000.jpeg",
-    },
-    {
-      original: "https://cdn1.ozone.ru/s3/multimedia-d/6431834701.jpg",
-      thumbnail: "https://cdn1.ozone.ru/s3/multimedia-d/6431834701.jpg",
-    },
-    {
-      original:
-        "https://img.tuttoandroid.net/wp-content/uploads/2021/10/Redmi-Note-11-Pro-Plus-tag.jpg",
-      thumbnail:
-        "https://img.tuttoandroid.net/wp-content/uploads/2021/10/Redmi-Note-11-Pro-Plus-tag.jpg",
-    },
-  ];
-
-  const [isActiveColor, setIsActiveColor] = useState("black.png");
-  const [isActiveMemory, setIsActiveMemory] = useState("128 Гб");
 
   return (
     <>
@@ -65,86 +35,7 @@ function SingleProduct() {
         </div>
 
         <div className={cls.body}>
-          <div className={cls.leftSide}>
-            <div className={cls.slider}>
-              <ImageGallery
-                showBullets={false}
-                showIndex={false}
-                showThumbnails={true}
-                lazyLoad={false}
-                showPlayButton={false}
-                showNav={false}
-                showFullscreenButton={false}
-                thumbnailPosition={"left"}
-                items={images}
-              />
-            </div>
-            <div className={cls.sort}>
-              <span className={cls.heartIcon}>
-                <HeartIcon />
-              </span>
-              <h3 className={cls.colorTitle}>Цвет товара: синий</h3>
-              <div className={cls.colors}>
-                {colors.map((el, i) => (
-                  <div
-                    key={el + i}
-                    onClick={() => setIsActiveColor(el)}
-                    className={`${cls.colorItem} ${
-                      isActiveColor === el ? cls.activeItem : ""
-                    }`}
-                  >
-                    <div className={cls.img}>
-                      <Image
-                        src={`/images/phones/${el}`}
-                        objectFit="contain"
-                        layout="fill"
-                        alt="img"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <img
-                className={cls.discountImg}
-                src="/images/discount.png"
-                alt="discount"
-              />
-              <h3 className={cls.memoryTitle}>Конфигурация памяти: 512 Гб</h3>
-              <div className={cls.memories}>
-                {memories.map((el) => (
-                  <div
-                    key={el}
-                    onClick={() => {
-                      setIsActiveMemory(el);
-                    }}
-                    className={`${cls.memoryItem} ${
-                      isActiveMemory === el ? cls.activeMemory : ""
-                    }`}
-                  >
-                    {el}
-                  </div>
-                ))}
-              </div>
-              <h3 className={cls.characterTitle}>Характеристики</h3>
-              <div className={cls.characteristics}>
-                {charastericticsData.map((el, i) => (
-                  <div key={i} className={cls.row}>
-                    <p className={cls.title}>{el.name}</p>
-                    <div className={cls.dashed} />
-                    <p className={cls.info}>{el.info}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className={cls.seeingNow}>
-                <EyeIcon />
-                <p>
-                  <b>23</b>
-                  &nbsp; Человек просматривает этот товар сейчас
-                </p>
-              </div>
-            </div>
-          </div>
+          <LeftSide />
           <RightSide setOpen={setOpen} />
         </div>
       </div>
