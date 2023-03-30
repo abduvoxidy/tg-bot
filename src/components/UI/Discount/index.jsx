@@ -3,7 +3,7 @@ import TabPanel from "@mui/material";
 import React from "react";
 // import { getElements } from "services/example.service";
 import cls from "./Discount.module.scss";
-import BreadCrumbs from "../BreadCrumbs";
+import BreadCrumbs from "../BreadCrumbs/Index2";
 import Image from "next/image";
 import { DiscountTimeIcon } from "../Icons";
 import DiscountCard from "./DiscountCard";
@@ -24,14 +24,14 @@ function Discount() {
   return (
     <main className={cls.main}>
       <Container>
-        <BreadCrumbs title='Главная / Акции' />
+        <BreadCrumbs title="Главная / Акции" />
         <h1 className={cls.title}>Акции</h1>
         <div className={cls.bannerImg}>
           <Image
-            src='/images/main/discount-banner.png'
-            objectFit='cover'
-            layout='fill'
-            loading='lazy'
+            src="/images/main/discount-banner.png"
+            objectFit="cover"
+            layout="fill"
+            loading="lazy"
           />
 
           <div className={cls.discount}>15%</div>

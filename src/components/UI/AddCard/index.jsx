@@ -10,7 +10,6 @@ import { useStyles } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import * as yup from "yup";
-
 import useCodeExpire from "hooks/useCodeExpire";
 import formatCodeExpireDuration from "utils/formatCodeExpireDuration";
 import { cardValidation } from "utils/validation";

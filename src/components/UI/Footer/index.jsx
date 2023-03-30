@@ -28,6 +28,9 @@ export function Footer() {
                 <Link href="/contacts">
                   <a>Контакты</a>
                 </Link>
+                <Link href="/public-offer">
+                  <a>Публичный оферта</a>
+                </Link>
               </li>
               <li className={cls.navItem}>
                 <h3>Контакты для предложений</h3>

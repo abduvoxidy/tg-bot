@@ -1,12 +1,30 @@
-import React from "react";
+import CBreadcrumbs from "@mui/material/Breadcrumbs";
+import { Typography } from "@mui/material";
 import cls from "./BreadCrumbs.module.scss";
+import { useRouter } from "next/router";
 
-function BreadCrumbs({ title = "Главная / Электроника" }) {
+const BreadCrumbs = ({ items }) => {
+  const router = useRouter();
+
+  const navigateHandler = (link, index) => {
+    if (index === items?.length - 1) return null;
+    router.push(link);
+  };
   return (
-    <div className={cls.root}>
-      <p className={cls.breadcrumb}>{title}</p>
-    </div>
+    <CBreadcrumbs aria-label="breadcrumb">
+      {items?.map((item, index) => (
+        <div key={index} onClick={() => navigateHandler(item.link, index)}>
+          <p
+            className={`${cls.breadcrumb} ${
+              index + 1 === items.length && cls.breadcrumb__last
+            }`}
+          >
+            {item.label}
+          </p>
+        </div>
+      ))}
+    </CBreadcrumbs>
   );
-}
+};
 
 export default BreadCrumbs;
