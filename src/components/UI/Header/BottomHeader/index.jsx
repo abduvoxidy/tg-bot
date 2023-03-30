@@ -14,7 +14,7 @@ const links = [
   },
   {
     name: "Акции",
-    url: "/",
+    url: "/discount",
   },
   {
     name: "Новости",
@@ -22,7 +22,7 @@ const links = [
   },
   {
     name: "Бренды",
-    url: "/brand",
+    url: "/brands",
   },
 ];
 

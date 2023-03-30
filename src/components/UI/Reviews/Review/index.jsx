@@ -9,7 +9,7 @@ import { ShowMoreIcon } from "components/UI/Icons";
 const images = ["black.png", "blue.png", "white.png", "yellow.png"];
 
 function Review() {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(false); 
 
   return (
     <div className={cls.reviewBody}>

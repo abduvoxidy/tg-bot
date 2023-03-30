@@ -1,7 +1,7 @@
 .wrap {
   position: relative;
   background-color: white;
-  border-radius: 0px 0px 16px 16px;
+  border-radius: 0px 0px rem(16) rem(16);
 
   .image {
     border-radius: rem(16);

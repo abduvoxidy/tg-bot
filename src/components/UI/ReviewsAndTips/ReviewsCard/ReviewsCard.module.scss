@@ -1,0 +1,31 @@
+.wrap {
+  padding: 0 rem(16) rem(16);
+  background-color: white;
+  box-shadow: 0 0 rem(16) #e6e6e7;
+  border-radius: rem(8);
+  height: rem(324);
+
+  .image {
+    position: relative;
+    height: rem(200);
+    margin-bottom: rem(16);
+    img {
+      height: 100%;
+    }
+  }
+  .title {
+    font-weight: 700;
+    font-size: rem(18);
+    line-height: rem(22);
+    color: #293649;
+    cursor: pointer;
+    margin-bottom: rem(8);
+  }
+
+  .description {
+    font-size: rem(14);
+    line-height: rem(20);
+    color: #303940;
+    cursor: pointer;
+  }
+}

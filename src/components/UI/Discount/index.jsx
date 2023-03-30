@@ -13,14 +13,13 @@ function Discount() {
   const { data, isLoading } = discountProductsQuery({
     data: {},
     queryParams: {
-      onSuccess: (res) => console.log("res", res),
+      // onSuccess: (res) => console.log("res", res),
     },
   });
 
   if (isLoading) return "Loading...";
 
   const response = data && data?.response;
-  console.log("dsd", response);
 
   return (
     <main className={cls.main}>
@@ -53,6 +52,7 @@ function Discount() {
           {response &&
             response.map((el) => (
               <DiscountCard
+                key={el.id}
                 icon={el.icon}
                 time={el.time}
                 discount={el.value}

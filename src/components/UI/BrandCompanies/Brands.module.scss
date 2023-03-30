@@ -1,0 +1,39 @@
+.main {
+  padding: rem(32) 0 rem(170);
+
+  .title {
+    margin-top: rem(24);
+    font-size: rem(34);
+    line-height: rem(40);
+    font-weight: 600;
+    color: #0d0d0d;
+    margin-bottom: rem(34);
+  }
+
+  .wrap {
+    background: rgba(255, 153, 16, 0.52);
+    border-radius: rem(8);
+    padding: rem(20);
+  }
+
+  .brands {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(200), rem(200)));
+    row-gap: rem(20);
+    column-gap: rem(16);
+
+    .card {
+      padding: rem(12) rem(23);
+      background-color: white;
+      border-radius: rem(12);
+      cursor: pointer;
+
+      .brand {
+        position: relative;
+        height: rem(100);
+        text-align: center;
+        width: 100% !important;
+      }
+    }
+  }
+}
