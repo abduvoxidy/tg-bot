@@ -5,7 +5,7 @@ import SecondaryButton from "components/UI/Buttons/SecondaryButton";
 import Textarea from "components/UI/Forms/Textarea";
 import MainButton from "components/UI/Buttons/MainButton";
 import SubAnswer from "./SubAnswer";
-import { formatDate } from "utils/formatDate";
+import { formatDateTime } from "utils/formatDate";
 import { useRouter } from "next/router";
 import {
   useNewsCommentsCreateMutation,
@@ -81,10 +81,10 @@ function Answer({ data }) {
     <div className={cls.answer}>
       <div className={cls.answer__header}>
         <div className={cls.user}>
-          <img className={cls.user__img} src="/images/user.jpg" alt="user" />
+          <img className={cls.user__img} src='/images/user.jpg' alt='user' />
           <p className={cls.user__name}>{data?.name || "UserName"}</p>
         </div>
-        <p className={cls.date}>{formatDate(data?.updated_date)}</p>
+        <p className={cls.date}>{formatDateTime(data?.updated_date)}</p>
       </div>
       <div className={cls.answer__body}>
         <div>
@@ -118,8 +118,8 @@ function Answer({ data }) {
           {answerId === data?.guid && (
             <div className={cls.message}>
               <Textarea
-                rows="3"
-                placeholder="Напишите свой вопрос"
+                rows='3'
+                placeholder='Напишите свой вопрос'
                 className={cls.textarea}
                 value={answer}
                 onChange={(e) => {

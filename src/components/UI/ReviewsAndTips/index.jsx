@@ -5,23 +5,21 @@ import BreadCrumbs from "../BreadCrumbs";
 import Image from "next/image";
 import ReviewsCard from "./ReviewsCard";
 import { StyledTabs, StyledTab } from "../CTabs";
-
-import data from "./data";
 import TabBody from "../CTabs/TabBody";
+import { useReviewsQuery } from "services/reviews.service";
 
 function ReviewsAndTips() {
   const [tabValue, setTabValue] = useState("all");
 
-  // const { data, isLoading } = discountProductsQuery({
-  //   data: {},
-  //   queryParams: {
-  //     // onSuccess: (res) => console.log("res", res),
-  //   },
-  // });
+  const { data, isLoading } = useReviewsQuery({
+    data: {},
+    queryParams: {
+      select: (res) => res.data.response,
+      onSuccess: (res) => console.log("reskdnw", res),
+    },
+  });
 
-  // if (isLoading) return "Loading...";
-
-  // const response = data && data?.response;
+  if (isLoading) return "Loading...";
 
   return (
     <main className={cls.main}>
@@ -62,7 +60,7 @@ function ReviewsAndTips() {
             <TabBody tab='all' tabValue={tabValue}>
               <div className={cls.cards}>
                 {data &&
-                  data.map((el) => <ReviewsCard key={el.id} data={el} />)}
+                  data?.map((el) => <ReviewsCard key={el.id} data={el} />)}
               </div>
             </TabBody>
             <TabBody tab='review' tabValue={tabValue}>

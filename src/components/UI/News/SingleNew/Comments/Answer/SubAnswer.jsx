@@ -4,7 +4,7 @@ import { LikeBtnIcon } from "components/UI/Icons";
 import SecondaryButton from "components/UI/Buttons/SecondaryButton";
 import Textarea from "components/UI/Forms/Textarea";
 import MainButton from "components/UI/Buttons/MainButton";
-import { formatDate } from "utils/formatDate";
+import { formatDateTime } from "utils/formatDate";
 import {
   useNewsCommentsCreateMutation,
   useNewsCommentsUpdateMutation,
@@ -53,10 +53,10 @@ function SubAnswer({ parentData, data }) {
     <div className={cls.subAnswer}>
       <div className={cls.answer__header}>
         <div className={cls.user}>
-          <img className={cls.user__img} src="/images/user.jpg" alt="user" />
+          <img className={cls.user__img} src='/images/user.jpg' alt='user' />
           <p className={cls.user__name}>{data?.name || "UserName"}</p>
         </div>
-        <p className={cls.date}>{formatDate(data?.updated_date)}</p>
+        <p className={cls.date}>{formatDateTime(data?.updated_date)}</p>
       </div>
       <div className={cls.answer__body}>
         <div>
@@ -91,8 +91,8 @@ function SubAnswer({ parentData, data }) {
           {isSubAnswer === data?.guid && (
             <div className={cls.message}>
               <Textarea
-                rows="3"
-                placeholder="Напишите свой вопрос"
+                rows='3'
+                placeholder='Напишите свой вопрос'
                 className={cls.textarea}
                 value={subAnswer}
                 onChange={(e) => {
