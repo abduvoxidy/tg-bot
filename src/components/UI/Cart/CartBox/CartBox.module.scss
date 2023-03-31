@@ -119,6 +119,8 @@
   }
 
   .total {
+    position: sticky;
+    top: rem(150);
     padding: rem(16);
     background: var(--white-color);
     border-radius: rem(12);

@@ -7,14 +7,12 @@ function BannerSkeleton({ height = 350 }) {
     <div className={cls.skeleton}>
       <Skeleton
         style={{ borderRadius: "8px" }}
-        variant='rectangular'
-        width='100%'
+        variant="rectangular"
+        width="100%"
         height={height}
       />
     </div>
   );
 }
-
-
 
 export default BannerSkeleton;

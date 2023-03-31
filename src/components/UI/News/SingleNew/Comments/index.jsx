@@ -8,7 +8,6 @@ import {
   useNewsCommentsCreateMutation,
 } from "services/news.comments.service";
 import { useRouter } from "next/router";
-import { getNestedData } from "utils/getNestedData";
 import Answer from "./Answer";
 import { TextSkeleton } from "components/UI/Loaders/TextSkeleton";
 
@@ -25,6 +24,8 @@ function Comments() {
     isLoading,
   } = useNewsCommentsQuery({
     data: {
+      limit: 10,
+      offset: 0,
       news_id,
     },
     queryParams: {
@@ -90,7 +91,9 @@ function Comments() {
         {isLoading ? (
           <TextSkeleton />
         ) : (
-          comments.map((el) => <Answer key={el.guid} data={el} />)
+          comments.map((el) => (
+            <Answer refetch={refetch} key={el.guid} data={el} />
+          ))
         )}
       </div>
     </div>

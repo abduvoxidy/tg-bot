@@ -1,0 +1,48 @@
+.regionsMap {
+  border-radius: rem(8);
+  background: #fff;
+  height: rem(680);
+  padding: rem(32);
+  display: grid;
+  grid-template-columns: rem(438) auto;
+  column-gap: rem(32);
+
+  .merchants {
+    height: 100%;
+    .items {
+      margin-top: rem(24);
+      max-height: rem(580);
+      overflow-y: scroll;
+      .item {
+        &:first-child {
+          padding: 0;
+          padding-bottom: rem(16);
+        }
+        cursor: pointer;
+        padding: rem(16) 0;
+        border-bottom: 1px solid #e5e9eb;
+        h3 {
+          font-weight: 600;
+          font-size: rem(18);
+          line-height: rem(24);
+          color: #00040a;
+        }
+        .activeTitle {
+          color: var(--primary-color);
+        }
+        span {
+          margin-top: rem(12);
+          display: flex;
+          column-gap: rem(10);
+          a,
+          p {
+            font-weight: 400;
+            font-size: rem(16);
+            line-height: rem(24);
+            color: #808284;
+          }
+        }
+      }
+    }
+  }
+}

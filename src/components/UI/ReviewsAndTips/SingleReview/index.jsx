@@ -26,7 +26,7 @@ const SingleReview = () => {
     <main className={cls.main}>
       <Container className={cls.container}>
         <div className={cls.leftSide}>
-          <BreadCrumbs title='Главная / Новости / 1 марта 2023 г.' />{" "}
+          <BreadCrumbs title="Главная / Новости / 1 марта 2023 г." />{" "}
           <h1 className={cls.title}>
             iPhone 16 Pro следующего года все еще находится на пути к тому,
             чтобы иметь идентификатор лица под дисплеем.
@@ -37,9 +37,9 @@ const SingleReview = () => {
                 src={
                   "/images/main/discount-banner.png" || `/images/no-photo.png`
                 }
-                objectFit='cover'
-                layout='fill'
-                alt='img'
+                objectFit="cover"
+                layout="fill"
+                alt="img"
               />
             </div>
             <h3 className={cls.desc__title}>Цифровой инвертор</h3>

@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import { useState } from "react";
 import cls from "./Reviews.module.scss";
-import BreadCrumbs from "../BreadCrumbs";
+import BreadCrumbs from "../BreadCrumbs/Index2";
 import Image from "next/image";
 import ReviewsCard from "./ReviewsCard";
 import { StyledTabs, StyledTab } from "../CTabs";
@@ -24,14 +24,14 @@ function ReviewsAndTips() {
   return (
     <main className={cls.main}>
       <Container>
-        <BreadCrumbs title='Главная / Новости' />
+        <BreadCrumbs title="Главная / Новости" />
         <h1 className={cls.title}>Обзоры и советы</h1>
         <div className={cls.bannerImg}>
           <Image
-            src='/images/main/discount-banner.png'
-            objectFit='cover'
-            layout='fill'
-            loading='lazy'
+            src="/images/main/discount-banner.png"
+            objectFit="cover"
+            layout="fill"
+            loading="lazy"
           />
           <p className={cls.top__text}>
             Отдел радиологии работает круглосуточно
@@ -50,26 +50,26 @@ function ReviewsAndTips() {
               }}
               value={tabValue}
             >
-              <StyledTab value='all' label='Всё' />
-              <StyledTab value='review' label='Обзоры' />
-              <StyledTab value='rayting' label='Рейтинг' />
-              <StyledTab value='technology' label='Технологии' />
+              <StyledTab value="all" label="Всё" />
+              <StyledTab value="review" label="Обзоры" />
+              <StyledTab value="rayting" label="Рейтинг" />
+              <StyledTab value="technology" label="Технологии" />
             </StyledTabs>
           </div>
           <div className={cls.main}>
-            <TabBody tab='all' tabValue={tabValue}>
+            <TabBody tab="all" tabValue={tabValue}>
               <div className={cls.cards}>
                 {data &&
                   data?.map((el) => <ReviewsCard key={el.id} data={el} />)}
               </div>
             </TabBody>
-            <TabBody tab='review' tabValue={tabValue}>
+            <TabBody tab="review" tabValue={tabValue}>
               hello
             </TabBody>
-            <TabBody tab='rayting' tabValue={tabValue}>
+            <TabBody tab="rayting" tabValue={tabValue}>
               wuaaaa
             </TabBody>
-            <TabBody tab='technology' tabValue={tabValue}>
+            <TabBody tab="technology" tabValue={tabValue}>
               haaaaaa
             </TabBody>
           </div>
