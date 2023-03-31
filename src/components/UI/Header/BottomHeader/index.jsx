@@ -25,8 +25,8 @@ const links = [
     url: "/brands",
   },
   {
-    name: "Публичная оферта",
-    url: "/public-offer",
+    name: "Обзоры и советы",
+    url: "/reviews",
   },
 ];
 
