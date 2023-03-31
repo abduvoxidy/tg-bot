@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import BreadCrumbs from "components/UI/BreadCrumbs";
-import cls from "./PublicOffer.module.scss";
+import cls from "./About.module.scss";
 import Image from "next/image";
 import { useNewsByIdQuery, useNewsQuery } from "services/news.service";
 import { useRouter } from "next/router";
@@ -31,7 +31,7 @@ const windowScrollTo = (selector, yOffset = -105) => {
   }
 };
 
-const PublicOffer = () => {
+const About = () => {
   //   const getKey = useKeyTranslation();
   //   const router = useRouter();
   //   const news_id = router.query?.id;
@@ -52,7 +52,7 @@ const PublicOffer = () => {
     <main className={cls.main}>
       <Container className={cls.container}>
         <BreadCrumbs title='Главная / Новости / 1 марта 2023 г.' />{" "}
-        <h1 className={cls.title}>Публичная оферта</h1>
+        <h1 className={cls.title}>О нас</h1>
         <div className={cls.body}>
           <div className={cls.leftSide}>
             <div className={cls.bannerImg}>
@@ -111,4 +111,4 @@ const PublicOffer = () => {
   );
 };
 
-export default PublicOffer;
+export default About;

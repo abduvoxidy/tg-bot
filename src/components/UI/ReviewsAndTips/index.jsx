@@ -1,20 +1,41 @@
 import { Container } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cls from "./Reviews.module.scss";
-import BreadCrumbs from "../BreadCrumbs/Index2";
+import BreadCrumbs from "../BreadCrumbs";
 import Image from "next/image";
 import ReviewsCard from "./ReviewsCard";
 import { StyledTabs, StyledTab } from "../CTabs";
 import TabBody from "../CTabs/TabBody";
 import { useReviewsQuery } from "services/reviews.service";
+import { useStateTitleQuery } from "services/reviews.service";
+
+const breadcrumbItems = [
+  {
+    link: "/",
+    label: "Главная",
+  },
+  {
+    link: "/reviews",
+    label: "Обзоры и советы",
+  },
+];
 
 function ReviewsAndTips() {
-  const [tabValue, setTabValue] = useState("all");
+  const [tabValue, setTabValue] = useState("");
 
-  const { data, isLoading } = useReviewsQuery({
+  const { data: categoryTitle } = useStateTitleQuery({
     data: {},
     queryParams: {
-      select: (res) => res.data.response,
+      onSuccess: (res) => console.log("category__title", res),
+    },
+  });
+
+  const { data: articles, isLoading } = useReviewsQuery({
+    data: {
+      category_state_id: tabValue || undefined,
+    },
+    id: tabValue,
+    queryParams: {
       onSuccess: (res) => console.log("reskdnw", res),
     },
   });
@@ -24,15 +45,16 @@ function ReviewsAndTips() {
   return (
     <main className={cls.main}>
       <Container>
-        <BreadCrumbs title="Главная / Новости" />
+        <BreadCrumbs items={breadcrumbItems} />
         <h1 className={cls.title}>Обзоры и советы</h1>
         <div className={cls.bannerImg}>
           <Image
-            src="/images/main/discount-banner.png"
-            objectFit="cover"
-            layout="fill"
-            loading="lazy"
+            src={articles[0].photo} //'/images/main/discount-banner.png'
+            objectFit='cover'
+            layout='fill'
+            loading='lazy'
           />
+
           <p className={cls.top__text}>
             Отдел радиологии работает круглосуточно
           </p>
@@ -50,28 +72,31 @@ function ReviewsAndTips() {
               }}
               value={tabValue}
             >
-              <StyledTab value="all" label="Всё" />
-              <StyledTab value="review" label="Обзоры" />
-              <StyledTab value="rayting" label="Рейтинг" />
-              <StyledTab value="technology" label="Технологии" />
+              <StyledTab value='' label='Всё' />
+              {categoryTitle &&
+                categoryTitle?.map((el) => (
+                  <StyledTab key={el.id} value={el.guid} label={el.name_uz} />
+                ))}
             </StyledTabs>
           </div>
           <div className={cls.main}>
-            <TabBody tab="all" tabValue={tabValue}>
+            <TabBody tab='' tabValue={tabValue}>
               <div className={cls.cards}>
-                {data &&
-                  data?.map((el) => <ReviewsCard key={el.id} data={el} />)}
+                {articles &&
+                  articles?.map((el) => <ReviewsCard key={el.id} data={el} />)}
               </div>
             </TabBody>
-            <TabBody tab="review" tabValue={tabValue}>
-              hello
-            </TabBody>
-            <TabBody tab="rayting" tabValue={tabValue}>
-              wuaaaa
-            </TabBody>
-            <TabBody tab="technology" tabValue={tabValue}>
-              haaaaaa
-            </TabBody>
+            {categoryTitle &&
+              categoryTitle.map((el) => (
+                <TabBody tab={el.guid} tabValue={tabValue}>
+                  <div className={cls.cards}>
+                    {articles &&
+                      articles?.map((el) => (
+                        <ReviewsCard key={el.id} data={el} />
+                      ))}
+                  </div>
+                </TabBody>
+              ))}
           </div>
         </div>
       </Container>

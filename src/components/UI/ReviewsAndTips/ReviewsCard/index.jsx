@@ -5,9 +5,9 @@ import React from "react";
 import cls from "./ReviewsCard.module.scss";
 
 const ReviewsCard = ({ data }) => {
-  const getKey = useKeyTranslation()
+  const getKey = useKeyTranslation();
   return (
-    <Link href={`/reviews/${data.id}`}>
+    <Link href={`/reviews/${data.guid}`}>
       <div className={cls.wrap}>
         <div className={cls.image}>
           <Image
@@ -16,7 +16,7 @@ const ReviewsCard = ({ data }) => {
             objectFit='contain'
           />
         </div>
-        <p className={cls.title} >{data?.[getKey("title")]}</p>
+        <p className={cls.title}>{data?.[getKey("title")]}</p>
         <p
           className={cls.description}
           dangerouslySetInnerHTML={{
@@ -27,5 +27,4 @@ const ReviewsCard = ({ data }) => {
     </Link>
   );
 };
-// data.
 export default ReviewsCard;
