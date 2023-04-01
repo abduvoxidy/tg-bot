@@ -24,6 +24,10 @@ const links = [
     name: "Бренды",
     url: "/brands",
   },
+  {
+    name: "Публичная оферта",
+    url: "/public-offer",
+  },
 ];
 
 function BottomHeader() {
