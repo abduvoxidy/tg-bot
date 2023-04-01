@@ -9,9 +9,10 @@ import useKeyTranslation from "hooks/useKeyTranslation";
 import { formatDate } from "utils/formatDate";
 import SecondaryButton from "../Buttons/SecondaryButton";
 import { useRouter } from "next/router";
+import { BannerSkeleton } from "../Loaders/BannerSkeleton";
 
 export function News() {
-  const { data: news } = useNewsQuery();
+  const { data: news, isLoading } = useNewsQuery();
   const getKey = useKeyTranslation();
   const router = useRouter();
 
@@ -23,7 +24,9 @@ export function News() {
       <Container>
         <BreadCrumbs title="Главная / Новости" />
         <h1 className={cls.title}>Новости</h1>
-        {lastNew && (
+        {isLoading ? (
+          <BannerSkeleton />
+        ) : (
           <div className={cls.bannerImg}>
             <Image
               src={lastNew.photo || "/images/news/banner.jpg"}
