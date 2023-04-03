@@ -65,6 +65,7 @@ const About = () => {
                 alt='img'
               />
             </div>
+
             <div>
               {items.length > 0
                 ? items.map((el, index) => (
@@ -87,16 +88,15 @@ const About = () => {
             <h2 className={cls.top__title}>Содержание:</h2>
             <ul className={cls.themes}>
               {items.map((item, index) => (
-                <p
-                  key={index}
-                  className={cls.option}
-                  onClick={() => {
-                    windowScrollTo("offer" + index);
-                  }}
-                >
+                <p key={index} className={cls.option} onClick={() => {}}>
                   <li
-                    onClick={() => setActive(item)}
-                    className={active == item ? cls.active__class : cls.theme}
+                    onClick={() => {
+                      windowScrollTo("offer" + index);
+                      setActive(item);
+                    }}
+                    className={`${cls.theme} ${
+                      active == item && cls.activeTheme
+                    }`}
                   >
                     {item.name}
                   </li>

@@ -30,7 +30,7 @@ function ReviewsAndTips() {
     },
   });
 
-  const { data: articles, isLoading } = useReviewsQuery({
+  const { data: articles, isLoading } = useReviewsQuery({ 
     data: {
       category_state_id: tabValue || undefined,
     },
