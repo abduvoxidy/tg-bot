@@ -9,13 +9,12 @@
 }
 
 .breadcrumb {
-  color: var(--primary-color);
+  color: #5b6871;
   cursor: pointer;
   font-size: rem(18);
   line-height: rem(24);
   font-weight: 400;
   &__last {
     cursor: unset;
-    color: #5b6871;
   }
 }

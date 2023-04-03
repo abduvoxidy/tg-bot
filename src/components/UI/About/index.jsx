@@ -1,111 +1,100 @@
+import { useState } from "react";
+import cls from "./About.module.scss";
 import { Container } from "@mui/material";
 import BreadCrumbs from "components/UI/BreadCrumbs";
-import cls from "./About.module.scss";
+import { BannerSkeleton } from "components/UI/Loaders/BannerSkeleton";
+import { TextSkeleton } from "components/UI/Loaders/TextSkeleton";
 import Image from "next/image";
-import { useNewsByIdQuery, useNewsQuery } from "services/news.service";
-import { useRouter } from "next/router";
 import useKeyTranslation from "hooks/useKeyTranslation";
-import LastNews from "components/UI/News/SingleNew/LastNews";
-import { useState } from "react";
+import { windowScrollTo } from "utils/windowScrollTo";
+import { useInfoQuery, useStateTitlesQuery } from "services/info.service";
 
-const items = [
+const breadcrumbItems = [
   {
-    name: "Термины и понятия",
+    link: "/",
+    label: "Главная",
   },
   {
-    name: "Предмет договора",
-  },
-  {
-    name: "Подключение PARAGRAF Premium",
-  },
-  {
-    name: "Порядок оплаты, права и обязанности стороно",
+    link: "/reviews",
+    label: "О нас",
   },
 ];
 
-const windowScrollTo = (selector, yOffset = -105) => {
-  if (typeof window !== "undefined") {
-    const el = document.querySelector("#" + selector);
-    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({ top: y });
-  }
-};
-
 const About = () => {
-  //   const getKey = useKeyTranslation();
-  //   const router = useRouter();
-  //   const news_id = router.query?.id;
-
-  //   const { data: news } = useNewsQuery();
-
-  //   const newsData = news?.data?.response;
-
-  //   const { data, isLoading } = useNewsByIdQuery({
-  //     id: news_id,
-  //     params: {},
-  //   });
-
-  //   const newsItem = data?.data?.response;
+  const getKey = useKeyTranslation();
   const [active, setActive] = useState(null);
+
+  const { data, isLoading } = useInfoQuery({ data: { about_us: true } });
+  const aboutData = data && data[0];
+
+  const { data: titles } = useStateTitlesQuery({
+    id: aboutData && aboutData.guid,
+    data: { info_id: [aboutData && aboutData.guid] },
+    queryParams: { enabled: !!(aboutData && aboutData.guid) },
+  });
 
   return (
     <main className={cls.main}>
-      <Container className={cls.container}>
-        <BreadCrumbs title='Главная / Новости / 1 марта 2023 г.' />{" "}
+      <Container>
+        <BreadCrumbs items={breadcrumbItems} />
         <h1 className={cls.title}>О нас</h1>
-        <div className={cls.body}>
-          <div className={cls.leftSide}>
-            <div className={cls.bannerImg}>
-              <Image
-                src={
-                  "/images/main/discount-banner.png" || `/images/no-photo.png`
-                }
-                objectFit='cover'
-                layout='fill'
-                alt='img'
-              />
+        {isLoading ? (
+          <div className={cls.skeleton}>
+            <BannerSkeleton />
+            <TextSkeleton count={2} />
+          </div>
+        ) : (
+          <div className={cls.body}>
+            <div className={cls.leftSide}>
+              <div className={cls.bannerImg}>
+                <Image
+                  src={(aboutData && aboutData.photo) || `/images/no-photo.png`}
+                  objectFit="cover"
+                  layout="fill"
+                  alt="img"
+                />
+              </div>
+              <div className={cls.content}>
+                {titles
+                  ? titles.map((el, index) => (
+                      <div id={"offer" + index}>
+                        <h2 className={cls.desc__title}>
+                          {el?.[getKey("name")]}
+                        </h2>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: el?.[getKey("description")],
+                          }}
+                          className={cls.description}
+                        />
+                      </div>
+                    ))
+                  : null}
+              </div>
             </div>
-
-            <div>
-              {items.length > 0
-                ? items.map((el, index) => (
-                    <div id={"offer" + index}>
-                      <h2 className={cls.desc__title}>{el.name}</h2>
-                      <p className={cls.description}>
-                        Наслаждайтесь повышенной энергоэффективностью,
-                        пониженным уровнем шума и продолжительностью работы. В
-                        технологии цифрового инвертора используют мощные
-                        магниты, увеличивающие мощность. Но такое устройство
-                        работает тише и потребляет меньше энергии, чем
-                        универсальный электродвигатель.
-                      </p>
-                    </div>
-                  ))
-                : null}
+            <div className={cls.rightSide}>
+              <h2 className={cls.top__title}>Содержание:</h2>
+              <ul className={cls.themes}>
+                {titles &&
+                  titles.map((el, index) => (
+                    <li
+                      key={index}
+                      onClick={() => {
+                        windowScrollTo("offer" + index, -140);
+                        setActive(el);
+                      }}
+                      className={`${cls.theme} ${
+                        active == el && cls.activeTheme
+                      }`}
+                    >
+                      {el?.[getKey("name")]}
+                    </li>
+                  ))}
+              </ul>
+              <p></p>
             </div>
           </div>
-          <div className={cls.rightSide}>
-            <h2 className={cls.top__title}>Содержание:</h2>
-            <ul className={cls.themes}>
-              {items.map((item, index) => (
-                <p key={index} className={cls.option} onClick={() => {}}>
-                  <li
-                    onClick={() => {
-                      windowScrollTo("offer" + index);
-                      setActive(item);
-                    }}
-                    className={`${cls.theme} ${
-                      active == item && cls.activeTheme
-                    }`}
-                  >
-                    {item.name}
-                  </li>
-                </p>
-              ))}
-            </ul>
-            <p></p>
-          </div>
-        </div>
+        )}
       </Container>
     </main>
   );

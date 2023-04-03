@@ -13,7 +13,7 @@ function HeaderLinks() {
     {
       icon: <HeartIcon />,
       title: "Избранное",
-      link: "/",
+      link: "/user/favorites",
     },
     {
       icon: <BasketIcon />,

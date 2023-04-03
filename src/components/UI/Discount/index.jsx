@@ -1,7 +1,6 @@
 import { Container } from "@mui/material";
 import TabPanel from "@mui/material";
 import React from "react";
-// import { getElements } from "services/example.service";
 import cls from "./Discount.module.scss";
 import BreadCrumbs from "../BreadCrumbs/Index";
 import Image from "next/image";
@@ -23,9 +22,7 @@ const breadcrumbItems = [
 function Discount() {
   const { data, isLoading } = discountProductsQuery({
     data: {},
-    queryParams: {
-      // onSuccess: (res) => console.log("res", res),
-    },
+    queryParams: {},
   });
 
   if (isLoading) return "Loading...";
