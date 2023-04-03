@@ -384,11 +384,11 @@ export function RightArrowIcon() {
   );
 }
 
-export function YellowStarIcon() {
+export function YellowStarIcon({ width = 16, height = 15 }) {
   return (
     <svg
-      width="16"
-      height="15"
+      width={width}
+      height={height}
       viewBox="0 0 16 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -401,11 +401,11 @@ export function YellowStarIcon() {
   );
 }
 
-export function GrayStarIcon() {
+export function GrayStarIcon({ width = 16, height = 15 }) {
   return (
     <svg
-      width="16"
-      height="15"
+      width={width}
+      height={height}
       viewBox="0 0 16 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -1886,3 +1886,44 @@ export const ContactCommentIcon = () => (
     />
   </svg>
 );
+
+export function AddImgIcon() {
+  return (
+    <svg
+      width="28"
+      height="27"
+      viewBox="0 0 28 27"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9.75 15.416C9.75 16.5432 10.1978 17.6242 10.9948 18.4212C11.7918 19.2182 12.8728 19.666 14 19.666C15.1272 19.666 16.2082 19.2182 17.0052 18.4212C17.8022 17.6242 18.25 16.5432 18.25 15.416C18.25 14.2888 17.8022 13.2078 17.0052 12.4108C16.2082 11.6138 15.1272 11.166 14 11.166C12.8728 11.166 11.7918 11.6138 10.9948 12.4108C10.1978 13.2078 9.75 14.2888 9.75 15.416Z"
+        stroke="black"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M14 2.66667H11.1667C10.7909 2.66667 10.4306 2.81592 10.1649 3.0816C9.89926 3.34728 9.75 3.70761 9.75 4.08333C9.75 4.83478 9.45149 5.55545 8.92014 6.0868C8.38878 6.61816 7.66811 6.91667 6.91667 6.91667H4.08333C3.33189 6.91667 2.61122 7.21518 2.07986 7.74653C1.54851 8.27789 1.25 8.99855 1.25 9.75V22.5C1.25 23.2515 1.54851 23.9721 2.07986 24.5035C2.61122 25.0348 3.33189 25.3333 4.08333 25.3333H23.9167C24.6681 25.3333 25.3888 25.0348 25.9201 24.5035C26.4515 23.9721 26.75 23.2515 26.75 22.5V12.5833M18.25 5.5H26.75M22.5 1.25V9.75"
+        stroke="black"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function CheckedRadioIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="8" cy="8" r="6" stroke="#FF9910" stroke-width="4" />
+    </svg>
+  );
+}

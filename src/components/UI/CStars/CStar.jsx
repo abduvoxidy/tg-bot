@@ -11,13 +11,13 @@ const StyledRating = styled(Rating)({
   },
 });
 
-export default function CStar({ ...restProps }) {
+export default function CStar({ width, height, ...restProps }) {
   return (
     <StyledRating
       name="customized-color"
       defaultValue={2}
-      icon={<YellowStarIcon />}
-      emptyIcon={<GrayStarIcon />}
+      icon={<YellowStarIcon width={width} height={height} />}
+      emptyIcon={<GrayStarIcon width={width} height={height} />}
       {...restProps}
     />
   );

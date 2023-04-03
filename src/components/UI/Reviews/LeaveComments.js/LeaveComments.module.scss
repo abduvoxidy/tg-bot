@@ -1,11 +1,73 @@
 .main {
   padding: rem(52) 0 rem(100);
   .body {
+    margin-top: rem(24);
     background: #fff;
     padding: rem(24);
-    border-radius: rem(12);
+    border-radius: rem(8);
     display: grid;
     grid-template-columns: rem(354) auto;
     gap: rem(24);
+    .rightSide {
+      display: flex;
+      flex-direction: column;
+      h3 {
+        font-weight: 500;
+        font-size: rem(20);
+        line-height: rem(24);
+        letter-spacing: -0.026em;
+        color: #000000;
+      }
+      .overall {
+        display: flex;
+        column-gap: rem(20);
+        align-items: flex-end;
+      }
+      .sayMore {
+        margin-top: rem(40);
+      }
+
+      .inputs {
+        gap: rem(32);
+        margin-top: rem(20);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .title {
+          font-weight: 500;
+          font-size: rem(16);
+          line-height: rem(24);
+          letter-spacing: -0.006em;
+          color: #000000;
+        }
+      }
+
+      .textArea {
+        margin-top: rem(24);
+      }
+
+      .radioWrapper {
+        margin-top: rem(24);
+        .radios {
+          margin-top: rem(24);
+          display: flex;
+          flex-direction: column;
+          gap: rem(16);
+          .radio {
+            display: flex;
+            align-items: center;
+            gap: rem(8);
+            .box {
+              width: rem(16);
+              height: rem(16);
+              border-radius: 50%;
+              background-color: #c4c4c4;
+            }
+          }
+        }
+      }
+      .btn {
+        margin-top: rem(24);
+      }
+    }
   }
 }
