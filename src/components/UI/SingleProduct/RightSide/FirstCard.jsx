@@ -3,6 +3,10 @@ import cls from "./RightSide.module.scss";
 import { ShareIcon, CompareIcon } from "components/UI/Icons";
 import MainButton from "components/UI/Buttons/MainButton";
 import SecondaryButton from "components/UI/Buttons/SecondaryButton";
+import Input from "components/UI/Forms/Input";
+import InputMask from "components/UI/Forms/InputMask";
+import Textarea from "components/UI/Forms/Textarea";
+
 import { Dialog } from "@mui/material";
 import { useState } from "react";
 import { CloseIcon } from "components/UI/Icons";
@@ -15,29 +19,38 @@ import {
 } from "components/UI/Icons";
 import Link from "next/link";
 import Timer from "components/UI/Timer";
+import MainDialog from "components/UI/Dialogs/MainDialog";
+import { useForm } from "react-hook-form";
 
-function FirstCard() {
+function FirstCard({ handleClose }) {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(null);
+
   const icons = [
     {
       icon: ColorVKIcon,
       url: "#",
+      name: "VKontakte",
     },
     {
       icon: ColorTGIcon,
       url: "#",
+      name: "Telegram",
     },
     {
       icon: ColorFaceBookIcon,
       url: "#",
+      name: "Facebook",
     },
     {
       icon: ColorInstagramIcon,
       url: "#",
+      name: "Instagram",
     },
     {
       icon: ColorOKIcon,
       url: "#",
+      name: "Odnoklassniki",
     },
   ];
 
@@ -74,7 +87,7 @@ function FirstCard() {
         </div>
 
         <div className={cls.btns}>
-          <Link href="/cart">
+          <Link href='/cart'>
             <a>
               <MainButton fullWidth className={cls.basketBtn}>
                 Добавить в корзину
@@ -86,32 +99,50 @@ function FirstCard() {
           </SecondaryButton>
         </div>
       </div>
+
       <Dialog
         open={open}
         onClose={() => {
           setOpen(false);
         }}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
       >
         <div className={cls.dialog}>
-          <span onClick={() => setOpen(false)} className={cls.close}>
+          <div onClick={() => setOpen(false)} className={cls.close}>
             <CloseIcon />
-          </span>
+          </div>
           <div className={cls.body}>
             <h3 className={cls.title}>Поделиться товаром</h3>
+
+            <h3>Линк страницы</h3>
+            <div className={cls.ssilka}>
+              <div>
+                <input type='text' placeholder='https://paragraf.uz/' />
+              </div>
+              <div>
+                <MainButton fullWidth className={cls.modalBtn}>
+                  Копировать
+                </MainButton>
+              </div>
+            </div>
+
             <div className={cls.icons}>
               {icons.map((el, i) => (
-                <span key={i}>
-                  <a target="_blank" href="#">
+                <div
+                  key={i}
+                  onClick={() => {
+                    setActive(i);
+                  }}
+                  className={`${cls.icon} ${active == i && cls.activeIcon}`}
+                >
+                  <a href='#' className={cls.link}>
                     {el.icon()}
+                    {el.name}
                   </a>
-                </span>
+                </div>
               ))}
             </div>
-            <MainButton fullWidth className={cls.modalBtn}>
-              Cкопировать ссылку
-            </MainButton>
           </div>
         </div>
       </Dialog>

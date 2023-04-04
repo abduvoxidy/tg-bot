@@ -6,7 +6,7 @@ import MainButton from "components/UI/Buttons/MainButton";
 import { useBannersQuery } from "services/banner.service";
 import SliderControls from "./Controls";
 import useKeyTranslation from "hooks/useKeyTranslation";
-import BannerSkeleton from "components/UI/Loaders/BannerSkeleton";
+import { BannerSkeleton } from "components/UI/Loaders/BannerSkeleton";
 
 export default function Banner() {
   const getKey = useKeyTranslation();
@@ -23,7 +23,7 @@ export default function Banner() {
   if (isLoading) return <BannerSkeleton height={400} />;
 
   return (
-    <div id='bannerSlider' className={`${cls.root} `}>
+    <div id="bannerSlider" className={`${cls.root} `}>
       <Slider
         lazyLoad={true}
         dots={true}
@@ -67,9 +67,9 @@ export default function Banner() {
                       <Image
                         lazyLoad={true}
                         src={el?.photo}
-                        alt='banner'
-                        layout='fill'
-                        objectFit='contain'
+                        alt="banner"
+                        layout="fill"
+                        objectFit="contain"
                       />
                     )}
                   </div>

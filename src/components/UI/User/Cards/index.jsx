@@ -82,7 +82,7 @@ export function Cards() {
                 size="medium"
                 className={cls.addBtn}
               >
-                {cards.length > 0 ? "Добавить новую карту " : "Добавить карту "}
+                {cards.length > 0 ? "Привязать новую карту " : "Добавить карту "}
               </MainButton>
             </div>
           </div>

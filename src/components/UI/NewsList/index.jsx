@@ -5,7 +5,9 @@ import { useNewsQuery } from "services/news.service";
 
 function NewsList() {
   const { data: news } = useNewsQuery({
-    data: {},
+    data: {
+      limit: 3,
+    },
   });
 
   return (

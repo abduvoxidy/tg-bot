@@ -2,9 +2,9 @@ import React from "react";
 import cls from "./BannerSkeleton.module.scss";
 import { Skeleton } from "@mui/material";
 
-function BannerSkeleton({ height = 350 }) {
+export function BannerSkeleton({ height = 350, className }) {
   return (
-    <div className={cls.skeleton}>
+    <div className={`${cls.skeleton} ${className}`}>
       <Skeleton
         style={{ borderRadius: "8px" }}
         variant="rectangular"
@@ -14,5 +14,3 @@ function BannerSkeleton({ height = 350 }) {
     </div>
   );
 }
-
-export default BannerSkeleton;

@@ -8,6 +8,7 @@ import { StyledTabs, StyledTab } from "../CTabs";
 import TabBody from "../CTabs/TabBody";
 import { useReviewsQuery } from "services/reviews.service";
 import { useStateTitleQuery } from "services/reviews.service";
+import { BannerSkeleton } from "../Loaders/BannerSkeleton";
 
 const breadcrumbItems = [
   {
@@ -25,44 +26,42 @@ function ReviewsAndTips() {
 
   const { data: categoryTitle } = useStateTitleQuery({
     data: {},
-    queryParams: {
-      onSuccess: (res) => console.log("category__title", res),
-    },
+    queryParams: {},
   });
 
-  const { data: articles, isLoading } = useReviewsQuery({
+  const { data: articles, isLoading } = useReviewsQuery({ 
     data: {
       category_state_id: tabValue || undefined,
     },
     id: tabValue,
-    queryParams: {
-      onSuccess: (res) => console.log("reskdnw", res),
-    },
+    queryParams: {},
   });
-
-  if (isLoading) return "Loading...";
 
   return (
     <main className={cls.main}>
       <Container>
         <BreadCrumbs items={breadcrumbItems} />
         <h1 className={cls.title}>Обзоры и советы</h1>
-        <div className={cls.bannerImg}>
-          <Image
-            src={articles[0].photo} //'/images/main/discount-banner.png'
-            objectFit='cover'
-            layout='fill'
-            loading='lazy'
-          />
+        {isLoading ? (
+          <BannerSkeleton />
+        ) : (
+          <div className={cls.bannerImg}>
+            <Image
+              src={articles[0].photo}
+              objectFit="cover"
+              layout="fill"
+              loading="lazy"
+            />
 
-          <p className={cls.top__text}>
-            Отдел радиологии работает круглосуточно
-          </p>
-          <p className={cls.bottom__text}>
-            Отделение радиологии (МРТ, МСКТ) клиники Medion работает радиологии
-            (МРТ, МСКТ)...
-          </p>
-        </div>
+            <p className={cls.top__text}>
+              Отдел радиологии работает круглосуточно
+            </p>
+            <p className={cls.bottom__text}>
+              Отделение радиологии (МРТ, МСКТ) клиники Medion работает
+              радиологии (МРТ, МСКТ)...
+            </p>
+          </div>
+        )}
 
         <div className={cls.root}>
           <div className={cls.header}>
@@ -72,7 +71,7 @@ function ReviewsAndTips() {
               }}
               value={tabValue}
             >
-              <StyledTab value='' label='Всё' />
+              <StyledTab value="" label="Всё" />
               {categoryTitle &&
                 categoryTitle?.map((el) => (
                   <StyledTab key={el.id} value={el.guid} label={el.name_uz} />
@@ -80,7 +79,7 @@ function ReviewsAndTips() {
             </StyledTabs>
           </div>
           <div className={cls.main}>
-            <TabBody tab='' tabValue={tabValue}>
+            <TabBody tab="" tabValue={tabValue}>
               <div className={cls.cards}>
                 {articles &&
                   articles?.map((el) => <ReviewsCard key={el.id} data={el} />)}

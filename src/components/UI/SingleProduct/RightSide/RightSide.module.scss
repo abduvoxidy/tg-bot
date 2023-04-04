@@ -172,42 +172,101 @@
 }
 
 .dialog {
-  position: relative;
-  width: rem(512);
-  height: rem(270);
-  padding: rem(48) rem(62) rem(24);
-  text-align: center;
+  padding: rem(27) rem(24) rem(24) rem(24) !important;
+  width: rem(444) !important;
+
   .close {
-    position: absolute;
-    right: rem(25);
-    top: rem(17);
-    cursor: pointer;
-    svg {
-      width: rem(25);
-      height: rem(25);
-    }
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: rem(7);
   }
-  .body {
-    height: 100%;
+
+  h2 {
+    text-align: right;
+  }
+  .form {
+    margin-top: rem(24);
     display: flex;
     flex-direction: column;
+    gap: rem(16);
+
+    .btn {
+      margin-top: rem(8);
+      padding: rem(14) rem(40);
+    }
+  }
+}
+
+.body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .ssilka {
+    display: flex;
+    align-items: center;
+    gap: rem(6);
     justify-content: space-between;
-    .title {
+    margin-bottom: rem(16);
+    margin-top: rem(4);
+
+    input {
+      font-weight: 400;
+      font-size: rem(16);
+      line-height: rem(24);
+      letter-spacing: 0.02em;
+      color: #808284;
+      border: 1px solid #e6e6e6;
+      outline: none;
+      padding: rem(11) rem(16);
+      border-radius: rem(8);
+      width: 100%;
+    }
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: rem(32);
+    line-height: rem(40);
+    color: #000000;
+    margin-bottom: rem(24);
+  }
+  .icons {
+    display: grid;
+    gap: rem(16);
+
+    .icon {
+      border: 1px solid #e6e6e6;
+      border-radius: rem(8);
+      padding: rem(10) rem(16);
+      cursor: pointer;
+      background-color: #fff;
+
       font-weight: 500;
-      font-size: rem(26);
-      line-height: rem(20);
+      font-size: rem(20);
+      line-height: rem(24);
+      letter-spacing: -0.006em;
+      color: #000000;
+
+      .link {
+        display: flex;
+        align-items: center;
+        gap: rem(6);
+      }
     }
-    .icons {
-      display: flex;
-      justify-content: space-between;
+
+    .activeIcon {
+      background-color: #f2f2f3;
+      transition: all 0.6s;
     }
-    .modalBtn {
-      padding: rem(16);
-      height: rem(52);
-      border-radius: rem(6);
-      font-weight: 500;
-      font-size: rem(26);
-      line-height: rem(20);
-    }
+  }
+  .modalBtn {
+    font-weight: 600;
+    font-size: rem(16);
+    line-height: rem(24);
+    letter-spacing: -0.035em;
+    color: #ffffff;
+    padding: rem(9) rem(27);
   }
 }

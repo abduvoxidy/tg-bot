@@ -10,16 +10,16 @@ const DiscountCard = ({
   image,
   time,
   discount,
-  icon
+  icon,
 }) => {
-
   return (
     <div className={cls.wrap}>
       <div className={cls.image}>
-        <Image src={image} layout='fill' />
+        <Image src={image} layout="fill" />
       </div>
       <div className={cls.period}>
-        <span>{formatDate(periodFrom)} </span> - <span> {formatDate(periodTil)}</span>
+        <span>{formatDate(periodFrom)} </span> -{" "}
+        <span> {formatDate(periodTil)}</span>
       </div>
       <p className={cls.name}>{name}</p>
       <span className={cls.discount}> {discount}%</span>

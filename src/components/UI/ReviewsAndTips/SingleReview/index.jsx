@@ -28,10 +28,8 @@ const SingleReview = () => {
   const router = useRouter();
   const article_id = router.query?.id;
 
-  //   Vaqtincha data  ///////////////////
   const { data: news } = useNewsQuery(); //
   const newsData = news?.data?.response; //
-  ///////////////////////////////////////////
 
   const { data: arcticle } = useReviewsQuery();
 
@@ -39,8 +37,6 @@ const SingleReview = () => {
     id: article_id,
     params: {},
   });
-
-  // if (isLoading)
 
   return (
     <main className={cls.main}>
@@ -53,9 +49,9 @@ const SingleReview = () => {
               <div className={cls.bannerImg}>
                 <Image
                   src={data?.photo || `/images/no-photo.png`}
-                  objectFit='cover'
-                  layout='fill'
-                  alt='img'
+                  objectFit="cover"
+                  layout="fill"
+                  alt="img"
                 />
               </div>
               <h3 className={cls.desc__title}>Цифровой инвертор</h3>
