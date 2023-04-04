@@ -1,10 +1,21 @@
 .root {
   position: relative;
+  overflow: hidden;
+
   .description {
+    // height: rem(200);
+
     display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    // p {
+    //   display: -webkit-box;
+    //   -webkit-line-clamp: 6;
+    //   -webkit-box-orient: vertical;
+    //   overflow: hidden;
+    // }
+
     h2 {
       font-weight: 600;
       font-size: rem(32);

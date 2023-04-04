@@ -2,7 +2,7 @@ import { Container } from "@mui/material";
 import TabPanel from "@mui/material";
 import React from "react";
 import cls from "./Discount.module.scss";
-import BreadCrumbs from "../BreadCrumbs/Index";
+import BreadCrumbs from "../BreadCrumbs";
 import Image from "next/image";
 import { DiscountTimeIcon } from "../Icons";
 import DiscountCard from "./DiscountCard";
