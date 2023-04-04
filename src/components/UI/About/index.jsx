@@ -49,9 +49,9 @@ const About = () => {
               <div className={cls.bannerImg}>
                 <Image
                   src={(aboutData && aboutData.photo) || `/images/no-photo.png`}
-                  objectFit="cover"
-                  layout="fill"
-                  alt="img"
+                  objectFit='cover'
+                  layout='fill'
+                  alt='img'
                 />
               </div>
               <div className={cls.content}>

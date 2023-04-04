@@ -9,7 +9,7 @@
   }
   .box {
     display: grid;
-    grid-template-columns: rem(300) minmax(rem(500), rem(760)) auto;
+    grid-template-columns: rem(300) minmax(rem(500), rem(762)) auto;
     align-items: start;
     column-gap: rem(25);
     .rightSide {

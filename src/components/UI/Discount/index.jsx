@@ -2,11 +2,22 @@ import { Container } from "@mui/material";
 import TabPanel from "@mui/material";
 import React from "react";
 import cls from "./Discount.module.scss";
-import BreadCrumbs from "../BreadCrumbs/Index2";
+import BreadCrumbs from "../BreadCrumbs/Index";
 import Image from "next/image";
 import { DiscountTimeIcon } from "../Icons";
 import DiscountCard from "./DiscountCard";
 import { discountProductsQuery } from "services/discount.service";
+
+const breadcrumbItems = [
+  {
+    link: "/",
+    label: "Главная",
+  },
+  {
+    link: "/discount",
+    label: "Акции",
+  },
+];
 
 function Discount() {
   const { data, isLoading } = discountProductsQuery({
@@ -21,7 +32,7 @@ function Discount() {
   return (
     <main className={cls.main}>
       <Container>
-        <BreadCrumbs title="Главная / Акции" />
+        <BreadCrumbs items={breadcrumbItems} />
         <h1 className={cls.title}>Акции</h1>
         <div className={cls.bannerImg}>
           <Image

@@ -38,7 +38,7 @@ export function Addresses() {
             <LeftSidebar />
             <div className={cls.rightSide}>
               {addresses && addresses.length > 0 ? (
-                <div className={cls.list}>
+                <d  iv className={cls.list}>
                   {addresses?.map((item) => (
                     <div className={cls.item} key={item.id}>
                       <div className={cls.leftItem}>
@@ -64,7 +64,7 @@ export function Addresses() {
                       </div>
                     </div>
                   ))}
-                </div>
+                </d>
               ) : (
                 <div className={cls.emptyBox}>
                   <h3 className={cls.title}>Привязанной карты пока нет</h3>
