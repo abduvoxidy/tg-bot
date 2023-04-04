@@ -69,7 +69,7 @@ function Installments() {
             <div className={cls.content}>
               <div className={cls.item}>
                 <p className={cls.name}>Товар:</p>
-                <img src="/images/phones/black.png" width={96} alt="img" />
+                <img src='/images/phones/black.png' width={96} alt='img' />
               </div>
               <div className={cls.item}>
                 <p className={cls.name}>Модел:</p>
@@ -152,7 +152,7 @@ function Installments() {
         ))
       ) : (
         <div className={cls.emptyBox}>
-          <h3>Нет рассрочки</h3>
+          <h3>Рассрочек пока нет :(</h3>
         </div>
       )}
     </>

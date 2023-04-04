@@ -9,15 +9,13 @@
   }
   .box {
     display: grid;
-    grid-template-columns: rem(300) minmax(rem(500), rem(627)) auto;
+    grid-template-columns: rem(300) minmax(rem(500), rem(762)) auto;
     align-items: start;
     column-gap: rem(25);
     .rightSide {
       background-color: #fff;
       border-radius: rem(12);
       padding: rem(24);
-      width: rem(762);
-
 
       .empty {
         .title {
