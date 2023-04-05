@@ -1,6 +1,5 @@
 import cls from "./SidebarCategory.module.scss";
 import Input from "components/UI/Forms/Input";
-import { useState } from "react";
 import CustomSlider from "./styles";
 import Checkbox from "components/UI/Forms/Checkbox";
 import RadioColor from "components/UI/Forms/RadioColor";
@@ -11,12 +10,12 @@ import { useRouter } from "next/router";
 import useKeyTranslation from "hooks/useKeyTranslation";
 import { useEffect } from "react";
 import { useAttributesQuery } from "services/attributes.service";
-import { useQueryClient, useQueries } from "react-query";
-import { useMemo } from "react";
-import { attributesService } from "services/attributes.service";
+import { useGetAttributesResources } from "services/attributes.service";
+import { useMemo, useState } from "react";
+import SimpleLoader from "components/UI/Loaders/SimpleLoader";
 
 function SidebarCategory() {
-  const [attributes, setAttributes] = useState();
+  const [limit, setLimit] = useState(5);
   const [value, setValue] = useState([200000, 1000000]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [checkedStocks, setCheckedStocks] = useState([]);
@@ -27,6 +26,7 @@ function SidebarCategory() {
 
   const { data: brandsData, isLoading } = useBrandsQuery({
     data: {
+      limit,
       // category_id: [category_id],
     },
     queryParams: {
@@ -34,34 +34,40 @@ function SidebarCategory() {
     },
   });
 
-  const { data, isLoading: attributesLoading } = useAttributesQuery({
-    data: {
-      // category_id,
-    },
-    queryParams: {
-      enabled: !!category_id,
-      onSuccess: (res) => {
-        setAttributes(res);
+  /* 
+  // Please don't remove this section
+  const { data: attributes, isLoading: attributesLoading } = useAttributesQuery(
+    {
+      data: {
+        // category_id,
       },
-    },
-  });
+      queryParams: {
+        enabled: !!category_id,
+        onSuccess: (res) => {},
+      },
+    }
+  );
 
-  // const attributeQueries = useMemo(() => {
-  //   return attributes?.map((el) => ({
-  //     queryKey: [
-  //       "ATTRIBUTE_VARIANTS",
-  //       {
-  //         attributes_id: el?.guid,
-  //       },
-  //     ],
-  //     queryFn: () =>
-  //       attributesService.getVariantsList({ attributes_id: el.guid }),
-  //   }));
-  // }, [attributes]);
+  const variantQueryResults = useGetAttributesResources({ list: attributes });
 
-  // const variantsQueryResults = useQueries(attributeQueries);
+  const variants = useMemo(() => {
+    const list = [];
+    variantQueryResults.forEach((query) => {
+      query.data?.forEach((item) => {
+        list.push({
+          ...item,
+          name_ru: item.name_ru,
+        });
+      });
+    });
+    attributes &&
+      attributes.length > 0 &&
+      attributes.forEach((attr) => {
+        attr.children = list.filter((el) => el.attributes_id === attr.guid);
+      });
 
-  // console.log("variantsQueryResults", variantsQueryResults);
+    return attributes;
+  }, [variantQueryResults]); */
 
   useEffect(() => {
     if (router.query.hasOwnProperty("brand_ids") || checkedItems.length > 0) {
@@ -176,7 +182,14 @@ function SidebarCategory() {
                 </label>
               </div>
             ))}
-          <p className={cls.showMore}>Посмотреть все</p>
+          <p
+            onClick={() => {
+              setLimit(100);
+            }}
+            className={cls.showMore}
+          >
+            Посмотреть все
+          </p>
         </div>
 
         <div className={cls.colors}>

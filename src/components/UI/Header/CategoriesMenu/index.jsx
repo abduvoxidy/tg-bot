@@ -42,7 +42,7 @@ function CatgoriesMenu({
 
   useEffect(() => {
     if (isActive) {
-      hoverCategory(categories[0].guid);
+      hoverCategory(categories && categories[0]?.guid);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
