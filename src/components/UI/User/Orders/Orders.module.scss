@@ -14,15 +14,19 @@
     column-gap: rem(25);
     .rightSide {
       .tabs {
-        max-width: rem(812);
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         column-gap: rem(16);
+        border-radius: rem(8);
+        border: 1px solid #f2f2f3;
+        background-color: #f2f2f3;
+        width: 100%;
         .tab {
           transition: 0.2s all ease-in;
           cursor: pointer;
           padding: rem(13);
-          background: #fff;
+          margin: rem(4);
           border-radius: rem(10);
           display: flex;
           justify-content: center;
@@ -32,8 +36,9 @@
           line-height: rem(22);
         }
         .active {
-          background: var(--primary-color);
-          color: #fff;
+          // background: var(--primary-color);
+          // color: #fff;
+          background-color: white;
         }
       }
       .body {

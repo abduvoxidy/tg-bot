@@ -2,10 +2,21 @@ import { Container } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import BreadCrumbs from "../BreadCrumbs/Index2";
+import BreadCrumbs from "../BreadCrumbs";
 import cls from "./Brands.module.scss";
 import { useBrandsQuery } from "services/brands.service";
 import { BannerSkeleton } from "../Loaders/BannerSkeleton";
+
+const breadcrumbItems = [
+  {
+    link: "/",
+    label: "Главная",
+  },
+  {
+    link: "/brands",
+    label: "Бренды",
+  },
+];
 
 const BrandCompanies = () => {
   const { data, isLoading } = useBrandsQuery({
@@ -16,7 +27,7 @@ const BrandCompanies = () => {
   return (
     <main className={cls.main}>
       <Container>
-        <BreadCrumbs title="Главная / Акции" />
+        <BreadCrumbs items={breadcrumbItems} />
         {isLoading ? (
           <BannerSkeleton className={cls.skeleton} />
         ) : (

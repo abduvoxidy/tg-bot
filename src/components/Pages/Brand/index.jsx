@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import React from "react";
 import cls from "./Brand.module.scss";
-import BreadCrumbs from "components/UI/BreadCrumbs/Index2";
+import BreadCrumbs from "components/UI/BreadCrumbs";
 import SidebarCategory from "components/UI/SideBars/SidebarCategory";
 import TextContent from "components/UI/TextContent";
 import BrandProducts from "components/UI/Products/BrandProducts";
@@ -71,13 +71,27 @@ const brands = [
     url: "ssd.png",
   },
 ];
+
+const breadcrumbItems = [
+  {
+    link: "/",
+    label: "Главная",
+  },
+  {
+    link: "/brands",
+    label: "Бренды",
+  },
+];
+
 export function Brand() {
   return (
     <main className={cls.main}>
       <Container>
-        <BreadCrumbs title="Главная / Бренды " />
+        <BreadCrumbs items={breadcrumbItems} />
         <h1 className={cls.title}> Бренды</h1>
+
         <BrandBanner className={cls.banner} />
+
         <CategoryList categories={categories} className={cls.category} />
         <ProductImages products={brands} className={cls.brands} />
         <div className={cls.brandRow}>

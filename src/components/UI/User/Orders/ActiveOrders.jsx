@@ -5,7 +5,7 @@ function ActiveOrders() {
   return (
     <div>
       <div className={cls.emptyBox}>
-        <h3>Нет активных заказов</h3>
+        <h3>Активных заказов пока нет :(</h3>
       </div>
     </div>
   );
