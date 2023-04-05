@@ -68,22 +68,32 @@ function Profile() {
                 </CircularProgressbarWithChildren>
               </div>
             </div>
+
+            <div className={cls.tabs}>
+              <StyledTabs
+                onChange={(e, val) => {
+                  setTabValue(val);
+                }}
+                value={tabValue}
+              >
+                <StyledTab
+                  value='personal'
+                  label='Личные данные'
+                  className={cls.dg}
+                />
+                <StyledTab
+                  value='installment'
+                  label='Данные для рассрочки'
+                  className={cls.dg}
+                />
+              </StyledTabs>
+            </div>
+
             <div className={cls.body}>
-              <div className={cls.tabs}>
-                <StyledTabs
-                  onChange={(e, val) => {
-                    setTabValue(val);
-                  }}
-                  value={tabValue}
-                >
-                  <StyledTab value="personal" label="Личные данные" />
-                  <StyledTab value="installment" label="Данные для рассрочки" />
-                </StyledTabs>
-              </div>
-              <TabBody tab="personal" tabValue={tabValue}>
+              <TabBody tab='personal' tabValue={tabValue}>
                 <PersonalData />
               </TabBody>
-              <TabBody tab="installment" tabValue={tabValue}>
+              <TabBody tab='installment' tabValue={tabValue}>
                 <InstallmentData />
               </TabBody>
             </div>

@@ -9,6 +9,7 @@ import {
   UserOrdersIcon,
   UserHeartIcon,
   UserNotificationIcon,
+  SubscribeIcon,
 } from "components/UI/Icons";
 import { useRouter } from "next/router";
 
@@ -42,6 +43,11 @@ const links = [
     url: "/user/notifications",
     icon: <UserNotificationIcon />,
     title: "Уведомления",
+  },
+  {
+    url: "/user/subscribe",
+    icon: <SubscribeIcon />,
+    title: "Подписка",
   },
 ];
 

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import cls from "./TopHeader.module.scss";
 import Link from "next/link";
 import { LocationIcon } from "components/UI/Icons";
 import { Container } from "@mui/material";
+import Dropdown from "components/UI/LangDropdown";
 
 const links = [
   {
@@ -35,10 +36,11 @@ function TopHeader() {
           </ul>
         </nav>
         <div className={cls.right}>
-          <div className={cls.language}>
-            <span>Рус</span>
-            <img src="/icons/ru.png" alt="ru" />
+          <div  className={cls.language}>
+          
+            <Dropdown />
           </div>
+
           <div className={cls.location}>
             <span>Ташкент</span>
             <LocationIcon />

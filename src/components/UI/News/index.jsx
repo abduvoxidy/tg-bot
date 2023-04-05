@@ -1,6 +1,6 @@
 import React from "react";
 import cls from "./News.module.scss";
-import BreadCrumbs from "components/UI/BreadCrumbs/Index2";
+import BreadCrumbs from "components/UI/BreadCrumbs";
 import { Container } from "@mui/material";
 import Image from "next/image";
 import MoreNews from "./MoreNews";
@@ -10,6 +10,17 @@ import { formatDate } from "utils/formatDate";
 import SecondaryButton from "../Buttons/SecondaryButton";
 import { useRouter } from "next/router";
 import { BannerSkeleton } from "../Loaders/BannerSkeleton";
+
+const breadcrumbItems = [
+  {
+    link: "/",
+    label: "Главная",
+  },
+  {
+    link: "/news",
+    label: "Новости",
+  },
+];
 
 export function News() {
   const { data: news, isLoading } = useNewsQuery();
@@ -22,7 +33,7 @@ export function News() {
   return (
     <main className={cls.main}>
       <Container>
-        <BreadCrumbs title="Главная / Новости" />
+        <BreadCrumbs items={breadcrumbItems} />
         <h1 className={cls.title}>Новости</h1>
         {isLoading ? (
           <BannerSkeleton />
@@ -30,9 +41,9 @@ export function News() {
           <div className={cls.bannerImg}>
             <Image
               src={lastNew.photo || "/images/news/banner.jpg"}
-              objectFit="cover"
-              layout="fill"
-              loading="lazy"
+              objectFit='cover'
+              layout='fill'
+              loading='lazy'
             />
             <div className={cls.content}>
               <h2>{lastNew?.[getKey("name")]}</h2>

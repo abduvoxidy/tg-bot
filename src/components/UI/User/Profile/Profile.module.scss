@@ -13,9 +13,12 @@
     align-items: start;
     column-gap: rem(25);
     .rightSide {
-      background-color: #fff;
       border-radius: rem(12);
+
       .header {
+        border-radius: rem(8);
+        background-color: #fff;
+        margin-bottom: rem(28);
         display: flex;
         justify-content: space-between;
         padding: rem(22) rem(24);
@@ -61,11 +64,16 @@
           }
         }
       }
+      .tabs {
+        // border-bottom: 1px solid #ededed;
+        // border: 1px solid #f2f2f3;
+        // background-color: #f2f2f3;
+        // border-radius: rem(8);
+        // margin-bottom: rem(12);
+      }
       .body {
-        .tabs {
-          border-bottom: 1px solid #ededed;
-          padding: 0 rem(16);
-        }
+        background-color: #fff;
+        border-radius: rem(8);
       }
     }
   }

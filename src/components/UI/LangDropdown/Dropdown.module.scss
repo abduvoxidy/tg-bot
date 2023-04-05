@@ -1,0 +1,31 @@
+.wrap {
+  display: flex;
+  gap: rem(8);
+  position: relative;
+}
+
+.items {
+  position: absolute;
+  border-radius: rem(8);
+  display: grid;
+  gap: rem(11);
+  padding: rem(16);
+  position: relative;
+
+  .item {
+    font-weight: 500;
+    font-size: rem(14);
+    line-height: rem(22);
+    letter-spacing: -0.41px;
+    color: #000000;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: rem(8);
+
+    .img {
+      width: rem(16);
+      height: rem(16);
+    }
+  }
+}

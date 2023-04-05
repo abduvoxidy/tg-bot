@@ -26,5 +26,7 @@ const BreadCrumbs = ({ items }) => {
     </CBreadcrumbs>
   );
 };
+/*
 
+*/
 export default BreadCrumbs;
