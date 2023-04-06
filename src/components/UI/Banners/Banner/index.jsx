@@ -11,6 +11,7 @@ import { useState } from "react";
 
 export default function Banner() {
   const getKey = useKeyTranslation();
+  const [imageLoader, setImageLoader] = useState(true);
   const { data: banners, isLoading } = useBannersQuery({
     data: {
       offset: 0,
@@ -68,7 +69,12 @@ export default function Banner() {
                     {el?.photo && (
                       <>
                         <Image
+                          onLoadingComplete={() => {
+                            setImageLoader(false);
+                          }}
                           src={el?.photo}
+                          placeholder="blur"
+                          blurDataURL={"/images/no-photo.png"}
                           alt="banner"
                           layout="fill"
                           objectFit="contain"

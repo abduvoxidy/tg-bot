@@ -16,6 +16,8 @@ function FeatureCategoryCard({ data }) {
               objectFit="contain"
               layout="fill"
               src={`${data?.photo ? data.photo : "/images/no-photo.png"}`}
+              placeholder="blur"
+              blurDataURL={"/images/no-photo.png"}
               alt="tel1"
             />
           </div>

@@ -12,6 +12,8 @@ function BannerImg({ data, title, className }) {
           objectFit="cover"
           layout="fill"
           alt={title ? title : "banner"}
+          placeholder="blur"
+          blurDataURL={"/images/no-photo.png"}
         />
       </div>
     </div>

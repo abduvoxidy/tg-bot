@@ -19,6 +19,8 @@ function Card({ data }) {
               layout="fill"
               src={data.photo}
               alt={data?.[getKey("name")]}
+              placeholder="blur"
+              blurDataURL={"/images/no-photo.png"}
             />
           </div>
           <div className={cls.cardBody}>
