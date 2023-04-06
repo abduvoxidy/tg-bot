@@ -32,18 +32,18 @@ const links = [
 
 function BottomHeader() {
   return (
-    // <div className={cls.bottomHeader}>
-    //   <Container>
-    //     <div className={cls.box}>
-    //       {links.map((el, i) => (
-    //         <Link key={el.name} href={el.url}>
-    //           <a>{el.name}</a>
-    //         </Link>
-    //       ))}
-    //     </div>
-    //   </Container>
-    // </div>
-    <></>
+    <div className={cls.bottomHeader}>
+      <Container>
+        <div className={cls.box}>
+          {links.map((el, i) => (
+            <Link key={el.name} href={el.url}>
+              <a>{el.name}</a>
+            </Link>
+          ))}
+        </div>
+      </Container>
+    </div>
+    // <></>
   );
 }
 

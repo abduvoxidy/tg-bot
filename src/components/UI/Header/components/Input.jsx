@@ -71,15 +71,11 @@ function Input() {
           className={cls.input}
         />
         <div className={cls.searchBtn}>
-          {filterData.length === 0 ? (
-            <SearchIcon />
-          ) : (
-            <CloseIcon onClick={clearInput} />
-          )}
+          <SearchIcon />
         </div>
       </div>
 
-      {/* {modalOpen && (
+      {modalOpen && (
         <div ref={searchRef} className={cls.searchTab}>
           <div className={cls.searched}>
             <div className={cls.top}>
@@ -87,7 +83,7 @@ function Input() {
               <div className={cls.clearBtn}>Очистить</div>
             </div>
             <div className={cls.items}>
-              {filterData?.map((el) => {
+              {data?.map((el) => {
                 return (
                   <Link href='#' key={el.id}>
                     <div className={cls.item}>{el.title}</div>
@@ -103,7 +99,7 @@ function Input() {
               <div className={cls.clearBtn}>Очистить</div>
             </div>
             <div className={cls.items}>
-              {filterData?.map((el) => {
+              {data?.map((el) => {
                 return (
                   <Link href='#' key={el.id}>
                     <div className={cls.item}>{el.title}</div>
@@ -113,7 +109,7 @@ function Input() {
             </div>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 }

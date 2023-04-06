@@ -1,5 +1,6 @@
 .bottomHeader {
   position: relative;
+  z-index: -1;
   background: var(--white-color);
   .box {
     padding: rem(14) 0;
