@@ -5,8 +5,6 @@ import BannerImg from "components/UI/Banners/BannerImg";
 import { installments, cars, appliances } from "./data";
 import NewsList from "components/UI/NewsList";
 import PopularBrands from "components/UI/PopularBrands";
-// import ProductList from "components/UI/Products/ProductList";
-// import ProductImages from "components/UI/Products/ProductImages";
 import FeatureCategories from "components/UI/Products/FeatureCategories";
 import FeatureProducts from "components/UI/Products/FeatureProducts";
 import { Container } from "@mui/material";
@@ -21,7 +19,7 @@ function Home() {
       status: ["active"],
     },
   });
-  const response = sortFunctionArr(featuredLists?.data?.response);
+  const response = sortFunctionArr(featuredLists) || [];
 
   return (
     <main className={cls.main}>
@@ -37,7 +35,6 @@ function Home() {
         ))}
         <NewsList />
         {/* <PopularBrands /> */}
-        {/* <ProductList /> */}
       </Container>
     </main>
   );

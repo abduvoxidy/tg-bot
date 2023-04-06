@@ -7,7 +7,7 @@ import { useNewsByIdQuery, useNewsQuery } from "services/news.service";
 import { useRouter } from "next/router";
 import useKeyTranslation from "hooks/useKeyTranslation";
 import LastNews from "./LastNews";
-import Comments from "./Comments";
+import Comments from "components/UI/Comments";
 
 export function SingleNew() {
   const getKey = useKeyTranslation();

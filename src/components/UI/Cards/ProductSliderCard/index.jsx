@@ -46,14 +46,14 @@ function ProductSliderCard({ data, img }) {
             <p className={cls.title}>
               {(data && data?.[getKey("name")]) || "Смартфон"}
             </p>
-            <div
+            {/* <div
               dangerouslySetInnerHTML={{
                 __html:
                   (data && data?.[getKey("description")]) ||
                   " Смартфон Apple iPhone 14 Pro 512Gb Black",
               }}
               className={cls.desc}
-            />
+            /> */}
 
             <div onClick={(e) => e.stopPropagation()}>
               <CStar

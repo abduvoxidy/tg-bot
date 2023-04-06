@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { request } from "./http-client";
+import { getResponse } from "utils/getResponse";
 
 const categoryService = {
   getList: (data) => request.post("/v1/object/get-list/category", { data }),
@@ -18,8 +19,10 @@ export const useCategoriesQuery = ({
 } = {}) => {
   return useQuery(
     ["GET_CATEGORIES", data, routerId],
-    () => {
-      return categoryService.getList(data);
+    async () => {
+      return await categoryService
+        .getList(data)
+        .then((res) => getResponse(res));
     },
     queryParams
   );
@@ -28,8 +31,10 @@ export const useCategoriesQuery = ({
 export const useCategoryByIdQuery = ({ id, params = {}, quryParams }) => {
   return useQuery(
     ["GET_CATEGORY_BY_ID", { id, ...params }],
-    () => {
-      return categoryService.getById(id, params);
+    async () => {
+      return await categoryService
+        .getById(id, params)
+        .then((res) => getResponse(res));
     },
     quryParams
   );
@@ -38,8 +43,10 @@ export const useCategoryByIdQuery = ({ id, params = {}, quryParams }) => {
 export const useCategoryBannersQuery = ({ data = {}, queryParams } = {}) => {
   return useQuery(
     ["GET_CATEGORY_BANNERS", data],
-    () => {
-      return categoryService.getBanners(data);
+    async () => {
+      return await categoryService
+        .getBanners(data)
+        .then((res) => getResponse(res));
     },
     queryParams
   );

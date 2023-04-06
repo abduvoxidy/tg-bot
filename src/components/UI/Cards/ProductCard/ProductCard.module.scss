@@ -1,5 +1,4 @@
 .card {
-  // z-index: 1;
   z-index: 0;
   background: var(--white-color);
   padding: rem(16);
@@ -52,6 +51,7 @@
   .cardBody {
     width: 100%;
     position: relative;
+
     .title {
       font-weight: 400;
       font-size: rem(16);
@@ -90,18 +90,20 @@
         color: #7e7e83;
       }
     }
-    .linePrice {
-      margin-top: rem(10);
-      text-decoration-line: line-through;
-      font-size: rem(16);
-      line-height: rem(19);
-      color: #c3c3ca;
-    }
-    .price {
-      margin-top: rem(2);
-      font-weight: 600;
-      font-size: rem(20);
-      line-height: rem(24);
+    .priceWrapper {
+      .linePrice {
+        margin-top: rem(10);
+        text-decoration-line: line-through;
+        font-size: rem(16);
+        line-height: rem(19);
+        color: #c3c3ca;
+      }
+      .price {
+        margin-top: rem(2);
+        font-weight: 600;
+        font-size: rem(20);
+        line-height: rem(24);
+      }
     }
   }
   .bottom {

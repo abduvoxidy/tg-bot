@@ -52,7 +52,7 @@ export default function Dropdown() {
     <>
       <div onClick={handleClick} className={cls.wrap}>
         <span>Рус</span>
-        <img src='/icons/ru.png' alt='ru' />
+        <img src="/icons/ru.png" alt="ru" />
       </div>
 
       <Popover
@@ -62,18 +62,18 @@ export default function Dropdown() {
         onClose={handleClose}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "start",
+          horizontal: "left",
         }}
         classes={classes}
       >
         <div className={cls.items}>
-          {languages.map((el) => (
-            <Link scroll={false} href={router.asPath}>
+          {languages.map((el, index) => (
+            <Link key={index} scroll={false} href={router.asPath}>
               <a>
                 {" "}
                 <div className={cls.item}>
                   {el.name}
-                  <img className={cls.img} src={el.icon} alt='uzbek' />
+                  <img className={cls.img} src={el.icon} alt="uzbek" />
                   {/* {t("uzbek")} */}
                 </div>
               </a>

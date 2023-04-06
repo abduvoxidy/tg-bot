@@ -7,21 +7,7 @@ import useKeyTranslation from "hooks/useKeyTranslation";
 import LastNews from "components/UI/News/SingleNew/LastNews";
 import { useReviewByIdQuery, useReviewsQuery } from "services/reviews.service";
 import { useNewsQuery } from "services/news.service";
-
-const breadcrumbItems = [
-  {
-    link: "/",
-    label: "Главная",
-  },
-  {
-    link: "/reviews",
-    label: "Обзоры и советы",
-  },
-  {
-    link: "/single",
-    label: "Инструменты для починки машины",
-  },
-];
+import Comments from "components/UI/Comments";
 
 const SingleReview = () => {
   const getKey = useKeyTranslation();
@@ -38,6 +24,21 @@ const SingleReview = () => {
     params: {},
   });
 
+  const breadcrumbItems = [
+    {
+      link: "/",
+      label: "Главная",
+    },
+    {
+      link: "/reviews",
+      label: "Обзоры и советы",
+    },
+    {
+      link: "/single",
+      label: data?.[getKey("title")],
+    },
+  ];
+
   return (
     <main className={cls.main}>
       <Container className={cls.container}>
@@ -49,9 +50,9 @@ const SingleReview = () => {
               <div className={cls.bannerImg}>
                 <Image
                   src={data?.photo || `/images/no-photo.png`}
-                  objectFit="cover"
-                  layout="fill"
-                  alt="img"
+                  objectFit='cover'
+                  layout='fill'
+                  alt='img'
                 />
               </div>
               <h3 className={cls.desc__title}>Цифровой инвертор</h3>
@@ -62,6 +63,8 @@ const SingleReview = () => {
                 }}
               />
             </div>
+
+            <Comments />
           </div>
           <div className={cls.rightSide}>
             <LastNews news={newsData} />

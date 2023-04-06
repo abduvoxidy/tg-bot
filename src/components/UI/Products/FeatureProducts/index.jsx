@@ -5,17 +5,10 @@ import { SampleNextArrow, SamplePrevArrow } from "components/UI/Arrows";
 import ProductSliderCard from "components/UI/Cards/ProductSliderCard";
 import { useFeatureListProductsQuery } from "services/feature-list-products.service";
 import { sortFunctionArr } from "utils/sortFunction";
+import ProductCardSkeleton from "components/UI/Loaders/ProductCardSkeleton";
 
 function FeatureProducts({ title, data, className = "" }) {
-  const images = [
-    "car.png",
-    "chip.png",
-    "cleaner.png",
-    "iron.png",
-    "chip.png",
-    "cleaner.png",
-  ];
-  const { data: featureProducts } = useFeatureListProductsQuery({
+  const { data: response, isLoading } = useFeatureListProductsQuery({
     data: {
       featured_lists_id: data.guid,
     },
@@ -24,7 +17,8 @@ function FeatureProducts({ title, data, className = "" }) {
     },
   });
 
-  const response = sortFunctionArr(featureProducts?.data?.response);
+  const featureProducts = response && response.length > 0 ? response : [];
+  if (isLoading) return <ProductCardSkeleton />;
 
   return (
     <div className={`${cls.root} ${className}`}>
@@ -34,15 +28,14 @@ function FeatureProducts({ title, data, className = "" }) {
           dots: false,
           speed: 500,
           slidesToShow: 4,
-          // centerMode: true,
-          variableWidth: response.length < 4 ? true : false,
+          variableWidth: featureProducts.length < 4 ? true : false,
           slidesToScroll: 1,
           infinite: true,
           nextArrow: <SampleNextArrow styles={cls.next} />,
           prevArrow: <SamplePrevArrow styles={cls.prev} />,
         }}
       >
-        {response.map((el, index) => (
+        {sortFunctionArr(featureProducts).map((el, index) => (
           <div className={cls.slideItem} key={index}>
             <ProductSliderCard data={el?.products_id_data} />
           </div>

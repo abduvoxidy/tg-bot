@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { request } from "./http-client";
+import { getResponse } from "utils/getResponse";
 
 const featuredListsService = {
   getList: (data) =>
@@ -9,8 +10,10 @@ const featuredListsService = {
 export const useFeaturedListsQuery = ({ data = {}, queryParams } = {}) => {
   return useQuery(
     ["GET_FEATURED_LISTS", data],
-    () => {
-      return featuredListsService.getList(data);
+    async () => {
+      return await featuredListsService
+        .getList(data)
+        .then((res) => getResponse(res));
     },
     queryParams
   );

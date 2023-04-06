@@ -18,10 +18,7 @@ export function Category() {
   const { data: categoryData, isLoading } = useCategoryByIdQuery({
     id: category_id,
     params: {},
-    queryParams: {
-      enabled: true,
-      select: (res) => res?.data?.data?.response,
-    },
+    queryParams: {},
   });
 
   return (

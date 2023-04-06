@@ -2,10 +2,10 @@ import React from "react";
 import cls from "./RegionsMap.module.scss";
 import { merchants } from "./data";
 import { MapPhoneIcon, MapLocationIcon } from "components/UI/Icons";
-import { useRef, createRef } from "react";
 import { useState } from "react";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 import { mapDefaults } from "utils/yandexMapUtils";
+import { useBranchesQuery } from "services/branches.service";
 
 function RegionsMap() {
   const [mapPosition, setMapPosition] = useState({
@@ -13,6 +13,10 @@ function RegionsMap() {
     zoom: 15,
   });
   const [isMerchant, setIsMerchant] = useState(0);
+
+  const { data: branches } = useBranchesQuery({ data: {}, queryParams: {} });
+
+  console.log("branches", branches);
 
   const handlePlacemark = (item, index) => {
     setIsMerchant(index);

@@ -60,14 +60,14 @@ function ProductCard({ data, img, zIndex = 0 }) {
           {" "}
           {(data && data.category_id_data?.[getKey("name")]) || "Смартфон"}
         </p>
-        <div
+        {/* <div
           dangerouslySetInnerHTML={{
             __html:
               (data && data?.[getKey("name")]) ||
               " Смартфон Apple iPhone 14 Pro 512Gb Black",
           }}
           className={cls.desc}
-        />
+        /> */}
         <span className={cls.stars}>
           <CStar
             onChange={(event, newValue) => {
@@ -79,17 +79,19 @@ function ProductCard({ data, img, zIndex = 0 }) {
           <span className={cls.badgePrice}>1 000 000 сум</span>
           <p className={cls.count}>x 12 мес</p>
         </div>
-        <p className={cls.linePrice}>
-          {" "}
-          {data && data?.old_price
-            ? numberToPrice(data?.old_price)
-            : "1 200 000 000 сум"}
-        </p>
-        <p className={cls.price}>
-          {data && data?.sell_price
-            ? numberToPrice(data?.sell_price)
-            : "1 200 000 000 сум"}
-        </p>
+        <div className={cls.priceWrapper}>
+          <p className={cls.linePrice}>
+            {" "}
+            {data && data?.old_price
+              ? numberToPrice(data?.old_price)
+              : "1 200 000 000 сум"}
+          </p>
+          <p className={cls.price}>
+            {data && data?.sell_price
+              ? numberToPrice(data?.sell_price)
+              : "1 200 000 000 сум"}
+          </p>
+        </div>
       </div>
       <div className={`${cls.bottom} ${isActive ? cls.bottomActive : ""}`}>
         <Link href="/cart">

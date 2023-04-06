@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { request } from "./http-client";
+import { getResponse } from "utils/getResponse";
 
 const featureListCategoriesService = {
   getList: (data) =>
@@ -12,8 +13,10 @@ export const useFeatureListCategoriesQuery = ({
 } = {}) => {
   return useQuery(
     ["GET_FEATURE_LIST_CATEGORIES", data],
-    () => {
-      return featureListCategoriesService.getList(data);
+    async () => {
+      return await featureListCategoriesService
+        .getList(data)
+        .then((res) => getResponse(res));
     },
     queryParams
   );

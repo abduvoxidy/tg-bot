@@ -41,9 +41,9 @@ export function News() {
           <div className={cls.bannerImg}>
             <Image
               src={lastNew.photo || "/images/news/banner.jpg"}
-              objectFit='cover'
-              layout='fill'
-              loading='lazy'
+              objectFit="cover"
+              layout="fill"
+              loading="lazy"
             />
             <div className={cls.content}>
               <h2>{lastNew?.[getKey("name")]}</h2>

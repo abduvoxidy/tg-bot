@@ -2,13 +2,16 @@ import React from "react";
 import cls from "./NewsList.module.scss";
 import Card from "./Card";
 import { useNewsQuery } from "services/news.service";
+import ProductCardSkeleton from "../Loaders/ProductCardSkeleton";
 
 function NewsList() {
-  const { data: news } = useNewsQuery({
+  const { data: news, isLoading } = useNewsQuery({
     data: {
       limit: 3,
     },
   });
+
+  if (isLoading) return <ProductCardSkeleton items={3} />;
 
   return (
     <div className={cls.root}>
