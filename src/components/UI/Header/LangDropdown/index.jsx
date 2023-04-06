@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useStyles } from "./styles";
 
 import { useRouter } from "next/router";
-import { RectangleIcon } from "../Icons";
+import { RectangleIcon } from "../../Icons";
 
 const languages = [
   {

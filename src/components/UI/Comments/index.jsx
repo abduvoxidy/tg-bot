@@ -17,6 +17,7 @@ function Comments() {
   const router = useRouter();
   const news_id = router?.query?.id;
   const [comments, setComments] = useState([]);
+  const [limit, setLimit] = useState(10);
 
   const {
     data: commentsData,
@@ -24,7 +25,7 @@ function Comments() {
     isLoading,
   } = useNewsCommentsQuery({
     data: {
-      limit: 10,
+      limit: limit,
       offset: 0,
       news_id,
     },

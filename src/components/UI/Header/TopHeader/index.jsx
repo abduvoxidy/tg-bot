@@ -3,7 +3,7 @@ import cls from "./TopHeader.module.scss";
 import Link from "next/link";
 import { LocationIcon } from "components/UI/Icons";
 import { Container } from "@mui/material";
-import Dropdown from "components/UI/LangDropdown";
+import Dropdown from "components/UI/Header/LangDropdown";
 
 const links = [
   {
@@ -36,8 +36,7 @@ function TopHeader() {
           </ul>
         </nav>
         <div className={cls.right}>
-          <div  className={cls.language}>
-          
+          <div className={cls.language}>
             <Dropdown />
           </div>
 
