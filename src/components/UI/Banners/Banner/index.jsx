@@ -7,6 +7,7 @@ import { useBannersQuery } from "services/banner.service";
 import SliderControls from "./Controls";
 import useKeyTranslation from "hooks/useKeyTranslation";
 import { BannerSkeleton } from "components/UI/Loaders/BannerSkeleton";
+import { useState } from "react";
 
 export default function Banner() {
   const getKey = useKeyTranslation();
@@ -20,10 +21,10 @@ export default function Banner() {
     },
   });
 
-  if (isLoading) return <BannerSkeleton height={400} />;
+  if (isLoading) return <BannerSkeleton height={336} />;
 
   return (
-    <div id="bannerSlider" className={`${cls.root} `}>
+    <div id="bannerSlider" className={`${cls.root}`}>
       <Slider
         lazyLoad={true}
         dots={true}
@@ -39,7 +40,8 @@ export default function Banner() {
         }}
       >
         {banners &&
-          banners?.data?.response.map((el, i) => (
+          banners.length > 0 &&
+          banners?.map((el, i) => (
             <div key={i} className={cls.slideItem}>
               <div className={cls.box}>
                 <div className={cls.left}>
@@ -64,13 +66,14 @@ export default function Banner() {
                 <div className={cls.right}>
                   <div className={cls.img}>
                     {el?.photo && (
-                      <Image
-                        lazyLoad={true}
-                        src={el?.photo}
-                        alt="banner"
-                        layout="fill"
-                        objectFit="contain"
-                      />
+                      <>
+                        <Image
+                          src={el?.photo}
+                          alt="banner"
+                          layout="fill"
+                          objectFit="contain"
+                        />
+                      </>
                     )}
                   </div>
                 </div>

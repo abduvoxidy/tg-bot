@@ -33,7 +33,7 @@ function CatgoriesMenu({
           {
             guid: null,
           },
-          res.data.response
+          res
         );
         setCategories(response.children);
       },

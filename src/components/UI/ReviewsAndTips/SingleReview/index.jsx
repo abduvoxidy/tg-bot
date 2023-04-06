@@ -8,21 +8,6 @@ import LastNews from "components/UI/News/SingleNew/LastNews";
 import { useReviewByIdQuery, useReviewsQuery } from "services/reviews.service";
 import { useNewsQuery } from "services/news.service";
 
-const breadcrumbItems = [
-  {
-    link: "/",
-    label: "Главная",
-  },
-  {
-    link: "/reviews",
-    label: "Обзоры и советы",
-  },
-  {
-    link: "/single",
-    label: "Инструменты для починки машины",
-  },
-];
-
 const SingleReview = () => {
   const getKey = useKeyTranslation();
   const router = useRouter();
@@ -37,6 +22,21 @@ const SingleReview = () => {
     id: article_id,
     params: {},
   });
+
+  const breadcrumbItems = [
+    {
+      link: "/",
+      label: "Главная",
+    },
+    {
+      link: "/reviews",
+      label: "Обзоры и советы",
+    },
+    {
+      link: "/single",
+      label: data?.[getKey("title")],
+    },
+  ];
 
   return (
     <main className={cls.main}>

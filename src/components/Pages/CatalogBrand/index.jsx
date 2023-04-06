@@ -25,12 +25,12 @@ export function CatalogBrand() {
     routerId: router.query.id,
     queryParams: {
       enabled: !!router.query.id,
-      onSuccess: (res) => {
+      onSuccess: (response) => {
         const response1 = getNestedCategories(
           {
             guid: null,
           },
-          res.data.response
+          response
         );
 
         const Category =
@@ -43,7 +43,7 @@ export function CatalogBrand() {
           {
             guid: router.query.id,
           },
-          res.data.response
+          response
         );
 
         setSubCategories(response2.children || []);
