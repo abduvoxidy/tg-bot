@@ -19,7 +19,7 @@ function CatalogBanner() {
     },
   });
 
-  const banner = data && data?.data?.response[0];
+  const banner = data && data?.[0];
 
   return (
     <div className={cls.root}>
@@ -37,7 +37,7 @@ function CatalogBanner() {
       <div className={cls.right}>
         <div className={cls.img}>
           <Image
-            src={(banner && banner.photo) || "/images/main/lenovo.png"}
+            src={(banner && banner.photo) || "/images/no-photo.png"}
             layout="fill"
             objectFit="contain"
             alt="banner"
