@@ -30,11 +30,6 @@ function Comments() {
     },
     queryParams: {
       onSuccess: (res) => {
-        // const response = getNestedData(
-        //   { guid: null },
-        //   res?.response,
-        //   "comments_id"
-        // );
         const data = res.response.filter((el) => !el.comments_id);
         setComments(data);
       },
