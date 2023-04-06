@@ -29,7 +29,7 @@ function ReviewsAndTips() {
     queryParams: {},
   });
 
-  const { data: articles, isLoading } = useReviewsQuery({ 
+  const { data: articles, isLoading } = useReviewsQuery({
     data: {
       category_state_id: tabValue || undefined,
     },
@@ -47,10 +47,12 @@ function ReviewsAndTips() {
         ) : (
           <div className={cls.bannerImg}>
             <Image
-              src={articles[0].photo}
+              src={articles[0].photo || "/images/no-photo.png"}
               objectFit="cover"
               layout="fill"
               loading="lazy"
+              placeholder="blur"
+              blurDataURL="/images/skeleton.webp"
             />
 
             <p className={cls.top__text}>
@@ -81,18 +83,18 @@ function ReviewsAndTips() {
           <div className={cls.main}>
             <TabBody tab="" tabValue={tabValue}>
               <div className={cls.cards}>
-                {articles &&
-                  articles?.map((el) => <ReviewsCard key={el.id} data={el} />)}
+                {articles?.map((el) => (
+                  <ReviewsCard key={el.id} data={el} />
+                ))}
               </div>
             </TabBody>
             {categoryTitle &&
               categoryTitle.map((el) => (
                 <TabBody tab={el.guid} tabValue={tabValue}>
                   <div className={cls.cards}>
-                    {articles &&
-                      articles?.map((el) => (
-                        <ReviewsCard key={el.id} data={el} />
-                      ))}
+                    {articles?.map((el) => (
+                      <ReviewsCard key={el.id} data={el} />
+                    ))}
                   </div>
                 </TabBody>
               ))}

@@ -13,7 +13,7 @@ function BannerImg({ data, title, className }) {
           layout="fill"
           alt={title ? title : "banner"}
           placeholder="blur"
-          blurDataURL={"/images/no-photo.png"}
+          blurDataURL="/images/skeleton.webp"
         />
       </div>
     </div>

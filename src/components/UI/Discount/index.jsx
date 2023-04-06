@@ -25,8 +25,6 @@ function Discount() {
     queryParams: {},
   });
 
-  if (isLoading) return "Loading...";
-
   const response = data && data?.response;
 
   return (
@@ -40,6 +38,8 @@ function Discount() {
             objectFit="cover"
             layout="fill"
             loading="lazy"
+            placeholder="blur"
+            blurDataURL="/images/skeleton.webp"
           />
 
           <div className={cls.discount}>15%</div>

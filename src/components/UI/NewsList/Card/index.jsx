@@ -20,7 +20,7 @@ function Card({ data }) {
               src={data.photo}
               alt={data?.[getKey("name")]}
               placeholder="blur"
-              blurDataURL={"/images/no-photo.png"}
+              blurDataURL="/images/skeleton.webp"
             />
           </div>
           <div className={cls.cardBody}>

@@ -41,7 +41,6 @@ export default function Banner() {
         }}
       >
         {banners &&
-          banners.length > 0 &&
           banners?.map((el, i) => (
             <div key={i} className={cls.slideItem}>
               <div className={cls.box}>
@@ -74,7 +73,7 @@ export default function Banner() {
                           }}
                           src={el?.photo}
                           placeholder="blur"
-                          blurDataURL={"/images/no-photo.png"}
+                          blurDataURL="/images/skeleton.webp"
                           alt="banner"
                           layout="fill"
                           objectFit="contain"
