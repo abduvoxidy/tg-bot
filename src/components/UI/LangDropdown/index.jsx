@@ -62,7 +62,7 @@ export default function Dropdown() {
         onClose={handleClose}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "start",
+          horizontal: "left",
         }}
         classes={classes}
       >
