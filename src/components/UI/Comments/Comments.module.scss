@@ -2,9 +2,13 @@
   margin-top: rem(35);
   background-color: #fff;
   padding: rem(32) rem(24);
+  display: flex;
+  flex-direction: column;
+  border-radius: rem(8);
+
   &__header {
     padding: rem(24);
-    background: #f9f9f9;
+    // background: #f9f9f9;
     border-radius: 8px;
     .title {
       font-weight: 600;
@@ -33,6 +37,16 @@
         height: rem(88);
       }
     }
+  }
+  .showMore {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    color: #ff9910;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    cursor: pointer;
   }
   &__body {
     margin-top: rem(15);

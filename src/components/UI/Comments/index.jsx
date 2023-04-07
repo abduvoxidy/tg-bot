@@ -10,6 +10,7 @@ import {
 import { useRouter } from "next/router";
 import Answer from "./Answer";
 import { TextSkeleton } from "components/UI/Loaders/TextSkeleton";
+import { ShowMoreIcon } from "../Icons";
 
 function Comments() {
   const [value, setValue] = useState("");
@@ -17,7 +18,7 @@ function Comments() {
   const router = useRouter();
   const news_id = router?.query?.id;
   const [comments, setComments] = useState([]);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(4);
 
   const {
     data: commentsData,
@@ -36,6 +37,10 @@ function Comments() {
       },
     },
   });
+
+  const showMoreItem = () => {
+    setLimit((prev) => prev + 4);
+  };
 
   const { mutate: createComment, isLoading: createLoading } =
     useNewsCommentsCreateMutation({
@@ -65,8 +70,8 @@ function Comments() {
         </p>
         <div className={cls.message}>
           <Textarea
-            rows="3"
-            placeholder="Напишите свой вопрос"
+            rows='3'
+            placeholder='Напишите свой вопрос'
             className={cls.textarea}
             value={value}
             onChange={(e) => {
@@ -92,6 +97,18 @@ function Comments() {
           ))
         )}
       </div>
+      {comments.length == 0 ? (
+        <span className={cls.showMore}>Нет комментарии</span>
+      ) : (
+        <div className={cls.showMore} onClick={showMoreItem}>
+          {/* <div> */}
+          Показать еще
+          <span>
+            <ShowMoreIcon />
+          </span>
+          {/* </div> */}
+        </div>
+      )}
     </div>
   );
 }

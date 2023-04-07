@@ -39,6 +39,7 @@
     "react-hook-form": "^7.43.1",
     "react-hot-toast": "^2.4.0",
     "react-image-gallery": "^1.2.11",
+    "react-image-magnify": "^2.7.4",
     "react-infinite-scroll-component": "^6.1.0",
     "react-input-mask": "^2.0.4",
     "react-lottie": "^1.2.3",

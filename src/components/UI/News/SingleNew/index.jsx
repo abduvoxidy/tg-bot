@@ -1,6 +1,5 @@
 import React from "react";
 import cls from "./SingleNew.module.scss";
-import BreadCrumbs from "components/UI/BreadCrumbs/Index2";
 import { Container } from "@mui/material";
 import Image from "next/image";
 import { useNewsByIdQuery, useNewsQuery } from "services/news.service";
@@ -8,6 +7,8 @@ import { useRouter } from "next/router";
 import useKeyTranslation from "hooks/useKeyTranslation";
 import LastNews from "./LastNews";
 import Comments from "components/UI/Comments";
+import BreadCrumbs from "components/UI/BreadCrumbs";
+import { BannerSkeleton } from "components/UI/Loaders/BannerSkeleton";
 
 export function SingleNew() {
   const getKey = useKeyTranslation();
@@ -25,12 +26,29 @@ export function SingleNew() {
 
   const newsItem = data?.data?.response;
 
+  if (isLoading)
+    return (
+      <Container>
+        <BannerSkeleton />;
+      </Container>
+    );
+
+  const breadcrumbItems = [
+    {
+      link: "/",
+      label: "Главная",
+    },
+    {
+      label: newsItem?.[getKey("name")],
+    },
+  ];
+
   return (
     <main className={cls.main}>
       <Container className={cls.container}>
         <div className={cls.leftSide}>
           {" "}
-          <BreadCrumbs title="Главная / Новости / 1 марта 2023 г." />
+          <BreadCrumbs items={breadcrumbItems} />
           <h1 className={cls.title}>{newsItem?.[getKey("name")]}</h1>
           <div className={cls.body}>
             <div className={cls.bannerImg}>
@@ -38,6 +56,8 @@ export function SingleNew() {
                 src={newsItem?.photo || `/images/no-photo.png`}
                 objectFit="contain"
                 layout="fill"
+                placeholder="blur"
+                blurDataURL="/images/skeleton.webp"
                 alt="img"
               />
             </div>
