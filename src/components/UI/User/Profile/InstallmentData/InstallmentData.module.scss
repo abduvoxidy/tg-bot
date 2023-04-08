@@ -1,34 +1,46 @@
 .form {
-  padding: rem(24);
   display: flex;
   flex-direction: column;
-  gap: rem(16);
+  padding: rem(19) 0 0 rem(0);
+  // gap: rem(16);
+
   .innerTabs {
     align-self: flex-start;
     display: flex;
     column-gap: rem(10);
-    .tab {
-      transition: 0.3s all;
-      cursor: pointer;
-      padding-bottom: rem(8);
-      border-bottom: 2px solid transparent;
-    }
-    .activeTab {
-      border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid #f9f9f9;
+    width: 100%;
+
+    .wrap {
+      align-self: flex-start;
+      display: flex;
+      column-gap: rem(10);
+      padding-left: rem(32);
+      .tab {
+        transition: 0.3s all;
+        cursor: pointer;
+        padding-bottom: rem(19);
+        border-bottom: 2px solid transparent;
+      }
+      .activeTab {
+        border-bottom: 2px solid var(--primary-color);
+      }
     }
   }
   .innerForm {
-    margin-top: rem(30);
-    padding: rem(24);
-    border: 1px solid #f0f0f0;
     border-radius: rem(8);
     display: flex;
     flex-direction: column;
-    gap: rem(24);
   }
   .btn {
-    margin-top: rem(8);
-    padding: rem(14) rem(40);
-    align-self: flex-end;
+    margin: rem(16);
+    padding: rem(14) rem(20);
+    display: flex;
+    justify-content: center;
+    max-width: rem(730);
+    width: 100%;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
   }
 }
