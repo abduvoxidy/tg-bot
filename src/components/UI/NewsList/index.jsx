@@ -18,9 +18,7 @@ function NewsList() {
       <h1>Новости</h1>
       <div className={cls.row}>
         {news
-          ? news.data.response.map((el, index) => (
-              <Card data={el} key={el.guid} />
-            ))
+          ? news.map((el, index) => <Card data={el} key={el.guid} />)
           : null}
       </div>
     </div>

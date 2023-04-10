@@ -17,4 +17,3 @@ export const useBrandsQuery = ({ data = {}, queryParams } = {}) => {
     queryParams
   );
 };
- 

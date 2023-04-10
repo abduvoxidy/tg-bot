@@ -15,7 +15,6 @@ const SingleReview = () => {
   const article_id = router.query?.id;
 
   const { data: news } = useNewsQuery(); //
-  const newsData = news?.data?.response; //
 
   const { data: arcticle } = useReviewsQuery();
 
@@ -50,9 +49,9 @@ const SingleReview = () => {
               <div className={cls.bannerImg}>
                 <Image
                   src={data?.photo || `/images/no-photo.png`}
-                  objectFit='cover'
-                  layout='fill'
-                  alt='img'
+                  objectFit="cover"
+                  layout="fill"
+                  alt="img"
                 />
               </div>
               <h3 className={cls.desc__title}>Цифровой инвертор</h3>
@@ -67,7 +66,7 @@ const SingleReview = () => {
             <Comments />
           </div>
           <div className={cls.rightSide}>
-            <LastNews news={newsData} />
+            <LastNews news={news} />
           </div>
         </div>
       </Container>

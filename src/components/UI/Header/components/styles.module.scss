@@ -1,4 +1,17 @@
-.wrap {
+.grid {
+  transition: all 0.3s;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.23);
+  z-index: 11;
+  overflow: hidden;
+}
+
+.root {
+  z-index: 12;
   height: rem(48);
   max-width: rem(560);
   width: 100%;
@@ -6,24 +19,16 @@
   border-radius: rem(8);
   display: flex;
   margin-left: rem(12);
-  display: grid;
   position: relative;
-  gap: rem(15);
+  background-color: #fff;
 
   ::-webkit-scrollbar {
     display: none;
   }
-
-  .Input {
-    display: flex;
-    // height: rem(48);
-    // max-width: rem(560);
-    // width: 100%;
-    // border: 2px solid #ff9910;
-    // border-radius: rem(8);
-    // margin-left: rem(12);
-    // position: relative;
-    .input {
+  .input {
+    width: 100%;
+    position: relative;
+    input {
       padding: rem(12) rem(20);
       border-radius: rem(8);
       width: 100%;
@@ -38,76 +43,54 @@
         color: #6e7c87;
       }
     }
-    .searchBtn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: var(--primary-color);
-      min-width: rem(64);
+    .clear {
       cursor: pointer;
+      position: absolute;
+      top: 50%;
+      right: rem(15);
+      transform: translateY(-40%);
     }
   }
 
-  .searchTab {
+  .searchBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    min-width: rem(64);
+    cursor: pointer;
+    svg {
+      color: #fff;
+    }
+  }
+
+  .searchMenu {
     position: absolute;
     z-index: -3;
     top: rem(50);
-    width: 100%;
     max-width: rem(589);
-    height: rem(484);
+    width: 100%;
+    max-height: rem(484);
     overflow: hidden;
     overflow-y: auto;
     background-color: white;
     border-radius: rem(8);
-    padding: rem(10) rem(20) rem(15);
-    gap: rem(21);
-    display: grid;
-
-    .searched {
-      .top {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: rem(19);
-
-        .clearBtn {
-          cursor: pointer;
-        }
-      }
-
-      .items {
-        display: grid;
-        gap: rem(20);
-
-        .item {
-          cursor: pointer;
-          font-size: 16px;
-          line-height: 22px;
-          color: #000;
-        }
-      }
+    padding: rem(25) rem(20);
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+    .product {
+      font-weight: 400;
+      font-size: rem(16);
+      line-height: rem(22);
+      color: #000000;
+      cursor: pointer;
     }
-
-    .popular {
-      .top {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: rem(19);
-
-        .clearBtn {
-          cursor: pointer;
-        }
-      }
-
-      .items {
-        display: grid;
-        gap: rem(20);
-
-        .item {
-          cursor: pointer;
-          font-size: 16px;
-          line-height: 22px;
-          color: #000;
-        }
+    .emptyBox {
+      display: flex;
+      justify-content: center;
+      img {
+        width: 30%;
       }
     }
   }

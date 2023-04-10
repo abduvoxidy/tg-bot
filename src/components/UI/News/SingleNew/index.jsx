@@ -17,14 +17,10 @@ export function SingleNew() {
 
   const { data: news } = useNewsQuery();
 
-  const newsData = news?.data?.response;
-
-  const { data, isLoading } = useNewsByIdQuery({
+  const { data: newsItem, isLoading } = useNewsByIdQuery({
     id: news_id,
     params: {},
   });
-
-  const newsItem = data?.data?.response;
 
   if (isLoading)
     return (
@@ -71,7 +67,7 @@ export function SingleNew() {
           <Comments />
         </div>
         <div className={cls.rightSide}>
-          <LastNews news={newsData} />
+          <LastNews news={news} />
         </div>
       </Container>
     </main>

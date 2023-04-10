@@ -27,8 +27,7 @@ export function News() {
   const getKey = useKeyTranslation();
   const router = useRouter();
 
-  const response = news && news?.data?.response;
-  const lastNew = response && response[response.length - 1];
+  const lastNew = news && news[news.length - 1];
 
   return (
     <main className={cls.main}>
@@ -65,7 +64,7 @@ export function News() {
             </div>
           </div>
         )}
-        <MoreNews news={response} />
+        <MoreNews news={news} />
       </Container>
     </main>
   );
