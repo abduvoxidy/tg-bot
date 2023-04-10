@@ -53,3 +53,13 @@ export const images = [
       "https://img.tuttoandroid.net/wp-content/uploads/2021/10/Redmi-Note-11-Pro-Plus-tag.jpg",
   },
 ];
+
+export const imagek = [
+  "https://m.media-amazon.com/images/I/71lx0qz7rFL.jpg",
+
+  "https://playgame34.ru/wp-content/uploads/2022/11/1-1000x1000.jpeg",
+
+  "https://cdn1.ozone.ru/s3/multimedia-d/6431834701.jpg",
+
+  "https://img.tuttoandroid.net/wp-content/uploads/2021/10/Redmi-Note-11-Pro-Plus-tag.jpg",
+];
