@@ -12,19 +12,22 @@ import { getNestedCategories } from "utils/getNestedData";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import useKeyTranslation from "hooks/useKeyTranslation";
+import { useFuncCategoriesQuery } from "services/func.categories";
+import axios from "axios";
+import { useEffect } from "react";
 
 export function CatalogBrand() {
   const router = useRouter();
   const [category, setCategory] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
-
+  const category_id = router.query.id;
   const getKey = useKeyTranslation();
 
   const { data, isLoading } = useCategoriesQuery({
     data: {},
-    routerId: router.query.id,
+    routerId: category_id,
     queryParams: {
-      enabled: !!router.query.id,
+      enabled: !!category_id,
       onSuccess: (response) => {
         const response1 = getNestedCategories(
           {
@@ -34,20 +37,28 @@ export function CatalogBrand() {
         );
 
         const Category =
-          response1 &&
-          response1.children.find((el) => el.guid === router.query.id);
+          response1 && response1.children.find((el) => el.guid === category_id);
 
         setCategory(Category);
 
         const response2 = getNestedCategories(
           {
-            guid: router.query.id,
+            guid: category_id,
           },
           response
         );
 
         setSubCategories(response2.children || []);
       },
+    },
+  });
+
+  const { data: categories } = useFuncCategoriesQuery({
+    data: {
+      category_id: category_id,
+    },
+    queryParams: {
+      enabled: !!category_id,
     },
   });
 

@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { request } from "./http-client";
+import { getResponse } from "utils/getResponse";
 
 const newsService = {
   getList: (data) => request.post("/v1/object/get-list/news", { data }),
@@ -12,8 +13,8 @@ const newsService = {
 export const useNewsQuery = ({ data = {}, queryParams } = {}) => {
   return useQuery(
     ["GET_NEWS", data],
-    () => {
-      return newsService.getList(data);
+    async () => {
+      return await newsService.getList(data).then((res) => getResponse(res));
     },
     queryParams
   );
@@ -24,6 +25,11 @@ export const useNewsByIdQuery = ({ id, params = {}, quryParams }) => {
     ["GET_NEWS_BY_ID", { id, ...params }],
     () => {
       return newsService.getById(id, params);
+    },
+    async () => {
+      return await newsService
+        .getById(id, params)
+        .then((res) => getResponse(res));
     },
     quryParams
   );

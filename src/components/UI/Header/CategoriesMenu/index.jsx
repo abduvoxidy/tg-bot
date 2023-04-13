@@ -27,7 +27,6 @@ function CatgoriesMenu({
   const { data: categoryData, isLoading } = useCategoriesQuery({
     data: {},
     queryParams: {
-      enabled: true,
       onSuccess: (res) => {
         const response = getNestedCategories(
           {

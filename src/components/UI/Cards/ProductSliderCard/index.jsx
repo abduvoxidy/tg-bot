@@ -38,6 +38,8 @@ function ProductSliderCard({ data, img }) {
                 }`}
                 objectFit="contain"
                 layout="fill"
+                placeholder="blur"
+                blurDataURL="/images/skeleton.webp"
                 alt="car"
               />
             </div>

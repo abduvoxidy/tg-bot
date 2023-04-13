@@ -11,6 +11,7 @@ import { useState } from "react";
 
 export default function Banner() {
   const getKey = useKeyTranslation();
+  const [imageLoader, setImageLoader] = useState(true);
   const { data: banners, isLoading } = useBannersQuery({
     data: {
       offset: 0,
@@ -40,7 +41,6 @@ export default function Banner() {
         }}
       >
         {banners &&
-          banners.length > 0 &&
           banners?.map((el, i) => (
             <div key={i} className={cls.slideItem}>
               <div className={cls.box}>
@@ -68,7 +68,12 @@ export default function Banner() {
                     {el?.photo && (
                       <>
                         <Image
+                          onLoadingComplete={() => {
+                            setImageLoader(false);
+                          }}
                           src={el?.photo}
+                          placeholder="blur"
+                          blurDataURL="/images/skeleton.webp"
                           alt="banner"
                           layout="fill"
                           objectFit="contain"

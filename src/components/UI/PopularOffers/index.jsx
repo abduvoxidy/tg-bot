@@ -9,6 +9,7 @@ import CategoryList from "../CategoryList";
 import { useProductsQuery } from "services/products.service";
 import { useRouter } from "next/router";
 import SimpleLoader from "../Loaders/SimpleLoader";
+import EmptyData from "components/UI/EmptyData";
 
 function PopularOffers({ title }) {
   const router = useRouter();
@@ -20,8 +21,8 @@ function PopularOffers({ title }) {
     },
     queryParams: {
       enabled: !!category_id,
-      select: (res) => res.data?.data?.response,
     },
+    select: (res) => res.response,
   });
 
   const images = ["car.png", "chip.png", "cleaner.png", "iron.png"];
@@ -62,7 +63,7 @@ function PopularOffers({ title }) {
             />
           ))
         ) : (
-          <h1>No data</h1>
+          <EmptyData />
         )}
       </div>
     </div>

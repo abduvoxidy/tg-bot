@@ -4,13 +4,14 @@ import Image from "next/image";
 import useKeyTranslation from "hooks/useKeyTranslation";
 import { useCategoryBannersQuery } from "services/category.service";
 import { useRouter } from "next/router";
+import { BannerSkeleton } from "components/UI/Loaders/BannerSkeleton";
 
 function CatalogBanner() {
   const router = useRouter();
   const getKey = useKeyTranslation();
   const category_id = router.query?.id;
 
-  const { data } = useCategoryBannersQuery({
+  const { data, isLoading } = useCategoryBannersQuery({
     data: {
       category_id: [category_id],
     },
@@ -19,7 +20,9 @@ function CatalogBanner() {
     },
   });
 
-  const banner = data && data?.data?.response[0];
+  const banner = data && data?.[0];
+
+  if (isLoading) return <BannerSkeleton />;
 
   return (
     <div className={cls.root}>
@@ -37,7 +40,7 @@ function CatalogBanner() {
       <div className={cls.right}>
         <div className={cls.img}>
           <Image
-            src={(banner && banner.photo) || "/images/main/lenovo.png"}
+            src={(banner && banner.photo) || "/images/no-photo.png"}
             layout="fill"
             objectFit="contain"
             alt="banner"

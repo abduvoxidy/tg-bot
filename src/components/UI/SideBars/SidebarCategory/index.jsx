@@ -15,10 +15,10 @@ import { useMemo, useState } from "react";
 import SimpleLoader from "components/UI/Loaders/SimpleLoader";
 
 function SidebarCategory() {
-  const [limit, setLimit] = useState(5);
   const [value, setValue] = useState([200000, 1000000]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [checkedStocks, setCheckedStocks] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [color, setColor] = useState(null);
   const router = useRouter();
   const getKey = useKeyTranslation();
@@ -26,11 +26,14 @@ function SidebarCategory() {
 
   const { data: brandsData, isLoading } = useBrandsQuery({
     data: {
-      limit,
       // category_id: [category_id],
     },
     queryParams: {
       enabled: !!category_id,
+      onSuccess: (res) => {
+        const data = res.slice(0, 5);
+        setBrands(data);
+      },
     },
   });
 
@@ -114,7 +117,6 @@ function SidebarCategory() {
     setValue([200000, 1000000]);
   };
 
-  const brands = ["Redmi", "Apple", "Samsung", "Huawei", "Windows"];
   const colors = ["green", "black", "red", "primary", "secondary"];
   const stocks = ["В продаже", "В наличии"];
 
@@ -166,8 +168,8 @@ function SidebarCategory() {
 
         <div className={cls.brands}>
           <label>Бренд</label>
-          {brandsData &&
-            brandsData.map((el) => (
+          {brands &&
+            brands.map((el) => (
               <div key={el.guid} className={cls.brand}>
                 <Checkbox
                   onChange={(e) => {
@@ -184,11 +186,11 @@ function SidebarCategory() {
             ))}
           <p
             onClick={() => {
-              setLimit(100);
+              setBrands(brandsData);
             }}
             className={cls.showMore}
           >
-            Посмотреть все
+            Показать ещё
           </p>
         </div>
 

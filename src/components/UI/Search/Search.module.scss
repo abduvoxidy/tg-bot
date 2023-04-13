@@ -1,0 +1,12 @@
+.main {
+  padding: rem(32) 0 rem(100);
+  .row {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 312px));
+    gap: rem(24);
+  }
+  .loader {
+    margin: rem(50) 0;
+  }
+}

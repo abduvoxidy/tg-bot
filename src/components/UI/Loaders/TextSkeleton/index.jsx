@@ -11,7 +11,7 @@ export function TextSkeleton({ count = 3 }) {
         .map((el, i) => (
           <Stack style={{ marginTop: "20px" }} key={i} spacing={1}>
             <div style={{ display: "flex", columnGap: "20px" }}>
-              <Skeleton variant="circular" width={45} height={45} />
+              {/* <Skeleton variant="circular" width={50} height={45} /> */}
               <div style={{ width: "100%" }}>
                 <Skeleton variant="text" width="100%" height={20} />
                 <Skeleton variant="text" width="100%" height={20} />

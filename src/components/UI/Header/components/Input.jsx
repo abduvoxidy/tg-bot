@@ -1,116 +1,100 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import cls from "./styles.module.scss";
-import {
-  ArrowBottomIcon,
-  SearchIcon,
-  LocationIcon,
-  CloseIcon,
-} from "components/UI/Icons";
-import { discountProductsQuery } from "services/discount.service";
-import Link from "next/link";
-import axios from "axios";
+import { SearchIcon } from "components/UI/Icons";
 import useOnClickOutside from "hooks/useOnClickOutside";
 import { useRef } from "react";
+import useDebounce from "hooks/useDebounce";
+import { useProductsQuery } from "services/products.service";
+import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
+import useKeyTranslation from "hooks/useKeyTranslation";
+import { ClearIcon } from "components/UI/Icons";
+import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 function Input() {
-  // const { data } = discountProductsQuery({
-  //   data: {},
-  //   queryParams: {},
-  // });
-
+  const { t, lang } = useTranslation("common");
   const searchRef = useRef(null);
+  const [search, setSearch] = useState("");
+  const debouncedSearchTerm = useDebounce(search, 500);
+  const getKey = useKeyTranslation();
+  const router = useRouter();
 
-  const [data, setData] = useState([]);
-  const [filterData, setFilterData] = useState([]);
-  const [wordEntered, setWordEntered] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
 
   useOnClickOutside(searchRef, () => setModalOpen(false));
 
-  const handleFilter = (event) => {
-    const searchWord = event.target.value;
-    setWordEntered(wordEntered);
-    const newFilter = data.filter((value) => {
-      return value.title.toLowerCase().includes(searchWord.toLowerCase());
-    });
+  const { data: products, isLoading } = useProductsQuery({
+    data: {
+      [`name_${lang}`]: debouncedSearchTerm,
+    },
 
-    if (searchWord === "") {
-      setFilterData([]);
-    } else {
-      setFilterData(newFilter);
+    queryParams: {
+      enabled: !!debouncedSearchTerm,
+      onSuccess: (res) => {
+        setModalOpen(true);
+      },
+      select: (res) => res.response,
+    },
+  });
+
+  useEffect(() => {
+    setModalOpen(false);
+    setSearch("");
+  }, [router.query]);
+
+  const redirectSearch = (e) => {
+    if (search.length && e.key === "Enter") {
+      router.push(`/search?search_request=${search}`);
     }
   };
 
-  const clearInput = () => {
-    setFilterData([]);
-    setWordEntered("");
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(
-        "https://jsonplaceholder.typicode.com/posts?_page=1&_limit=5"
-      );
-      setData(result.data);
-      console.log(result.data);
-    };
-    fetchData();
-  }, []);
-
   return (
-    <div className={cls.wrap}>
-      <div className={cls.Input}>
-        <input
-          placeholder='Искать товары'
-          type='text'
-          // value={wordEntered}
-          onChange={handleFilter}
-          onClick={() => {
-            setModalOpen(true);
-          }}
-          className={cls.input}
-        />
+    <>
+      <div ref={searchRef} className={cls.root}>
+        <div className={cls.input}>
+          <input
+            placeholder="Искать товары"
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={redirectSearch}
+          />
+          {search && (
+            <span
+              className={cls.clear}
+              onClick={() => {
+                setSearch("");
+              }}
+            >
+              <ClearIcon />
+            </span>
+          )}
+        </div>
+
         <div className={cls.searchBtn}>
-          <SearchIcon />
+          {isLoading ? <CircularProgress size={18} /> : <SearchIcon />}
         </div>
+
+        {modalOpen && (
+          <div className={cls.searchMenu}>
+            {products && products.length > 0 ? (
+              products?.map((el) => (
+                <Link href={`/product/${el?.[getKey("slug")]}`} key={el.guid}>
+                  <a>{el?.[getKey("name")]}</a>
+                </Link>
+              ))
+            ) : (
+              <div className={cls.emptyBox}>
+                <img src="/gif/searchEmpty.gif" alt="gif" />
+              </div>
+            )}
+          </div>
+        )}
       </div>
-
-      {modalOpen && (
-        <div ref={searchRef} className={cls.searchTab}>
-          <div className={cls.searched}>
-            <div className={cls.top}>
-              <h3>Вы недавно искали</h3>
-              <div className={cls.clearBtn}>Очистить</div>
-            </div>
-            <div className={cls.items}>
-              {data?.map((el) => {
-                return (
-                  <Link href='#' key={el.id}>
-                    <div className={cls.item}>{el.title}</div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className={cls.popular}>
-            <div className={cls.top}>
-              <h3>Популярные запросы</h3>
-              <div className={cls.clearBtn}>Очистить</div>
-            </div>
-            <div className={cls.items}>
-              {data?.map((el) => {
-                return (
-                  <Link href='#' key={el.id}>
-                    <div className={cls.item}>{el.title}</div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+      <div className={`${modalOpen || isLoading ? cls.grid : ""}`} />
+    </>
   );
 }
 

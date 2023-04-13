@@ -5,14 +5,6 @@ import Link from "next/link";
 
 const links = [
   {
-    name: "Смартфоны",
-    url: "/",
-  },
-  {
-    name: "Кроссовки",
-    url: "/",
-  },
-  {
     name: "Акции",
     url: "/discount",
   },
