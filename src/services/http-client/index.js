@@ -4,7 +4,7 @@ export const request = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   headers: {
     Authorization: "API-KEY",
-    "X-API-KEY": process.env.NEXT_X_API_KEY,
+    "X-API-KEY": process.env.NEXT_PUBLIC_X_API_KEY,
   },
 });
 
