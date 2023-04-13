@@ -1,10 +1,9 @@
 import { useState } from "react";
-import cls from "./PublicOffer.module.scss";
+import cls from "./Payment.module.scss";
 import { Container } from "@mui/material";
 import BreadCrumbs from "components/UI/BreadCrumbs";
 import { BannerSkeleton } from "components/UI/Loaders/BannerSkeleton";
 import { TextSkeleton } from "components/UI/Loaders/TextSkeleton";
-import Image from "next/image";
 import useKeyTranslation from "hooks/useKeyTranslation";
 import { windowScrollTo } from "utils/windowScrollTo";
 import { useInfoQuery, useStateTitlesQuery } from "services/info.service";
@@ -16,28 +15,28 @@ const breadcrumbItems = [
   },
   {
     link: "/",
-    label: "Публичная оферта",
+    label: "Способ оплаты",
   },
 ];
 
-const PublicOffer = () => {
+const Payment = () => {
   const getKey = useKeyTranslation();
   const [active, setActive] = useState(null);
 
-  const { data, isLoading } = useInfoQuery({ data: { public_offer: true } });
-  const publicOffer = data && data[0];
+  const { data, isLoading } = useInfoQuery({ data: { payment: true } });
+  const payment = data && data[0];
 
   const { data: titles } = useStateTitlesQuery({
-    id: publicOffer && publicOffer.guid,
-    data: { info_id: [publicOffer && publicOffer.guid] },
-    queryParams: { enabled: !!(publicOffer && publicOffer.guid) },
+    id: payment && payment.guid,
+    data: { info_id: [payment && payment.guid] },
+    queryParams: { enabled: !!(payment && payment.guid) },
   });
 
   return (
     <main className={cls.main}>
       <Container>
         <BreadCrumbs items={breadcrumbItems} />
-        <h1 className={cls.title}>Публичная оферта</h1>
+        <h1 className={cls.title}>Способ оплаты</h1>
         {isLoading ? (
           <div className={cls.skeleton}>
             <BannerSkeleton />
@@ -46,16 +45,6 @@ const PublicOffer = () => {
         ) : (
           <div className={cls.body}>
             <div className={cls.leftSide}>
-              <div className={cls.bannerImg}>
-                <Image
-                  src={
-                    (publicOffer && publicOffer.photo) || `/images/no-photo.png`
-                  }
-                  objectFit="cover"
-                  layout="fill"
-                  alt="img"
-                />
-              </div>
               <div className={cls.content}>
                 {titles
                   ? titles.map((el, index) => (
@@ -102,4 +91,4 @@ const PublicOffer = () => {
   );
 };
 
-export default PublicOffer;
+export default Payment;

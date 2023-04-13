@@ -19,29 +19,44 @@ export function Footer() {
             <ul className={cls.navMenu}>
               <li className={cls.navItem}>
                 <h3>Информация</h3>
-                <Link href="/about">
+                <Link href='/about'>
                   <a>О нас</a>
                 </Link>
-                <Link href="/blog">
+                <Link href='/blog'>
                   <a>Блог</a>
                 </Link>
-                <Link href="/contacts">
+                <Link href='/contacts'>
                   <a>Контакты</a>
                 </Link>
-                <Link href="/public-offer">
+                <Link href='/public-offer'>
                   <a>Публичный оферта</a>
+                </Link>
+                <Link href='/rekvizit'>
+                  <a>Реквизиты</a>
+                </Link>
+                <Link href='/politica'>
+                  <a>Политика возврата товара</a>
+                </Link>
+                <Link href='/privacy-policy'>
+                  <a>Политика конфиденциальности</a>
+                </Link>
+                <Link href='/delivery'>
+                  <a>Доставка</a>
+                </Link>
+                <Link href='/payment'>
+                  <a>Способ оплаты</a>
                 </Link>
               </li>
               <li className={cls.navItem}>
                 <h3>Контакты для предложений</h3>
-                <a href="mailto: abc@example.com">Support@paragraf.uz</a>
-                <Link href="/format">
+                <a href='mailto: abc@example.com'>Support@paragraf.uz</a>
+                <Link href='/format'>
                   <a>Форма обратной связи</a>
                 </Link>
               </li>
               <li className={cls.navItem}>
                 <h3>Телефон</h3>
-                <a href="tel:+998901234567">+998901234567</a>
+                <a href='tel:+998901234567'>+998901234567</a>
                 <h3 className={cls.address}>Адрес</h3>
                 <address>
                   <p>
@@ -82,14 +97,14 @@ export function Footer() {
           </nav>
           <div className={cls.bottom}>
             <p>
-              <a href="#">Paragraf.uz - Все права защищены.</a>
+              <a href='#'>Paragraf.uz - Все права защищены.</a>
             </p>
             <div className={cls.privacy}>
               <p>
-                <a href="#">Политика конфиденциальности</a>
+                <a href='#'>Политика конфиденциальности</a>
               </p>
               <p>
-                <a href="#">Условия использования</a>
+                <a href='#'>Условия использования</a>
               </p>
             </div>
           </div>
