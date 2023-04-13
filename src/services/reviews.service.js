@@ -38,13 +38,14 @@ export const useStateTitleQuery = ({ data = {}, queryParams } = {}) => {
   );
 };
 
-export const useReviewByIdQuery = ({ id, params = {}, queryParams }) => {
-  return (
-    useQuery(["GET_REVIEWS_BY_ID", { id, ...params }], async () => {
+export const useReviewByIdQuery = ({ params = {}, id, queryParams } = {}) => {
+  return useQuery(
+    ["GET_REVIEWS_BY_ID", { id, ...params }],
+    async () => {
       return await reviewsService
         .getById(id, params)
         .then((res) => getResponse(res));
-    }),
+    },
     queryParams
   );
 };

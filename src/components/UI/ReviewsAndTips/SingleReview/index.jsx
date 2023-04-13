@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import useKeyTranslation from "hooks/useKeyTranslation";
 import LastNews from "components/UI/News/SingleNew/LastNews";
-import { useReviewByIdQuery, useReviewsQuery } from "services/reviews.service";
+import { useReviewByIdQuery } from "services/reviews.service";
 import { useNewsQuery } from "services/news.service";
 import Comments from "components/UI/Comments";
 
@@ -16,11 +16,12 @@ const SingleReview = () => {
 
   const { data: news } = useNewsQuery(); //
 
-  const { data: arcticle } = useReviewsQuery();
-
   const { data, isLoading } = useReviewByIdQuery({
-    id: article_id,
     params: {},
+    id: article_id,
+    queryParams: {
+      enabled: !!article_id,
+    },
   });
 
   const breadcrumbItems = [
@@ -54,7 +55,7 @@ const SingleReview = () => {
                   alt="img"
                 />
               </div>
-              <h3 className={cls.desc__title}>Цифровой инвертор</h3>
+              <h3 className={cls.desc__title}>{data?.[getKey("title")]}</h3>
               <p
                 className={cls.description}
                 dangerouslySetInnerHTML={{
