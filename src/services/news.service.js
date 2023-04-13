@@ -23,9 +23,6 @@ export const useNewsQuery = ({ data = {}, queryParams } = {}) => {
 export const useNewsByIdQuery = ({ id, params = {}, quryParams }) => {
   return useQuery(
     ["GET_NEWS_BY_ID", { id, ...params }],
-    () => {
-      return newsService.getById(id, params);
-    },
     async () => {
       return await newsService
         .getById(id, params)
