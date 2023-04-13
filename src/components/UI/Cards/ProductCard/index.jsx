@@ -58,7 +58,7 @@ function ProductCard({ data, img, zIndex = 0 }) {
       <div className={cls.cardBody}>
         <p className={cls.title}>
           {" "}
-          {(data && data.category_id_data?.[getKey("name")]) || "Смартфон"}
+          {(data && data?.[getKey("name")]) || "Смартфон"}
         </p>
         {/* <div
           dangerouslySetInnerHTML={{

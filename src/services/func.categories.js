@@ -1,12 +1,10 @@
 import { useQuery } from "react-query";
-import { httpRequestFunction } from "./http-client-function";
+import { request } from "./http-client";
+import { getResponse } from "utils/getResponse";
 
-const categoriesService = {
+const categoryFuncService = {
   getList: (data) =>
-    httpRequestFunction.post("/function/paragraf-get-category", {
-      category_id: "c95122ba-b3bf-47e3-b50d-0ce0072c8bf3",
-      app_id: "P-lc7prRbwHd8kZk57CwFvpx6N95at1xbV",
-    }),
+    request.post("/v1/invoke_function/paragraf-get-category", { data }),
 };
 
 export const useFuncCategoriesQuery = ({
@@ -17,7 +15,9 @@ export const useFuncCategoriesQuery = ({
   return useQuery(
     ["GET_FUNC_CATEGORIES", data, routerId],
     async () => {
-      return await categoriesService.getList(data);
+      return await categoryFuncService
+        .getList(data)
+        .then((res) => getResponse(res));
     },
     queryParams
   );

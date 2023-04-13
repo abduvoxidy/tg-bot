@@ -44,6 +44,12 @@ function Input() {
     setSearch("");
   }, [router.query]);
 
+  const redirectSearch = (e) => {
+    if (search.length && e.key === "Enter") {
+      router.push(`/search?search_request=${search}`);
+    }
+  };
+
   return (
     <>
       <div ref={searchRef} className={cls.root}>
@@ -53,9 +59,7 @@ function Input() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            onKeyDown={(e) => {
-              console.log("input clicked");
-            }}
+            onKeyDown={redirectSearch}
           />
           {search && (
             <span
@@ -89,7 +93,7 @@ function Input() {
           </div>
         )}
       </div>
-      <div className={`${modalOpen ? cls.grid : ""}`}></div>
+      <div className={`${modalOpen || isLoading ? cls.grid : ""}`} />
     </>
   );
 }

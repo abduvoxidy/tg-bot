@@ -21,29 +21,6 @@ export function CatalogBrand() {
   const [category, setCategory] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
   const category_id = router.query.id;
-
-  // useEffect(() => {
-  //   axios({
-  //     method: "get",
-  //     url: "https://ofs.u-code.io/function/paragraf-get-attribute",
-  //     data: {
-  //       category_slug: "telefon",
-  //       category_slug_language: "uz",
-  //       app_id: "P-lc7prRbwHd8kZk57CwFvpx6N95at1xbV",
-  //     },
-  //     headers: {
-  //       // Authorization: "API-KEY",
-  //       // "X-API-KEY": process.env.NEXT_X_API_KEY,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
-
   const getKey = useKeyTranslation();
 
   const { data, isLoading } = useCategoriesQuery({
@@ -78,35 +55,12 @@ export function CatalogBrand() {
 
   const { data: categories } = useFuncCategoriesQuery({
     data: {
-      category_id: "c95122ba-b3bf-47e3-b50d-0ce0072c8bf3",
-      app_id: "P-lc7prRbwHd8kZk57CwFvpx6N95at1xbV",
+      category_id: category_id,
     },
     queryParams: {
       enabled: !!category_id,
     },
   });
-
-  console.log("data", categories);
-
-  // var myHeaders = new Headers();
-  // myHeaders.append("Content-Type", "application/json");
-
-  // var raw = JSON.stringify({
-  //   category_id: "c95122ba-b3bf-47e3-b50d-0ce0072c8bf3",
-  //   app_id: "P-lc7prRbwHd8kZk57CwFvpx6N95at1xbV",
-  // });
-
-  // var requestOptions = {
-  //   method: "POST",
-  //   headers: myHeaders,
-  //   body: raw,
-  //   redirect: "follow",
-  // };
-
-  // fetch("https://ofs.u-code.io/function/paragraf-get-category", requestOptions)
-  //   .then((response) => response.text())
-  //   .then((result) => console.log("result ===> ", result))
-  //   .catch((error) => console.log("error ====> ", error));
 
   return (
     <main className={cls.main}>

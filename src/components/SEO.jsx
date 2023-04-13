@@ -10,6 +10,7 @@ export default function SEO({ title }) {
       />
       <meta charSet="utf-8" />
       <title>{title || "Paragraph"}</title>
+      <meta name="robots" content="noindex, follow" />
       {/* <meta name='description' content='Next js' />
       <meta
         name='keywords'
