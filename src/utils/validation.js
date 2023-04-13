@@ -11,7 +11,7 @@ export default function validationForm(name) {
       )
       .min(19, "Номер карты должен содержать 16 символов"),
     pinfl: yup
-      .string()
+      .number()
       .strict(true)
       .trim("Поле не должно быть пустым")
       .required("Обязательное поле")
@@ -27,7 +27,7 @@ export default function validationForm(name) {
       .strict(true)
       .trim("Поле не должно быть пустым")
       .required("Обязательное поле")
-      .min(2, "Серия паспорта должно содержать 2 символа"),
+      .min(14, "Серия паспорта должно содержать 14 символа"),
     passportNumber: yup
       .string()
       .strict(true)

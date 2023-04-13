@@ -16,7 +16,7 @@ import { cardValidation } from "utils/validation";
 import SuccessFullyAdded from "./SuccessFullyAdded";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} timeout={560} {...props} />;
+  return <Slide direction='up' ref={ref} timeout={560} {...props} />;
 });
 
 export default function AddCard({ open, setOpen, refetch }) {
@@ -83,7 +83,7 @@ export default function AddCard({ open, setOpen, refetch }) {
       card_expire_date: "",
       sms_code: "",
     },
-    resolver: smsSend ? yupResolver(schema) : yupResolver(schemaCard),
+    resolver:  smsSend  ? yupResolver(schema) : yupResolver(schemaCard),
   });
 
   const onSubmit = (data) => {
@@ -141,7 +141,7 @@ export default function AddCard({ open, setOpen, refetch }) {
       onClose={handleClose}
       TransitionComponent={Transition}
       className={classes.root}
-      aria-describedby="alert-dialog-slide-description"
+      aria-describedby='alert-dialog-slide-description'
     >
       {!isSuccess ? (
         <form
@@ -157,10 +157,10 @@ export default function AddCard({ open, setOpen, refetch }) {
                 <div className={cls.input}>
                   <label>Номер карты</label>
                   <InputMask
-                    mask="9999 9999 9999 9999"
-                    placeholder="Введите карту"
+                    mask='9999 9999 9999 9999'
+                    placeholder='Введите карту'
                     control={control}
-                    name="card_num"
+                    name='card_num'
                     errors={errors}
                     required
                   />
@@ -168,10 +168,10 @@ export default function AddCard({ open, setOpen, refetch }) {
                 <div className={cls.input}>
                   <label>Срок карты</label>
                   <InputMask
-                    mask="99/99"
-                    placeholder="ММ/ГГ"
+                    mask='99/99'
+                    placeholder='ММ/ГГ'
                     control={control}
-                    name="card_expire_date"
+                    name='card_expire_date'
                     errors={errors}
                     required
                   />
@@ -182,10 +182,10 @@ export default function AddCard({ open, setOpen, refetch }) {
                 <div className={cls.input}>
                   <label>СМС код</label>
                   <InputMask
-                    mask="999999"
-                    placeholder="Введит код подтверждения"
+                    mask='999999'
+                    placeholder='Введит код подтверждения'
                     control={control}
-                    name="sms_code"
+                    name='sms_code'
                     errors={errors}
                     required
                   />
@@ -200,8 +200,8 @@ export default function AddCard({ open, setOpen, refetch }) {
             <MainButton
               className={cls.addBtn}
               loading={false}
-              type="submit"
-              size="medium"
+              type='submit'
+              size='medium'
               disabled={expired}
               fullWidth
             >

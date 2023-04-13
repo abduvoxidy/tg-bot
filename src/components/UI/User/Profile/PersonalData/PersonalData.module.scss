@@ -28,6 +28,14 @@
       }
     }
   }
+
+  .title {
+    font-weight: 500;
+    font-size: rem(20);
+    line-height: rem(32);
+    color: #000000;
+    padding: rem(10) 0;
+  }
   .inputs {
     display: flex;
     flex-direction: column;
