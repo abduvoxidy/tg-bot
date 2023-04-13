@@ -2,7 +2,7 @@ import React from "react";
 import cls from "./ImgUploader.module.scss";
 import { useRef, useState } from "react";
 import { request } from "services/http-client";
-import { CloseIcon } from "components/UI/Icons";
+import { CameraIcon, CloseIcon } from "components/UI/Icons";
 import { CircularProgress } from "@mui/material";
 import SecondaryButton from "components/UI/Buttons/SecondaryButton";
 
@@ -50,37 +50,46 @@ function ImgUploader({
 
   return (
     <div className={`${cls.imgUpload} ${className}`}>
-      <div className={cls.img}>
-        {watch(saveUrl) && !loader && (
-          <div className={cls.close} onClick={() => setValue(saveUrl, "")}>
-            <CloseIcon />
-          </div>
-        )}
-
-        {loader && (
-          <div className={cls.loader}>
-            <CircularProgress size={30} />
-          </div>
-        )}
-
-        <img src={watch(saveUrl) ? watch(saveUrl) : imgUrl} alt="profile" />
-        <input
-          type="file"
-          accept="image/*"
-          ref={hiddenFileInput}
-          onChange={uploadImg}
-          style={{ display: "none" }}
-        />
+      <div className={cls.left}>
+        <label className={cls.topText}>
+          {label || "Лицевая сторона паспорта"}
+        </label>
+        <span className={cls.bottomText}>
+          Информацию на фото должны быть читабельны
+        </span>
       </div>
+
       <div className={cls.right}>
-        <label>{label || "Фото паспорта с личными данными"}</label>
         <div className={cls.uploader}>
-          <p className={cls.text}>Загрузите фото</p>
+          <div className={cls.img}>
+            {watch(saveUrl) && !loader && (
+              <div className={cls.close} onClick={() => setValue(saveUrl, "")}>
+                <CloseIcon />
+              </div>
+            )}
+
+            {loader && (
+              <div className={cls.loader}>
+                <CircularProgress size={30} />
+              </div>
+            )}
+
+            <img src={watch(saveUrl) ? watch(saveUrl) : imgUrl} alt='profile' />
+            <input
+              type='file'
+              accept='image/*'
+              ref={hiddenFileInput}
+              onChange={uploadImg}
+              style={{ display: "none" }}
+            />
+          </div>
           <SecondaryButton onClick={handleClick} className={cls.uploadBtn}>
-            {"Прикрепить"}
+            <span>
+              <CameraIcon />
+            </span>
+            {"Загрузить фото"}
           </SecondaryButton>
         </div>
-        <span>Информация из паспорта и фото, должны быть читабельны</span>
       </div>
     </div>
   );

@@ -17,49 +17,38 @@ export function CloseIcon() {
   );
 }
 
-// export function ShowMoreIcon() {
-//   <svg
-//     width='25'
-//     height='24'
-//     viewBox='0 0 25 24'
-//     fill='none'
-//     xmlns='http://www.w3.org/2000/svg'
-//   >
-//     <g clip-path='url(#clip0_2735_259718)'>
-//       <path
-//         d='M12.5 5L12.5 19'
-//         stroke='#FF9910'
-//         stroke-width='2'
-//         stroke-linecap='round'
-//         stroke-linejoin='round'
-//       />
-//       <path
-//         d='M6.5 13L12.5 19'
-//         stroke='#FF9910'
-//         stroke-width='2'
-//         stroke-linecap='round'
-//         stroke-linejoin='round'
-//       />
-//       <path
-//         d='M18.5 13L12.5 19'
-//         stroke='#FF9910'
-//         stroke-width='2'
-//         stroke-linecap='round'
-//         stroke-linejoin='round'
-//       />
-//     </g>
-//     <defs>
-//       <clipPath id='clip0_2735_259718'>
-//         <rect
-//           width='24'
-//           height='24'
-//           fill='white'
-//           transform='matrix(0 1 -1 0 24.5 0)'
-//         />
-//       </clipPath>
-//     </defs>
-//   </svg>;
-// }
+export function CameraIcon() {
+  return (
+    <svg
+      width='24'
+      height='25'
+      viewBox='0 0 24 25'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <g clip-path='url(#clip0_2651_254476)'>
+        <path
+          d='M12 15.8906C13.6569 15.8906 15 14.5475 15 12.8906C15 11.2338 13.6569 9.89062 12 9.89062C10.3431 9.89062 9 11.2338 9 12.8906C9 14.5475 10.3431 15.8906 12 15.8906Z'
+          fill='white'
+        />
+        <path
+          d='M20 4.89062H16.83L15.59 3.54063C15.22 3.13063 14.68 2.89062 14.12 2.89062H9.88C9.32 2.89062 8.78 3.13063 8.4 3.54063L7.17 4.89062H4C2.9 4.89062 2 5.79063 2 6.89062V18.8906C2 19.9906 2.9 20.8906 4 20.8906H20C21.1 20.8906 22 19.9906 22 18.8906V6.89062C22 5.79063 21.1 4.89062 20 4.89062ZM12 17.8906C9.24 17.8906 7 15.6506 7 12.8906C7 10.1306 9.24 7.89062 12 7.89062C14.76 7.89062 17 10.1306 17 12.8906C17 15.6506 14.76 17.8906 12 17.8906Z'
+          fill='white'
+        />
+      </g>
+      <defs>
+        <clipPath id='clip0_2651_254476'>
+          <rect
+            width='24'
+            height='24'
+            fill='white'
+            transform='translate(0 0.890625)'
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
 
 export function LogoIcon() {
   return (
