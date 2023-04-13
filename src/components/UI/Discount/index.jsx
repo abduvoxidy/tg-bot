@@ -34,7 +34,7 @@ function Discount() {
         <h1 className={cls.title}>Акции</h1>
         <div className={cls.bannerImg}>
           <Image
-            src={response[0].photo || "/images/news/banner.jpg"}
+            src={response?.[0].photo || "/images/news/banner.jpg"}
             objectFit="cover"
             layout="fill"
             loading="lazy"
