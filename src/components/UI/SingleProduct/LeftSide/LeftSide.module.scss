@@ -19,7 +19,7 @@
       .img_wrap {
         width: 80px;
         height: 80px;
-        border: 1px solid #DFDEDE;
+        border: 1px solid #dfdede;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -32,7 +32,7 @@
         object-fit: contain;
       }
       .active {
-        border: 1px solid #FF9910;
+        border: 1px solid #ff9910;
         width: 80px;
         height: 80px;
         cursor: pointer;
@@ -40,7 +40,7 @@
     }
     .left_2 {
       position: relative;
-      z-index: 1001;
+      z-index: 100;
       img {
         width: 700px;
         height: 100%;

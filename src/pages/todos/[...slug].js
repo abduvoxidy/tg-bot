@@ -12,7 +12,7 @@ export default function categories() {
       <h1>Slug </h1>
       <button
         onClick={() => {
-          router.push("/[...slug]", "/todos/post-1");
+          router.push("/[...slug]", "/todos/post-1/12/23/23423");
         }}
       >
         Click me
