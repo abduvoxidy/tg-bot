@@ -39,8 +39,7 @@ function LeftSide() {
   return (
     <div className={cls.leftSide}>
       <div className={cls.left}>
-
-      {/* <Grid container spacing={4}>
+        {/* <Grid container spacing={4}>
         <Grid item xs={6}>
           <MyReactImageMagnify />
           <MyImageGallery />
@@ -52,8 +51,7 @@ function LeftSide() {
         </Grid>
       </Grid> */}
 
-
-        <ImageGallery
+        {/* <ImageGallery
           showBullets={false}
           showIndex={false}
           showThumbnails={true}
@@ -82,8 +80,9 @@ function LeftSide() {
               },
             }}
           />
-        </ImageGallery>
-        {/* <div className={cls.left_1}>
+        </ImageGallery> */}
+
+        <div className={cls.left_1}>
           {images &&
             images.map((image, i) => (
               <div
@@ -121,7 +120,7 @@ function LeftSide() {
               },
             }}
           />
-        </div> */}
+        </div>
       </div>
 
       <div className={cls.properties}>
