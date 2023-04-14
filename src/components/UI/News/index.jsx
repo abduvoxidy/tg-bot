@@ -4,12 +4,12 @@ import BreadCrumbs from "components/UI/BreadCrumbs";
 import { Container } from "@mui/material";
 import Image from "next/image";
 import MoreNews from "./MoreNews";
-import { useNewsQuery } from "services/news.service";
-import useKeyTranslation from "hooks/useKeyTranslation";
 import { formatDate } from "utils/formatDate";
 import SecondaryButton from "../Buttons/SecondaryButton";
 import { useRouter } from "next/router";
 import { BannerSkeleton } from "../Loaders/BannerSkeleton";
+
+import useKeyTranslation from "hooks/useKeyTranslation";
 
 const breadcrumbItems = [
   {
@@ -22,8 +22,7 @@ const breadcrumbItems = [
   },
 ];
 
-export function News() {
-  const { data: news, isLoading } = useNewsQuery();
+export function News({ news, isLoading }) {
   const getKey = useKeyTranslation();
   const router = useRouter();
 

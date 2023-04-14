@@ -6,7 +6,7 @@ import { persistor, store } from "../store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import ScreenCaptureContainer from "screen-capture";
-import { QueryClientProvider } from "react-query";
+import { QueryClientProvider, Hydrate } from "react-query";
 import { queryClient } from "services/queryClient";
 import NextNProgress from "nextjs-progressbar";
 
@@ -34,15 +34,17 @@ function MyApp({ Component, pageProps }) {
       ) : (
         <ThemeProvider theme={theme}>
           <QueryClientProvider client={queryClient}>
-            <Layout>
-              <NextNProgress
-                options={{
-                  showSpinner: false,
-                }}
-                color="#ff9910"
-              />
-              <Component {...pageProps} />
-            </Layout>
+            <Hydrate state={pageProps.dehydratedState}>
+              <Layout>
+                <NextNProgress
+                  options={{
+                    showSpinner: false,
+                  }}
+                  color="#ff9910"
+                />
+                <Component {...pageProps} />
+              </Layout>
+            </Hydrate>
           </QueryClientProvider>
         </ThemeProvider>
       )}

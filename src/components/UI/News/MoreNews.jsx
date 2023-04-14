@@ -13,8 +13,8 @@ function MoreNews({ news = [] }) {
   const getKey = useKeyTranslation();
   return (
     <div className={cls.moreNews}>
-      {news.map((el) => (
-        <div className={cls.mainCard}>
+      {news.map((el, index) => (
+        <div key={index} className={cls.mainCard}>
           <div className={cls.img}>
             <Image
               src={el?.photo || "/images/no-photo.png"}

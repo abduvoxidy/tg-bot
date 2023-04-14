@@ -6,13 +6,38 @@ import { useState } from "react";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 import { mapDefaults } from "utils/yandexMapUtils";
 import { useBranchesQuery } from "services/branches.service";
+import { useRef } from "react";
+import { useEffect } from "react";
+import useGeolocation from "hooks/useGeolocation";
 
 function RegionsMap() {
   const [mapPosition, setMapPosition] = useState({
     center: [41.311151, 69.279737],
     zoom: 15,
   });
+
+  const mapRef = useRef(null);
   const [isMerchant, setIsMerchant] = useState(0);
+
+  const location = useGeolocation();
+
+  // const handleCenterMap = () => {
+  //   mapRef.current.setBounds([
+  //     [39.991671, 66.844558], // coordinates of region 1
+  //     [41.006628, 71.227185],
+
+  //     // coordinates of region 2
+  //     // ... add more regions as needed
+  //   ]);
+  // };
+
+  useEffect(() => {
+    setMapPosition((prev) => ({
+      ...prev,
+      center: [location.lat, location.long],
+      zoom: 12,
+    }));
+  }, [mapRef]);
 
   const { data: branches } = useBranchesQuery({ data: {}, queryParams: {} });
 
@@ -28,6 +53,7 @@ function RegionsMap() {
   return (
     <div className={cls.regionsMap}>
       <div className={cls.merchants}>
+        {/* <button onClick={handleCenterMap}>Center Map</button> */}
         <h2>Магазины</h2>
         <div className={cls.items}>
           {branches &&
@@ -58,9 +84,7 @@ function RegionsMap() {
       <div className={cls.map}>
         <YMaps>
           <Map
-            instanceRef={(ref) => {
-              ref && ref.behaviors.disable("scrollZoom");
-            }}
+            instanceRef={mapRef}
             modules={[
               "multiRouter.MultiRoute",
               "coordSystem.geo",

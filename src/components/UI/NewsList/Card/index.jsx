@@ -8,7 +8,7 @@ import format from "date-fns/format";
 function Card({ data }) {
   const getKey = useKeyTranslation();
   const day = new Date(data?.date);
-  const formatDay = format(day, "dd.MM.yyyy");
+  // const formatDay = format(day, "dd.MM.yyyy");
   return (
     <Link href={`/news/${data.guid}`}>
       <a>
@@ -17,7 +17,7 @@ function Card({ data }) {
             <Image
               objectFit="cover"
               layout="fill"
-              src={data.photo}
+              src={data.photo ? data.photo : "/images/no-photo.png"}
               alt={data?.[getKey("name")]}
               placeholder="blur"
               blurDataURL="/images/skeleton.webp"
@@ -31,7 +31,7 @@ function Card({ data }) {
               }}
               className={cls.desc}
             />
-            <p className={cls.date}>{formatDay || ""}</p>
+            {/* <p className={cls.date}>{formatDay || ""}</p> */}
           </div>
         </div>
       </a>

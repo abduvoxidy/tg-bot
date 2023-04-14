@@ -1,8 +1,9 @@
 import { useQuery } from "react-query";
 import { request } from "./http-client";
 import { getResponse } from "utils/getResponse";
+import { queryClient } from "./queryClient";
 
-const newsService = {
+export const newsService = {
   getList: (data) => request.post("/v1/object/get-list/news", { data }),
   getById: (id, params) =>
     request.get(`/v1/object/news/${id}`, {
@@ -30,4 +31,12 @@ export const useNewsByIdQuery = ({ id, params = {}, quryParams }) => {
     },
     quryParams
   );
+};
+
+// ssr
+
+export const useNewsServerQuery = (data = {}) => {
+  return queryClient.prefetchQuery(["GET_NEWS"], async () => {
+    return await newsService.getList(data).then((res) => getResponse(res));
+  });
 };

@@ -11,8 +11,10 @@ import { Container } from "@mui/material";
 import { useFeaturedListsQuery } from "services/featured-lists.service";
 import { sortFunctionArr } from "utils/sortFunction";
 import useKeyTranslation from "hooks/useKeyTranslation";
+import { useRouter } from "next/router";
 
 function Home() {
+  const router = useRouter();
   const getKey = useKeyTranslation();
   const { data: featuredLists } = useFeaturedListsQuery({
     data: {

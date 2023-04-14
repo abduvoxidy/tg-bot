@@ -9,6 +9,7 @@ function NewsList() {
     data: {
       limit: 3,
     },
+    queryParams: {},
   });
 
   if (isLoading) return <ProductCardSkeleton items={3} />;
