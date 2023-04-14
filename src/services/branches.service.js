@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { request } from "./http-client";
 import { getResponse } from "utils/getResponse";
 
-const branchService = {
+export const branchService = {
   getList: (data) => request.post("/v1/object/get-list/branch", { data }),
 };
 

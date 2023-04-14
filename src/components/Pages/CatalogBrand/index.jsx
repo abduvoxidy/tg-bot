@@ -55,12 +55,14 @@ export function CatalogBrand() {
 
   const { data: categories } = useFuncCategoriesQuery({
     data: {
-      category_id: category_id,
+      // category_id: category_id,
     },
     queryParams: {
       enabled: !!category_id,
     },
   });
+
+  console.log("categories", categories);
 
   return (
     <main className={cls.main}>

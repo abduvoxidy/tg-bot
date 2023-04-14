@@ -5,6 +5,7 @@ export default function categories() {
   const router = useRouter();
 
   console.log("router", router);
+
   return (
     <>
       <SEO />

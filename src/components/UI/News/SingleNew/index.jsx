@@ -35,6 +35,10 @@ export function SingleNew() {
       label: "Главная",
     },
     {
+      link: "/news",
+      label: "Новости",
+    },
+    {
       label: newsItem?.[getKey("name")],
     },
   ];
