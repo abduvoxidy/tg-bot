@@ -26,7 +26,10 @@ function PersonalData() {
       username: "",
       phone: "",
       subPhone: "",
+      passportSeria: "",
+      pinfl: "",
     },
+    // resolver: smsSend ? yupResolver(schema) : yupResolver(schemaCard),
   });
 
   const handleChange = (newValue) => {
@@ -40,6 +43,7 @@ function PersonalData() {
 
   return (
     <form className={cls.form} onSubmit={handleSubmit(onSubmit)}>
+      <div className={cls.title}>Прикрепить</div>
       <div className={cls.attachBtns}>
         <div className={cls.attachBtn}>
           <span>
@@ -80,7 +84,7 @@ function PersonalData() {
           name='username'
           register={register}
           errors={errors}
-          labelText='Telegram user name'
+          labelText='Telegram username'
           required
         />
         <InputMask
@@ -108,6 +112,28 @@ function PersonalData() {
           open={open}
           setOpen={setOpen}
           handleChange={handleChange}
+        />
+      </div>
+
+      <div className={cls.title}>Паспортные данные</div>
+      <div className={cls.inputs}>
+        <Input
+          id='passportSeria'
+          placeholder={"АА 0000000"}
+          name='passportSeria'
+          register={register}
+          labelText='Серия и номер'
+          errors={errors}
+          required
+        />
+        <Input
+          id='passportSeria'
+          placeholder={"00000000000000"}
+          name='passportSeria'
+          register={register}
+          labelText='ПИНФЛ'
+          errors={errors}
+          required
         />
       </div>
 

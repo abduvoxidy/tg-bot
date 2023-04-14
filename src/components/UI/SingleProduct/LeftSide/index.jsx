@@ -7,14 +7,14 @@ import { EyeIcon } from "components/UI/Icons";
 import ImageGallery from "react-image-gallery";
 import ReactImageMagnify from "react-image-magnify";
 import { images } from "../data";
-import { imagek } from "../data";
-
-console.log("manaaa", imagek);
+import { Grid, Paper } from "@mui/material";
+import MyImageGallery from "./imageGallery";
+import MyReactImageMagnify from "./imageMagnify";
 
 function LeftSide() {
   const [isActiveColor, setIsActiveColor] = useState("black.png");
   const [isActiveMemory, setIsActiveMemory] = useState("128 Гб");
-  const [img, setImage] = useState(imagek[2]);
+  const [img, setImage] = useState(images[0].original);
 
   const [active, setActive] = useState(null);
 
@@ -39,6 +39,18 @@ function LeftSide() {
   return (
     <div className={cls.leftSide}>
       <div className={cls.left}>
+        {/* <Grid container spacing={4}>
+        <Grid item xs={6}>
+          <MyReactImageMagnify />
+          <MyImageGallery />
+        </Grid>
+        <Grid container spacing={2} item xs={6} direction="column">
+          <Grid item>
+            <Paper>bla blah</Paper>
+          </Grid>
+        </Grid>
+      </Grid> */}
+
         {/* <ImageGallery
           showBullets={false}
           showIndex={false}
@@ -49,18 +61,43 @@ function LeftSide() {
           showFullscreenButton={false}
           thumbnailPosition={"left"}
           items={images}
-        /> */}
+        >
+            <ReactImageMagnify
+            {...{
+              smallImage: {
+                alt: "Zoom image",
+                isFluidWidth: true,
+                src: images,
+              },
+              largeImage: {
+                src: images,
+                width: 1600,
+                height: 1800,
+              },
+              enlargedImageContainerDimensions: {
+                width: "200%",
+                height: "150%",
+              },
+            }}
+          />
+        </ImageGallery> */}
+
         <div className={cls.left_1}>
-          {imagek &&
-            imagek.map((image, i) => (
+          {images &&
+            images.map((image, i) => (
               <div
-                className={`${cls.img_wrap} ${active == image && cls.active}`}
-                onClick={() => setActive(image)}
+                className={`${cls.img_wrap} ${
+                  active == image.original && cls.active
+                }`}
+                onClick={() => {
+                  setActive(image.original);
+                  hoverHandler(image.original, i);
+                }}
                 key={i}
-                onMouseOver={() => hoverHandler(image, i)}
+                // onMouseOver={() => hoverHandler(image, i)}
                 ref={addRefs}
               >
-                <img src={image} alt='rasm' />
+                <img src={image.original} alt='rasm' />
               </div>
             ))}
         </div>
@@ -74,12 +111,12 @@ function LeftSide() {
               },
               largeImage: {
                 src: img,
-                width: 1400,
+                width: 1600,
                 height: 1800,
               },
               enlargedImageContainerDimensions: {
-                width: "300%",
-                height: "250%",
+                width: "200%",
+                height: "150%",
               },
             }}
           />
@@ -132,6 +169,7 @@ function LeftSide() {
             </div>
           ))}
         </div>
+
         <h3 className={cls.characterTitle}>Характеристики</h3>
         <div className={cls.characteristics}>
           {charastericticsData.map((el, i) => (

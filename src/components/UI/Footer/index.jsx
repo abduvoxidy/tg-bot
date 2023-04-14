@@ -31,6 +31,21 @@ export function Footer() {
                 <Link href="/public-offer">
                   <a>Публичный оферта</a>
                 </Link>
+                <Link href="/requisite">
+                  <a>Реквизиты</a>
+                </Link>
+                <Link href="/return-policy">
+                  <a>Политика возврата товара</a>
+                </Link>
+                <Link href="/privacy-policy">
+                  <a>Политика конфиденциальности</a>
+                </Link>
+                <Link href="/delivery">
+                  <a>Доставка</a>
+                </Link>
+                <Link href="/payment">
+                  <a>Способ оплаты</a>
+                </Link>
               </li>
               <li className={cls.navItem}>
                 <h3>Контакты для предложений</h3>

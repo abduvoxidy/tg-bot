@@ -37,8 +37,8 @@ export default function InputMask({
         rules={{ required }}
         render={({ field }) => (
           <InputMaskCopy
-            mask="99/99"
-            maskChar=""
+            mask='99/99'
+            maskChar=''
             value={field.value}
             onChange={field.onChange}
             placeholder={placeholder}
