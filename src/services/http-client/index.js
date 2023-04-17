@@ -6,6 +6,9 @@ export const request = axios.create({
     Authorization: "API-KEY",
     "X-API-KEY": process.env.NEXT_PUBLIC_X_API_KEY,
   },
+  params: {
+    "project-id": process.env.NEXT_PUBLIC_REQUEST_PROJECT_ID,
+  },
 });
 
 const errorHandler = (error) => {
@@ -25,7 +28,4 @@ const errorHandler = (error) => {
   return Promise.reject(error.response);
 };
 
-request.interceptors.response.use(
-  (response) => response.data.data,
-  errorHandler
-);
+request.interceptors.response.use((response) => response.data, errorHandler);
