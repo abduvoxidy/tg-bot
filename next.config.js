@@ -5,7 +5,7 @@ const path = require("path");
 const nextConfig = nextTranslate({
   reactStrictMode: false,
   images: {
-    domains: ["test.cdn.u-code.io"],
+    domains: ["test.cdn.u-code.io", "cdn.u-code.io"],
     formats: ["image/avif", "image/webp"],
   },
   eslint: {
