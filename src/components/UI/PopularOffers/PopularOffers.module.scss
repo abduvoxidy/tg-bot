@@ -14,10 +14,16 @@
   .slideItem {
     padding: 0 rem(12);
   }
-  .row {
+  .row,
+  .rowid {
     margin-top: rem(24);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
     gap: rem(24);
+  }
+  .row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .rowid {
+    grid-template-columns: repeat(3, minmax(284px, 1fr));
   }
 }

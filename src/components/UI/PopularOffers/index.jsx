@@ -52,7 +52,7 @@ function PopularOffers({ title, products, isLoading }) {
       </Slider>
       <CategoryList />
 
-      <div className={cls.row}>
+      <div className={router?.query?.id ? cls.rowid : cls.row}>
         {isLoading ? (
           <SimpleLoader />
         ) : products && products.length > 0 ? (
