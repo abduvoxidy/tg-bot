@@ -13,8 +13,9 @@ import { useAttributesQuery } from "services/attributes.service";
 import { useGetAttributesResources } from "services/attributes.service";
 import { useMemo, useState } from "react";
 import SimpleLoader from "components/UI/Loaders/SimpleLoader";
+import Link from "next/link";
 
-function SidebarCategory() {
+function SidebarCategory(subData) {
   const [value, setValue] = useState([200000, 1000000]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [checkedStocks, setCheckedStocks] = useState([]);
@@ -116,137 +117,149 @@ function SidebarCategory() {
     setColor(null);
     setValue([200000, 1000000]);
   };
-
+  const data = subData?.subData?.category?.children;
   const colors = ["green", "black", "red", "primary", "secondary"];
   const stocks = ["В продаже", "В наличии"];
-
+  console.log("data", subData.subData);
   return (
-    <div className={cls.root}>
-      <form>
-        <div className={cls.price}>
-          <label>Цена</label>
-          <div className={cls.inputs}>
-            <Input
-              id="price"
-              // defaultValue={value[0]}
-              onChange={(e) => {
-                const arr = [];
-                arr.push(+e.target.value);
-                arr.push(value[1]);
-                setValue(arr);
-              }}
-              value={value[0]}
-              className={cls.inputBox}
-              placeholder="От 20 000"
-            />
-            <Input
-              id="price"
-              value={value[1]}
-              onChange={(e) => {
-                const arr = [];
-                arr.push(value[0]);
-                arr.push(+e.target.value);
-                setValue(arr);
-              }}
-              className={cls.inputBox}
-              placeholder="До 20 000"
-            />
-          </div>
-          <div className={cls.slider}>
-            <CustomSlider
-              getAriaLabel={() => "Temperature range"}
-              value={value}
-              onChange={handleChange}
-              min={200000}
-              // step={1}
-              max={1000000}
-              // defaultValue={[25000, 75000]}
-              defaultValue={[20, 40]}
-            />
-          </div>
-        </div>
-
-        <div className={cls.brands}>
-          <label>Бренд</label>
-          {brands &&
-            brands.map((el) => (
-              <div key={el.guid} className={cls.brand}>
-                <Checkbox
-                  onChange={(e) => {
-                    handleCheck(el.guid);
-                  }}
-                  id={el?.[getKey("title")]}
-                  value={el.guid}
-                  checked={checkedItems.includes(el.guid)}
-                />
-                <label className={cls.label} htmlFor={el?.[getKey("title")]}>
-                  {el?.[getKey("title")]}
-                </label>
-              </div>
-            ))}
-          <p
-            onClick={() => {
-              setBrands(brandsData);
-            }}
-            className={cls.showMore}
-          >
-            Показать ещё
-          </p>
-        </div>
-
-        <div className={cls.colors}>
-          <FormControl>
-            <label>Цвет</label>
-            <RadioGroup
-              className={cls.radioGroup}
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="green"
-              name="radio-buttons-group"
-            >
-              {colors.map((el) => (
-                <div onClick={() => handleColor(el)} key={el}>
-                  <FormControlLabel
-                    value={el}
-                    checked={color ? el === color : false}
-                    control={<RadioColor onChange={() => {}} color={el} />}
-                  />
-                </div>
-              ))}
-            </RadioGroup>
-          </FormControl>
-        </div>
-
-        <div className={cls.stocks}>
-          <label>Наличие на складе</label>
-          {stocks.map((el, index) => (
-            <div
-              key={index}
-              onClick={() => handleStock(el)}
-              className={cls.stock}
-            >
-              <Checkbox
-                onChange={(e) => {
-                  console.log("e", e.target.checked);
-                }}
-                value={el}
-                checked={checkedStocks.includes(el)}
-              />
-              <p>{el}</p>
-            </div>
+    <>
+      {data && (
+        <div className={cls.category}>
+          {data?.map((el) => (
+            <Link href={`/category/${el.slug}`}>
+              <a>{el?.[getKey("name")]}</a>
+            </Link>
           ))}
         </div>
+      )}
 
-        <SecondaryButton
-          onClick={() => {
-            handleFilter();
-          }}
-          className={cls.filterBtn}
-          fullWidth
-        >
-          Сбросить фильтр
-        </SecondaryButton>
-      </form>
-    </div>
+      <div className={cls.root}>
+        <form>
+          <div className={cls.price}>
+            <label>Цена</label>
+            <div className={cls.inputs}>
+              <Input
+                id="price"
+                // defaultValue={value[0]}
+                onChange={(e) => {
+                  const arr = [];
+                  arr.push(+e.target.value);
+                  arr.push(value[1]);
+                  setValue(arr);
+                }}
+                value={value[0]}
+                className={cls.inputBox}
+                placeholder="От 20 000"
+              />
+              <Input
+                id="price"
+                value={value[1]}
+                onChange={(e) => {
+                  const arr = [];
+                  arr.push(value[0]);
+                  arr.push(+e.target.value);
+                  setValue(arr);
+                }}
+                className={cls.inputBox}
+                placeholder="До 20 000"
+              />
+            </div>
+            <div className={cls.slider}>
+              <CustomSlider
+                getAriaLabel={() => "Temperature range"}
+                value={value}
+                onChange={handleChange}
+                min={200000}
+                // step={1}
+                max={1000000}
+                // defaultValue={[25000, 75000]}
+                defaultValue={[20, 40]}
+              />
+            </div>
+          </div>
+
+          <div className={cls.brands}>
+            <label>Бренд</label>
+            {brands &&
+              brands.map((el) => (
+                <div key={el.guid} className={cls.brand}>
+                  <Checkbox
+                    onChange={(e) => {
+                      handleCheck(el.guid);
+                    }}
+                    id={el?.[getKey("title")]}
+                    value={el.guid}
+                    checked={checkedItems.includes(el.guid)}
+                  />
+                  <label className={cls.label} htmlFor={el?.[getKey("title")]}>
+                    {el?.[getKey("title")]}
+                  </label>
+                </div>
+              ))}
+            <p
+              onClick={() => {
+                setBrands(brandsData);
+              }}
+              className={cls.showMore}
+            >
+              Показать ещё
+            </p>
+          </div>
+
+          <div className={cls.colors}>
+            <FormControl>
+              <label>Цвет</label>
+              <RadioGroup
+                className={cls.radioGroup}
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="green"
+                name="radio-buttons-group"
+              >
+                {colors.map((el) => (
+                  <div onClick={() => handleColor(el)} key={el}>
+                    <FormControlLabel
+                      value={el}
+                      checked={color ? el === color : false}
+                      control={<RadioColor onChange={() => {}} color={el} />}
+                    />
+                  </div>
+                ))}
+              </RadioGroup>
+            </FormControl>
+          </div>
+
+          <div className={cls.stocks}>
+            <label>Наличие на складе</label>
+            {stocks.map((el, index) => (
+              <div
+                key={index}
+                onClick={() => handleStock(el)}
+                className={cls.stock}
+              >
+                <Checkbox
+                  onChange={(e) => {
+                    console.log("e", e.target.checked);
+                  }}
+                  value={el}
+                  checked={checkedStocks.includes(el)}
+                />
+                <p>{el}</p>
+              </div>
+            ))}
+          </div>
+
+          <SecondaryButton
+            onClick={() => {
+              handleFilter();
+            }}
+            className={cls.filterBtn}
+            fullWidth
+          >
+            Сбросить фильтр
+          </SecondaryButton>
+        </form>
+      </div>
+    </>
   );
 }
 

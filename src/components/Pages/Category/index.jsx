@@ -13,6 +13,7 @@ import {
   useSubCategoryVariantsQuery,
 } from "services/subcategory.service";
 import useKeyTranslation from "hooks/useKeyTranslation";
+import SidebarCatalog from "components/UI/SideBars/SidebarCatalog";
 
 export function Category() {
   const router = useRouter();
@@ -32,7 +33,7 @@ export function Category() {
       page: 1,
     },
   });
-  const { data: subCategoryVariantData } = useSubCategoriesQuery({
+  const { data: subCategoryVariantData } = useSubCategoryVariantsQuery({
     queryParams: {},
     data: {
       category_slug: router?.query?.id,
@@ -51,7 +52,9 @@ export function Category() {
           {categoryData && categoryData?.[getKey("name")]}
         </h1>
         <div className={cls.row}>
-          <SidebarCategory />
+          <div>
+            <SidebarCategory subData={subCategoryData} />
+          </div>
           <div>
             <PopularOffers
               products={

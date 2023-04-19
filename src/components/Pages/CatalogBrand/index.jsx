@@ -62,7 +62,7 @@ export function CatalogBrand() {
     },
   });
 
-  console.log("categories", categories);
+  console.log("categories", subCategories);
 
   return (
     <main className={cls.main}>

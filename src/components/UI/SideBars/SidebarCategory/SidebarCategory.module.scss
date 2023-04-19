@@ -2,6 +2,7 @@
   padding: rem(16);
   border-radius: rem(12);
   background-color: var(--white-color);
+  margin-bottom: rem(32);
   label {
     font-weight: 600;
     font-size: rem(16);
@@ -88,5 +89,19 @@
   }
   .filterBtn {
     margin-top: rem(28);
+  }
+}
+.category {
+  background-color: var(--white-color);
+  margin-bottom: rem(32);
+  border-radius: rem(16);
+  padding: rem(16);
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  p {
+    color: #7e7e83;
+    font-size: 14px;
+    line-height: 20px;
   }
 }
