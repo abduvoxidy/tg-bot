@@ -10,7 +10,7 @@ export default function sub() {
   return (
     <>
       <SEO />
-      <p>sub category</p>
+      <Category />
     </>
   );
 }

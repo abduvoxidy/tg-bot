@@ -62,6 +62,7 @@ function CatgoriesMenu({
     const res = categories.find((el) => el.guid === id)?.children;
     setSubCategories(res);
   }
+  console.log("categories", subCategories);
 
   return (
     <>
@@ -71,7 +72,7 @@ function CatgoriesMenu({
             {categories &&
               categories.map((el, i) => (
                 <div
-                  onMouseEnter={() => hoverCategory(el.guid)}
+                  onMouseEnter={() => hoverCategory(el?.guid)}
                   key={el.guid}
                   className={cls.catalog}
                 >
@@ -87,9 +88,16 @@ function CatgoriesMenu({
                 subCategories.length > 0 &&
                 subCategories.map((el, index) => (
                   <div key={index} className={cls.category}>
-                    <b className={cls.title}>{el?.[getKey("name")]}</b>
+                    <Link href={`/category/${el?.slug}`}>
+                      <a className={cls.link}>
+                        <b className={cls.title}>{el?.[getKey("name")]}</b>
+                      </a>
+                    </Link>
                     {el.children.map((item, i) => (
-                      <Link key={i} href={`/category/${item?.guid}`}>
+                      <Link
+                        key={i}
+                        href={`/category/${el?.slug}/${item?.slug}`}
+                      >
                         <a className={cls.link}>{item?.[getKey("name")]}</a>
                       </Link>
                     ))}

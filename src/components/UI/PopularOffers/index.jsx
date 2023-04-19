@@ -11,19 +11,19 @@ import { useRouter } from "next/router";
 import SimpleLoader from "../Loaders/SimpleLoader";
 import EmptyData from "components/UI/EmptyData";
 
-function PopularOffers({ title }) {
+function PopularOffers({ title, products, isLoading }) {
   const router = useRouter();
   const category_id = router.query?.id;
-
-  const { data: products, isLoading } = useProductsQuery({
-    data: {
-      category_id: [category_id],
-    },
-    queryParams: {
-      enabled: !!category_id,
-    },
-    select: (res) => res.response,
-  });
+  console.log("prod", products);
+  // const { data: products, isLoading } = useProductsQuery({
+  //   data: {
+  //     category_id: [category_id],
+  //   },
+  //   queryParams: {
+  //     enabled: !!category_id,
+  //   },
+  //   select: (res) => res.response,
+  // });
 
   const images = ["car.png", "chip.png", "cleaner.png", "iron.png"];
   return (
@@ -51,6 +51,7 @@ function PopularOffers({ title }) {
         ))}
       </Slider>
       <CategoryList />
+
       <div className={cls.row}>
         {isLoading ? (
           <SimpleLoader />
