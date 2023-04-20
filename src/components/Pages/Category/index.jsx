@@ -25,7 +25,7 @@ export function Category() {
     params: {},
     queryParams: {},
   });
-  const { data: subCategoryData, isLoading } = useSubCategoriesQuery({
+  const { data: subCategoryData } = useSubCategoriesQuery({
     queryParams: {},
     data: {
       category_slug: router?.query?.slug,
@@ -34,14 +34,13 @@ export function Category() {
     },
   });
   const { data: subCategoryVariantData } = useSubCategoryVariantsQuery({
-    queryParams: {},
     data: {
       category_slug: router?.query?.id,
       limit: 10,
       page: 1,
     },
+    queryParams: {},
   });
-  console.log("subcat", subCategoryData);
   console.log("variant", subCategoryVariantData);
   console.log("router", router);
   return (
@@ -53,16 +52,15 @@ export function Category() {
         </h1>
         <div className={cls.row}>
           <div>
-            <SidebarCategory subData={subCategoryData} />
+            <SidebarCategory />
           </div>
           <div>
             <PopularOffers
               products={
-                router?.query.id
-                  ? subCategoryVariantData?.products
+                router?.query?.id
+                  ? subCategoryVariantData?.product_variants
                   : subCategoryData?.products
               }
-              isLoading={isLoading}
             />
 
             <TextContent
