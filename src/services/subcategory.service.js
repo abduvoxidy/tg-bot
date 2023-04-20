@@ -27,10 +27,14 @@ export const useSubCategoriesQuery = ({ data, queryParams } = {}) => {
   );
 };
 
-export const useSubCategoryVariantsQuery = ({ data } = {}) => {
-  return useQuery(["GET_SUBCATEGORY_VARIANTS", data], async () => {
-    return await subCategoryVariantService
-      .getSubCategoryVariants(data)
-      .then((res) => getResponse(res));
-  });
+export const useSubCategoryVariantsQuery = ({ data, queryParams } = {}) => {
+  return useQuery(
+    ["GET_SUBCATEGORY_VARIANTS", data],
+    async () => {
+      return await subCategoryVariantService
+        .getSubCategoryVariants(data)
+        .then((res) => getResponse(res));
+    },
+    queryParams
+  );
 };

@@ -39,10 +39,14 @@ export function Category() {
       limit: 10,
       page: 1,
     },
-    queryParams: {},
+    queryParams: {
+      // select: (res) => res.data?.data?.product_variants,
+      onSuccess: (res) => {
+        console.log("response", res);
+      },
+    },
   });
   console.log("variant", subCategoryVariantData);
-  console.log("router", router);
   return (
     <main className={cls.main}>
       <Container>
