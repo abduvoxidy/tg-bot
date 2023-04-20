@@ -54,7 +54,7 @@ function PopularOffers({ title, products, isLoading }) {
 
       <div className={cls.container}>
         {isLoading ? (
-          <SimpleLoader />
+          <SimpleLoader className={cls.loader} />
         ) : products && products.length > 0 ? (
           <div className={cls.row}>
             {products.map((el, index) => (

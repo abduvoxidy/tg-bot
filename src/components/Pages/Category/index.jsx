@@ -25,7 +25,7 @@ export function Category() {
     params: {},
     queryParams: {},
   });
-  const { data: subCategoryData } = useSubCategoriesQuery({
+  const { data: subCategoryData, isLoading } = useSubCategoriesQuery({
     queryParams: {},
     data: {
       category_slug: router?.query?.slug,
@@ -33,19 +33,20 @@ export function Category() {
       page: 1,
     },
   });
-  const { data: subCategoryVariantData } = useSubCategoryVariantsQuery({
-    data: {
-      category_slug: router?.query?.id,
-      limit: 10,
-      page: 1,
-    },
-    queryParams: {
-      // select: (res) => res.data?.data?.product_variants,
-      onSuccess: (res) => {
-        console.log("response", res);
+  const { data: subCategoryVariantData, isLoading: categoryVariantLoader } =
+    useSubCategoryVariantsQuery({
+      data: {
+        category_slug: router?.query?.id,
+        limit: 10,
+        page: 1,
       },
-    },
-  });
+      queryParams: {
+        // select: (res) => res.data?.data?.product_variants,
+        onSuccess: (res) => {
+          console.log("response", res);
+        },
+      },
+    });
   console.log("variant", subCategoryVariantData);
   return (
     <main className={cls.main}>
@@ -65,6 +66,7 @@ export function Category() {
                   ? subCategoryVariantData?.product_variants
                   : subCategoryData?.products
               }
+              isLoading={isLoading}
             />
 
             <TextContent
