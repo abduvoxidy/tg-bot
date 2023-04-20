@@ -52,17 +52,19 @@ function PopularOffers({ title, products, isLoading }) {
       </Slider>
       <CategoryList />
 
-      <div className={router?.query?.id ? cls.rowid : cls.row}>
+      <div className={cls.container}>
         {isLoading ? (
           <SimpleLoader />
         ) : products && products.length > 0 ? (
-          products.map((el, index) => (
-            <ProductCard
-              data={el}
-              zIndex={products.length - index}
-              key={index}
-            />
-          ))
+          <div className={cls.row}>
+            {products.map((el, index) => (
+              <ProductCard
+                data={el}
+                zIndex={products.length - index}
+                key={index}
+              />
+            ))}
+          </div>
         ) : (
           <EmptyData />
         )}

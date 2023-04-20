@@ -120,7 +120,7 @@ function SidebarCategory(subData) {
   const data = subData?.subData?.category?.children;
   const colors = ["green", "black", "red", "primary", "secondary"];
   const stocks = ["В продаже", "В наличии"];
-  console.log("data", subData.subData);
+  console.log("subdata", data);
   return (
     <>
       {data && (

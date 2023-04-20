@@ -56,7 +56,7 @@ export function Category() {
         </h1>
         <div className={cls.row}>
           <div>
-            <SidebarCategory />
+            <SidebarCategory subData={subCategoryData} />
           </div>
           <div>
             <PopularOffers

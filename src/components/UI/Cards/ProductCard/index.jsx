@@ -13,9 +13,9 @@ function ProductCard({ data, img, zIndex = 0 }) {
   const getKey = useKeyTranslation();
   const [value, setValue] = useState(2);
   const [isActive, setIsActive] = useState(false);
-  const types = ["128GB", "256GB", "512GB", "512GB", "..."];
+  const types = [data?.attributes];
   // zIndex is working after hover product
-
+  console.log("cardData", data?.attributes);
   return (
     <div
       style={{
@@ -103,8 +103,8 @@ function ProductCard({ data, img, zIndex = 0 }) {
         </Link>
 
         <div className={cls.types}>
-          {types.map((el, index) => (
-            <p key={el + index}>{el}</p>
+          {data?.attributes?.map((el) => (
+            <p>{el?.attribute_variants_id_data?.[getKey("name")]}</p>
           ))}
         </div>
       </div>
