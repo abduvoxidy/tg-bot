@@ -37,7 +37,7 @@ const BrandCompanies = () => {
               <div className={cls.brands}>
                 {data &&
                   data.map((el) => (
-                    <Link key={el.id} href={`brands/${el.id}`}>
+                    <Link key={el.id} href={`brands/${el.slug}/${el.id}`}>
                       <div className={cls.card}>
                         <div className={cls.brand}>
                           <Image

@@ -33,6 +33,7 @@ export function Category() {
       page: 1,
     },
   });
+  console.log("subb", subCategoryData);
   const { data: subCategoryVariantData, isLoading: categoryVariantLoader } =
     useSubCategoryVariantsQuery({
       data: {
@@ -47,7 +48,7 @@ export function Category() {
         },
       },
     });
-  console.log("variant", subCategoryVariantData);
+  // console.log("variant", subCategoryVariantData);
   return (
     <main className={cls.main}>
       <Container>

@@ -121,12 +121,15 @@ function SidebarCategory(subData) {
   const colors = ["green", "black", "red", "primary", "secondary"];
   const stocks = ["В продаже", "В наличии"];
   console.log("subdata", data);
+  console.log("id", subData);
   return (
     <>
       {data && (
         <div className={cls.category}>
           {data?.map((el) => (
-            <Link href={`/category/${el.slug}`}>
+            <Link
+              href={`/category/${subData?.subData?.category?.slug}/${el.slug}`}
+            >
               <a>{el?.[getKey("name")]}</a>
             </Link>
           ))}
