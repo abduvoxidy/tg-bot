@@ -2,13 +2,20 @@
   margin-top: rem(24);
   display: flex;
   column-gap: rem(16);
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .categoryItem {
     background-color: var(--white-color);
     gap: rem(14);
     padding: rem(7) rem(11);
     border-radius: rem(16);
     font-size: 14px;
+    width: max-content;
     line-height: 17px;
   }
 }

@@ -14,7 +14,7 @@ function ProductImgCard({ data }) {
             <Image
               objectFit="contain"
               layout="fill"
-              src={data.photo}
+              src={data?.photo ? data?.photo : "/images/no-photo.png"}
               alt="tel1"
             />
           </div>

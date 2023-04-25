@@ -96,7 +96,18 @@ export function Brand() {
     },
   });
   console.log("router", router);
-  console.log("branddata", brandData);
+
+  let productsImages = [];
+  for (let i = 0; i < 12; i++) {
+    productsImages.push(brandData?.categorys[i]);
+  }
+  let categoryList = [];
+  for (let j = 12; j < brandData?.categorys?.length; j++) {
+    categoryList.push(brandData?.categorys[j]);
+  }
+
+  console.log("categoryList", categoryList);
+  console.log("ppp", productsImages);
   return (
     <main className={cls.main}>
       <Container>
@@ -105,8 +116,8 @@ export function Brand() {
 
         <BrandBanner className={cls.banner} />
 
-        <CategoryList categories={categories} className={cls.category} />
-        <ProductImages products={brandData?.categorys} className={cls.brands} />
+        <CategoryList categories={categoryList} className={cls.category} />
+        <ProductImages products={productsImages} className={cls.brands} />
         <div className={cls.brandRow}>
           <SidebarCategory />
           <div>
