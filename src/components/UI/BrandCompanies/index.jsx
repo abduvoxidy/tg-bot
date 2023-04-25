@@ -23,7 +23,7 @@ const BrandCompanies = () => {
     data: {},
     queryParams: {},
   });
-
+  console.log("data", data);
   return (
     <main className={cls.main}>
       <Container>
@@ -37,7 +37,7 @@ const BrandCompanies = () => {
               <div className={cls.brands}>
                 {data &&
                   data.map((el) => (
-                    <Link key={el.id} href={`brands/${el.slug}/${el.id}`}>
+                    <Link key={el.id} href={`brands/${el.slug}`}>
                       <div className={cls.card}>
                         <div className={cls.brand}>
                           <Image

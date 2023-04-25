@@ -8,6 +8,8 @@ import BrandProducts from "components/UI/Products/BrandProducts";
 import BrandBanner from "components/UI/Banners/BrandBanner";
 import CategoryList from "components/UI/CategoryList";
 import ProductImages from "components/UI/Products/ProductImages";
+import { useRouter } from "next/router";
+import { useBrandProductsQuery } from "services/product_by_brand.service";
 
 const categories = [
   "смартфоны samsung",
@@ -84,6 +86,17 @@ const breadcrumbItems = [
 ];
 
 export function Brand() {
+  const router = useRouter();
+  const { data: brandData, isLoading } = useBrandProductsQuery({
+    queryParams: {},
+    data: {
+      brand_slug: router?.query?.id,
+      limit: 10,
+      page: 1,
+    },
+  });
+  console.log("router", router);
+  console.log("branddata", brandData);
   return (
     <main className={cls.main}>
       <Container>
@@ -93,11 +106,11 @@ export function Brand() {
         <BrandBanner className={cls.banner} />
 
         <CategoryList categories={categories} className={cls.category} />
-        <ProductImages products={brands} className={cls.brands} />
+        <ProductImages products={brandData?.categorys} className={cls.brands} />
         <div className={cls.brandRow}>
           <SidebarCategory />
           <div>
-            <BrandProducts />
+            <BrandProducts data={brandData?.products} />
             <TextContent />
           </div>
         </div>

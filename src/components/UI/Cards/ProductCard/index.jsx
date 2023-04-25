@@ -15,7 +15,7 @@ function ProductCard({ data, img, zIndex = 0 }) {
   const [isActive, setIsActive] = useState(false);
   const types = [data?.attributes];
   // zIndex is working after hover product
-  console.log("cardData", data?.attributes);
+  console.log("cardData", data);
   return (
     <div
       style={{

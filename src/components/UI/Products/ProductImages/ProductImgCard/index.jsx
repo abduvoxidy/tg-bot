@@ -2,8 +2,10 @@ import React from "react";
 import cls from "./ProductImgCard.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import useKeyTranslation from "hooks/useKeyTranslation";
 
 function ProductImgCard({ data }) {
+  const getKey = useKeyTranslation();
   return (
     <Link href="/catalog/list">
       <a>
@@ -12,11 +14,11 @@ function ProductImgCard({ data }) {
             <Image
               objectFit="contain"
               layout="fill"
-              src={`/images/main/${data.url}`}
+              src={data.photo}
               alt="tel1"
             />
           </div>
-          <p className={cls.title}>{data.name}</p>
+          <p className={cls.title}>{data?.[getKey("name")]}</p>
         </div>
       </a>
     </Link>
