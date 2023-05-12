@@ -53,7 +53,6 @@ function StepTwo({ setActiveStep }) {
               placeholder={"Номер телефона"}
               control={control}
               name="phone"
-              errors={errors}
               labelText="Имя"
               required
             />

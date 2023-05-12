@@ -1,13 +1,33 @@
 import axios from "axios";
 
+const headerData = {
+  Authorization: "API-KEY",
+  "X-API-KEY": process.env.NEXT_PUBLIC_X_API_KEY,
+  "environment-id": process.env.NEXT_PUBLIC_ENVIRONMENT_ID,
+  "resource-id": process.env.NEXT_PUBLIC_RESOURCE_ID,
+};
+
+const paramsData = {
+  "project-id": process.env.NEXT_PUBLIC_REQUEST_PROJECT_ID,
+};
+
 export const request = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   headers: {
-    Authorization: "API-KEY",
-    "X-API-KEY": process.env.NEXT_PUBLIC_X_API_KEY,
+    ...headerData,
   },
   params: {
-    "project-id": process.env.NEXT_PUBLIC_REQUEST_PROJECT_ID,
+    ...paramsData,
+  },
+});
+
+export const requestAuth = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_AUTH_URL,
+  headers: {
+    ...headerData,
+  },
+  params: {
+    ...paramsData,
   },
 });
 
@@ -29,3 +49,8 @@ const errorHandler = (error) => {
 };
 
 request.interceptors.response.use((response) => response.data, errorHandler);
+
+requestAuth.interceptors.response.use(
+  (response) => response.data,
+  errorHandler
+);

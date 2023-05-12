@@ -4,13 +4,11 @@ import cls from "./InputMask.module.scss";
 import InputMaskCopy from "react-input-mask";
 
 export default function InputMask({
-  placeholder,
   startAdornment,
   endAdornment,
   className = "",
   endAdorment,
   name = "name",
-  errors = {},
   control = {},
   required,
   disabled,
@@ -35,32 +33,35 @@ export default function InputMask({
         control={control}
         name={name}
         rules={{ required }}
-        render={({ field }) => (
-          <InputMaskCopy
-            mask='99/99'
-            maskChar=''
-            value={field.value}
-            onChange={field.onChange}
-            placeholder={placeholder}
-            disabled={disabled}
-            id={id}
-            className={`${cls.input} ${
-              startAdornment ? cls.withStartAdornment : ""
-            } ${endAdorment ? cls.withEndAdornment : ""} 
-              ${errors[name] ? cls.error : ""}
+        render={({ field: { onChange, value }, fieldState: { error } }) => {
+          return (
+            <>
+              <InputMaskCopy
+                mask="99"
+                maskChar=""
+                value={value}
+                onChange={onChange}
+                disabled={disabled}
+                id={id}
+                className={`${cls.input} ${
+                  startAdornment ? cls.withStartAdornment : ""
+                } ${endAdorment ? cls.withEndAdornment : ""} 
+              ${error ? cls.error : ""}
               ${disabled ? cls.disabled : ""}
               ${cls[size]}
               `}
-            {...restProps}
-          />
-        )}
+                {...restProps}
+              />
+              {error && error?.type === "required" ? (
+                <span>{t("required_field")}</span>
+              ) : (
+                error && <span>{error?.message}</span>
+              )}
+            </>
+          );
+        }}
       />
       {endAdorment && <div className={cls.endAdorment}>{endAdorment}</div>}
-      {errors && errors[name] && errors[name]?.type === "required" ? (
-        <span>{t("required_field")}</span>
-      ) : (
-        errors && errors[name] && <span>{errors && errors[name]?.message}</span>
-      )}
     </div>
   );
 }

@@ -61,53 +61,51 @@ function PersonalData() {
 
       <div className={cls.inputs}>
         <Input
-          id='name'
+          id="name"
           placeholder={"Имя"}
-          name='name'
+          name="name"
           register={register}
           errors={errors}
-          labelText='Имя'
+          labelText="Имя"
           required
         />
         <Input
-          id='surname'
+          id="surname"
           placeholder={"Фамилия"}
-          name='surname'
+          name="surname"
           register={register}
           errors={errors}
-          labelText='Фамилия'
+          labelText="Фамилия"
           required
         />
         <Input
-          id='username'
+          id="username"
           placeholder={"Telegram user name"}
-          name='username'
+          name="username"
           register={register}
           errors={errors}
-          labelText='Telegram username'
+          labelText="Telegram username"
           required
         />
         <InputMask
-          id='phone'
+          id="phone"
           mask={`+\\9\\9\\8 99 999 99 99`}
           placeholder={"Введите номер"}
           control={control}
-          name='phone'
-          labelText='Номер телефона'
-          errors={errors}
+          name="phone"
+          labelText="Номер телефона"
           required
         />
         <InputMask
-          id='subPhone'
+          id="subPhone"
           mask={`+\\9\\9\\8 99 999 99 99`}
           placeholder={"Номер телефона (Доп)"}
           control={control}
-          name='subPhone'
-          labelText='Номер телефона'
-          errors={errors}
+          name="subPhone"
+          labelText="Номер телефона"
         />
         <DatePicker
-          labelText='Дата рождения'
+          labelText="Дата рождения"
           selectedDate={selectedDate}
           open={open}
           setOpen={setOpen}
@@ -118,26 +116,26 @@ function PersonalData() {
       <div className={cls.title}>Паспортные данные</div>
       <div className={cls.inputs}>
         <Input
-          id='passportSeria'
+          id="passportSeria"
           placeholder={"АА 0000000"}
-          name='passportSeria'
+          name="passportSeria"
           register={register}
-          labelText='Серия и номер'
+          labelText="Серия и номер"
           errors={errors}
           required
         />
         <Input
-          id='passportSeria'
+          id="passportSeria"
           placeholder={"00000000000000"}
-          name='passportSeria'
+          name="passportSeria"
           register={register}
-          labelText='ПИНФЛ'
+          labelText="ПИНФЛ"
           errors={errors}
           required
         />
       </div>
 
-      <MainButton type='submit' className={cls.btn}>
+      <MainButton type="submit" className={cls.btn}>
         Сохранить изменения
       </MainButton>
     </form>

@@ -46,7 +46,6 @@ function StepThree({ setActiveStep }) {
               placeholder={"Номер телефона"}
               control={control}
               name="phone"
-              errors={errors}
               labelText="Имя"
               //   required
             />
@@ -77,7 +76,6 @@ function StepThree({ setActiveStep }) {
               placeholder={"Номер телефона"}
               control={control}
               name="phone"
-              errors={errors}
               labelText="Имя"
               //   required
             />
@@ -108,7 +106,6 @@ function StepThree({ setActiveStep }) {
               placeholder={"Номер телефона"}
               control={control}
               name="phone"
-              errors={errors}
               labelText="Имя"
               //   required
             />

@@ -9,7 +9,6 @@ import { useState } from "react";
 import Textarea from "components/UI/Forms/Textarea";
 
 function ContactDialog({ open, handleClose }) {
-  
   const {
     handleSubmit,
     control,
@@ -32,47 +31,46 @@ function ContactDialog({ open, handleClose }) {
         <h2>Оставить заявку</h2>
         <form className={cls.form} onSubmit={handleSubmit(onSubmit)}>
           <Input
-            id='fullname'
-            placeholder='Алексеев Алексей Алексеевич'
-            name='fullname'
+            id="fullname"
+            placeholder="Алексеев Алексей Алексеевич"
+            name="fullname"
             register={register}
             errors={errors}
-            labelText='ФИО'
+            labelText="ФИО"
             required
           />
 
           <Input
-            id='mail'
-            placeholder='@1234abcd'
-            name='mail'
-            type='mail'
+            id="mail"
+            placeholder="@1234abcd"
+            name="mail"
+            type="mail"
             register={register}
             errors={errors}
-            labelText='Электронная почта'
+            labelText="Электронная почта"
             required
           />
           <InputMask
-            id='phone'
+            id="phone"
             mask={`+\\9\\9\\8 99 999 99 99`}
-            placeholder='+998 00 000-00-00'
+            placeholder="+998 00 000-00-00"
             control={control}
-            name='phone'
-            labelText='Номер телефона'
-            errors={errors}
+            name="phone"
+            labelText="Номер телефона"
             required
           />
 
           <Textarea
             labelText={"Ваша заявка *"}
             required
-            placeholder='Сообщение'
+            placeholder="Сообщение"
             rows={3}
           />
 
           <MainButton
             onClick={handleClose}
             fullWidth
-            type='submit'
+            type="submit"
             className={cls.btn}
           >
             Отправить
