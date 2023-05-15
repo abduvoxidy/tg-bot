@@ -34,7 +34,7 @@ function Home() {
     <main className={cls.main}>
       <TelegramLoginButton
         dataOnauth={handleTelegramResponse}
-        botName="pragrafexample_bot"
+        botName="paragrafsayt_bot"
       />
       <Container>
         {/* <Banner />
