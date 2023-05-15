@@ -12,6 +12,7 @@ import { useFeaturedListsQuery } from "services/featured-lists.service";
 import { sortFunctionArr } from "utils/sortFunction";
 import useKeyTranslation from "hooks/useKeyTranslation";
 import { useRouter } from "next/router";
+import TelegramLoginButton from "react-telegram-login";
 
 function Home() {
   const router = useRouter();
@@ -21,12 +22,22 @@ function Home() {
       status: ["active"],
     },
   });
+
   const response = sortFunctionArr(featuredLists) || [];
+
+  const handleTelegramResponse = (response) => {
+    console.log(response);
+    // Do something with the response
+  };
 
   return (
     <main className={cls.main}>
+      <TelegramLoginButton
+        dataOnauth={handleTelegramResponse}
+        botName="pragrafexample_bot"
+      />
       <Container>
-        <Banner />
+        {/* <Banner />
         {response.map((el) => (
           <WrapperComponent
             key={el.guid}
@@ -35,7 +46,7 @@ function Home() {
             type={el.type[0]}
           />
         ))}
-        <NewsList />
+        <NewsList /> */}
         {/* <PopularBrands /> */}
       </Container>
     </main>
